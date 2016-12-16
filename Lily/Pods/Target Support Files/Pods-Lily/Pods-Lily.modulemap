@@ -1,6 +1,0 @@
-framework module Pods_Lily {
-  umbrella header "Pods-Lily-umbrella.h"
-
-  export *
-  module * { export * }
-}
