@@ -1,0 +1,7 @@
+iOS applications may use the SFSafariViewController class instead of app switching to Safari. Use of the WKWebView or UIWebView class is prohibited.
+
+Note: Never put your client secret in distributed code, such as apps downloaded through an app store or client-side JavaScript.
+
+https://dev.fitbit.com/docs/oauth2/#authorization-page
+
+
