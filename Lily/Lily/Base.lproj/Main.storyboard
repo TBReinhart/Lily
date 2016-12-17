@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="JdJ-Bn-rfY">
             <objects>
-                <viewController id="M3c-OP-UZq" customClass="ViewController" customModule="OAuth2PodApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M3c-OP-UZq" customClass="ViewController" customModule="Lily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Ll-eF-Vlp"/>
                         <viewControllerLayoutGuide type="bottom" id="Zhz-I0-cfy"/>
