@@ -1,0 +1,94 @@
+["user": {
+    age = 22;
+    autoStrideEnabled = 1;
+    avatar = "https://d6y8zfzc2qfsl.cloudfront.net/B443BF9A-70A7-5B90-F5DF-A0078CA2A3A1_profile_100_square.jpg";
+    avatar150 = "https://d6y8zfzc2qfsl.cloudfront.net/B443BF9A-70A7-5B90-F5DF-A0078CA2A3A1_profile_150_square.jpg";
+    averageDailySteps = 7610;
+    clockTimeDisplayFormat = 12hour;
+    corporate = 0;
+    corporateAdmin = 0;
+    country = US;
+    dateOfBirth = "1994-07-02";
+    displayName = "Tom R.";
+    displayNameSetting = name;
+    distanceUnit = "en_US";
+    encodedId = 54VVFQ;
+    features =     {
+        exerciseGoal = 1;
+    };
+    foodsLocale = "en_US";
+    fullName = "Tom Reinhart";
+    gender = MALE;
+    glucoseUnit = "en_US";
+    height = "172.8";
+    heightUnit = "en_US";
+    locale = "en_US";
+    memberSince = "2016-12-15";
+    mfaEnabled = 0;
+    offsetFromUTCMillis = "-18000000";
+    startDayOfWeek = SUNDAY;
+    strideLengthRunning = "116.9";
+    strideLengthRunningType = manual;
+    strideLengthWalking = "71.7";
+    strideLengthWalkingType = default;
+    swimUnit = "en_US";
+    timezone = "America/New_York";
+    topBadges =     (
+                {
+            badgeGradientEndColor = 00D3D6;
+            badgeGradientStartColor = 007273;
+            badgeType = "DAILY_STEPS";
+            category = "Daily Steps";
+            cheers =             (
+            );
+            dateTime = "2016-12-26";
+            description = "15,000 steps in a day";
+            earnedMessage = "Congrats on earning your first Urban Boot badge!";
+            encodedId = 228TMK;
+            image100px = "https://static0.fitbit.com/images/badges_new/100px/badge_daily_steps15k.png";
+            image125px = "https://static0.fitbit.com/images/badges_new/125px/badge_daily_steps15k.png";
+            image300px = "https://static0.fitbit.com/images/badges_new/300px/badge_daily_steps15k.png";
+            image50px = "https://static0.fitbit.com/images/badges_new/badge_daily_steps15k.png";
+            image75px = "https://static0.fitbit.com/images/badges_new/75px/badge_daily_steps15k.png";
+            marketingDescription = "You've walked 15,000 steps  And earned the Urban Boot badge!";
+            mobileDescription = "With a number that's almost three times more than the national average, your step count is really heating up.";
+            name = "Urban Boot (15,000 steps in a day)";
+            shareImage640px = "https://static0.fitbit.com/images/badges_new/386px/shareLocalized/en_US/badge_daily_steps15k.png";
+            shareText = "I took 15,000 steps and earned the Urban Boot badge! #Fitbit";
+            shortDescription = "15,000 steps";
+            shortName = "Urban Boot";
+            timesAchieved = 1;
+            value = 15000;
+        },
+                {
+            badgeGradientEndColor = B0DF2A;
+            badgeGradientStartColor = 00A550;
+            badgeType = "DAILY_FLOORS";
+            category = "Daily Climb";
+            cheers =             (
+            );
+            dateTime = "2016-12-26";
+            description = "100 floors in a day";
+            earnedMessage = "Congrats on earning your first Skyscraper badge!";
+            encodedId = 228TSL;
+            image100px = "https://static0.fitbit.com/images/badges_new/100px/badge_daily_floors100.png";
+            image125px = "https://static0.fitbit.com/images/badges_new/125px/badge_daily_floors100.png";
+            image300px = "https://static0.fitbit.com/images/badges_new/300px/badge_daily_floors100.png";
+            image50px = "https://static0.fitbit.com/images/badges_new/badge_daily_floors100.png";
+            image75px = "https://static0.fitbit.com/images/badges_new/75px/badge_daily_floors100.png";
+            marketingDescription = "You've climbed 100 floors to earn the Skyscraper badge!";
+            mobileDescription = "You've used some pretty slick stair-climbing to take yourself to new heights!";
+            name = "Skyscraper (100 floors in a day)";
+            shareImage640px = "https://static0.fitbit.com/images/badges_new/386px/shareLocalized/en_US/badge_daily_floors100.png";
+            shareText = "I climbed 100 flights of stairs and earned the Skyscraper badge! #Fitbit";
+            shortDescription = "100 floors";
+            shortName = Skyscraper;
+            timesAchieved = 1;
+            value = 100;
+        }
+    );
+    waterUnit = "en_US";
+    waterUnitName = "fl oz";
+    weight = 73;
+    weightUnit = "en_US";
+}]

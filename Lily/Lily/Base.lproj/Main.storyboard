@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -51,58 +52,58 @@
                                     <constraint firstAttribute="height" constant="128" id="NoY-Zl-4Zo"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9z-5t-6pV">
-                                <rect key="frame" x="128.5" y="362" width="118" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Sign In (Safari)">
-                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="signInSafari:" destination="M3c-OP-UZq" eventType="touchUpInside" id="bee-AB-h0C"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMU-BQ-Gob">
-                                <rect key="frame" x="139.5" y="407" width="96" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Auto Sign In">
-                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="autoSignIn:" destination="M3c-OP-UZq" eventType="touchUpInside" id="pCE-rS-LED"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="GjC-D1-u1j" secondAttribute="centerX" id="1e2-ur-sKc"/>
-                            <constraint firstItem="SMU-BQ-Gob" firstAttribute="centerX" secondItem="Vcl-u0-eDr" secondAttribute="centerX" id="3fs-lF-N6w"/>
-                            <constraint firstItem="OBu-2c-T5v" firstAttribute="top" secondItem="SMU-BQ-Gob" secondAttribute="bottom" constant="30" id="7UA-Tp-sCf"/>
                             <constraint firstAttribute="centerY" secondItem="3O9-bt-exf" secondAttribute="centerY" id="Duw-at-u8o"/>
-                            <constraint firstItem="SMU-BQ-Gob" firstAttribute="top" secondItem="f9z-5t-6pV" secondAttribute="bottom" constant="12" id="Kvw-Xx-KmH"/>
+                            <constraint firstItem="Zhz-I0-cfy" firstAttribute="top" secondItem="OBu-2c-T5v" secondAttribute="bottom" constant="164" id="Rs8-61-j7z"/>
                             <constraint firstAttribute="centerX" secondItem="3O9-bt-exf" secondAttribute="centerX" id="Wkf-dK-BT3"/>
-                            <constraint firstItem="f9z-5t-6pV" firstAttribute="top" secondItem="3O9-bt-exf" secondAttribute="bottom" constant="12" id="YFk-9k-dcX"/>
                             <constraint firstItem="3O9-bt-exf" firstAttribute="top" secondItem="GjC-D1-u1j" secondAttribute="bottom" constant="50" id="hhW-wu-uk5"/>
                             <constraint firstAttribute="centerX" secondItem="OBu-2c-T5v" secondAttribute="centerX" id="jE1-kS-o6f"/>
-                            <constraint firstAttribute="centerX" secondItem="f9z-5t-6pV" secondAttribute="centerX" id="nKr-6h-9rc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="forgetButton" destination="OBu-2c-T5v" id="jvS-gb-uZF"/>
                         <outlet property="imageView" destination="GjC-D1-u1j" id="sGX-eN-PVs"/>
-                        <outlet property="signInAutoButton" destination="SMU-BQ-Gob" id="2kW-GR-qO1"/>
                         <outlet property="signInEmbeddedButton" destination="3O9-bt-exf" id="DJz-Fl-SEq"/>
-                        <outlet property="signInSafariButton" destination="f9z-5t-6pV" id="D8r-hB-ndg"/>
+                        <segue destination="aD3-eb-IQa" kind="show" identifier="loggedInSegue" id="i9B-0M-HHH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8N8-QQ-mOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="121" y="512"/>
+        </scene>
+        <!--View Controller2-->
+        <scene sceneID="bmF-gi-eeW">
+            <objects>
+                <viewController id="aD3-eb-IQa" customClass="ViewController2" customModule="Lily" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pgP-dC-7Jb"/>
+                        <viewControllerLayoutGuide type="bottom" id="UFT-2S-2P0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="grP-pP-9Gi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="VC2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7W-Vb-oI6">
+                                <rect key="frame" x="171" y="321" width="33" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="i7W-Vb-oI6" secondAttribute="trailing" constant="155" id="5s4-yA-3XJ"/>
+                            <constraint firstItem="i7W-Vb-oI6" firstAttribute="centerY" secondItem="grP-pP-9Gi" secondAttribute="centerY" id="CaV-A0-YBy"/>
+                            <constraint firstItem="i7W-Vb-oI6" firstAttribute="centerX" secondItem="grP-pP-9Gi" secondAttribute="centerX" id="Jb1-E1-Wdl"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OZt-yz-qm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="920.79999999999995" y="498.80059970014997"/>
         </scene>
     </scenes>
 </document>
