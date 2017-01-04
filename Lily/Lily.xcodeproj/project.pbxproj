@@ -18,6 +18,7 @@
 		2FA1CD621E0347AF00778DF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD601E0347AF00778DF3 /* Main.storyboard */; };
 		2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD631E0347AF00778DF3 /* Assets.xcassets */; };
 		2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD651E0347AF00778DF3 /* LaunchScreen.storyboard */; };
+		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
 		2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */; };
 		672BB027D2BACD0ACB5F68C2 /* Pods_Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		2FA1CD631E0347AF00778DF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FA1CD661E0347AF00778DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FA1CD681E0347AF00778DF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
 		2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FitbitRequests.swift; path = Lily/FitbitRequests.swift; sourceTree = "<group>"; };
 		2FC69CDC1E101995001A1349 /* Lily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lily.entitlements; sourceTree = "<group>"; };
 		75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				2FB4C3BE1E1D7A1A00C39109 /* ViewControllers */,
+				2FB4C3C01E1D806900C39109 /* REST */,
 				2FB4C3BD1E1D79F700C39109 /* Fitbit */,
 				2FB4C3BC1E1D79DF00C39109 /* Core Data */,
 				2FA1CD631E0347AF00778DF3 /* Assets.xcassets */,
@@ -134,6 +137,15 @@
 				2F398EFE1E16006600A1AEB3 /* Helpers.swift */,
 			);
 			name = Others;
+			sourceTree = "<group>";
+		};
+		2FB4C3C01E1D806900C39109 /* REST */ = {
+			isa = PBXGroup;
+			children = (
+				2FB4C3C11E1D808400C39109 /* RestClient.swift */,
+			);
+			name = REST;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9D55862E8999E78D291CCD34 /* Pods */ = {
@@ -279,6 +291,7 @@
 				2FA1CD5F1E0347AF00778DF3 /* ViewController.swift in Sources */,
 				2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */,
 				2F398EFF1E16006600A1AEB3 /* Helpers.swift in Sources */,
+				2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */,
 				2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */,
 				2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,

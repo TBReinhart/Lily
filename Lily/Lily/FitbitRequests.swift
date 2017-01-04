@@ -7,25 +7,13 @@
 //
 
 import Foundation
-import p2_OAuth2
 import Alamofire
 class FitbitRequests {
-    
-    var loader: OAuth2DataLoader?
-    fileprivate var alamofireManager: SessionManager?
 
-    var oauth2 = OAuth2CodeGrant(settings: [
-        "client_id": "2285YX",
-        "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
-        "authorize_uri": "https://www.fitbit.com/oauth2/authorize",
-        "token_uri": "https://api.fitbit.com/oauth2/token",
-        "response_type": "code",
-        "expires_in": "31536000", // 1 year expiration
-        "scope": "activity heartrate location nutrition profile settings sleep social weight",
-        "redirect_uris": ["lily://oauth/callback"],            // app has registered this scheme
-        "verbose": true,
-        ] as OAuth2JSON)
     
+    let restClient = RestClient()
+    
+
     
     // List of profile attributes that we would like to pull directly from the login response. 
     // sample login response can be found: in FitbitResponses Folder
@@ -45,182 +33,8 @@ class FitbitRequests {
                              "weight",
                              "weightUnit"]
     
-    func forgetTokens(_ sender: UIButton?) { // or nil params depending on if clicked signed out.
-        oauth2.forgetTokens()
-    }
-    
-    /**
-        Use alamofire to post request
-    */
-    func postRequest(url: String, parameters: Parameters) {
-        if oauth2.isAuthorizing {
-            oauth2.abortAuthorization()
-            return
-        }
-        oauth2.authConfig.authorizeEmbedded = true
-        oauth2.authConfig.authorizeContext = self
-        
-        let sessionManager = SessionManager()
-        let retrier = OAuth2RetryHandler(oauth2: oauth2)
-        sessionManager.adapter = retrier
-        sessionManager.retrier = retrier
-        alamofireManager = sessionManager        
-        
-        sessionManager.request(url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON { (response:DataResponse<Any>) in
-            
-            switch(response.result) {
-            case .success(_):
-                if response.result.value != nil{
-                    print(response.result.value ?? "NONE")
-                }
-                break
-                
-            case .failure(_):
-                print(response.result.error ?? "FAILURE")
-                break
-                
-            }
-        }
-        
-    }
-    
-    func getRequest(url: String) {
-        if oauth2.isAuthorizing {
-            oauth2.abortAuthorization()
-            return
-        }
-        oauth2.authConfig.authorizeEmbedded = true
-        oauth2.authConfig.authorizeContext = self
-        
-        let sessionManager = SessionManager()
-        let retrier = OAuth2RetryHandler(oauth2: oauth2)
-        sessionManager.adapter = retrier
-        sessionManager.retrier = retrier
-        alamofireManager = sessionManager
-        
-        sessionManager.request(url, method: .get).responseJSON { (response:DataResponse<Any>) in
-            
-            switch(response.result) {
-            case .success(_):
-                if response.result.value != nil{
-                    print("RESPONSE IN ALAMO:")
-                    print(response.result.value ?? "NONE")
-                }
-                break
-                
-            case .failure(_):
-                print(response.result.error ?? "FAILURE")
-                break
-                
-            }
-        }
-        
-    }
-    
-    
-    
-    
-    /**
-     Delete request
-    */
-    func deleteRequest(url: String) {
-        if oauth2.isAuthorizing {
-            oauth2.abortAuthorization()
-            return
-        }
-        oauth2.authConfig.authorizeEmbedded = true
-        oauth2.authConfig.authorizeContext = self
-        
-        let sessionManager = SessionManager()
-        let retrier = OAuth2RetryHandler(oauth2: oauth2)
-        sessionManager.adapter = retrier
-        sessionManager.retrier = retrier
-        alamofireManager = sessionManager
 
-        sessionManager.request(url, method: .delete).responseJSON { (response:DataResponse<Any>) in
-            
-            switch(response.result) {
-            case .success(_):
-                if response.result.value != nil{
-                    print(response.result.value ?? "NONE")
-                }
-                break
-                
-            case .failure(_):
-                print(response.result.error ?? "FAILURE")
-                break
-                
-            }
-        }
 
-    }
-    
-    
-    
-    /**
-     Get request from a request name
-    */
-//    func getRequest(reqName: String)  {
-//
-//        let loader = OAuth2DataLoader(oauth2: oauth2)
-//        self.loader = loader
-//        
-//        let req = getRequestByName(reqName: reqName)
-//        
-//        loader.perform(request: req) { response in
-//            do {
-//                let json = try response.responseJSON()
-//                debugPrint("RESPONSE in json")
-//                debugPrint(json)
-//                
-//            }
-//            catch let error {
-//                debugPrint(error)
-//            }
-//        }
-//
-//    }
-    /**
-     Get request from a given URLRequest
-//    */
-//    func getRequest(request: URLRequest) {
-//        let loader = OAuth2DataLoader(oauth2: oauth2)
-//        self.loader = loader
-//        
-//        loader.perform(request: request) { response in
-//            do {
-//                let json = try response.responseJSON()
-//                debugPrint("RESPONSE in json")
-//                debugPrint(json)
-//                
-//            }
-//            catch let error {
-//                debugPrint(error)
-//            }
-//        }
-//    }
-////    
-//    func getRequestByName(reqName: String) -> URLRequest {
-//        switch reqName {
-//        case "userProfile":
-//            debugPrint("Case userProfile")
-//            return userProfile
-//        case "devices":
-//            debugPrint("Case devices")
-//            return devices
-//        case "dailyActivitySummary":
-//            debugPrint("Case dailyActivitySummary")
-//            return dailyActivitySummary
-//        case "activities":
-//            debugPrint("Case activites")
-//            return activities
-//        case "logWeight":
-//            debugPrint("Case logWeight")
-//            return logWeight
-//        default:
-//            return userProfile
-//        }
-//    }
     
     
     /**
@@ -272,7 +86,7 @@ class FitbitRequests {
     // GET https://api.fitbit.com/1/user/-/body/log/weight/date/[date].json
     func getWeightOnDate(date: String = "today") {
         let url = "https://api.fitbit.com/1/user/-/body/log/weight/date/\(date).json"
-        getRequest(url: url)
+        restClient.getRequest(url: url)
     }
     
     //GET https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[period].json
@@ -280,7 +94,7 @@ class FitbitRequests {
     //     period       The date range period. One of 1d, 7d, 30d, 1w, 1m.
     func getWeightForPeriod(baseDate: String, period: String) {
         let url = "https://api.fitbit.com/1/user/-/body/log/weight/date/\(baseDate)/\(period).json"
-        getRequest(url: url)
+        restClient.getRequest(url: url)
 
     }
     
@@ -290,7 +104,7 @@ class FitbitRequests {
     //      end-date	Range end date when date range is provided. Note: The period must not be longer than 31 days.
     func getWeightFromStartEndDates(startDate: String, endDate: String) {
         let url = "https://api.fitbit.com/1/user/-/body/log/weight/date/\(startDate)/\(endDate).json"
-        getRequest(url: url)
+        restClient.getRequest(url: url)
 
     }
     
@@ -312,7 +126,7 @@ class FitbitRequests {
             parameters.updateValue(time ?? "23:59:59", forKey: "time")
         }
         let url = "https://api.fitbit.com/1/user/-/body/log/weight.json"
-        postRequest(url: url, parameters: parameters)
+        restClient.postRequest(url: url, parameters: parameters)
 
     }
     /**
@@ -327,12 +141,13 @@ class FitbitRequests {
      
      */
     func deleteWeight(lodId: String) {
-        deleteRequest(url: "https://api.fitbit.com/1/user/[user-id]/body/log/weight/\(lodId).json")
+        let url = "https://api.fitbit.com/1/user/[user-id]/body/log/weight/\(lodId).json"
+        restClient.deleteRequest(url: url)
     }
     
     func getDevices() {
         let url = "https://api.fitbit.com/1/user/-/devices.json"
-        getRequest(url: url)
+        restClient.getRequest(url: url)
     }
     
     
@@ -392,7 +207,7 @@ class FitbitRequests {
             "startTime":startTime,
         ]
         let url = "https://api.fitbit.com/1/user/-/activities.json"
-        postRequest(url: url, parameters: parameters)
+        restClient.postRequest(url: url, parameters: parameters)
     }
     
     
@@ -416,13 +231,13 @@ class FitbitRequests {
 
     func getActivityTimeSeriesFromStartEndDates(resourcePath: String, baseDate: String, endDate: String) {
         let url = "https://api.fitbit.com/1/user/-/[resource-path]/date/[date]/[period].json"
-        getRequest(url: url)
+        restClient.getRequest(url: url)
 
     }
     
     func getActivityTimeSeriesFromPeriod(resourcePath: String, date: String, period: String) {
         let url = "https://api.fitbit.com/1/user/-/\(resourcePath)/date/\(date)/\(period).json"
-        getRequest(url: url)
+        restClient.getRequest(url: url)
 
     }
     
@@ -437,7 +252,7 @@ class FitbitRequests {
     */
     func getAlarms(trackerId: String) {
         let url = "https://api.fitbit.com/1/user/-/devices/tracker/\(trackerId)/alarms.json"
-        getRequest(url: url)
+        restClient.getRequest(url: url)
         
     }
     /**
@@ -473,7 +288,7 @@ class FitbitRequests {
             "weekDays":days
         ]
         let url = "https://api.fitbit.com/1/user/-/devices/tracker/\(trackerId)/alarms.json"
-        postRequest(url: url, parameters: parameters)
+        restClient.postRequest(url: url, parameters: parameters)
     }
     
 
