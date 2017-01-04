@@ -18,4 +18,26 @@ class Helpers {
         let dateString = styler.string(from: date as Date)
         return dateString
     }
+    
+    static func getOffset() -> String {
+        var offsetSeconds = Int(NSTimeZone.local.secondsFromGMT())
+        var offsetString = "+00:00"
+        var offsetSymbol = "+"
+        var offsetHoursLeadString = "0"
+        var offsetMinutesLeadString = "0"
+        if offsetSeconds < 0 {
+            offsetSymbol = "-"
+            offsetSeconds = (offsetSeconds * -1)
+        }
+        var offsetHours = Int(offsetSeconds / 3600)
+        var offsetMinutes = offsetSeconds - (offsetHours * 3600)
+        if offsetHours > 10 {
+            offsetHoursLeadString = ""
+        }
+        if offsetMinutes > 10 {
+            offsetMinutesLeadString = ""
+        }
+        offsetString = String(format: "%@%@%i:%@%i", offsetSymbol, offsetHoursLeadString, offsetHours, offsetMinutesLeadString, offsetMinutes)
+        return offsetString
+    }
 }
