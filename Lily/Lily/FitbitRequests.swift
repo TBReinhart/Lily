@@ -1231,6 +1231,7 @@ class FitbitRequests {
      user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
      log-id	ID of the sleep log to be deleted.
 
+     
     */
     func deleteSleepLog(logId: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/sleep/\(logId).json"
