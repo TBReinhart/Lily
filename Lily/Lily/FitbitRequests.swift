@@ -1243,4 +1243,145 @@ class FitbitRequests {
             }
         }
     }
+    
+    /**
+     Get Profile
+     The Get Profile endpoint returns a user's profile. The authenticated owner receives all values. However, the authenticated user's access to other users' data is subject to those users' privacy settings. Numerical values are returned in the unit system specified in the Accept-Language header.
+     
+     Resource URL
+     
+     GET https://api.fitbit.com/1/user/[user-id]/profile.json
+     
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     Request Headers
+    */
+    func getUserProfile(completionHandler: @escaping (JSON?, Error?) -> ()) {
+        let url = "https://api.fitbit.com/1/user/-/profile.json"
+        restClient.getRequest(url: url) { json, error in
+            if error != nil {
+                completionHandler(nil, error)
+            } else {
+                completionHandler(json,nil)
+            }
+        }
+    }
+    /**
+     Update Profile
+     The Update Profile endpoint updates a user's profile. Numerical values are accepted in the unit system specified in the Accept-Language header.
+     
+     Notice: Beginning September 6, 2016, the nickname field in the Update Profile endpoint will no longer be editable. The field will continue to be returned in the Get Profile endpoint, but no longer modifiable.
+     
+     Resource URL
+     
+     POST https://api.fitbit.com/1/user/[user-id]/profile.json
+     
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     POST Parameters
+     
+     gender                 optional	More accurately, sex; (MALE/FEMALE/NA)
+     birthday               optional	Date of birth; in the format yyyy-MM-dd
+     height                 optional	Height; in the format X.XX,
+     aboutMe                optional	About Me string
+     fullname               optional	Full name
+     country                optional	Country; two-character code
+     state                  optional	US State; two-character code; valid only if country was or being set to US
+     city                   optional	City
+     strideLengthWalking	optional	Walking stride length; in the format X.XX, in the unit system that 
+     strideLengthRunning	optional	Running stride length; in the format X.XX, in the unit system that
+     weightUnit             optional	Default weight unit on website (doesn't affect API); one of (en_US, en_GB, "any" for METRIC)
+     heightUnit             optional	Default height/distance unit on website (doesn't affect API); one of (en_US, "any" for METRIC)
+     waterUnit              optional	Default water unit on website (doesn't affect API); one of (en_US, "any" for METRIC)
+     glucoseUnit            optional	Default glucose unit on website (doesn't affect API); one of (en_US, "any" for METRIC)
+     timezone               optional	Timezone; in the format "America/Los_Angeles"
+     foodsLocale            optional	Food Database Locale; in the format "xx_XX"
+     locale                 optional	Locale of website (country/language); one of the locales, currently – (en_US, en_GB, en_AU, etc)
+     localeLang             optional	Language; in the format "xx". You should specify either locale or both - localeLang and                                                     
+                                        localeCountry (locale is higher priority).
+     localeCountry          optional	Country; in the format "XX". You should specify either locale or both - localeLang and 
+                                        localeCountry (locale is higher priority).
+     startDayOfWeek         optional	Start day of the week; what day the week should start on. Either Sunday or Monday.
+     clockTimeDisplayFormat	optional	How trackers with a clock should display the time. Either 12hour or 24hour.
+
+    */
+    func updateUserProfile(gender: String = "FEMALE", birthday: String? = nil, height: String? = nil, aboutMe: String? = nil, fullname: String? = nil, country: String? = nil, state: String? = nil, city: String? = nil, strideLengthWalking: String? = nil, strideLengthRunning: String? = nil, weightUnit: String? = nil, heightUnit: String? = nil, waterUnit: String? = nil, glucoseUnit: String? = nil, timezone: String? = nil, foodsLocale: String? = nil, localeLang: String? = nil, localeCountry: String? = nil, startDayOfWeek: String? = nil, clockTimeDisplayFormat: String? = nil, completionHandler: @escaping (JSON?, Error?) -> ()) {
+   
+        var parameters: Parameters = [:]
+        
+        if birthday != nil {
+            parameters.updateValue(birthday!, forKey: "birthday")
+        }
+        if height != nil {
+            parameters.updateValue(height!, forKey: "height")
+        }
+        if aboutMe != nil {
+            parameters.updateValue(aboutMe!, forKey: "aboutMe")
+        }
+        if fullname != nil {
+            parameters.updateValue(fullname!, forKey: "fullname")
+        }
+        if country != nil {
+            parameters.updateValue(country!, forKey: "country")
+        }
+        if state != nil {
+            parameters.updateValue(state!, forKey: "state")
+        }
+        if city != nil {
+            parameters.updateValue(city!, forKey: "city")
+        }
+        if strideLengthWalking != nil {
+            parameters.updateValue(strideLengthWalking!, forKey: "strideLengthWalking")
+        }
+        if strideLengthRunning != nil {
+            parameters.updateValue(strideLengthRunning!, forKey: "strideLengthRunning")
+
+        }
+        if weightUnit != nil {
+            parameters.updateValue(weightUnit!, forKey: "weightUnit")
+            
+        }
+        
+        if heightUnit != nil {
+            parameters.updateValue(heightUnit!, forKey: "heightUnit")
+            
+        }
+        if waterUnit != nil {
+            parameters.updateValue(waterUnit!, forKey: "waterUnit")
+            
+        }
+        if glucoseUnit != nil {
+            parameters.updateValue(glucoseUnit!, forKey: "glucoseUnit")
+
+        }
+        
+        if foodsLocale != nil {
+            parameters.updateValue(foodsLocale!, forKey: "foodsLocale")
+            
+        }
+        if localeLang != nil {
+            parameters.updateValue(localeLang!, forKey: "localeLang")
+            
+        }
+        if localeCountry != nil {
+            parameters.updateValue(localeCountry!, forKey: "localeCountry")
+            
+        }
+        if startDayOfWeek != nil {
+            parameters.updateValue(startDayOfWeek!, forKey: "startDayOfWeek")
+            
+        }
+        if clockTimeDisplayFormat != nil {
+            parameters.updateValue(clockTimeDisplayFormat!, forKey: "clockTimeDisplayFormat")
+            
+        }
+        
+        let url = "https://api.fitbit.com/1/user/-/profile.json"
+        restClient.postRequest(url: url, parameters: parameters) { json, error in
+            if error != nil {
+                completionHandler(nil, error)
+            } else {
+                completionHandler(json, nil)
+            }
+        }
+
+    }
 }
