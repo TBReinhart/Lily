@@ -20,11 +20,24 @@
 		2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD651E0347AF00778DF3 /* LaunchScreen.storyboard */; };
 		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
 		2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */; };
+		2FDB45F61E21755300A98225 /* LilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDB45F51E21755300A98225 /* LilyTests.swift */; };
 		672BB027D2BACD0ACB5F68C2 /* Pods_Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */; };
+		A6B15886DD2C5CF0E96A3F0D /* Pods_Lily_LilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2FDB45F81E21755300A98225 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2FA1CD511E0347AF00778DF3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FA1CD581E0347AF00778DF3;
+			remoteInfo = Lily;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		087B0A496F522C14AA1FEBCB /* Pods-Lily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lily/Pods-Lily.debug.xcconfig"; sourceTree = "<group>"; };
+		2A3F7A2A05BA366D8C23C744 /* Pods-Lily-LilyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily-LilyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9CDFF0524D10FD589A9B0E /* Pods-Lily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lily/Pods-Lily.release.xcconfig"; sourceTree = "<group>"; };
 		2F398E881E11B39D00A1AEB3 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController2.swift; path = Lily/ViewController2.swift; sourceTree = "<group>"; };
 		2F398E901E12288A00A1AEB3 /* Lily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lily.xcdatamodel; sourceTree = "<group>"; };
@@ -42,7 +55,12 @@
 		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
 		2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FitbitRequests.swift; path = Lily/FitbitRequests.swift; sourceTree = "<group>"; };
 		2FC69CDC1E101995001A1349 /* Lily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lily.entitlements; sourceTree = "<group>"; };
+		2FDB45F31E21755300A98225 /* LilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FDB45F51E21755300A98225 /* LilyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilyTests.swift; sourceTree = "<group>"; };
+		2FDB45F71E21755300A98225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7BCA35F4FE7800240D9C439 /* Pods-Lily-LilyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily-LilyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily_LilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2FDB45F01E21755300A98225 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6B15886DD2C5CF0E96A3F0D /* Pods_Lily_LilyTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */,
+				EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -69,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				2FA1CD5B1E0347AF00778DF3 /* Lily */,
+				2FDB45F41E21755300A98225 /* LilyTests */,
 				2FA1CD5A1E0347AF00778DF3 /* Products */,
 				9D55862E8999E78D291CCD34 /* Pods */,
 				0DB7693B6EAC8585F56C3BD4 /* Frameworks */,
@@ -79,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				2FA1CD591E0347AF00778DF3 /* Lily.app */,
+				2FDB45F31E21755300A98225 /* LilyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,11 +177,22 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		2FDB45F41E21755300A98225 /* LilyTests */ = {
+			isa = PBXGroup;
+			children = (
+				2FDB45F51E21755300A98225 /* LilyTests.swift */,
+				2FDB45F71E21755300A98225 /* Info.plist */,
+			);
+			path = LilyTests;
+			sourceTree = "<group>";
+		};
 		9D55862E8999E78D291CCD34 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				087B0A496F522C14AA1FEBCB /* Pods-Lily.debug.xcconfig */,
 				2B9CDFF0524D10FD589A9B0E /* Pods-Lily.release.xcconfig */,
+				E7BCA35F4FE7800240D9C439 /* Pods-Lily-LilyTests.debug.xcconfig */,
+				2A3F7A2A05BA366D8C23C744 /* Pods-Lily-LilyTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -180,6 +220,27 @@
 			productReference = 2FA1CD591E0347AF00778DF3 /* Lily.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2FDB45F21E21755300A98225 /* LilyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FDB45FA1E21755300A98225 /* Build configuration list for PBXNativeTarget "LilyTests" */;
+			buildPhases = (
+				F02C39C3385EE3B09CE39A5F /* [CP] Check Pods Manifest.lock */,
+				2FDB45EF1E21755300A98225 /* Sources */,
+				2FDB45F01E21755300A98225 /* Frameworks */,
+				2FDB45F11E21755300A98225 /* Resources */,
+				9FB7D371DAD833EB1D29D47E /* [CP] Embed Pods Frameworks */,
+				0CC2405D9377CCABC84184E4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2FDB45F91E21755300A98225 /* PBXTargetDependency */,
+			);
+			name = LilyTests;
+			productName = LilyTests;
+			productReference = 2FDB45F31E21755300A98225 /* LilyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,6 +261,11 @@
 							};
 						};
 					};
+					2FDB45F21E21755300A98225 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2FA1CD581E0347AF00778DF3;
+					};
 				};
 			};
 			buildConfigurationList = 2FA1CD541E0347AF00778DF3 /* Build configuration list for PBXProject "Lily" */;
@@ -216,6 +282,7 @@
 			projectRoot = "";
 			targets = (
 				2FA1CD581E0347AF00778DF3 /* Lily */,
+				2FDB45F21E21755300A98225 /* LilyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,9 +299,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2FDB45F11E21755300A98225 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0CC2405D9377CCABC84184E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		641D461F48C1538883594B6F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,6 +337,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9FB7D371DAD833EB1D29D47E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AC98A3888091742FF8EB5A00 /* [CP] Embed Pods Frameworks */ = {
@@ -280,6 +384,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lily/Pods-Lily-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F02C39C3385EE3B09CE39A5F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -299,7 +418,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2FDB45EF1E21755300A98225 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FDB45F61E21755300A98225 /* LilyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2FDB45F91E21755300A98225 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FA1CD581E0347AF00778DF3 /* Lily */;
+			targetProxy = 2FDB45F81E21755300A98225 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2FA1CD601E0347AF00778DF3 /* Main.storyboard */ = {
@@ -449,6 +584,34 @@
 			};
 			name = Release;
 		};
+		2FDB45FB1E21755300A98225 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7BCA35F4FE7800240D9C439 /* Pods-Lily-LilyTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LilyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tbr.LilyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lily.app/Lily";
+			};
+			name = Debug;
+		};
+		2FDB45FC1E21755300A98225 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A3F7A2A05BA366D8C23C744 /* Pods-Lily-LilyTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LilyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tbr.LilyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lily.app/Lily";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -469,6 +632,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2FDB45FA1E21755300A98225 /* Build configuration list for PBXNativeTarget "LilyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FDB45FB1E21755300A98225 /* Debug */,
+				2FDB45FC1E21755300A98225 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

@@ -13,13 +13,7 @@ class ViewController2: UIViewController {
     override func viewDidLoad() {
         print("VIEWDIDLOAD2")
         let fbreqs = FitbitRequests()
-        //fbreqs.logActivity(activityId: 12030, activityName: "Running", manualCalories: 197, durationMillis: 1800000, date: "2016-12-29", distance: 7.01, distanceUnit: nil, startTime: "12:20")
-//        fbreqs.logWeight(weight: "73.0")
-        //fbreqs.getRequest(request: fbreqs.getWeightOnDate(date: "today"))
         
-        fbreqs.getDevices()
-        //print("PRINTING JSON\n\(json)")
-        //fbreqs.addAlarm(trackerId: trackerId, time: "13:30", recurring: true, weekDays: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"])
     }
 
     override func didReceiveMemoryWarning() {

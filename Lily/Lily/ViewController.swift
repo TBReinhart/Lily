@@ -82,8 +82,8 @@ class ViewController: UIViewController {
 
     
     @IBAction func forgetTokens(_ sender: UIButton?) {
-            let FBReqs = FitbitRequests()
-            FBReqs.forgetTokens(nil)
+            let restClient = RestClient()
+            restClient.forgetTokens(nil)
     }
     
     

@@ -7,8 +7,14 @@ target 'Lily' do
 
    # Pods for Lily
     pod 'p2.OAuth2', '~> 3.0'
-    #pod 'OAuthSwift', '~> 1.1.0'
     pod 'Alamofire', '~> 4.0'
+    pod 'SwiftyJSON'
 
+    target ‘LilyTests’ do
+        pod 'p2.OAuth2', '~> 3.0'
+        pod 'Alamofire', '~> 4.0'
+        pod 'SwiftyJSON'
+    end
 
 end
+

@@ -9,7 +9,7 @@
 import Foundation
 import p2_OAuth2
 import Alamofire
-
+import SwiftyJSON
 
 class RestClient {
  
@@ -29,7 +29,7 @@ class RestClient {
         "verbose": true,
         ] as OAuth2JSON)
     
-     func getRequest(url: String) {
+     func getRequest(url: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         if oauth2.isAuthorizing {
             oauth2.abortAuthorization()
             return
@@ -43,18 +43,26 @@ class RestClient {
         sessionManager.retrier = retrier
         alamofireManager = sessionManager
         
+        
+        //let manager = Alamofire.Manager(configuration: configuration)
+        
         sessionManager.request(url, method: .get).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
-            case .success(_):
+            case .success(let value):
                 if response.result.value != nil{
-                    print("RESPONSE IN ALAMO:")
-                    print(response.result.value ?? "NONE")
+                    let json = JSON(value)
+                    sessionManager.session.invalidateAndCancel()
+                    completionHandler(json, nil)
+                    
                 }
                 break
                 
             case .failure(_):
                 print(response.result.error ?? "FAILURE")
+                sessionManager.session.invalidateAndCancel()
+                completionHandler(nil, response.result.error)
+
                 break
                 
             }
@@ -62,7 +70,7 @@ class RestClient {
         
     }
 
-    func postRequest(url: String, parameters: Parameters) {
+    func postRequest(url: String, parameters: Parameters, completionHandler: @escaping (JSON?, Error?) -> ()) {
         if oauth2.isAuthorizing {
             oauth2.abortAuthorization()
             return
@@ -79,14 +87,19 @@ class RestClient {
         sessionManager.request(url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
-            case .success(_):
+            case .success(let value):
                 if response.result.value != nil{
                     print(response.result.value ?? "NONE")
                 }
+                let json = JSON(value)
+                sessionManager.session.invalidateAndCancel()
+                completionHandler(json, nil)
                 break
                 
             case .failure(_):
                 print(response.result.error ?? "FAILURE")
+                sessionManager.session.invalidateAndCancel()
+                completionHandler(nil, response.result.error)
                 break
                 
             }
@@ -97,7 +110,7 @@ class RestClient {
     /**
      Delete request
      */
-    func deleteRequest(url: String) {
+    func deleteRequest(url: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         if oauth2.isAuthorizing {
             oauth2.abortAuthorization()
             return
@@ -114,14 +127,20 @@ class RestClient {
         sessionManager.request(url, method: .delete).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
-            case .success(_):
+            case .success(let value):
                 if response.result.value != nil{
                     print(response.result.value ?? "NONE")
                 }
+                let json = JSON(value)
+                sessionManager.session.invalidateAndCancel()
+                completionHandler(json, nil)
                 break
                 
             case .failure(_):
                 print(response.result.error ?? "FAILURE")
+                sessionManager.session.invalidateAndCancel()
+
+                completionHandler(nil, response.result.error)
                 break
                 
             }
