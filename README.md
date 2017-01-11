@@ -30,4 +30,5 @@ Over five million women become pregnant every year in the United States. These w
 
 Having trouble with Lily or want to know more? Feel free to reach out to [contact support](mailto:contact@lilyhealth.me?Subject=More Information) and we’ll help you sort it out.
 
-Fitbit is a registered trademark and service mark of Fitbit, Inc. [Insert name of the Developer Application] is designed for use with the Fitbit platform. This product is not put out by Fitbit, and Fitbit does not service or warrant the functionality of this product
+### Terms
+Fitbit is a registered trademark and service mark of Fitbit, Inc. Lily is designed for use with the Fitbit platform. This product is not put out by Fitbit, and Fitbit does not service or warrant the functionality of this product
