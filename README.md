@@ -1,37 +1,31 @@
-## Welcome to GitHub Pages
+## Lily
 
-You can use the [editor on GitHub](https://github.com/TBReinhart/Lily/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Over five million women become pregnant every year in the United States. These women must monitor information such as weight gain, water intake, and heart rate. They will report this information at over fifteen prenatal obstetrician (OB) visits throughout their pregnancies. Thus, there is an increased need for real-time monitoring and journaling of healthcare information during this incredibly important phase in a woman’s life.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### What is Lily?
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+ Lily is a mobile health solution which pairs with a Fitbit to track pregnancy-specific health information. Lily also addresses the other health-related challenges women experience during pregnancy, such as remembering to journal questions for an OB, drinking water, and reducing stress.
+
 
 ```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+# Features
+- Fitbit Compatibility
+- Sleep Monitoring
+- Stress Monitoring
+- Activity and Exercise Monitoring
+- Heart Rate
+- Water Monitoring
+- Weight Tracking
+- Food Tracking
+- Sugar Intake
+- Journaling
+- Community Forums
+- Celebratory Badges
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/TBReinhart/Lily/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Having trouble with Lily or want to know more? Feel free to reach out to [contact support](mailto:contact@lilyhealth.me?Subject=More Information) and we’ll help you sort it out.
