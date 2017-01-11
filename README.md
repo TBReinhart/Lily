@@ -5,13 +5,13 @@ Over five million women become pregnant every year in the United States. These w
 
 ### What is Lily?
 
- Lily is a mobile health solution which pairs with a Fitbit to track pregnancy-specific health information. Lily also addresses the other health-related challenges women experience during pregnancy, such as remembering to journal questions for an OB, drinking water, and reducing stress.
+ Lily is a mobile health solution which pairs with a Fitbit® product to track pregnancy-specific health information. Lily also addresses the other health-related challenges women experience during pregnancy, such as remembering to journal questions for an OB, drinking water, and reducing stress.
 
 
 ```markdown
 
 # Features
-- Fitbit Compatibility
+- Fitbit® Compatibility
 - Sleep Monitoring
 - Stress Monitoring
 - Activity and Exercise Monitoring
