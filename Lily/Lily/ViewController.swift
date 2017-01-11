@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var loader: OAuth2DataLoader?
     
     
-    
+    /// Instance of OAuth2 login credentials
     var oauth2 = OAuth2CodeGrant(settings: [
         "client_id": "2285YX",
         "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
@@ -31,7 +31,11 @@ class ViewController: UIViewController {
     @IBOutlet var signInEmbeddedButton: UIButton?
     @IBOutlet var forgetButton: UIButton?
     
-    
+    /**
+     ## Embedded Sign In ##
+     Use embedded login style using the OAuth2 loader to authorize a user for use in this client
+     Embedded Sign In is a permitted style of logging in users according to API docs.
+    */
     @IBAction func signInEmbedded(_ sender: UIButton?) {
         if oauth2.isAuthorizing {
             oauth2.abortAuthorization()
@@ -61,6 +65,8 @@ class ViewController: UIViewController {
         }
     }
     /**
+     ## Extract Fitbit Data ##
+     
      Extract and Save user data from their initial login. Save to Core Data
      */
     func extractUserData(json: [String: Any]) {
@@ -80,20 +86,23 @@ class ViewController: UIViewController {
     }
     
 
-    
+    /// Another instance of forget tokens, this time done locally
     @IBAction func forgetTokens(_ sender: UIButton?) {
             let restClient = RestClient()
             restClient.forgetTokens(nil)
     }
     
     
-    // request most basic user profile
+    /// request most basic user profile
     var userDataRequest: URLRequest {
         let request = URLRequest(url: URL(string: "https://api.fitbit.com/1/user/-/profile.json")!)
         debugPrint(request)
         return request
     }
-    
+    /**
+     ## Cancel Login ##
+     A problem occured with login, so we must reset login.
+    */
     func didCancelOrFail(_ error: Error?) {
         DispatchQueue.main.async {
             if let error = error {
@@ -111,7 +120,10 @@ class ViewController: UIViewController {
     }
     
     
-    // Load avatar from url
+    /**
+     ## Request Image ##
+     for now an example of requestion an image from a given URL through Alamofire
+    */
     func loadAvatar(from url: URL, with loader: OAuth2DataLoader?) {
         if let loader = loader {
             print("Loader=loader")

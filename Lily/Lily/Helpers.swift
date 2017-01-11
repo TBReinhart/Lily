@@ -10,7 +10,7 @@ import Foundation
 
 class Helpers {
     
-    // TODO need to get the specific user's current date
+    /// TODO need to get the specific user's current date
     static func todaysDate() -> String {
         let date = NSDate()
         let styler = DateFormatter()
@@ -18,7 +18,10 @@ class Helpers {
         let dateString = styler.string(from: date as Date)
         return dateString
     }
-    
+    /**
+     ## Get Offset ##
+     Returns the offset from UTC in a string formatted for fitbit POST standards
+    */
     static func getOffset() -> String {
         var offsetSeconds = Int(NSTimeZone.local.secondsFromGMT())
         var offsetString = "+00:00"

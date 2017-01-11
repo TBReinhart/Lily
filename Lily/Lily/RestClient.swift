@@ -13,10 +13,12 @@ import SwiftyJSON
 
 class RestClient {
  
-    
+    /// Loader for OAuth2 when requesting resources
     var loader: OAuth2DataLoader?
+    /// Alamofire manager to do all REST actions
     fileprivate var alamofireManager: SessionManager?
     
+    /// Credentials necessary for authenticating with fitbit API
     var oauth2 = OAuth2CodeGrant(settings: [
         "client_id": "2285YX",
         "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
@@ -29,6 +31,11 @@ class RestClient {
         "verbose": true,
         ] as OAuth2JSON)
     
+    /**
+     ## Get Request ##
+     Uses alamofire and completion handler to request JSON from a given URL
+     Will return by completion hander an error or a JSON response
+    */
      func getRequest(url: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         if oauth2.isAuthorizing {
             oauth2.abortAuthorization()
@@ -69,7 +76,11 @@ class RestClient {
         }
         
     }
-
+    /**
+     ## Post Request ##
+     Uses alamofire and completion handler to post JSON to a given URL
+     Will return by completion hander an error or a JSON response
+     */
     func postRequest(url: String, parameters: Parameters, completionHandler: @escaping (JSON?, Error?) -> ()) {
         if oauth2.isAuthorizing {
             oauth2.abortAuthorization()
@@ -108,7 +119,9 @@ class RestClient {
     }
     
     /**
-     Delete request
+     ## Delete Request ##
+     Uses alamofire and completion handler to delete based on a JSON request for a given URL
+     Will return by completion hander an error or a JSON response
      */
     func deleteRequest(url: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         if oauth2.isAuthorizing {
@@ -147,7 +160,10 @@ class RestClient {
         }
         
     }
-    
+    /**
+     ## Forget Tokens ##
+     This function removes authentication from OAuth2 and requires a user in app to reauthorize the app again
+    */
     func forgetTokens(_ sender: UIButton?) { // or nil params depending on if clicked signed out.
         oauth2.forgetTokens()
     }

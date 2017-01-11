@@ -15,8 +15,8 @@ class FitbitRequests {
     let restClient = RestClient()
 
     
-    // List of profile attributes that we would like to pull directly from the login response. 
     // sample login response can be found: in FitbitResponses Folder
+    /// List of profile attributes that we would like to pull directly from the login response.
     static var profileAttributes = ["age",
                              "avatar",
                              "averageDailySteps",
@@ -38,7 +38,7 @@ class FitbitRequests {
     
     
     /**
-     Get Weight Logs
+     ## Get Weight Logs ##
      The Get Weight Logs API retrieves a list of all user's body weight log entries for a given day using units in the unit systems which corresponds to the Accept-Language header provided. Body weight log entries are available only to authorized user. Body weight log entries in response are sorted exactly the same as they are presented on the Fitbit website.
      
      Resource URL
@@ -78,12 +78,10 @@ class FitbitRequests {
      }
      ]
      }
-
-     
-     
+     // default date if no parameter is today
+     // GET https://api.fitbit.com/1/user/-/body/log/weight/date/[date].json
     */
-    // default date if no parameter is today
-    // GET https://api.fitbit.com/1/user/-/body/log/weight/date/[date].json
+
     func getWeightOnDate(date: String = "today", completionHandler: @escaping (JSON?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/body/log/weight/date/\(date).json"
         restClient.getRequest(url: url) { json, error in
@@ -94,10 +92,51 @@ class FitbitRequests {
             }
         }
     }
-    
-    //GET https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[period].json
-    //     base-date	The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
-    //     period       The date range period. One of 1d, 7d, 30d, 1w, 1m.
+    /**
+     ## Get Weight Logs ##
+     The Get Weight Logs API retrieves a list of all user's body weight log entries for a given day using units in the unit systems which corresponds to the Accept-Language header provided. Body weight log entries are available only to authorized user. Body weight log entries in response are sorted exactly the same as they are presented on the Fitbit website.
+     
+     Resource URL
+     
+     There are three acceptable formats for retrieving weight log data:
+     
+     GET https://api.fitbit.com/1/user/-/body/log/weight/date/[date].json
+     
+     GET https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[period].json
+     
+     GET https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[end-date].json
+     
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     date	The date in the format yyyy-MM-dd.
+     base-date	The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
+     period	The date range period. One of 1d, 7d, 30d, 1w, 1m.
+     end-date	Range end date when date range is provided. Note: The period must not be longer than 31 days.
+     
+     Example Response:
+     {
+     "weight":[
+     {
+     "bmi":23.57,
+     "date":"2015-03-05",
+     "logId":1330991999000,
+     "time":"23:59:59",
+     "weight":73,
+     "source": "API"
+     },
+     {
+     "bmi":22.57,
+     "date":"2015-03-05",
+     "logId":1330991999000,
+     "time":"21:10:59",
+     "weight":72.5,
+     "source": "Aria"
+     }
+     ]
+     }
+     //GET https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[period].json
+     //     base-date	The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
+     //     period       The date range period. One of 1d, 7d, 30d, 1w, 1m.
+    */
     func getWeightForPeriod(baseDate: String, period: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/body/log/weight/date/\(baseDate)/\(period).json"
         restClient.getRequest(url: url) { json, error in
@@ -109,10 +148,54 @@ class FitbitRequests {
         }
     }
     
+
+    /**
+    ## Get Weight Logs ##
+    The Get Weight Logs API retrieves a list of all user's body weight log entries for a given day using units in the unit systems which corresponds to the Accept-Language header provided. Body weight log entries are available only to authorized user. Body weight log entries in response are sorted exactly the same as they are presented on the Fitbit website.
     
-    //     GET https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[end-date].json
-    //     start-date	The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
-    //      end-date	Range end date when date range is provided. Note: The period must not be longer than 31 days.
+    Resource URL
+    
+    There are three acceptable formats for retrieving weight log data:
+    
+    GET https://api.fitbit.com/1/user/-/body/log/weight/date/[date].json
+    
+    GET https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[period].json
+    
+    GET https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[end-date].json
+    
+    user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+    date	The date in the format yyyy-MM-dd.
+    base-date	The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
+    period	The date range period. One of 1d, 7d, 30d, 1w, 1m.
+    end-date	Range end date when date range is provided. Note: The period must not be longer than 31 days.
+    
+    Example Response:
+    {
+    "weight":[
+    {
+    "bmi":23.57,
+    "date":"2015-03-05",
+    "logId":1330991999000,
+    "time":"23:59:59",
+    "weight":73,
+    "source": "API"
+    },
+    {
+    "bmi":22.57,
+    "date":"2015-03-05",
+    "logId":1330991999000,
+    "time":"21:10:59",
+    "weight":72.5,
+    "source": "Aria"
+    }
+    ]
+     
+    }
+     
+     //     GET https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[end-date].json
+     //     start-date	The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
+     //      end-date	Range end date when date range is provided. Note: The period must not be longer than 31 days.
+     */
     func getWeightFromStartEndDates(startDate: String, endDate: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/body/log/weight/date/\(startDate)/\(endDate).json"
         restClient.getRequest(url: url) { json, error in
@@ -124,12 +207,27 @@ class FitbitRequests {
     }
     
     
-    // POST https://api.fitbit.com/1/user/-/body/log/weight.json
-    // POST Parameters
-    //
-    //    weight	required	Weight - in the format X.XX.
-    //    date	required	Log entry date - in the format yyyy-MM-dd.
-    //    time	optional	Time of the measurement - hours and minutes in the format HH:mm:ss, which is set to the last second of the day if time is not provided.
+    /**
+     ## Log Weight ##
+     The Log Weight API creates log entry for a body weight using units in the unit systems that corresponds to the Accept-Language header provided and get a response in the format requested.
+     
+     Note: The returned Weight Log IDs are unique to the user, but not globally unique.
+     
+     Resource URL
+     
+     POST https://api.fitbit.com/1/user/[user-id]/body/log/weight.json
+     
+     user-id	The encoded ID of the user. Use "-" for current logged-in user.
+     POST Parameters
+     
+     weight	required	Weight - in the format X.XX.
+     date	required	Log entry date - in the format yyyy-MM-dd.
+     time	optional	Time of the measurement - hours and minutes in the format HH:mm:ss, which is set to the last second of the day if time is not provided.
+     Request Headers
+     
+     Accept-Language	optional	The measurement unit system to use for response values.
+
+    */
     func logWeight(weight: String, date: String? = "today", time: String? = nil, completionHandler: @escaping (JSON?, Error?) -> ()) {
         
         var parameters: Parameters = [
@@ -150,7 +248,7 @@ class FitbitRequests {
         }
     }
     /**
-     Delete Weight Log
+     ## Delete Weight Log ##
      The Delete Weight Log API deletes a user's body weight log entry with the given ID.
      
      Note: A successful request returns a 204 status code with an empty response body.
@@ -170,7 +268,18 @@ class FitbitRequests {
             }
         }
     }
-    
+    /**
+    ## Get Devices ##
+     The Get Device endpoint returns a list of the Fitbit devices connected to a user's account.
+     
+     Knowing when a Fitbit device last synced with the Fitbit server is useful when diagnosing reports that the Fitbit app is showing different values from what the Fitbit Web API returns. Fitbit's own apps use the same Web API available to third-party developers. However, when an active Bluetooth connection is available, Fitbit's apps will show the summary values displayed on the device. Often, this data has not yet synced with Fitbit's servers. Third-party applications can check when a Fitbit device last synced with Fitbit's servers using this endpoint. Fitbit users can check when their device last synced with Fitbit's servers by following these instructions.
+     
+     Resource URL
+     
+     GET https://api.fitbit.com/1/user/-/devices.json
+     
+
+    */
     func getDevices(completionHandler: @escaping (JSON?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/devices.json"
         restClient.getRequest(url: url) { json, error in
@@ -191,7 +300,7 @@ class FitbitRequests {
     
     
     /**
-    Activity Logging
+     ## Activity Logging ##
      POST https://api.fitbit.com/1/user/-/activities.json
 
      POST Parameters
@@ -257,7 +366,8 @@ class FitbitRequests {
     
     
     /**
-     Get Activity Time Series https://dev.fitbit.com/docs/activity/#activity-time-series
+     ## Get Activity Time Series  ##
+     https://dev.fitbit.com/docs/activity/#activity-time-series
      GET /1/user/[user-id]/[resource-path]/date/[date]/[period].json
      
      GET /1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json
@@ -271,8 +381,6 @@ class FitbitRequests {
      Example Request
      GET https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json
     */
-    
-
     func getActivityTimeSeriesFromStartEndDates(resourcePath: String, baseDate: String, endDate: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/[resource-path]/date/[date]/[period].json"
         restClient.getRequest(url: url) { json, error in
@@ -283,7 +391,22 @@ class FitbitRequests {
             }
         }
     }
-    
+    /**
+     ## Get Activity Time Series  ##
+     https://dev.fitbit.com/docs/activity/#activity-time-series
+     GET /1/user/[user-id]/[resource-path]/date/[date]/[period].json
+     
+     GET /1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json
+     
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see options in the "Resource Path Options" section below.
+     base-date	The range start date, in the format yyyy-MM-dd or today.
+     end-date	The end date of the range.
+     date	The end date of the period specified in the format yyyy-MM-dd or today.
+     period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y
+     Example Request
+     GET https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json
+     */
     func getActivityTimeSeriesFromPeriod(resourcePath: String, date: String, period: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/\(resourcePath)/date/\(date)/\(period).json"
         restClient.getRequest(url: url) { json, error in
@@ -296,12 +419,16 @@ class FitbitRequests {
     }
     
     /**
-     Get Alarms
+    ## Get Alarms ##
      The Get Alarms endpoint returns a list of the set alarms connected to a user's account.
      
      Resource URL
      
-     GET https://api.fitbit.com/1/user/-/devices/tracker/[tracker-id]/alarms.json
+     GET https://api.fitbit.com/1/user/[user-id]/devices/tracker/[tracker-id]/alarms.json
+     
+     user-id	The ID of the user. Use "-" (dash) for current logged-in user.
+     tracker-id	The ID of the tracker for which data is returned. The tracker-id value is found via the Get Devices endpoint.
+
 
     */
     func getAlarms(trackerId: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
@@ -315,7 +442,7 @@ class FitbitRequests {
         }
     }
     /**
-     Add Alarm
+     ## Add Alarm ##
      The Add Alarm endpoint adds the alarm settings to a given ID for a given device.
      
      Resource URL
@@ -358,7 +485,7 @@ class FitbitRequests {
     }
     
     /**
-     Update Alarm
+     ## Update Alarm ##
      The Update Alarm endpoint updates the alarm entry with a given ID for a given device. It also gets a response in the format requested.
      
      Resource URL
@@ -414,7 +541,7 @@ class FitbitRequests {
     }
     
     /**
-     Delete Alarm
+     ## Delete Alarm ##
      The Delete Alarm API deletes the user's device alarm entry with the given ID for a given device.
      
      Resource URL
@@ -438,7 +565,7 @@ class FitbitRequests {
     }
     
     /**
-     Get Water Logs
+     ## Get Water Logs ##
      The Get Water Logs endpoint retrieves a summary and list of a user's water log entries for a given day in the format requested using units in the unit system that corresponds to the Accept-Language header provided. Water log entries are available only to an authorized user. If you need to fetch only total amount of water consumed, you can use the Get Food endpoint. Water log entries in response are sorted exactly the same as they are presented on the Fitbit website.
      
      Resource URL
@@ -465,7 +592,7 @@ class FitbitRequests {
     }
     
     /**
-     Get Water Goal
+     ## Get Water Goal ##
      Resource URL
      
      GET https://api.fitbit.com/1/user/[user-id]/foods/log/water/goal.json
@@ -485,7 +612,7 @@ class FitbitRequests {
     }
     
     /**
-     Get Food or Water Time Series
+     ## Get Food or Water Time Series ##
      The Get Food or Water Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.
      
      Note: If you provide earlier dates in the request, the response will retrieve only data since the user's join date or the first log entry date for the requested collection.
@@ -519,7 +646,6 @@ class FitbitRequests {
      GET https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json
      
     */
-    
     func getWaterLogSeriesStartEndDates(baseDate: String = "today", endDate: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         // Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y for period. default 1d
         let url = "https://api.fitbit.com/1/user/-/food/log/water/date/\(baseDate)/\(endDate).json"
@@ -531,7 +657,41 @@ class FitbitRequests {
             }
         }
     }
-    
+    /**
+     ## Get Food or Water Time Series ##
+     The Get Food or Water Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.
+     
+     Note: If you provide earlier dates in the request, the response will retrieve only data since the user's join date or the first log entry date for the requested collection.
+     
+     Resource URL
+     
+     There are two accepted formats for retrieving intraday data:
+     
+     1) GET https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json
+     
+     api-version	The API version. Currently version 1.
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see options in the "Resource Path Options" section below.
+     date	The end date of the period specified in the format yyyy-MM-dd or today.
+     period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y
+     
+     
+     2) GET https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json
+     
+     api-version	The API version. Currently version 1.
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see options in the "Resource Path Options" section below.
+     base-date	The range start date, in the formatyyyy-MM-dd or today.
+     end-date	The end date of the range.
+     Resource Path Options
+     
+     foods/log/caloriesIn
+     foods/log/water
+     Example Request
+     
+     GET https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json
+     
+     */
     func getWaterLogSeriesPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping (JSON?, Error?) -> ()) {
         // Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y for period. default 1d
         let url = "https://api.fitbit.com/1/user/-/foods/log/water/date/\(date)/\(period).json"
@@ -543,7 +703,41 @@ class FitbitRequests {
             }
         }
     }
-
+    /**
+     ## Get Food or Water Time Series ##
+     The Get Food or Water Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.
+     
+     Note: If you provide earlier dates in the request, the response will retrieve only data since the user's join date or the first log entry date for the requested collection.
+     
+     Resource URL
+     
+     There are two accepted formats for retrieving intraday data:
+     
+     1) GET https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json
+     
+     api-version	The API version. Currently version 1.
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see options in the "Resource Path Options" section below.
+     date	The end date of the period specified in the format yyyy-MM-dd or today.
+     period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y
+     
+     
+     2) GET https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json
+     
+     api-version	The API version. Currently version 1.
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see options in the "Resource Path Options" section below.
+     base-date	The range start date, in the formatyyyy-MM-dd or today.
+     end-date	The end date of the range.
+     Resource Path Options
+     
+     foods/log/caloriesIn
+     foods/log/water
+     Example Request
+     
+     GET https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json
+     
+     */
     func getFoodLogSeriesStartEndDates(baseDate: String = "today", endDate: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         // Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y for period. default 1d
         let url = "https://api.fitbit.com/1/user/-/food/log/caloriesIn/date/\(baseDate)/\(endDate).json"
@@ -555,7 +749,41 @@ class FitbitRequests {
             }
         }
     }
-    
+    /**
+     ## Get Food or Water Time Series ##
+     The Get Food or Water Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.
+     
+     Note: If you provide earlier dates in the request, the response will retrieve only data since the user's join date or the first log entry date for the requested collection.
+     
+     Resource URL
+     
+     There are two accepted formats for retrieving intraday data:
+     
+     1) GET https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json
+     
+     api-version	The API version. Currently version 1.
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see options in the "Resource Path Options" section below.
+     date	The end date of the period specified in the format yyyy-MM-dd or today.
+     period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y
+     
+     
+     2) GET https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json
+     
+     api-version	The API version. Currently version 1.
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see options in the "Resource Path Options" section below.
+     base-date	The range start date, in the formatyyyy-MM-dd or today.
+     end-date	The end date of the range.
+     Resource Path Options
+     
+     foods/log/caloriesIn
+     foods/log/water
+     Example Request
+     
+     GET https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json
+     
+     */
     func getFoodLogSeriesPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping (JSON?, Error?) -> ()) {
         // Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y for period. default 1d
         let url = "https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/\(date)/\(period).json"
@@ -570,7 +798,7 @@ class FitbitRequests {
     
     
     /**
-     Log Water
+     ## Log Water ##
      This endpoint creates a log entry for water using units in the unit systems that corresponds to the Accept-Language header provided.
      
      Resource URL
@@ -611,7 +839,7 @@ class FitbitRequests {
     }
     
     /**
-     Update Water Log
+     ## Update Water Log ##
      Resource URL
      
      POST https://api.fitbit.com/1/user/[user-id]/foods/log/water/[water-log-id].json
@@ -647,7 +875,7 @@ class FitbitRequests {
     }
     
     /**
-     Delete Water Log
+     ## Delete Water Log ##
      The Delete Water Log endpoint deletes a user's water log entry with the given ID.
      
      Resource URL
@@ -673,7 +901,7 @@ class FitbitRequests {
     
     
     /**
-     Get Friends
+     ## Get Friends ##
      The Get Friends endpoint returns data of a user's friends in the format requested using units in the unit system which corresponds to the Accept-Language header provided.
      
      Privacy Settings
@@ -713,7 +941,7 @@ class FitbitRequests {
     }
     
     /**
-     Get Friends Leaderboard
+    ## Get Friends Leaderboard ##
      The Get Friends Leaderboard endpoint gets the user's friends leaderboard in the format requested using units in the unit system which corresponds to the Accept-Language header provided.
      
      Authorized user (self) is also included in the response. Leaderboard has last seven (7) days worth of data (including data from the previous six days plus today's data in real time).
@@ -752,7 +980,7 @@ class FitbitRequests {
     }
     
     /**
-     Invitations
+     ## Invitations ##
      Invite Friend
      The Invite Friend endpoint creates an invitation to become friends with the authorized user. A successful request returns a 201 status code and an empty response body.
      
@@ -797,7 +1025,7 @@ class FitbitRequests {
     }
     
     /**
-     Get Friend Invitations
+     ## Get Friend Invitations ##
      The Get Friend Invitations endpoint returns a list of invitations to become friends with a user in the format requested.
      
      Resource URL
@@ -817,7 +1045,7 @@ class FitbitRequests {
     }
     
     /**
-     Respond to Friend Invitation
+     ## Respond to Friend Invitation ##
      The Respond to Friend Invitation endpoint accepts or rejects an invitation to become friends with inviting user.
      
      Resource URL
@@ -846,7 +1074,7 @@ class FitbitRequests {
     
     /**
      Badges
-     Get Badges
+      ## Get Badges ##
      The Get Badges endpoint retrieves user's badges in the format requested. Response includes all badges for the user as seen on the Fitbit website badge locker (both activity and weight related). Fitbit returns weight and distance badges based on the user's unit profile preference as on the website.
      
      Privacy Setting
@@ -877,7 +1105,7 @@ class FitbitRequests {
     }
     
     /**
-     Heart Rate Time Series
+      ## Heart Rate Time Series ##
      Get Heart Rate Time Series
      The Get Heart Rate Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.
      
@@ -901,7 +1129,6 @@ class FitbitRequests {
      https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json
      
     */
-    
     func getHeartRateTimeSeriesFromStartEndDates(baseDate: String, endDate: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(baseDate)/\(endDate).json"
         restClient.getRequest(url: url) { json, error in
@@ -912,7 +1139,31 @@ class FitbitRequests {
             }
         }
     }
-    
+    /**
+     ## Heart Rate Time Series ##
+     Get Heart Rate Time Series
+     The Get Heart Rate Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.
+     
+     If you specify earlier dates in the request, the response will retrieve only data since the user's join date or the first log entry date for the requested collection.
+     
+     Resource URL
+     
+     There are two acceptable formats for retrieving time series data:
+     
+     GET https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[period].json
+     
+     GET https://api.fitbit.com/1/user/-/activities/heart/date/[base-date]/[end-date].json
+     
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     base-date	The range start date, in the format yyyy-MM-dd or today.
+     end-date	The end date of the range.
+     date	The end date of the period specified in the format yyyy-MM-dd or today.
+     period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m.
+     Example Request
+     
+     https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json
+     
+     */
     func getHeartRateTimeSeriesFromPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping (JSON?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/\(period).json"
         restClient.getRequest(url: url) { json, error in
@@ -925,12 +1176,16 @@ class FitbitRequests {
     }
     
     /**
-     Get Heart Rate Intraday Time Series
+     ## Get Heart Rate Intraday Time Series ##
      Access to the Intraday Time Series for personal use (accessing your own data) is available through the "Personal" App Type.
      
      Access to the Intraday Time Series for all other uses is currently granted on a case-by-case basis. Applications must demonstrate necessity to create a great user experience. Fitbit is very supportive of non-profit research and personal projects. Commercial applications require thorough review and are subject to additional requirements. Only select applications are granted access and Fitbit reserves the right to limit this access. To request access, contact private support.
      
      The Get Heart Rate Intraday Time Series endpoint returns the intraday time series for a given resource in the format requested. If your application has the appropriate access, your calls to a time series endpoint for a specific day (by using start and end dates on the same day or a period of 1d), the response will include extended intraday values with a one-minute detail level for that day. Unlike other time series calls that allow fetching data of other users, intraday data is available only for and to the authorized user.
+     
+     
+    
+     
      
      Resource URLs
      
@@ -972,7 +1227,40 @@ class FitbitRequests {
             }
         }
     }
-    
+    /**
+     ## Get Heart Rate Intraday Time Series ##
+     Access to the Intraday Time Series for personal use (accessing your own data) is available through the "Personal" App Type.
+     
+     Access to the Intraday Time Series for all other uses is currently granted on a case-by-case basis. Applications must demonstrate necessity to create a great user experience. Fitbit is very supportive of non-profit research and personal projects. Commercial applications require thorough review and are subject to additional requirements. Only select applications are granted access and Fitbit reserves the right to limit this access. To request access, contact private support.
+     
+     The Get Heart Rate Intraday Time Series endpoint returns the intraday time series for a given resource in the format requested. If your application has the appropriate access, your calls to a time series endpoint for a specific day (by using start and end dates on the same day or a period of 1d), the response will include extended intraday values with a one-minute detail level for that day. Unlike other time series calls that allow fetching data of other users, intraday data is available only for and to the authorized user.
+     
+     
+     
+     
+     
+     Resource URLs
+     
+     There are four acceptable formats for retrieving time series data:
+     
+     GET https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[end-date]/[detail-level].json
+     
+     GET https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[end-date]/[detail-level]/time/[start-time]/[end-time].json
+     
+     GET https://api.fitbit.com/1/user/-/activities/heart/date/[date]/1d/[detail-level].json
+     
+     GET https://api.fitbit.com/1/user/-/activities/heart/date/[date]/1d/[detail-level]/time/[start-time]/[end-time].json
+     
+     date	The date, in the format yyyy-MM-dd or today.
+     detail-level	Number of data points to include. Either 1sec or 1min. Optional.
+     start-time	The start of the period, in the format HH:mm. Optional.
+     end-time	The end of the period, in the format HH:mm. Optional.
+     Example Request
+     
+     GET https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec/time/00:00/00:01.json
+     
+     
+     */
     func getHeartRateIntraTimeSeriesFromPeriod(date: String = "today", detailLevel: String = "1sec",
         startTime: String? = nil, endTime: String? = nil, completionHandler: @escaping (JSON?, Error?) -> ()) {
         
@@ -996,7 +1284,7 @@ class FitbitRequests {
     }
     
     /**
-     Get Sleep Logs
+     ## Get Sleep Logs ##
      The Get Sleep Logs endpoint returns a summary and list of a user's sleep log entries as well as minute by minute sleep entry data for a given day in the format requested. The endpoint response includes summary for all sleep log entries for the given day (including naps.) If you need to fetch data only for the user's main sleep event, you can send the request with isMainSleep=true or use a Time Series call.
      
      The relationship between sleep log entry properties is expressed with the following equation:
@@ -1025,7 +1313,7 @@ class FitbitRequests {
     }
    
     /**
-     Get Sleep Goal
+     ## Get Sleep Goal ##
      The Get Sleep Goal endpoint returns a user's current sleep goal using unit in the unit system that corresponds to the Accept-Language header provided in the format requested.
      
      Access Type: Read
@@ -1055,7 +1343,7 @@ class FitbitRequests {
     }
     
     /**
-     Update Sleep Goal
+     ## Update Sleep Goal ##
      The Update Sleep Goal endpoint creates or updates a user's sleep goal and get a response in the in the format requested.
      
      Access Type: Read & Write
@@ -1089,8 +1377,21 @@ class FitbitRequests {
             }
         }
     }
+
+    /// sleep resource paths
+    static var sleepResourcePaths = [
+        "sleep/startTime",
+        "sleep/timeInBed",
+        "sleep/minutesAsleep",
+        "sleep/awakeningsCount",
+        "sleep/minutesAwake",
+        "sleep/minutesToFallAsleep",
+        "sleep/minutesAfterWakeup",
+        "sleep/efficiency"
+    ]
+    // example: https://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/today/2014-09-01.json
     /**
-     Sleep Time Series
+     ## Sleep Time Series ##
      Get Sleep Time Series
      The Get Sleep Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit system that corresponds to the Accept-Language header provided.
      
@@ -1132,20 +1433,8 @@ class FitbitRequests {
      
      2) GET https://api.fitbit.com/1/user/28H22H/sleep/minutesAsleep/date/2014-09-01/today.json
      
-
-    */
-    
-    static var sleepResourcePaths = [
-        "sleep/startTime",
-        "sleep/timeInBed",
-        "sleep/minutesAsleep",
-        "sleep/awakeningsCount",
-        "sleep/minutesAwake",
-        "sleep/minutesToFallAsleep",
-        "sleep/minutesAfterWakeup",
-        "sleep/efficiency"
-    ]
-    // example: https://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/today/2014-09-01.json
+     
+     */
     func getSleepTimeSeriesFromPeriod(resourcePath: String, date: String, period: String,
                                       completionHandler: @escaping (JSON?, Error?) -> ()) {
         
@@ -1166,6 +1455,51 @@ class FitbitRequests {
         }
     }
     // example: https://api.fitbit.com/1/user/28H22H/sleep/minutesAsleep/date/2014-09-01/today.json
+    /**
+     ## Sleep Time Series ##
+     Get Sleep Time Series
+     The Get Sleep Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit system that corresponds to the Accept-Language header provided.
+     
+     Note: Even if you provide earlier dates in the request, the response retrieves only data since the user's join date or the first log entry date for the requested collection.
+     
+     Resource URL
+     
+     There are two acceptable formats for retrieving intraday data:
+     
+     1) GET https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json
+     
+     api-version	The API version. Currently version 1.
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see the Resource Path Options below for a list of options.
+     date	The end date of the period specified in the format yyyy-MM-dd or today.
+     period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, or max.
+     
+     
+     2) GET https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json
+     
+     api-version	The API version. Currently version 1.
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see the Resource Path Options below for a list of options.
+     base-date	The range start date, in the format yyyy-MM-dd or today.
+     end-date	The end date of the range.
+     Resource Path Options
+     
+     sleep/startTime
+     sleep/timeInBed
+     sleep/minutesAsleep
+     sleep/awakeningsCount
+     sleep/minutesAwake
+     sleep/minutesToFallAsleep
+     sleep/minutesAfterWakeup
+     sleep/efficiency
+     Example Requests
+     
+     1) GET https://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/today/2014-09-01.json
+     
+     2) GET https://api.fitbit.com/1/user/28H22H/sleep/minutesAsleep/date/2014-09-01/today.json
+     
+     
+     */
     func getSleepTimeSeriesFromStartEndDates(resourcePath: String, startDate: String, endDate: String,
                                              completionHandler: @escaping (JSON?, Error?) -> ()) {
         if !FitbitRequests.sleepResourcePaths.contains(resourcePath) {
@@ -1187,7 +1521,7 @@ class FitbitRequests {
     }
     
     /**
-     Log Sleep
+     ## Log Sleep ##
      The Log Sleep endpoint creates a log entry for a sleep event and returns a response in the format requested. Keep in mind that it is NOT possible to create overlapping log entries or entries for time periods that DO NOT originate from a tracker. Sleep log entries appear on website's sleep tracker interface according to the date on which the sleep event ends.
      
      Resource URL
@@ -1221,7 +1555,7 @@ class FitbitRequests {
     }
     
     /**
-     Delete Sleep Log
+     ## Delete Sleep Log ##
      The Delete Sleep Log endpoint deletes a user's sleep log entry with the given ID.
      
      Resource URL
@@ -1245,7 +1579,7 @@ class FitbitRequests {
     }
     
     /**
-     Get Profile
+    ## Get Profile ##
      The Get Profile endpoint returns a user's profile. The authenticated owner receives all values. However, the authenticated user's access to other users' data is subject to those users' privacy settings. Numerical values are returned in the unit system specified in the Accept-Language header.
      
      Resource URL
@@ -1266,7 +1600,7 @@ class FitbitRequests {
         }
     }
     /**
-     Update Profile
+     ## Update Profile ##
      The Update Profile endpoint updates a user's profile. Numerical values are accepted in the unit system specified in the Accept-Language header.
      
      Notice: Beginning September 6, 2016, the nickname field in the Update Profile endpoint will no longer be editable. The field will continue to be returned in the Get Profile endpoint, but no longer modifiable.
