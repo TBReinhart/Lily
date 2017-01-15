@@ -14,9 +14,9 @@ Over five million women become pregnant every year in the United States. These w
 - Fitbit® Compatibility
 - Sleep Monitoring
 - Stress Monitoring
-- Activity and Exercise Monitoring
+- Activity Monitoring
 - Heart Rate
-- Water Monitoring
+- Water Tracking
 - Weight Tracking
 - Food Tracking
 - Sugar Intake
