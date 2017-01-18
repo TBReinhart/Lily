@@ -32,8 +32,8 @@ class Helpers {
             offsetSymbol = "-"
             offsetSeconds = (offsetSeconds * -1)
         }
-        var offsetHours = Int(offsetSeconds / 3600)
-        var offsetMinutes = offsetSeconds - (offsetHours * 3600)
+        let offsetHours = Int(offsetSeconds / 3600)
+        let offsetMinutes = offsetSeconds - (offsetHours * 3600)
         if offsetHours > 10 {
             offsetHoursLeadString = ""
         }

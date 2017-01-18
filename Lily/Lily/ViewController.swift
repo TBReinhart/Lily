@@ -54,8 +54,11 @@ class ViewController: UIViewController {
                 debugPrint(json)
 
                 self.extractUserData(json: json)
-
-                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+                DispatchQueue.main.sync {
+                    
+                    print("Segue")
+                    self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+                }
 
             }
             catch let error {

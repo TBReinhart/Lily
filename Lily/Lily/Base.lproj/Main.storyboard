@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M3c-OP-UZq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M3c-OP-UZq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,29 +44,19 @@
                                     <action selector="forgetTokens:" destination="M3c-OP-UZq" eventType="touchUpInside" id="P1b-l8-Cj8"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GjC-D1-u1j">
-                                <rect key="frame" x="123.5" y="139" width="128" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="B5H-gj-1tg"/>
-                                    <constraint firstAttribute="height" constant="128" id="NoY-Zl-4Zo"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="GjC-D1-u1j" secondAttribute="centerX" id="1e2-ur-sKc"/>
                             <constraint firstAttribute="centerY" secondItem="3O9-bt-exf" secondAttribute="centerY" id="Duw-at-u8o"/>
                             <constraint firstItem="Zhz-I0-cfy" firstAttribute="top" secondItem="OBu-2c-T5v" secondAttribute="bottom" constant="164" id="Rs8-61-j7z"/>
                             <constraint firstAttribute="centerX" secondItem="3O9-bt-exf" secondAttribute="centerX" id="Wkf-dK-BT3"/>
-                            <constraint firstItem="3O9-bt-exf" firstAttribute="top" secondItem="GjC-D1-u1j" secondAttribute="bottom" constant="50" id="hhW-wu-uk5"/>
                             <constraint firstAttribute="centerX" secondItem="OBu-2c-T5v" secondAttribute="centerX" id="jE1-kS-o6f"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="forgetButton" destination="OBu-2c-T5v" id="jvS-gb-uZF"/>
-                        <outlet property="imageView" destination="GjC-D1-u1j" id="sGX-eN-PVs"/>
                         <outlet property="signInEmbeddedButton" destination="3O9-bt-exf" id="DJz-Fl-SEq"/>
-                        <segue destination="aD3-eb-IQa" kind="show" identifier="loggedInSegue" id="i9B-0M-HHH"/>
+                        <segue destination="2EL-9F-f9J" kind="show" identifier="loggedInSegue" id="pvJ-pU-Mwm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8N8-QQ-mOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -75,35 +64,58 @@
             <point key="canvasLocation" x="121" y="512"/>
         </scene>
         <!--View Controller2-->
-        <scene sceneID="bmF-gi-eeW">
+        <scene sceneID="3fc-m7-hga">
             <objects>
-                <viewController id="aD3-eb-IQa" customClass="ViewController2" customModule="Lily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2EL-9F-f9J" customClass="ViewController2" customModule="Lily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pgP-dC-7Jb"/>
-                        <viewControllerLayoutGuide type="bottom" id="UFT-2S-2P0"/>
+                        <viewControllerLayoutGuide type="top" id="dJE-XN-VyP"/>
+                        <viewControllerLayoutGuide type="bottom" id="lJo-nC-zI2"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="grP-pP-9Gi">
+                    <view key="view" contentMode="scaleToFill" id="mxM-wn-XXL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="VC2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7W-Vb-oI6">
-                                <rect key="frame" x="171" y="321" width="33" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What can I help you with?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="774-6U-kz2">
+                                <rect key="frame" x="65" y="59" width="245" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="2Xd-3i-XmZ"/>
+                                    <constraint firstAttribute="width" constant="245" id="aM0-1y-63c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsq-6P-JuR">
+                                <rect key="frame" x="134" y="607" width="108" height="30"/>
+                                <state key="normal" title="Start Recording"/>
+                                <connections>
+                                    <action selector="microphoneTapped:" destination="2EL-9F-f9J" eventType="touchUpInside" id="NdT-ia-flG"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="tap start recording..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0P8-yl-tQD">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="i7W-Vb-oI6" secondAttribute="trailing" constant="155" id="5s4-yA-3XJ"/>
-                            <constraint firstItem="i7W-Vb-oI6" firstAttribute="centerY" secondItem="grP-pP-9Gi" secondAttribute="centerY" id="CaV-A0-YBy"/>
-                            <constraint firstItem="i7W-Vb-oI6" firstAttribute="centerX" secondItem="grP-pP-9Gi" secondAttribute="centerX" id="Jb1-E1-Wdl"/>
+                            <constraint firstItem="774-6U-kz2" firstAttribute="centerX" secondItem="mxM-wn-XXL" secondAttribute="centerX" id="4RH-04-2aq"/>
+                            <constraint firstItem="774-6U-kz2" firstAttribute="top" secondItem="dJE-XN-VyP" secondAttribute="bottom" constant="39" id="Ic6-fR-zoI"/>
+                            <constraint firstItem="lJo-nC-zI2" firstAttribute="top" secondItem="dsq-6P-JuR" secondAttribute="bottom" constant="30" id="JTk-qw-MIC"/>
+                            <constraint firstItem="dsq-6P-JuR" firstAttribute="centerX" secondItem="mxM-wn-XXL" secondAttribute="centerX" id="UA4-uu-Ck4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="microphoneButton" destination="dsq-6P-JuR" id="jbU-MA-TF9"/>
+                        <outlet property="textView" destination="0P8-yl-tQD" id="ZRf-6S-RXn"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OZt-yz-qm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ryM-Bw-rDL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="920.79999999999995" y="498.80059970014997"/>
+            <point key="canvasLocation" x="956" y="511"/>
         </scene>
     </scenes>
 </document>
