@@ -75,7 +75,6 @@ class ViewController2: UIViewController, SFSpeechRecognizerDelegate {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
-        print("going to 2")
         let audioSession = AVAudioSession.sharedInstance()  //2
         do {
             try audioSession.setCategory(AVAudioSessionCategoryRecord)
@@ -84,18 +83,14 @@ class ViewController2: UIViewController, SFSpeechRecognizerDelegate {
         } catch {
             print("audioSession properties weren't set because of an error.")
         }
-        print("3")
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()  //3
-        print("4")
         guard let inputNode = audioEngine.inputNode else {
             print("error")
             fatalError("Audio engine has no input node")
         }  //4
-        print("5")
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
         } //5
-        print("6")
         recognitionRequest.shouldReportPartialResults = true  //6
         
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in  //7
