@@ -7,9 +7,14 @@
 //
 import UIKit
 import p2_OAuth2
+import Firebase
 import CoreData
 
 class ViewController: UIViewController {
+    
+    
+    // When logging in with firebase create a user account based on User's encodedId
+    
     
     var loader: OAuth2DataLoader?
     
@@ -41,6 +46,7 @@ class ViewController: UIViewController {
             oauth2.abortAuthorization()
             return
         }
+        signInEmbeddedButton?.isEnabled = false
         sender?.setTitle("Authorizing...", for: UIControlState.normal)
         oauth2.authConfig.authorizeEmbedded = true
         oauth2.authConfig.authorizeContext = self
@@ -63,6 +69,8 @@ class ViewController: UIViewController {
             }
             catch let error {
                 debugPrint(error)
+                self.signInEmbeddedButton?.isEnabled = true
+
                 self.didCancelOrFail(error)
             }
         }
@@ -81,13 +89,49 @@ class ViewController: UIViewController {
                 if attribute == "height" {
                     val = value as! NSNumber
                     val = "\(val)"
+                } else if attribute == "encodedId" {
+                    print("ENCODED ID: \(val)")
+                    val = value as! String
+                    let email = val as! String + "@lilyhealth.me"
+                    let password = val as! String
+                    createUser(user: password, email: email, password: password)
+                    continue
                 }
+                
                 LilyCoreData.update(key: attribute, value: val)
             }
         }
         
     }
     
+
+    func createUser(user: String, email: String, password: String) {
+        FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+            debugPrint("USER: \(user)")
+            debugPrint("Error: \(error)")
+            if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+                
+                switch errCode {
+                case .errorCodeInvalidEmail:
+                    print("invalid email") // really shouldn't happen at this point since we are creating email
+                case .errorCodeEmailAlreadyInUse:
+                    print("email in use")
+                    self.signIn(user: password, email: email, password: password)
+                default:
+                    print("Create User Error: \(error)")
+                }
+            }
+        }
+    }
+    
+    func signIn(user: String, email: String, password: String) {
+        FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                debugPrint("ERROR: \(error)")
+            }
+            
+        }
+    }
 
     /// Another instance of forget tokens, this time done locally
     @IBAction func forgetTokens(_ sender: UIButton?) {
@@ -123,27 +167,4 @@ class ViewController: UIViewController {
     }
     
     
-    /**
-     ## Request Image ##
-     for now an example of requestion an image from a given URL through Alamofire
-    */
-    func loadAvatar(from url: URL, with loader: OAuth2DataLoader?) {
-        if let loader = loader {
-            print("Loader=loader")
-            loader.perform(request: URLRequest(url: url)) { response in
-                do {
-                    let data = try response.responseData()
-                    DispatchQueue.main.async {
-                        self.imageView?.image = UIImage(data: data)
-                        self.imageView?.isHidden = false
-                    }
-                }
-                catch let error {
-                    print("Failed to load avatar: \(error)")
-                }
-            }
-        } else {
-            debugPrint("ERROR LOADER NOT USED. ABORT")
-        }
-    }
 }

@@ -15,6 +15,7 @@ class FitbitRequests {
     let restClient = RestClient()
 
     
+    
     // sample login response can be found: in FitbitResponses Folder
     /// List of profile attributes that we would like to pull directly from the login response.
     static var profileAttributes = ["age",
@@ -23,11 +24,12 @@ class FitbitRequests {
                              "country",
                              "dateOfBirth",
                              "displayName",
+                             "encodedId",
                              "fullName",
                              "gender",
                              "height",
                              "heightUnit",
-                             "locale",
+                             "locale", // note about locale: units are set to en_US on the profile, but the API returns metric by default unless you set the Accept-Language to "en_US" in the header.
                              "startDayOfWeek",
                              "timezone",
                              "weight",
@@ -203,7 +205,8 @@ class FitbitRequests {
                 completionHandler(nil, error)
             } else {
                 completionHandler(json, nil)
-            }        }
+            }
+        }
     }
     
     
@@ -391,6 +394,32 @@ class FitbitRequests {
             }
         }
     }
+
+    //
+    /**
+     ## Get Activity Time Series  ##
+     GET https://api.fitbit.com/1/user/[user-id]/activities/date/[date].json
+     
+     user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+     resource-path	The resource path; see options in the "Resource Path Options" section below.
+     base-date	The range start date, in the format yyyy-MM-dd or today.
+     end-date	The end date of the range.
+     date	The end date of the period specified in the format yyyy-MM-dd or today.
+     period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y
+     Example Request
+     */
+    func getDailyActivity(date: String = "today", completionHandler: @escaping (JSON?, Error?) -> ()) {
+        let url = "https://api.fitbit.com/1/user/-/activities/date/\(date).json"
+        restClient.getRequest(url: url) { json, error in
+            if error != nil {
+                completionHandler(nil, error)
+            } else {
+                completionHandler(json, nil)
+            }
+        }
+    }
+
+    
     /**
      ## Get Activity Time Series  ##
      https://dev.fitbit.com/docs/activity/#activity-time-series
@@ -1717,5 +1746,15 @@ class FitbitRequests {
             }
         }
 
+    }
+    
+    func openFitbitApp() {
+        let url = URL(string: "fitbit://")!
+        debugPrint("Attempting to open fitbit")
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
 }

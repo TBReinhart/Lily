@@ -9,6 +9,9 @@ target 'Lily' do
     pod 'p2.OAuth2', '~> 3.0'
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyJSON'
+    pod 'Firebase/Core'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
 
     target ‘LilyTests’ do
         pod 'p2.OAuth2', '~> 3.0'

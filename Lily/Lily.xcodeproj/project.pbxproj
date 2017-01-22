@@ -7,12 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2F760E1E312BC9000AE4F7 /* NavigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F760D1E312BC9000AE4F7 /* NavigationBar.png */; };
+		2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */; };
 		2F398E891E11B39D00A1AEB3 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F398E881E11B39D00A1AEB3 /* ViewController2.swift */; };
 		2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F398E8F1E12288A00A1AEB3 /* Lily.xcdatamodeld */; };
 		2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F398EFC1E14CAB100A1AEB3 /* LilyCoreData.swift */; };
 		2F398EFF1E16006600A1AEB3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F398EFE1E16006600A1AEB3 /* Helpers.swift */; };
 		2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6591AB1E03B29C0040AA4A /* Services.plist */; };
 		2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */; };
+		2FA09AED1E31321F0094270F /* blackjack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AEC1E31321F0094270F /* blackjack.otf */; };
+		2FA09AEF1E3138070094270F /* CardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AEE1E3138070094270F /* CardBackground.png */; };
+		2FA09AF11E3138E30094270F /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AF01E3138E30094270F /* water.png */; };
+		2FA09AF71E3138F10094270F /* Heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AF21E3138F10094270F /* Heart.png */; };
+		2FA09AF81E3138F10094270F /* balance.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AF31E3138F10094270F /* balance.png */; };
+		2FA09AF91E3138F10094270F /* Checklist.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AF41E3138F10094270F /* Checklist.png */; };
+		2FA09AFA1E3138F10094270F /* Flame.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AF51E3138F10094270F /* Flame.png */; };
+		2FA09AFB1E3138F10094270F /* Moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AF61E3138F10094270F /* Moon.png */; };
+		2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AFE1E313BFE0094270F /* ProgressWheel.png */; };
+		2FA09B011E3147F40094270F /* backgroundShade.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09B001E3147F40094270F /* backgroundShade.png */; };
+		2FA09B051E31BEF80094270F /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09B041E31BEF80094270F /* microphone.png */; };
+		2FA09B071E31C3A80094270F /* microphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09B061E31C3A80094270F /* microphone@2x.png */; };
 		2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1CD5C1E0347AF00778DF3 /* AppDelegate.swift */; };
 		2FA1CD5F1E0347AF00778DF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1CD5E1E0347AF00778DF3 /* ViewController.swift */; };
 		2FA1CD621E0347AF00778DF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD601E0347AF00778DF3 /* Main.storyboard */; };
@@ -20,6 +34,7 @@
 		2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD651E0347AF00778DF3 /* LaunchScreen.storyboard */; };
 		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
 		2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */; };
+		2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */; };
 		2FDB45F61E21755300A98225 /* LilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDB45F51E21755300A98225 /* LilyTests.swift */; };
 		672BB027D2BACD0ACB5F68C2 /* Pods_Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */; };
 		A6B15886DD2C5CF0E96A3F0D /* Pods_Lily_LilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */; };
@@ -39,12 +54,26 @@
 		087B0A496F522C14AA1FEBCB /* Pods-Lily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lily/Pods-Lily.debug.xcconfig"; sourceTree = "<group>"; };
 		2A3F7A2A05BA366D8C23C744 /* Pods-Lily-LilyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily-LilyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9CDFF0524D10FD589A9B0E /* Pods-Lily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lily/Pods-Lily.release.xcconfig"; sourceTree = "<group>"; };
+		2F2F760D1E312BC9000AE4F7 /* NavigationBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NavigationBar.png; path = ../../SketchTemplates/NavigationBar.png; sourceTree = "<group>"; };
+		2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenViewController.swift; path = Lily/HomeScreenViewController.swift; sourceTree = "<group>"; };
 		2F398E881E11B39D00A1AEB3 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController2.swift; path = Lily/ViewController2.swift; sourceTree = "<group>"; };
 		2F398E901E12288A00A1AEB3 /* Lily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lily.xcdatamodel; sourceTree = "<group>"; };
 		2F398EFC1E14CAB100A1AEB3 /* LilyCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LilyCoreData.swift; sourceTree = "<group>"; };
 		2F398EFE1E16006600A1AEB3 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		2F6591AB1E03B29C0040AA4A /* Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
 		2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2RetryHandler.swift; sourceTree = "<group>"; };
+		2FA09AEC1E31321F0094270F /* blackjack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = blackjack.otf; path = blackjack/blackjack.otf; sourceTree = "<group>"; };
+		2FA09AEE1E3138070094270F /* CardBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardBackground.png; sourceTree = "<group>"; };
+		2FA09AF01E3138E30094270F /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		2FA09AF21E3138F10094270F /* Heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart.png; sourceTree = "<group>"; };
+		2FA09AF31E3138F10094270F /* balance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balance.png; sourceTree = "<group>"; };
+		2FA09AF41E3138F10094270F /* Checklist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checklist.png; sourceTree = "<group>"; };
+		2FA09AF51E3138F10094270F /* Flame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flame.png; sourceTree = "<group>"; };
+		2FA09AF61E3138F10094270F /* Moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moon.png; sourceTree = "<group>"; };
+		2FA09AFE1E313BFE0094270F /* ProgressWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProgressWheel.png; sourceTree = "<group>"; };
+		2FA09B001E3147F40094270F /* backgroundShade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundShade.png; sourceTree = "<group>"; };
+		2FA09B041E31BEF80094270F /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
+		2FA09B061E31C3A80094270F /* microphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone@2x.png"; sourceTree = "<group>"; };
 		2FA1CD591E0347AF00778DF3 /* Lily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA1CD5C1E0347AF00778DF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FA1CD5E1E0347AF00778DF3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Lily/ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +84,7 @@
 		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
 		2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FitbitRequests.swift; path = Lily/FitbitRequests.swift; sourceTree = "<group>"; };
 		2FC69CDC1E101995001A1349 /* Lily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lily.entitlements; sourceTree = "<group>"; };
+		2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FDB45F31E21755300A98225 /* LilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDB45F51E21755300A98225 /* LilyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilyTests.swift; sourceTree = "<group>"; };
 		2FDB45F71E21755300A98225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,6 +122,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2F2F76111E3131A8000AE4F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2FA09B061E31C3A80094270F /* microphone@2x.png */,
+				2FA09B041E31BEF80094270F /* microphone.png */,
+				2FA09B001E3147F40094270F /* backgroundShade.png */,
+				2FA09AFE1E313BFE0094270F /* ProgressWheel.png */,
+				2FA09AF21E3138F10094270F /* Heart.png */,
+				2FA09AF31E3138F10094270F /* balance.png */,
+				2FA09AF41E3138F10094270F /* Checklist.png */,
+				2FA09AF51E3138F10094270F /* Flame.png */,
+				2FA09AF61E3138F10094270F /* Moon.png */,
+				2FA09AF01E3138E30094270F /* water.png */,
+				2FA09AEE1E3138070094270F /* CardBackground.png */,
+				2FA09AEC1E31321F0094270F /* blackjack.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2FA1CD501E0347AF00778DF3 = {
 			isa = PBXGroup;
 			children = (
@@ -115,13 +164,15 @@
 		2FA1CD5B1E0347AF00778DF3 /* Lily */ = {
 			isa = PBXGroup;
 			children = (
+				2FA1CD601E0347AF00778DF3 /* Main.storyboard */,
 				2FB4C3BE1E1D7A1A00C39109 /* ViewControllers */,
 				2FB4C3C01E1D806900C39109 /* REST */,
 				2FB4C3BD1E1D79F700C39109 /* Fitbit */,
 				2FB4C3BC1E1D79DF00C39109 /* Core Data */,
 				2FA1CD631E0347AF00778DF3 /* Assets.xcassets */,
-				2FA1CD601E0347AF00778DF3 /* Main.storyboard */,
+				2F2F760D1E312BC9000AE4F7 /* NavigationBar.png */,
 				2FA1CD651E0347AF00778DF3 /* LaunchScreen.storyboard */,
+				2F2F76111E3131A8000AE4F7 /* Resources */,
 				2FB4C3BF1E1D7A4000C39109 /* Others */,
 			);
 			path = Lily;
@@ -148,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				2FA1CD5E1E0347AF00778DF3 /* ViewController.swift */,
+				2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */,
 				2F398E881E11B39D00A1AEB3 /* ViewController2.swift */,
 			);
 			name = ViewControllers;
@@ -157,6 +209,7 @@
 		2FB4C3BF1E1D7A4000C39109 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */,
 				2F6591AB1E03B29C0040AA4A /* Services.plist */,
 				2FA1CD681E0347AF00778DF3 /* Info.plist */,
 				2FC69CDC1E101995001A1349 /* Lily.entitlements */,
@@ -293,9 +346,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */,
+				2FA09AFA1E3138F10094270F /* Flame.png in Resources */,
 				2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */,
 				2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */,
+				2FA09AED1E31321F0094270F /* blackjack.otf in Resources */,
+				2FA09B051E31BEF80094270F /* microphone.png in Resources */,
+				2FA09AF81E3138F10094270F /* balance.png in Resources */,
+				2FA09AF91E3138F10094270F /* Checklist.png in Resources */,
+				2FA09AFB1E3138F10094270F /* Moon.png in Resources */,
+				2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */,
+				2F2F760E1E312BC9000AE4F7 /* NavigationBar.png in Resources */,
+				2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */,
+				2FA09AEF1E3138070094270F /* CardBackground.png in Resources */,
+				2FA09B011E3147F40094270F /* backgroundShade.png in Resources */,
+				2FA09AF71E3138F10094270F /* Heart.png in Resources */,
+				2FA09B071E31C3A80094270F /* microphone@2x.png in Resources */,
 				2FA1CD621E0347AF00778DF3 /* Main.storyboard in Resources */,
+				2FA09AF11E3138E30094270F /* water.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +482,7 @@
 				2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,
 				2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */,
+				2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

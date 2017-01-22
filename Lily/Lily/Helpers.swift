@@ -43,4 +43,12 @@ class Helpers {
         offsetString = String(format: "%@%@%i:%@%i", offsetSymbol, offsetHoursLeadString, offsetHours, offsetMinutesLeadString, offsetMinutes)
         return offsetString
     }
+    
+    static func secondsToHoursMinutes (seconds : Int) -> (Int, Int) {
+        return ((seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+    
+    static func millilitersToOz(milli : Int) -> (Double) {
+        return (Double(milli) * 0.033814)
+    }
 }

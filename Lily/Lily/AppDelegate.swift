@@ -7,6 +7,7 @@
 //
 import UIKit
 import CoreData
+import Firebase
 
 
 @UIApplicationMain
@@ -15,8 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // Set Navigation bar background image
+        let navBgImage:UIImage = UIImage(named: "NavigationBar.png")!
+        UINavigationBar.appearance().setBackgroundImage(navBgImage, for: .default)
+        
+        
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "BlackJack", size: 24)!,
+            NSForegroundColorAttributeName: UIColor.white
+        ]
+
+        //Set navigation bar Back button tint colour
+        UINavigationBar.appearance().tintColor = UIColor.white
+        FIRApp.configure()
+
         return true
     }
+
+
+    
     /**
      ## Set URL Scheme ##
      Sets URL scheme such that the app can be reopened after performing authentication through fitbit
