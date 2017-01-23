@@ -13,6 +13,13 @@
 		2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F398E8F1E12288A00A1AEB3 /* Lily.xcdatamodeld */; };
 		2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F398EFC1E14CAB100A1AEB3 /* LilyCoreData.swift */; };
 		2F398EFF1E16006600A1AEB3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F398EFE1E16006600A1AEB3 /* Helpers.swift */; };
+		2F3FDC871E3580D200B18F25 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3FDC861E3580D200B18F25 /* TestViewController.swift */; };
+		2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC881E35905D00B18F25 /* MicWhite.png */; };
+		2F3FDC8D1E35905D00B18F25 /* x_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC891E35905D00B18F25 /* x_button.png */; };
+		2F3FDC8E1E35905D00B18F25 /* question_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC8A1E35905D00B18F25 /* question_mark.png */; };
+		2F3FDC911E35921B00B18F25 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC901E35921B00B18F25 /* x.png */; };
+		2F3FDC931E3592E200B18F25 /* Help Subview.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC921E3592E200B18F25 /* Help Subview.png */; };
+		2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */; };
 		2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6591AB1E03B29C0040AA4A /* Services.plist */; };
 		2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */; };
 		2FA09AED1E31321F0094270F /* blackjack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AEC1E31321F0094270F /* blackjack.otf */; };
@@ -60,6 +67,13 @@
 		2F398E901E12288A00A1AEB3 /* Lily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lily.xcdatamodel; sourceTree = "<group>"; };
 		2F398EFC1E14CAB100A1AEB3 /* LilyCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LilyCoreData.swift; sourceTree = "<group>"; };
 		2F398EFE1E16006600A1AEB3 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		2F3FDC861E3580D200B18F25 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		2F3FDC881E35905D00B18F25 /* MicWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MicWhite.png; sourceTree = "<group>"; };
+		2F3FDC891E35905D00B18F25 /* x_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_button.png; sourceTree = "<group>"; };
+		2F3FDC8A1E35905D00B18F25 /* question_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_mark.png; sourceTree = "<group>"; };
+		2F3FDC901E35921B00B18F25 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
+		2F3FDC921E3592E200B18F25 /* Help Subview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Help Subview.png"; sourceTree = "<group>"; };
+		2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundMicHelp.png; sourceTree = "<group>"; };
 		2F6591AB1E03B29C0040AA4A /* Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
 		2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2RetryHandler.swift; sourceTree = "<group>"; };
 		2FA09AEC1E31321F0094270F /* blackjack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = blackjack.otf; path = blackjack/blackjack.otf; sourceTree = "<group>"; };
@@ -125,6 +139,12 @@
 		2F2F76111E3131A8000AE4F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */,
+				2F3FDC921E3592E200B18F25 /* Help Subview.png */,
+				2F3FDC901E35921B00B18F25 /* x.png */,
+				2F3FDC881E35905D00B18F25 /* MicWhite.png */,
+				2F3FDC891E35905D00B18F25 /* x_button.png */,
+				2F3FDC8A1E35905D00B18F25 /* question_mark.png */,
 				2FA09B061E31C3A80094270F /* microphone@2x.png */,
 				2FA09B041E31BEF80094270F /* microphone.png */,
 				2FA09B001E3147F40094270F /* backgroundShade.png */,
@@ -165,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				2FA1CD601E0347AF00778DF3 /* Main.storyboard */,
+				2F3FDC861E3580D200B18F25 /* TestViewController.swift */,
 				2FB4C3BE1E1D7A1A00C39109 /* ViewControllers */,
 				2FB4C3C01E1D806900C39109 /* REST */,
 				2FB4C3BD1E1D79F700C39109 /* Fitbit */,
@@ -355,14 +376,20 @@
 				2FA09AF91E3138F10094270F /* Checklist.png in Resources */,
 				2FA09AFB1E3138F10094270F /* Moon.png in Resources */,
 				2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */,
+				2F3FDC911E35921B00B18F25 /* x.png in Resources */,
 				2F2F760E1E312BC9000AE4F7 /* NavigationBar.png in Resources */,
 				2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */,
 				2FA09AEF1E3138070094270F /* CardBackground.png in Resources */,
 				2FA09B011E3147F40094270F /* backgroundShade.png in Resources */,
+				2F3FDC8D1E35905D00B18F25 /* x_button.png in Resources */,
 				2FA09AF71E3138F10094270F /* Heart.png in Resources */,
 				2FA09B071E31C3A80094270F /* microphone@2x.png in Resources */,
+				2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */,
+				2F3FDC931E3592E200B18F25 /* Help Subview.png in Resources */,
 				2FA1CD621E0347AF00778DF3 /* Main.storyboard in Resources */,
 				2FA09AF11E3138E30094270F /* water.png in Resources */,
+				2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */,
+				2F3FDC8E1E35905D00B18F25 /* question_mark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +502,7 @@
 			files = (
 				2F398E891E11B39D00A1AEB3 /* ViewController2.swift in Sources */,
 				2FA1CD5F1E0347AF00778DF3 /* ViewController.swift in Sources */,
+				2F3FDC871E3580D200B18F25 /* TestViewController.swift in Sources */,
 				2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */,
 				2F398EFF1E16006600A1AEB3 /* Helpers.swift in Sources */,
 				2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */,

@@ -10,9 +10,11 @@ import UIKit
 import Speech
 import SwiftyJSON
 import Foundation
+import UICircularProgressRing
 
 class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
+    @IBOutlet weak var subviewHelp: UIView!
 
     
     @IBOutlet weak var waterButton: UIButton!
@@ -33,14 +35,33 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
+    
+    // Fitbit Vars
     let fbreqs = FitbitRequests()
+    @IBOutlet weak var activityRing: UICircularProgressRingView!
 
     
+    override func viewWillAppear(_ animated: Bool) {
+    }
+    
+    func showSubview() {
+
+        self.navigationController?.navigationBar.layer.zPosition = -1;
+        self.subviewHelp.isHidden = false
+        self.subviewHelp.bounds = UIScreen.main.bounds
+        
+    }
+    func hideSubview() {
+        self.navigationController?.navigationBar.layer.zPosition = 0;
+        self.subviewHelp.isHidden = true
+
+    }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.title = "Lily"
-
+        self.hideSubview()
         let button = UIButton.init(type: .custom)
         button.setImage(UIImage.init(named: "microphone.png"), for: UIControlState.normal)
         button.addTarget(self, action:#selector(HomeScreenViewController.micPressed), for: UIControlEvents.touchUpInside)
@@ -77,17 +98,17 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.navigationItem.rightBarButtonItem?.isEnabled = isButtonEnabled
             }
         }
-        debugPrint("\n\n\n\n")
         loadWater()
         loadSleep()
         loadActivity()
         loadHeartRate()
-        transparentPopupView()
-
     }
 
+    
+    
     func micPressed() {
         debugPrint("mic pressed")
+        self.showSubview()
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
@@ -105,11 +126,11 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     func startRecording() {
         
-        if recognitionTask != nil {  //1
+        if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
-        let audioSession = AVAudioSession.sharedInstance()  //2
+        let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryRecord)
             try audioSession.setMode(AVAudioSessionModeMeasurement)
@@ -117,45 +138,40 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         } catch {
             print("audioSession properties weren't set because of an error.")
         }
-        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()  //3
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         guard let inputNode = audioEngine.inputNode else {
             print("error")
             fatalError("Audio engine has no input node")
-        }  //4
+        }
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
-        } //5
-        recognitionRequest.shouldReportPartialResults = true  //6
+        }
+        recognitionRequest.shouldReportPartialResults = true
         
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in  //7
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
-            var isFinal = false  //8
-            
+            var isFinal = false
             if result != nil {
-                //self.textView.text = result?.bestTranscription.formattedString  //9
                 debugPrint(result?.bestTranscription.formattedString ?? "nil")
                 isFinal = (result?.isFinal)!
                 
             }
             
-            if error != nil || isFinal {  //10
+            if error != nil || isFinal {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
-                
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
 
-               // self.microphoneButton.isEnabled = true
             }
         })
-        print("7")
-        let recordingFormat = inputNode.outputFormat(forBus: 0)  //11
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
             self.recognitionRequest?.append(buffer)
         }
         
-        audioEngine.prepare()  //12
+        audioEngine.prepare()
         
         do {
             try audioEngine.start()
@@ -163,24 +179,22 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             print("audioEngine couldn't start because of an error.")
         }
         debugPrint("Say Something, I'm listening!")
-        //self.textView.text = "Say something, I'm listening!"
-        
-        
-        
     }
     
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
-            //microphoneButton.isEnabled = true
             self.navigationItem.rightBarButtonItem?.isEnabled = true
 
         } else {
             self.navigationItem.rightBarButtonItem?.isEnabled = false
-//            microphoneButton.isEnabled = false
         }
     }
 
-    
+
+    @IBOutlet weak var micCloseButton: UIButton!
+    @IBAction func micCloseButtonPressed(_ sender: Any) {
+        self.hideSubview()
+    }
     
     @IBAction func waterButtonPressed(_ sender: Any) {
         debugPrint("Water Button Pressed")
@@ -228,48 +242,30 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         
     }
-    
-    func transparentPopupView() {
-        // get your window screen size
-        let screenRect: CGRect = UIScreen.main.bounds
-        //create a new view with the same size
-        let coverView = UIView(frame: screenRect)
-        // change the background color to black and the opacity to 0.6
-        coverView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        // add this new view to your main view
-        self.navigationController?.view.addSubview(coverView)
 
-        //self.view.addSubview(coverView)
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-        label.center = CGPoint(x: 160, y: 285)
-        label.textAlignment = .center
-        label.text = "I'm a test label"
-        label.textColor = UIColor.white
-        self.navigationController?.view.addSubview(label)
-        //
-        //self.view.addSubview(label)
-        //coverView.removeFromSuperview()
-
-    }
-    
-    
     func loadActivity() {
         self.fbreqs.getDailyActivity() { json, error in
             let goalActiveMinutes = json?["goals"]["activeMinutes"].int
             let fairlyActiveMinutes = json?["summary"]["fairlyActiveMinutes"].int
             let veryActiveMinutes = json?["summary"]["veryActiveMinutes"].int
-            print("Goal: \(goalActiveMinutes)")
-            print("Fairly: \(fairlyActiveMinutes)")
-            print("Very: \(veryActiveMinutes)" )
             self.activityGoalLabel.text = "of \(goalActiveMinutes!) min"
             let totalActiveMinutes = fairlyActiveMinutes! + veryActiveMinutes!
             self.activityMinutesLabel.text = "\(totalActiveMinutes)"
-            debugPrint(error)
+            self.activityRing.animationStyle = kCAMediaTimingFunctionLinear
+            self.activityRing.fontSize = 25
+            self.activityRing.maxValue = CGFloat(goalActiveMinutes!)
+            self.animateRing(value: totalActiveMinutes)
         }
     }
+    
+    func animateRing(value: Int) {
+        self.activityRing.animationStyle = kCAMediaTimingFunctionLinear
+        self.activityRing.setProgress(value: CGFloat(value), animationDuration: 4, completion: nil)
+    }
+    
     func loadHeartRate() {
         self.fbreqs.getHeartRateTimeSeriesFromPeriod() {json, error in
-            print("HR: \(json)" )
+//            print("HR: \(json)" )
             let restingHeartRateToday = json?["activities-heart"][0]["value"]["restingHeartRate"].int
             self.heartRateLabel.text = "\(restingHeartRateToday!)"
         }
@@ -288,7 +284,10 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
 
     
-    
+    func finishedUpdatingProgress(forRing ring: UICircularProgressRingView) {
+        if ring === self.activityRing {
+        }
+    }
     /*
     // MARK: - Navigation
 

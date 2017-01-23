@@ -41,6 +41,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.7)
   - p2.OAuth2 (3.0.1)
   - SwiftyJSON (3.1.3)
+  - UICircularProgressRing (1.1.6)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - Firebase/Database
   - p2.OAuth2 (~> 3.0)
   - SwiftyJSON
+  - UICircularProgressRing
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
@@ -64,7 +66,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   p2.OAuth2: 1c58296b53820e57ea63a8977541d2e4780df141
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
+  UICircularProgressRing: 892adf48ea0bdc218057c4e62c5e3a8609bd5b1c
 
-PODFILE CHECKSUM: 51f0310085ae5cfc34d58197d44a37ea1e427f62
+PODFILE CHECKSUM: b3f1ae83d4a100dc6b3b8ba3a39da93db16eef03
 
 COCOAPODS: 1.1.1
