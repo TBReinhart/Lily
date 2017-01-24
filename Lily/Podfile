@@ -13,6 +13,8 @@ target 'Lily' do
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
     pod 'UICircularProgressRing'
+    pod 'PKHUD', '~> 4.0'
+    pod "SwiftSiriWaveformView"
 
     target ‘LilyTests’ do
         pod 'p2.OAuth2', '~> 3.0'

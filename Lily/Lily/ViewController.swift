@@ -9,6 +9,7 @@ import UIKit
 import p2_OAuth2
 import Firebase
 import CoreData
+import PKHUD
 
 class ViewController: UIViewController {
     
@@ -58,11 +59,13 @@ class ViewController: UIViewController {
                 let json = try response.responseJSON()
                 debugPrint("RESPONSE in json")
                 debugPrint(json)
+                HUD.show(.progress)
 
                 self.extractUserData(json: json)
                 DispatchQueue.main.sync {
                     
                     print("Segue")
+                    HUD.flash(.success, delay: 0.5)
                     self.performSegue(withIdentifier: "loggedInSegue", sender: self)
                 }
 
@@ -70,7 +73,7 @@ class ViewController: UIViewController {
             catch let error {
                 debugPrint(error)
                 self.signInEmbeddedButton?.isEnabled = true
-
+                HUD.flash(.error, delay: 1.0)
                 self.didCancelOrFail(error)
             }
         }

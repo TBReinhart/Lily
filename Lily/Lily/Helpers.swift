@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class Helpers {
     
     /// TODO need to get the specific user's current date
@@ -50,5 +50,13 @@ class Helpers {
     
     static func millilitersToOz(milli : Int) -> (Double) {
         return (Double(milli) * 0.033814)
+    }
+    static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }
