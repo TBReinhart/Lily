@@ -12,6 +12,8 @@ import SwiftyJSON
 import Foundation
 import UICircularProgressRing
 import PKHUD
+import SwiftSiriWaveformView
+
 class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     @IBOutlet weak var subviewHelp: UIView!
@@ -42,12 +44,22 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     private let audioEngine = AVAudioEngine()
     @IBOutlet weak var tapToSpeakLabel: UILabel!
     
+    // Siri Wave Vars
+    var timer:Timer?
+    var change:CGFloat = 0.01
+    @IBOutlet weak var audioView: SwiftSiriWaveformView!
     // Fitbit Vars
     let fbreqs = FitbitRequests()
     @IBOutlet weak var activityRing: UICircularProgressRingView!
 
     
-    override func viewWillAppear(_ animated: Bool) {
+    internal func refreshAudioView(_:Timer) {
+        if self.audioView.amplitude <= self.audioView.idleAmplitude || self.audioView.amplitude > 1.0 {
+            self.change *= -1.0
+        }
+        
+        // Simply set the amplitude to whatever you need and the view will update itself.
+        self.audioView.amplitude += self.change
     }
     
 
@@ -61,8 +73,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     func showSubview() {
         self.navigationController?.navigationBar.layer.zPosition = -1;
         self.subviewHelp.isHidden = false
-        self.showSimpleHelp()
-        
+        self.showDetailedHelp()
         
     }
     func hideSubview() {
@@ -71,13 +82,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     }
     
-    func showSimpleHelp() {
-        self.helpSubviewImage.isHidden = true
-        self.micHelpSmallImage.isHidden = false
-        self.micHelpSmallImage.image = UIImage(named:"simpleMicHelp")
 
-
-    }
     func showDetailedHelp() {
         self.micHelpSmallImage.isHidden = true
         self.helpSubviewImage.isHidden = false
@@ -86,7 +91,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     func showErrorMicHelp() {
         self.helpSubviewImage.isHidden = true
         self.micHelpSmallImage.isHidden = false
-        self.micHelpSmallImage.image = UIImage(named:"ErrorMicHelpMessage")
     }
     
     func disableMics() {
@@ -94,8 +98,10 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.tapToSpeakButton.isEnabled = false
     }
     func enableMics() {
+        
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         self.tapToSpeakButton.isEnabled = true
+        
     }
     override func viewDidLoad() {
         
@@ -108,7 +114,9 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         button.frame = CGRect.init(x: 0, y: 0, width: 20, height: 30) //CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.rightBarButtonItem = barButton
-        
+        self.audioView.density = 1.0
+        self.audioView.isHidden = true
+        timer = Timer.scheduledTimer(timeInterval: 0.009, target: self, selector: #selector(HomeScreenViewController.refreshAudioView(_:)), userInfo: nil, repeats: true)
         
         self.disableMics()
         
@@ -164,15 +172,19 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         if audioEngine.isRunning {
             audioEngine.stop()
-            
             recognitionRequest?.endAudio()
             self.navigationItem.rightBarButtonItem?.isEnabled = false
+            self.audioView.isHidden = true
             self.tapToSpeakLabel.text = "Tap to speak"
+            self.tapToSpeakButton.setImage(UIImage(named: "MicWhite"), for: .normal)
+
             self.tapToSpeakButton.isEnabled = true
 
         } else {
             startRecording()
             self.tapToSpeakLabel.isHidden = false
+            self.audioView.isHidden = false
+            self.tapToSpeakButton.setImage(UIImage(named: "micWithOrangeBorder"), for: .normal)
             self.tapToSpeakLabel.text = "Tap to stop recording"
             self.tapToSpeakButton.isEnabled = true
 
@@ -194,7 +206,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         } catch {
             print("audioSession properties weren't set because of an error.")
         }
-        
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
         guard let inputNode = audioEngine.inputNode else {

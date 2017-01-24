@@ -319,10 +319,6 @@
                                             <constraint firstAttribute="height" constant="18" id="kQH-HG-Pla"/>
                                             <constraint firstAttribute="width" constant="18" id="prK-ut-Z2X"/>
                                         </constraints>
-                                        <state key="normal" image="question_mark.png"/>
-                                        <connections>
-                                            <action selector="questionMarkButtonPressed:" destination="6Io-EG-oDi" eventType="touchUpInside" id="MFj-Es-ZdS"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap to speak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mp-64-Yoe" userLabel="Mic Help Label">
                                         <rect key="frame" x="147" y="519" width="80" height="21"/>
@@ -344,13 +340,23 @@
                                             <action selector="micCloseButtonPressed:" destination="6Io-EG-oDi" eventType="touchUpInside" id="uXw-8p-BJc"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Mic Help Image" image="simpleMicHelp.png" translatesAutoresizingMaskIntoConstraints="NO" id="AEi-to-F2E">
-                                        <rect key="frame" x="25" y="287" width="325" height="92"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Help Subview.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-FR-5nG">
                                         <rect key="frame" x="0.0" y="-7" width="375" height="370"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="370" id="kb8-ok-Hcx"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvx-72-XvF" customClass="SwiftSiriWaveformView" customModule="SwiftSiriWaveformView">
+                                        <rect key="frame" x="87" y="545" width="200" height="50"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="5db-qK-z2z"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ErrorMicHelpMessage.png" translatesAutoresizingMaskIntoConstraints="NO" id="fmh-xD-euv">
+                                        <rect key="frame" x="33" y="295" width="308" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="9TH-SS-1Jz"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -361,19 +367,21 @@
                                     <constraint firstItem="1Ig-pq-Vhd" firstAttribute="leading" secondItem="LVA-Ys-dwr" secondAttribute="leading" id="AZK-m3-YBR"/>
                                     <constraint firstItem="vti-xA-hkT" firstAttribute="leading" secondItem="LVA-Ys-dwr" secondAttribute="leadingMargin" id="BbF-5E-lbi"/>
                                     <constraint firstItem="5Xr-FR-5nG" firstAttribute="leading" secondItem="1Ig-pq-Vhd" secondAttribute="leading" id="DGM-We-4xe"/>
-                                    <constraint firstItem="AEi-to-F2E" firstAttribute="leading" secondItem="LVA-Ys-dwr" secondAttribute="leading" constant="25" id="G4M-pl-Yyz"/>
-                                    <constraint firstItem="AEi-to-F2E" firstAttribute="centerY" secondItem="LVA-Ys-dwr" secondAttribute="centerY" id="Ia6-q3-oQY"/>
-                                    <constraint firstItem="5Xr-FR-5nG" firstAttribute="centerX" secondItem="AEi-to-F2E" secondAttribute="centerX" id="Kew-Hn-zpb"/>
                                     <constraint firstItem="5Xr-FR-5nG" firstAttribute="top" secondItem="LVA-Ys-dwr" secondAttribute="top" constant="-7" id="Lxd-MC-zPt"/>
                                     <constraint firstAttribute="trailing" secondItem="1Ig-pq-Vhd" secondAttribute="trailing" id="NkZ-WA-6BK"/>
                                     <constraint firstItem="1Ig-pq-Vhd" firstAttribute="top" secondItem="LVA-Ys-dwr" secondAttribute="top" constant="-73" id="OYV-3a-A9H"/>
+                                    <constraint firstItem="dvx-72-XvF" firstAttribute="centerY" secondItem="vti-xA-hkT" secondAttribute="centerY" id="Qdd-DP-OdU"/>
+                                    <constraint firstItem="fmh-xD-euv" firstAttribute="centerX" secondItem="1Ig-pq-Vhd" secondAttribute="centerX" id="R4Z-0T-GZG"/>
                                     <constraint firstItem="2Mp-64-Yoe" firstAttribute="top" secondItem="j6C-vu-rYA" secondAttribute="bottom" id="Seh-sF-jix"/>
+                                    <constraint firstItem="fmh-xD-euv" firstAttribute="leading" secondItem="LVA-Ys-dwr" secondAttribute="leading" constant="33" id="W4R-q4-qRJ"/>
                                     <constraint firstItem="flI-aE-9Su" firstAttribute="trailing" secondItem="LVA-Ys-dwr" secondAttribute="trailingMargin" id="XYd-dj-IXb"/>
+                                    <constraint firstItem="dvx-72-XvF" firstAttribute="leading" secondItem="vti-xA-hkT" secondAttribute="trailing" constant="61" id="b80-kw-BdY"/>
                                     <constraint firstItem="5Xr-FR-5nG" firstAttribute="trailing" secondItem="1Ig-pq-Vhd" secondAttribute="trailing" id="dB5-ZH-um8"/>
                                     <constraint firstAttribute="bottom" secondItem="2Mp-64-Yoe" secondAttribute="bottom" constant="127" id="fFT-3p-fye"/>
+                                    <constraint firstItem="dvx-72-XvF" firstAttribute="centerX" secondItem="2Mp-64-Yoe" secondAttribute="centerX" id="ocf-vc-2S6"/>
                                     <constraint firstItem="flI-aE-9Su" firstAttribute="bottom" secondItem="2Mp-64-Yoe" secondAttribute="bottom" constant="39" id="sfQ-f0-JZm"/>
-                                    <constraint firstItem="j6C-vu-rYA" firstAttribute="top" secondItem="AEi-to-F2E" secondAttribute="bottom" constant="90" id="ssf-9x-EgW"/>
                                     <constraint firstAttribute="bottom" secondItem="vti-xA-hkT" secondAttribute="bottom" constant="88" id="tOz-3L-ZLI"/>
+                                    <constraint firstItem="j6C-vu-rYA" firstAttribute="top" secondItem="fmh-xD-euv" secondAttribute="bottom" constant="46" id="ttR-8O-FKy"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -523,12 +531,13 @@
                         <outlet property="activityGoalLabel" destination="316-l0-Shh" id="QGF-Lw-1oy"/>
                         <outlet property="activityMinutesLabel" destination="rKJ-bO-aY2" id="0j2-QS-xQT"/>
                         <outlet property="activityRing" destination="tTg-xD-Psj" id="ITP-ov-qnv"/>
+                        <outlet property="audioView" destination="dvx-72-XvF" id="Jjw-d0-2L2"/>
                         <outlet property="emotionLogButton" destination="492-2d-qe2" id="fDx-FN-VAI"/>
                         <outlet property="heartRateButton" destination="TfD-Ju-4v2" id="lr9-rO-tYP"/>
                         <outlet property="heartRateLabel" destination="T7D-Qk-r7m" id="uaa-KN-8cW"/>
                         <outlet property="helpSubviewImage" destination="5Xr-FR-5nG" id="gNy-r1-2JU"/>
                         <outlet property="micCloseButton" destination="flI-aE-9Su" id="U3K-UH-Hg4"/>
-                        <outlet property="micHelpSmallImage" destination="AEi-to-F2E" id="KaO-Te-U0I"/>
+                        <outlet property="micHelpSmallImage" destination="fmh-xD-euv" id="SMi-qF-GNr"/>
                         <outlet property="sleepButton" destination="nhG-cF-hcC" id="5Qo-ku-Feo"/>
                         <outlet property="streakLabel" destination="492-2d-qe2" id="DdA-Fm-VWc"/>
                         <outlet property="subviewHelp" destination="LVA-Ys-dwr" id="fqS-ae-6DS"/>
@@ -545,65 +554,11 @@
             </objects>
             <point key="canvasLocation" x="552.79999999999995" y="499.70014992503752"/>
         </scene>
-        <!--View Controller2-->
-        <scene sceneID="3fc-m7-hga">
-            <objects>
-                <viewController id="2EL-9F-f9J" customClass="ViewController2" customModule="Lily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dJE-XN-VyP"/>
-                        <viewControllerLayoutGuide type="bottom" id="lJo-nC-zI2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mxM-wn-XXL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What can I help you with?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="774-6U-kz2">
-                                <rect key="frame" x="65" y="59" width="245" height="92"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="2Xd-3i-XmZ"/>
-                                    <constraint firstAttribute="width" constant="245" id="aM0-1y-63c"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsq-6P-JuR">
-                                <rect key="frame" x="134" y="607" width="108" height="30"/>
-                                <state key="normal" title="Start Recording"/>
-                                <connections>
-                                    <action selector="microphoneTapped:" destination="2EL-9F-f9J" eventType="touchUpInside" id="NdT-ia-flG"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="tap start recording..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0P8-yl-tQD">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="774-6U-kz2" firstAttribute="centerX" secondItem="mxM-wn-XXL" secondAttribute="centerX" id="4RH-04-2aq"/>
-                            <constraint firstItem="774-6U-kz2" firstAttribute="top" secondItem="dJE-XN-VyP" secondAttribute="bottom" constant="39" id="Ic6-fR-zoI"/>
-                            <constraint firstItem="lJo-nC-zI2" firstAttribute="top" secondItem="dsq-6P-JuR" secondAttribute="bottom" constant="30" id="JTk-qw-MIC"/>
-                            <constraint firstItem="dsq-6P-JuR" firstAttribute="centerX" secondItem="mxM-wn-XXL" secondAttribute="centerX" id="UA4-uu-Ck4"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="MBz-z4-D9X"/>
-                    <connections>
-                        <outlet property="microphoneButton" destination="dsq-6P-JuR" id="jbU-MA-TF9"/>
-                        <outlet property="textView" destination="0P8-yl-tQD" id="ZRf-6S-RXn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ryM-Bw-rDL" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1298" y="502"/>
-        </scene>
     </scenes>
     <resources>
         <image name="CardBackground.png" width="367" height="392"/>
         <image name="Checklist.png" width="111" height="164"/>
+        <image name="ErrorMicHelpMessage.png" width="564" height="172"/>
         <image name="Flame.png" width="28" height="48"/>
         <image name="Heart.png" width="196" height="180"/>
         <image name="Help Subview.png" width="750" height="740"/>
@@ -612,8 +567,6 @@
         <image name="backgroundMicHelp.png" width="750" height="1334"/>
         <image name="backgroundShade.png" width="750" height="1204"/>
         <image name="balance.png" width="169" height="196"/>
-        <image name="question_mark.png" width="35" height="35"/>
-        <image name="simpleMicHelp.png" width="538" height="177"/>
         <image name="water.png" width="91" height="130"/>
         <image name="x.png" width="35" height="35"/>
     </resources>
