@@ -25,9 +25,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3O9-bt-exf">
-                                <rect key="frame" x="109" y="317" width="157" height="33"/>
+                                <rect key="frame" x="167" y="317" width="42" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Sign In (Embedded)">
+                                <state key="normal" title="Fitbit">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="disabled">
@@ -47,13 +47,24 @@
                                     <action selector="forgetTokens:" destination="M3c-OP-UZq" eventType="touchUpInside" id="P1b-l8-Cj8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-dF-HRt">
+                                <rect key="frame" x="97" y="358" width="181" height="30"/>
+                                <state key="normal" title="Apple HealthKit"/>
+                                <connections>
+                                    <action selector="loginWithHealthKit:" destination="M3c-OP-UZq" eventType="touchUpInside" id="WIV-5S-rxf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="JIV-dF-HRt" firstAttribute="leading" secondItem="Vcl-u0-eDr" secondAttribute="leadingMargin" constant="81" id="5ww-Jq-yUf"/>
                             <constraint firstAttribute="centerY" secondItem="3O9-bt-exf" secondAttribute="centerY" id="Duw-at-u8o"/>
                             <constraint firstItem="Zhz-I0-cfy" firstAttribute="top" secondItem="OBu-2c-T5v" secondAttribute="bottom" constant="164" id="Rs8-61-j7z"/>
                             <constraint firstAttribute="centerX" secondItem="3O9-bt-exf" secondAttribute="centerX" id="Wkf-dK-BT3"/>
+                            <constraint firstItem="JIV-dF-HRt" firstAttribute="top" secondItem="3O9-bt-exf" secondAttribute="bottom" constant="8" id="cHF-Cx-NOj"/>
                             <constraint firstAttribute="centerX" secondItem="OBu-2c-T5v" secondAttribute="centerX" id="jE1-kS-o6f"/>
+                            <constraint firstItem="OBu-2c-T5v" firstAttribute="top" secondItem="JIV-dF-HRt" secondAttribute="bottom" constant="82" id="srS-8r-kfE"/>
+                            <constraint firstItem="JIV-dF-HRt" firstAttribute="centerX" secondItem="3O9-bt-exf" secondAttribute="centerX" id="uN2-co-noE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -64,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8N8-QQ-mOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1073" y="510"/>
+            <point key="canvasLocation" x="-1074.4000000000001" y="509.59520239880067"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ODs-J2-5Mp">

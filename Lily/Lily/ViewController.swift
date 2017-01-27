@@ -18,7 +18,9 @@ class ViewController: UIViewController {
     
     
     var loader: OAuth2DataLoader?
-    
+    let healthKitReqs = HealthKitRequests()
+    let myId = UIDevice.current.identifierForVendor!.uuidString
+
     
     /// Instance of OAuth2 login credentials
     var oauth2 = OAuth2CodeGrant(settings: [
@@ -36,6 +38,28 @@ class ViewController: UIViewController {
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var signInEmbeddedButton: UIButton?
     @IBOutlet var forgetButton: UIButton?
+    
+    
+    @IBAction func loginWithHealthKit(_ sender: Any) {
+        print("HEALTH KIT LOGIN")
+        if(healthKitReqs.checkAuthorization()) {
+            if(healthKitReqs.isHealthDataAvailable()) {
+                print("available")
+                HUD.show(.progress)
+                self.createUserHelper()
+                print("Segue from healthkit login")
+                HUD.flash(.success, delay: 0.5)
+                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+            }
+        }
+    }
+    
+    func createUserHelper() {
+        let email = self.myId + "@lilyhealth.me"
+        let password = self.myId
+        self.createUser(user: self.myId, email: email, password: password)
+    }
+
     
     /**
      ## Embedded Sign In ##
@@ -62,6 +86,7 @@ class ViewController: UIViewController {
                 HUD.show(.progress)
 
                 self.extractUserData(json: json)
+                self.createUserHelper()
                 DispatchQueue.main.sync {
                     
                     print("Segue")
@@ -95,9 +120,7 @@ class ViewController: UIViewController {
                 } else if attribute == "encodedId" {
                     print("ENCODED ID: \(val)")
                     val = value as! String
-                    let email = val as! String + "@lilyhealth.me"
-                    let password = val as! String
-                    createUser(user: password, email: email, password: password)
+                    // TODO do something with encodedId
                     continue
                 }
                 
@@ -112,17 +135,20 @@ class ViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
             debugPrint("USER: \(user)")
             debugPrint("Error: \(error)")
-            if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
-                
-                switch errCode {
-                case .errorCodeInvalidEmail:
-                    print("invalid email") // really shouldn't happen at this point since we are creating email
-                case .errorCodeEmailAlreadyInUse:
-                    print("email in use")
-                    self.signIn(user: password, email: email, password: password)
-                default:
-                    print("Create User Error: \(error)")
+            if error != nil {
+                if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+
+                    switch errCode {
+                    case .errorCodeInvalidEmail:
+                        print("invalid email") // really shouldn't happen at this point since we are creating email
+                    case .errorCodeEmailAlreadyInUse:
+                        print("email in use")
+                        self.signIn(user: password, email: email, password: password)
+                    default:
+                        print("Create User Error: \(error)")
+                    }
                 }
+
             }
         }
     }
@@ -168,6 +194,5 @@ class ViewController: UIViewController {
         signInEmbeddedButton?.isEnabled = true
         forgetButton?.isHidden = true
     }
-    
-    
+        
 }

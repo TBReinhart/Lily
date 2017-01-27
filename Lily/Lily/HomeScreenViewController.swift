@@ -49,8 +49,15 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     var change:CGFloat = 0.01
     @IBOutlet weak var audioView: SwiftSiriWaveformView!
     // Fitbit Vars
-    let fbreqs = FitbitRequests()
+    
+    var fbreqs = FitbitRequests()
+    var healthKitReqs = HealthKitRequests()
+    
     @IBOutlet weak var activityRing: UICircularProgressRingView!
+
+    
+    let loginMethod = "Fitbit"
+    
 
     
     internal func refreshAudioView(_:Timer) {
@@ -106,14 +113,30 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         self.title = "Lily"
+//        if self.loginMethod == "HealthKit" {
+//            healthKitReqs = HealthKitRequests()
+//        } else if self.loginMethod == "Fitbit" {
+//            fbreqs = FitbitRequests()
+//            
+//        }
         self.hideSubview()
+        self.loadMicrophoneAtLaunch()
+        loadWater()
+        loadSleep()
+        loadActivity()
+        loadHeartRate()
+    }
+
+    func loadMicrophoneAtLaunch() {
         let button = UIButton.init(type: .custom)
         button.setImage(UIImage.init(named: "microphone.png"), for: UIControlState.normal)
         button.addTarget(self, action:#selector(HomeScreenViewController.micPressed), for: UIControlEvents.touchUpInside)
         button.frame = CGRect.init(x: 0, y: 0, width: 20, height: 30) //CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.rightBarButtonItem = barButton
+        
         self.audioView.density = 1.0
         self.audioView.isHidden = true
         timer = Timer.scheduledTimer(timeInterval: 0.009, target: self, selector: #selector(HomeScreenViewController.refreshAudioView(_:)), userInfo: nil, repeats: true)
@@ -145,7 +168,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             
             OperationQueue.main.addOperation() {
                 print("MIC BUTTON IS: \(isButtonEnabled)")
-//                self.navigationItem.rightBarButtonItem?.isEnabled = isButtonEnabled
+                //                self.navigationItem.rightBarButtonItem?.isEnabled = isButtonEnabled
                 if isButtonEnabled {
                     self.enableMics()
                 } else {
@@ -153,14 +176,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
             }
         }
-        loadWater()
-        loadSleep()
-        loadActivity()
-        loadHeartRate()
-    }
-
-    func animateActiveMic() {
-        
     }
     
     func micPressed() {
@@ -319,7 +334,27 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func loadWater() {
-        
+        if self.loginMethod == "HealthKit" {
+            loadWaterHealthKit()
+        } else if self.loginMethod == "Fitbit" {
+            loadWaterFitbit()
+        }
+    }
+
+    func loadWaterHealthKit() {
+        self.healthKitReqs.getWaterConsumption() { result, error in
+            let waterConsumedInOunces = result ?? "0"
+            DispatchQueue.global(qos: .userInitiated).async {
+                // Bounce back to the main thread to update the UI
+                DispatchQueue.main.async {
+                    self.waterConsumedLabel.text = waterConsumedInOunces
+                    self.waterGoalLabel.text = "of 96 oz"
+                }
+            }
+        }
+    }
+    
+    func loadWaterFitbit() {
         self.fbreqs.getWaterLogs() { json, error in
             let waterInMilli = json?["summary"]["water"].int
             if waterInMilli != nil {
@@ -327,9 +362,9 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.waterConsumedLabel.text = "\(String(ounces))"
             } else {
                 self.waterConsumedLabel.text = "0"
-
+                
             }
-
+            
         }
         
         self.fbreqs.getWaterGoal() { json, error in
@@ -339,35 +374,59 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.waterGoalLabel.text = "of \(String(ounces)) oz"
             } else {
                 self.waterGoalLabel.text = "of DEFAULT oz"
-
+                
             }
-
-
         }
-        
     }
 
     func loadActivity() {
+//        loadActivityFitbit()
+        if self.loginMethod == "HealthKit" {
+            loadActivityHealthKit()
+        } else if self.loginMethod == "Fitbit" {
+            loadActivityFitbit()
+        }
+        
+    }
+    func loadActivityHealthKit() {
+        self.healthKitReqs.getActiveMinutes() { result, error in
+            if error != nil {
+                return
+            }
+            let goalActiveMinutes = "30"
+            DispatchQueue.global(qos: .userInitiated).async {
+                DispatchQueue.main.async {
+                    self.setActivityProgress(exerciseMinutes: result ?? "0", goalActiveMinutes: goalActiveMinutes)
+                }
+            }
+        }
+    
+    }
+    
+    func setActivityProgress(exerciseMinutes: String, goalActiveMinutes: String) {
+        self.activityGoalLabel.text = "of \(goalActiveMinutes) min"
+        self.activityMinutesLabel.text = "\(exerciseMinutes)"
+        self.activityRing.animationStyle = kCAMediaTimingFunctionLinear
+        self.activityRing.fontSize = 25
+        self.activityRing.maxValue = CGFloat(Int(goalActiveMinutes)!)
+        self.animateRing(value: Int(exerciseMinutes)!)
+    }
+    
+    func loadActivityFitbit() {
         self.fbreqs.getDailyActivity() { json, error in
             if error != nil {
                 return
             }
-            let goalActiveMinutes = json?["goals"]["activeMinutes"].int
-            let fairlyActiveMinutes = json?["summary"]["fairlyActiveMinutes"].int
-            let veryActiveMinutes = json?["summary"]["veryActiveMinutes"].int
-            if goalActiveMinutes != nil {
-                self.activityGoalLabel.text = "of \(goalActiveMinutes!) min"
-                let totalActiveMinutes = fairlyActiveMinutes! + veryActiveMinutes!
-                self.activityMinutesLabel.text = "\(totalActiveMinutes)"
-                self.activityRing.animationStyle = kCAMediaTimingFunctionLinear
-                self.activityRing.fontSize = 25
-                self.activityRing.maxValue = CGFloat(goalActiveMinutes!)
-                self.animateRing(value: totalActiveMinutes)
-            }
+            let goalActiveMinutes = json?["goals"]["activeMinutes"].int ?? 30
+            let fairlyActiveMinutes = json?["summary"]["fairlyActiveMinutes"].int ?? 0
+            let veryActiveMinutes = json?["summary"]["veryActiveMinutes"].int ?? 0
+            let totalActiveMinutes = fairlyActiveMinutes + veryActiveMinutes
             
-
+            print("GOAL: \(goalActiveMinutes)")
+            self.setActivityProgress(exerciseMinutes: "\(totalActiveMinutes)", goalActiveMinutes: "\(goalActiveMinutes)")
         }
     }
+    
     
     func animateRing(value: Int) {
         self.activityRing.animationStyle = kCAMediaTimingFunctionLinear
@@ -375,6 +434,14 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func loadHeartRate() {
+        if self.loginMethod == "HealthKit" {
+            loadHeartRateHealthKit()
+        } else if self.loginMethod == "Fitbit" {
+            loadHeartRateFitbit()
+        }
+    }
+    
+    func loadHeartRateFitbit() {
         self.fbreqs.getHeartRateTimeSeriesFromPeriod() {json, error in
             print("HR: \(json)" )
             let restingHeartRateToday = json?["activities-heart"][0]["value"]["restingHeartRate"].int
@@ -386,21 +453,69 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             }
         }
     }
+    
+    func loadHeartRateHealthKit() {
+        self.healthKitReqs.getHeartRate() { heartRate, error in
+            // Move to a background thread to do some long running work
+            DispatchQueue.global(qos: .userInitiated).async {
+                // Bounce back to the main thread to update the UI
+                DispatchQueue.main.async {
+                    if let hr = heartRate {
+                        self.heartRateLabel.text = "\(hr)"
+                    } else {
+                        self.heartRateLabel.text = "00" // TODO get from yesterday from firebase
+                        
+                    }
+                }
+            }
+        }
+
+    }
+    
+
+    
+    
+    
+    
     func loadWeightLog() {}
     func loadEmotion() {}
+    
     func loadSleep() {
+        if self.loginMethod == "HealthKit" {
+            loadSleepHealthKit()
+
+        } else if self.loginMethod == "Fitbit" {
+            loadSleepFitbit()
+        }
+    }
+    func loadSleepHealthKit() {
+        healthKitReqs.getSleepLogs() { result, error in
+            DispatchQueue.global(qos: .userInitiated).async {
+                // Bounce back to the main thread to update the UI
+                DispatchQueue.main.async {
+                    if let sleep = result {
+                        self.timeSleptLabel.text = sleep
+                    } else {
+                        self.timeSleptLabel.text = "0h 0m"
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    func loadSleepFitbit() {
         self.fbreqs.getSleepLogs() { json, error in
             let totalMinutesAsleep = json?["summary"]["totalMinutesAsleep"].int
             if totalMinutesAsleep != nil {
-                let hoursMinutes = Helpers.secondsToHoursMinutes(seconds: totalMinutesAsleep!)
+                let hoursMinutes = Helpers.minutesToHoursMinutes(minutes: totalMinutesAsleep!)
                 let hours = hoursMinutes.0
                 let minutes = hoursMinutes.1
                 self.timeSleptLabel.text  = "\(hours)h \(minutes)m"
             } else {
                 self.timeSleptLabel.text  = "DEFAULT"
-
+                
             }
-
         }
     }
 

@@ -44,8 +44,13 @@ class Helpers {
         return offsetString
     }
     
+    static func minutesToHoursMinutes (minutes : Int) -> (Int, Int) {
+        return (Int(minutes/60), (minutes % 60))
+    }
     static func secondsToHoursMinutes (seconds : Int) -> (Int, Int) {
-        return ((seconds % 3600) / 60, (seconds % 3600) % 60)
+        let hours = Int(floor(Double(seconds / 3600)))
+        let minutes = Int(Int(seconds - hours * 3600)/60)
+        return (hours, minutes)
     }
     
     static func millilitersToOz(milli : Int) -> (Double) {
