@@ -36,9 +36,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var micHelpSmallImage: UIImageView!
     // Speech Vars
     @IBOutlet weak var tapToSpeakButton: UIButton!
-//    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))!
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))  //1
-
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
@@ -56,8 +54,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var activityRing: UICircularProgressRingView!
 
     
-    let loginMethod = "Fitbit"
-    
+    let loginMethod = UserDefaults.standard.string(forKey: "loginMethod")
 
     
     internal func refreshAudioView(_:Timer) {
@@ -115,12 +112,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         super.viewDidLoad()
         
         self.title = "Lily"
-//        if self.loginMethod == "HealthKit" {
-//            healthKitReqs = HealthKitRequests()
-//        } else if self.loginMethod == "Fitbit" {
-//            fbreqs = FitbitRequests()
-//            
-//        }
         self.hideSubview()
         self.loadMicrophoneAtLaunch()
         loadWater()
@@ -155,20 +146,18 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
             case .denied:
                 isButtonEnabled = false
-                print("User denied access to speech recognition")
+//                print("User denied access to speech recognition")
                 
             case .restricted:
                 isButtonEnabled = false
-                print("Speech recognition restricted on this device")
+//                print("Speech recognition restricted on this device")
                 
             case .notDetermined:
                 isButtonEnabled = false
-                print("Speech recognition not yet authorized")
+//                print("Speech recognition not yet authorized")
             }
             
             OperationQueue.main.addOperation() {
-                print("MIC BUTTON IS: \(isButtonEnabled)")
-                //                self.navigationItem.rightBarButtonItem?.isEnabled = isButtonEnabled
                 if isButtonEnabled {
                     self.enableMics()
                 } else {
@@ -179,11 +168,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func micPressed() {
-        debugPrint("mic pressed")
-
         self.showSubview()
-//        self.tapToSpeakLabel.isHidden = true
-        
         
         if audioEngine.isRunning {
             audioEngine.stop()
@@ -232,7 +217,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         
         recognitionRequest.shouldReportPartialResults = false
-        
         recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
             var isFinal = false
@@ -279,9 +263,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         self.tapToSpeakLabel.isHidden = false
         self.tapToSpeakLabel.text = "Say something, I'm listening!"
-
-        
-       print("Say something, I'm listening!")
         
     }
 
@@ -289,10 +270,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
-//            self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.enableMics()
         } else {
-//            self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.disableMics()
         }
     }
@@ -421,8 +400,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             let fairlyActiveMinutes = json?["summary"]["fairlyActiveMinutes"].int ?? 0
             let veryActiveMinutes = json?["summary"]["veryActiveMinutes"].int ?? 0
             let totalActiveMinutes = fairlyActiveMinutes + veryActiveMinutes
-            
-            print("GOAL: \(goalActiveMinutes)")
             self.setActivityProgress(exerciseMinutes: "\(totalActiveMinutes)", goalActiveMinutes: "\(goalActiveMinutes)")
         }
     }
@@ -491,7 +468,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     func loadSleepHealthKit() {
         healthKitReqs.getSleepLogs() { result, error in
             DispatchQueue.global(qos: .userInitiated).async {
-                // Bounce back to the main thread to update the UI
                 DispatchQueue.main.async {
                     if let sleep = result {
                         self.timeSleptLabel.text = sleep
@@ -524,14 +500,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         if ring === self.activityRing {
         }
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

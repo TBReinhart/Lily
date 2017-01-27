@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     var loader: OAuth2DataLoader?
     let healthKitReqs = HealthKitRequests()
     let myId = UIDevice.current.identifierForVendor!.uuidString
+    var ref: FIRDatabaseReference!
 
     
     /// Instance of OAuth2 login credentials
@@ -39,22 +40,21 @@ class ViewController: UIViewController {
     @IBOutlet var signInEmbeddedButton: UIButton?
     @IBOutlet var forgetButton: UIButton?
     
+
     
     @IBAction func loginWithHealthKit(_ sender: Any) {
-        print("HEALTH KIT LOGIN")
         if(healthKitReqs.checkAuthorization()) {
             if(healthKitReqs.isHealthDataAvailable()) {
-                print("available")
                 HUD.show(.progress)
-                self.createUserHelper()
-                print("Segue from healthkit login")
+                self.createUserHelper(method: "HealthKit")
                 HUD.flash(.success, delay: 0.5)
                 self.performSegue(withIdentifier: "loggedInSegue", sender: self)
             }
         }
     }
     
-    func createUserHelper() {
+    func createUserHelper(method: String) {
+        UserDefaults.standard.setValue(method, forKey: "loginMethod")
         let email = self.myId + "@lilyhealth.me"
         let password = self.myId
         self.createUser(user: self.myId, email: email, password: password)
@@ -83,10 +83,10 @@ class ViewController: UIViewController {
                 let json = try response.responseJSON()
                 debugPrint("RESPONSE in json")
                 debugPrint(json)
-                HUD.show(.progress)
+                //HUD.show(.progress)
 
                 self.extractUserData(json: json)
-                self.createUserHelper()
+                self.createUserHelper(method: "Fitbit")
                 DispatchQueue.main.sync {
                     
                     print("Segue")
@@ -114,6 +114,7 @@ class ViewController: UIViewController {
         for attribute in attributes {
             if let value = (json["user"] as? [String : Any])?[attribute] {
                 var val = value
+                self.addAttributeToFirebaseUser(attributeName: attribute, value: val)
                 if attribute == "height" {
                     val = value as! NSNumber
                     val = "\(val)"
@@ -130,6 +131,14 @@ class ViewController: UIViewController {
         
     }
     
+    func addAttributeToFirebaseUser(attributeName: String, value: Any) {
+        self.ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        if let uid = user?.uid {
+            ref.child("users/\(uid)/\(attributeName)").setValue(value)
+        }
+
+    }
 
     func createUser(user: String, email: String, password: String) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
@@ -137,7 +146,7 @@ class ViewController: UIViewController {
             debugPrint("Error: \(error)")
             if error != nil {
                 if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
-
+                    
                     switch errCode {
                     case .errorCodeInvalidEmail:
                         print("invalid email") // really shouldn't happen at this point since we are creating email
@@ -148,10 +157,29 @@ class ViewController: UIViewController {
                         print("Create User Error: \(error)")
                     }
                 }
-
+                self.createOrUpdateFirebaseUserProfile()
             }
         }
     }
+    
+    func createOrUpdateFirebaseUserProfile() {
+        self.ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        // The user's ID, unique to the Firebase project.
+        // Do NOT use this value to authenticate with your backend server,
+        // if you have one. Use getTokenWithCompletion:completion: instead.
+        let email = user?.email ?? "None"
+        print("EMAIL: \(email)")
+        if let uid = user?.uid {
+            //ref.child("users/\(uid)/username").setValue("Tom R.")
+            ref.child("users/\(uid)/email").setValue(email)
+            ref.child("users/\(uid)/loginMethod").setValue(UserDefaults.standard.string(forKey: "loginMethod") ?? "None")
+
+        }
+        //let photoURL = user?.photoURL
+
+    }
+    
     
     func signIn(user: String, email: String, password: String) {
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
