@@ -24,10 +24,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3O9-bt-exf">
-                                <rect key="frame" x="167" y="317" width="42" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Fitbit">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="tZP-xi-bJD">
+                                <rect key="frame" x="49" y="146" width="277" height="429"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LilyLoginImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="xsz-f7-jjO">
+                                <rect key="frame" x="106" y="257" width="164" height="138.5"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3O9-bt-exf">
+                                <rect key="frame" x="82" y="452" width="210" height="43"/>
+                                <state key="normal" image="ConnectWithFitbit.png">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="disabled">
@@ -37,38 +42,46 @@
                                     <action selector="signInEmbedded:" destination="M3c-OP-UZq" eventType="touchUpInside" id="PQM-VV-aOZ"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBu-2c-T5v">
-                                <rect key="frame" x="133" y="470" width="109" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Forget Tokens">
-                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="forgetTokens:" destination="M3c-OP-UZq" eventType="touchUpInside" id="P1b-l8-Cj8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-dF-HRt">
-                                <rect key="frame" x="97" y="358" width="181" height="30"/>
-                                <state key="normal" title="Apple HealthKit"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OrLoginImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="y9o-dU-cRQ">
+                                <rect key="frame" x="82" y="504.5" width="212" height="5.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="tcj-zt-lwm"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-dF-HRt">
+                                <rect key="frame" x="82" y="518" width="210" height="42"/>
+                                <state key="normal" title="Apple HealthKit" image="ConnectWithHealthKit.png"/>
                                 <connections>
                                     <action selector="loginWithHealthKit:" destination="M3c-OP-UZq" eventType="touchUpInside" id="WIV-5S-rxf"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.67450980392156867" green="0.82352941176470584" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JIV-dF-HRt" firstAttribute="leading" secondItem="Vcl-u0-eDr" secondAttribute="leadingMargin" constant="81" id="5ww-Jq-yUf"/>
-                            <constraint firstAttribute="centerY" secondItem="3O9-bt-exf" secondAttribute="centerY" id="Duw-at-u8o"/>
-                            <constraint firstItem="Zhz-I0-cfy" firstAttribute="top" secondItem="OBu-2c-T5v" secondAttribute="bottom" constant="164" id="Rs8-61-j7z"/>
-                            <constraint firstAttribute="centerX" secondItem="3O9-bt-exf" secondAttribute="centerX" id="Wkf-dK-BT3"/>
-                            <constraint firstItem="JIV-dF-HRt" firstAttribute="top" secondItem="3O9-bt-exf" secondAttribute="bottom" constant="8" id="cHF-Cx-NOj"/>
-                            <constraint firstAttribute="centerX" secondItem="OBu-2c-T5v" secondAttribute="centerX" id="jE1-kS-o6f"/>
-                            <constraint firstItem="OBu-2c-T5v" firstAttribute="top" secondItem="JIV-dF-HRt" secondAttribute="bottom" constant="82" id="srS-8r-kfE"/>
-                            <constraint firstItem="JIV-dF-HRt" firstAttribute="centerX" secondItem="3O9-bt-exf" secondAttribute="centerX" id="uN2-co-noE"/>
+                            <constraint firstItem="3O9-bt-exf" firstAttribute="top" secondItem="xsz-f7-jjO" secondAttribute="bottom" constant="58" id="0Ak-HY-RxC"/>
+                            <constraint firstItem="xsz-f7-jjO" firstAttribute="width" secondItem="tZP-xi-bJD" secondAttribute="height" multiplier="164:429" id="1Z6-uh-lH7"/>
+                            <constraint firstItem="tZP-xi-bJD" firstAttribute="top" secondItem="1Ll-eF-Vlp" secondAttribute="bottom" constant="126" id="37M-10-DwJ"/>
+                            <constraint firstItem="tZP-xi-bJD" firstAttribute="leading" secondItem="Vcl-u0-eDr" secondAttribute="leadingMargin" constant="33" id="69C-0X-N6T"/>
+                            <constraint firstItem="xsz-f7-jjO" firstAttribute="leading" secondItem="Vcl-u0-eDr" secondAttribute="leadingMargin" constant="90" id="6eq-Rv-jcq"/>
+                            <constraint firstItem="3O9-bt-exf" firstAttribute="width" secondItem="xsz-f7-jjO" secondAttribute="height" multiplier="210:137" id="8mg-eg-nMc"/>
+                            <constraint firstItem="y9o-dU-cRQ" firstAttribute="top" secondItem="3O9-bt-exf" secondAttribute="bottom" constant="8" symbolic="YES" id="AWE-3a-Bqx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tZP-xi-bJD" secondAttribute="trailing" constant="33" id="DN1-a9-r0o"/>
+                            <constraint firstItem="y9o-dU-cRQ" firstAttribute="leading" secondItem="3O9-bt-exf" secondAttribute="leading" id="DTp-FG-PGu"/>
+                            <constraint firstItem="3O9-bt-exf" firstAttribute="trailing" secondItem="JIV-dF-HRt" secondAttribute="trailing" id="DVC-QX-fa6"/>
+                            <constraint firstItem="y9o-dU-cRQ" firstAttribute="centerX" secondItem="xsz-f7-jjO" secondAttribute="centerX" id="GnH-0Y-n7F"/>
+                            <constraint firstItem="xsz-f7-jjO" firstAttribute="centerX" secondItem="tZP-xi-bJD" secondAttribute="centerX" id="NVe-sK-3BJ"/>
+                            <constraint firstItem="3O9-bt-exf" firstAttribute="leading" secondItem="Vcl-u0-eDr" secondAttribute="leadingMargin" constant="66" id="Nxe-Rk-lph"/>
+                            <constraint firstItem="y9o-dU-cRQ" firstAttribute="trailing" secondItem="3O9-bt-exf" secondAttribute="trailing" id="Wqh-XL-aAN"/>
+                            <constraint firstItem="3O9-bt-exf" firstAttribute="height" secondItem="JIV-dF-HRt" secondAttribute="height" constant="1" id="YnB-W8-MuB"/>
+                            <constraint firstItem="y9o-dU-cRQ" firstAttribute="centerX" secondItem="JIV-dF-HRt" secondAttribute="centerX" id="YqU-bI-85b"/>
+                            <constraint firstItem="tZP-xi-bJD" firstAttribute="centerX" secondItem="Vcl-u0-eDr" secondAttribute="centerX" id="b12-MV-OGi"/>
+                            <constraint firstItem="JIV-dF-HRt" firstAttribute="top" secondItem="tZP-xi-bJD" secondAttribute="bottom" constant="-57" id="cuJ-lE-9o0"/>
+                            <constraint firstItem="Zhz-I0-cfy" firstAttribute="top" secondItem="tZP-xi-bJD" secondAttribute="bottom" constant="92" id="dFt-ge-DIT"/>
+                            <constraint firstItem="JIV-dF-HRt" firstAttribute="top" secondItem="y9o-dU-cRQ" secondAttribute="bottom" constant="8" id="hTR-tg-2rx"/>
+                            <constraint firstItem="Zhz-I0-cfy" firstAttribute="top" secondItem="JIV-dF-HRt" secondAttribute="bottom" constant="107" id="kjr-SI-NvF"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="forgetButton" destination="OBu-2c-T5v" id="jvS-gb-uZF"/>
                         <outlet property="signInEmbeddedButton" destination="3O9-bt-exf" id="DJz-Fl-SEq"/>
                         <segue destination="o3e-h5-diT" kind="show" identifier="loggedInSegue" id="76W-2B-eCl"/>
                     </connections>
@@ -569,16 +582,21 @@
     <resources>
         <image name="CardBackground.png" width="367" height="392"/>
         <image name="Checklist.png" width="111" height="164"/>
+        <image name="ConnectWithFitbit.png" width="419" height="85"/>
+        <image name="ConnectWithHealthKit.png" width="419" height="85"/>
         <image name="ErrorMicHelpMessage.png" width="564" height="172"/>
         <image name="Flame.png" width="28" height="48"/>
         <image name="Heart.png" width="196" height="180"/>
         <image name="Help Subview.png" width="750" height="740"/>
+        <image name="LilyLoginImage.png" width="250" height="201"/>
         <image name="MicWhite.png" width="102" height="102"/>
         <image name="Moon.png" width="168" height="187"/>
+        <image name="OrLoginImage.png" width="419" height="14"/>
         <image name="backgroundMicHelp.png" width="750" height="1334"/>
         <image name="backgroundShade.png" width="750" height="1204"/>
         <image name="balance.png" width="169" height="196"/>
         <image name="water.png" width="91" height="130"/>
+        <image name="white_background.png" width="554" height="857"/>
         <image name="x.png" width="35" height="35"/>
     </resources>
 </document>

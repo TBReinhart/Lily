@@ -40,6 +40,10 @@ class ViewController: UIViewController {
     @IBOutlet var signInEmbeddedButton: UIButton?
     @IBOutlet var forgetButton: UIButton?
     
+    override func viewDidLoad() {
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Lily_background")!)
+    }
 
     
     @IBAction func loginWithHealthKit(_ sender: Any) {
@@ -137,16 +141,15 @@ class ViewController: UIViewController {
         if let uid = user?.uid {
             ref.child("users/\(uid)/\(attributeName)").setValue(value)
         }
-
     }
+    
+    
 
     func createUser(user: String, email: String, password: String) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
-            debugPrint("USER: \(user)")
             debugPrint("Error: \(error)")
             if error != nil {
                 if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
-                    
                     switch errCode {
                     case .errorCodeInvalidEmail:
                         print("invalid email") // really shouldn't happen at this point since we are creating email

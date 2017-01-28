@@ -13,6 +13,7 @@ import Foundation
 import UICircularProgressRing
 import PKHUD
 import SwiftSiriWaveformView
+import SCLAlertView
 
 class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
@@ -55,7 +56,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     
     let loginMethod = UserDefaults.standard.string(forKey: "loginMethod")
-
     
     internal func refreshAudioView(_:Timer) {
         if self.audioView.amplitude <= self.audioView.idleAmplitude || self.audioView.amplitude > 1.0 {
@@ -118,15 +118,24 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         loadSleep()
         loadActivity()
         loadHeartRate()
+        loadWeightLog()
     }
 
     func loadMicrophoneAtLaunch() {
-        let button = UIButton.init(type: .custom)
-        button.setImage(UIImage.init(named: "microphone.png"), for: UIControlState.normal)
-        button.addTarget(self, action:#selector(HomeScreenViewController.micPressed), for: UIControlEvents.touchUpInside)
-        button.frame = CGRect.init(x: 0, y: 0, width: 20, height: 30) //CGRectMake(0, 0, 30, 30)
-        let barButton = UIBarButtonItem.init(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
+        let micButton = UIButton.init(type: .custom)
+        micButton.setImage(UIImage.init(named: "microphone.png"), for: UIControlState.normal)
+        micButton.addTarget(self, action:#selector(HomeScreenViewController.micPressed), for: UIControlEvents.touchUpInside)
+        micButton.frame = CGRect.init(x: 0, y: 0, width: 20, height: 30) //CGRectMake(0, 0, 30, 30)
+        let rightBarButton = UIBarButtonItem.init(customView: micButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let exportButton = UIButton.init(type: .custom)
+        exportButton.setImage(UIImage.init(named: "exportButtonIcon"), for: UIControlState.normal)
+        exportButton.addTarget(self, action:#selector(HomeScreenViewController.exportPressed), for: UIControlEvents.touchUpInside)
+        exportButton.frame = CGRect.init(x: 0, y: 0, width: 20, height: 30) //CGRectMake(0, 0, 30, 30)
+        let leftBarButton = UIBarButtonItem.init(customView: exportButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+
         
         self.audioView.density = 1.0
         self.audioView.isHidden = true
@@ -165,6 +174,18 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
             }
         }
+    }
+    
+    func exportPressed() {
+        // Add a text field
+        let alert = SCLAlertView()
+        let txt = alert.addTextField("default@gmail.com")
+        alert.addButton("Send") {
+            print("Text value: \(txt.text)")
+            print("Email from box")
+        }
+        let alertViewIcon = UIImage(named: "sendIcon") //Replace the IconImage text with the image name
+        alert.showEdit("Export Health Data", subTitle: "Please provide an email", circleIconImage: alertViewIcon)
     }
     
     func micPressed() {
@@ -324,9 +345,10 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.healthKitReqs.getWaterConsumption() { result, error in
             let waterConsumedInOunces = result ?? "0"
             DispatchQueue.global(qos: .userInitiated).async {
-                // Bounce back to the main thread to update the UI
                 DispatchQueue.main.async {
                     self.waterConsumedLabel.text = waterConsumedInOunces
+                    Helpers.postDailyLogToFirebase(key: "waterOuncesConsumed", value: Int(waterConsumedInOunces)!)
+                    Helpers.postDailyLogToFirebase(key: "waterOuncesGoal", value: 96)
                     self.waterGoalLabel.text = "of 96 oz"
                 }
             }
@@ -339,9 +361,10 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             if waterInMilli != nil {
                 let ounces = Int(round(Helpers.millilitersToOz(milli: waterInMilli!)))
                 self.waterConsumedLabel.text = "\(String(ounces))"
+                Helpers.postDailyLogToFirebase(key: "waterOuncesConsumed", value: ounces)
             } else {
                 self.waterConsumedLabel.text = "0"
-                
+                Helpers.postDailyLogToFirebase(key: "waterOuncesConsumed", value: 0)
             }
             
         }
@@ -351,9 +374,11 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             if goalInMilli != nil {
                 let ounces = Int(round(Helpers.millilitersToOz(milli: goalInMilli!)))
                 self.waterGoalLabel.text = "of \(String(ounces)) oz"
+                Helpers.postDailyLogToFirebase(key: "waterOuncesGoal", value: ounces)
+
             } else {
                 self.waterGoalLabel.text = "of DEFAULT oz"
-                
+                Helpers.postDailyLogToFirebase(key: "waterOuncesGoal", value: 96)
             }
         }
     }
@@ -375,6 +400,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             let goalActiveMinutes = "30"
             DispatchQueue.global(qos: .userInitiated).async {
                 DispatchQueue.main.async {
+                    Helpers.postDailyLogToFirebase(key: "activityMinutes", value: result ?? 0)
+                    Helpers.postDailyLogToFirebase(key: "activityMinutesGoal", value: 30)
                     self.setActivityProgress(exerciseMinutes: result ?? "0", goalActiveMinutes: goalActiveMinutes)
                 }
             }
@@ -400,6 +427,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             let fairlyActiveMinutes = json?["summary"]["fairlyActiveMinutes"].int ?? 0
             let veryActiveMinutes = json?["summary"]["veryActiveMinutes"].int ?? 0
             let totalActiveMinutes = fairlyActiveMinutes + veryActiveMinutes
+            Helpers.postDailyLogToFirebase(key: "activityMinutes", value: totalActiveMinutes)
+            Helpers.postDailyLogToFirebase(key: "activityMinutesGoal", value: goalActiveMinutes)
             self.setActivityProgress(exerciseMinutes: "\(totalActiveMinutes)", goalActiveMinutes: "\(goalActiveMinutes)")
         }
     }
@@ -424,8 +453,10 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             let restingHeartRateToday = json?["activities-heart"][0]["value"]["restingHeartRate"].int
             if restingHeartRateToday != nil {
                 self.heartRateLabel.text = "\(restingHeartRateToday!)"
+                Helpers.postDailyLogToFirebase(key: "restingHeartRate", value: restingHeartRateToday!)
             } else {
                 self.heartRateLabel.text = "00" // TODO get from yesterday from firebase
+                Helpers.postDailyLogToFirebase(key: "restingHeartRate", value: 0)
 
             }
         }
@@ -433,14 +464,15 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     func loadHeartRateHealthKit() {
         self.healthKitReqs.getHeartRate() { heartRate, error in
-            // Move to a background thread to do some long running work
             DispatchQueue.global(qos: .userInitiated).async {
-                // Bounce back to the main thread to update the UI
                 DispatchQueue.main.async {
                     if let hr = heartRate {
                         self.heartRateLabel.text = "\(hr)"
+                        Helpers.postDailyLogToFirebase(key: "restingHeartRate", value: Int(hr)!)
+
                     } else {
                         self.heartRateLabel.text = "00" // TODO get from yesterday from firebase
+                        Helpers.postDailyLogToFirebase(key: "restingHeartRate", value: 0)
                         
                     }
                 }
@@ -448,13 +480,20 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
 
     }
-    
 
     
+    func loadWeightLog() {
+        loadWeightHealthKit()
+    }
     
-    
-    
-    func loadWeightLog() {}
+    func loadWeightHealthKit() {
+        self.healthKitReqs.getWeight() { result, error in
+            print(result ?? "0")
+        }
+    }
+    func loadWeightFitbit() {
+
+    }
     func loadEmotion() {}
     
     func loadSleep() {
@@ -471,8 +510,10 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 DispatchQueue.main.async {
                     if let sleep = result {
                         self.timeSleptLabel.text = sleep
+                        Helpers.postDailyLogToFirebase(key: "sleepTime", value: sleep)
                     } else {
                         self.timeSleptLabel.text = "0h 0m"
+                        Helpers.postDailyLogToFirebase(key: "sleepTime", value: "0h 0m")
                     }
                 }
             }
@@ -487,10 +528,12 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 let hoursMinutes = Helpers.minutesToHoursMinutes(minutes: totalMinutesAsleep!)
                 let hours = hoursMinutes.0
                 let minutes = hoursMinutes.1
-                self.timeSleptLabel.text  = "\(hours)h \(minutes)m"
+                let sleepTime = "\(hours)h \(minutes)m"
+                Helpers.postDailyLogToFirebase(key: "sleepTime", value: sleepTime)
+                self.timeSleptLabel.text  = sleepTime
             } else {
                 self.timeSleptLabel.text  = "DEFAULT"
-                
+                Helpers.postDailyLogToFirebase(key: "sleepTime", value: "0h 0m")
             }
         }
     }

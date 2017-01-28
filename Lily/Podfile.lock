@@ -41,6 +41,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.7)
   - p2.OAuth2 (3.0.1)
   - PKHUD (4.1.0)
+  - SCLAlertView (0.7.0)
   - SwiftSiriWaveformView (2.0.0)
   - SwiftyJSON (3.1.3)
   - UICircularProgressRing (1.1.6)
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - Firebase/Database
   - p2.OAuth2 (~> 3.0)
   - PKHUD (~> 4.0)
+  - SCLAlertView
   - SwiftSiriWaveformView
   - SwiftyJSON
   - UICircularProgressRing
@@ -70,10 +72,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   p2.OAuth2: 1c58296b53820e57ea63a8977541d2e4780df141
   PKHUD: a0ecdee9f67d9b462c0c5e4ba38400292ea6ae6e
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SwiftSiriWaveformView: 85328da51cf5f3c6a0dbcdf9186f4417edf1b538
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   UICircularProgressRing: 892adf48ea0bdc218057c4e62c5e3a8609bd5b1c
 
-PODFILE CHECKSUM: 2fc26f36091fbba61e02e4f234f40e0b9fc9bb4d
+PODFILE CHECKSUM: 198616da32cdd2f123757548abfb4a49a232100b
 
 COCOAPODS: 1.1.1

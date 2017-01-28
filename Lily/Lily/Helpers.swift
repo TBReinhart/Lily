@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import Firebase
+import SwiftyJSON
+
 class Helpers {
     
     /// TODO need to get the specific user's current date
@@ -63,5 +66,18 @@ class Helpers {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+    
+    static func postDailyLogToFirebase(key: String, value: Any) {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let dateInFormat = dateFormatter.string(from: NSDate() as Date)
+        
+        if let uid = user?.uid {
+            ref.child("users/\(uid)/logs/\(dateInFormat)/\(key)").setValue(value)
+        }
     }
 }

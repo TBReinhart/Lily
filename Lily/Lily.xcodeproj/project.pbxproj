@@ -23,6 +23,7 @@
 		2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */; };
 		2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6591AB1E03B29C0040AA4A /* Services.plist */; };
 		2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */; };
+		2F91177B1E3C50BB00D1D6F6 /* sendIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */; };
 		2FA09AED1E31321F0094270F /* blackjack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AEC1E31321F0094270F /* blackjack.otf */; };
 		2FA09AEF1E3138070094270F /* CardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AEE1E3138070094270F /* CardBackground.png */; };
 		2FA09AF11E3138E30094270F /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AF01E3138E30094270F /* water.png */; };
@@ -47,6 +48,13 @@
 		2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */; };
 		2FDB45F61E21755300A98225 /* LilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDB45F51E21755300A98225 /* LilyTests.swift */; };
 		2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE264141E395ECF004DB460 /* HealthKitRequests.swift */; };
+		2FE264261E3C38EC004DB460 /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264241E3C38EC004DB460 /* white_background.png */; };
+		2FE2642C1E3C399B004DB460 /* LilyLoginImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2642B1E3C399B004DB460 /* LilyLoginImage.png */; };
+		2FE2642E1E3C3A6A004DB460 /* ConnectWithFitbit.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2642D1E3C3A6A004DB460 /* ConnectWithFitbit.png */; };
+		2FE264301E3C3A82004DB460 /* ConnectWithHealthKit.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2642F1E3C3A82004DB460 /* ConnectWithHealthKit.png */; };
+		2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264311E3C3A9B004DB460 /* OrLoginImage.png */; };
+		2FE264361E3C419A004DB460 /* Lily_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264351E3C419A004DB460 /* Lily_background.png */; };
+		2FE2643A1E3C4C03004DB460 /* exportButtonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264391E3C4C03004DB460 /* exportButtonIcon.png */; };
 		672BB027D2BACD0ACB5F68C2 /* Pods_Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */; };
 		A6B15886DD2C5CF0E96A3F0D /* Pods_Lily_LilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */; };
 /* End PBXBuildFile section */
@@ -81,6 +89,7 @@
 		2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micWithOrangeBorder.png; sourceTree = "<group>"; };
 		2F6591AB1E03B29C0040AA4A /* Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
 		2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2RetryHandler.swift; sourceTree = "<group>"; };
+		2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendIcon.png; sourceTree = "<group>"; };
 		2FA09AEC1E31321F0094270F /* blackjack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = blackjack.otf; path = blackjack/blackjack.otf; sourceTree = "<group>"; };
 		2FA09AEE1E3138070094270F /* CardBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardBackground.png; sourceTree = "<group>"; };
 		2FA09AF01E3138E30094270F /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
@@ -110,6 +119,13 @@
 		2FDB45F51E21755300A98225 /* LilyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilyTests.swift; sourceTree = "<group>"; };
 		2FDB45F71E21755300A98225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FE264141E395ECF004DB460 /* HealthKitRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HealthKitRequests.swift; path = Lily/HealthKitRequests.swift; sourceTree = "<group>"; };
+		2FE264241E3C38EC004DB460 /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
+		2FE2642B1E3C399B004DB460 /* LilyLoginImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LilyLoginImage.png; sourceTree = "<group>"; };
+		2FE2642D1E3C3A6A004DB460 /* ConnectWithFitbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConnectWithFitbit.png; sourceTree = "<group>"; };
+		2FE2642F1E3C3A82004DB460 /* ConnectWithHealthKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConnectWithHealthKit.png; sourceTree = "<group>"; };
+		2FE264311E3C3A9B004DB460 /* OrLoginImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrLoginImage.png; sourceTree = "<group>"; };
+		2FE264351E3C419A004DB460 /* Lily_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lily_background.png; sourceTree = "<group>"; };
+		2FE264391E3C4C03004DB460 /* exportButtonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exportButtonIcon.png; sourceTree = "<group>"; };
 		75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCA35F4FE7800240D9C439 /* Pods-Lily-LilyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily-LilyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily_LilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +165,14 @@
 		2F2F76111E3131A8000AE4F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */,
+				2FE264391E3C4C03004DB460 /* exportButtonIcon.png */,
+				2FE264351E3C419A004DB460 /* Lily_background.png */,
+				2FE264311E3C3A9B004DB460 /* OrLoginImage.png */,
+				2FE2642F1E3C3A82004DB460 /* ConnectWithHealthKit.png */,
+				2FE2642D1E3C3A6A004DB460 /* ConnectWithFitbit.png */,
+				2FE2642B1E3C399B004DB460 /* LilyLoginImage.png */,
+				2FE264241E3C38EC004DB460 /* white_background.png */,
 				2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */,
 				2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */,
 				2FC7FC061E35C9A300A7DA50 /* simpleMicHelp.png */,
@@ -389,12 +413,19 @@
 				2FC7FC081E35C9A300A7DA50 /* simpleMicHelp.png in Resources */,
 				2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */,
 				2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */,
+				2FE264261E3C38EC004DB460 /* white_background.png in Resources */,
 				2FA09AED1E31321F0094270F /* blackjack.otf in Resources */,
 				2FA09B051E31BEF80094270F /* microphone.png in Resources */,
+				2FE2643A1E3C4C03004DB460 /* exportButtonIcon.png in Resources */,
 				2FA09AF81E3138F10094270F /* balance.png in Resources */,
+				2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */,
 				2FA09AF91E3138F10094270F /* Checklist.png in Resources */,
 				2FA09AFB1E3138F10094270F /* Moon.png in Resources */,
+				2FE2642C1E3C399B004DB460 /* LilyLoginImage.png in Resources */,
+				2F91177B1E3C50BB00D1D6F6 /* sendIcon.png in Resources */,
 				2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */,
+				2FE264301E3C3A82004DB460 /* ConnectWithHealthKit.png in Resources */,
+				2FE2642E1E3C3A6A004DB460 /* ConnectWithFitbit.png in Resources */,
 				2F3FDC911E35921B00B18F25 /* x.png in Resources */,
 				2F2F760E1E312BC9000AE4F7 /* NavigationBar.png in Resources */,
 				2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */,
@@ -409,6 +440,7 @@
 				2FA09AF11E3138E30094270F /* water.png in Resources */,
 				2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */,
 				2F3FDC8E1E35905D00B18F25 /* question_mark.png in Resources */,
+				2FE264361E3C419A004DB460 /* Lily_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

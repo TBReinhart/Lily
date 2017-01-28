@@ -29,6 +29,8 @@ class HealthKitRequests {
                 HKObjectType.workoutType(), // exercise
                 HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.respiratoryRate)!, // respiratory r ate
                 HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.bodyMassIndex)!, //BMI
+                HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.bodyMass)!, //Body Mass
+
                 HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.basalBodyTemperature)! //basal body temp
             ]
             
@@ -102,6 +104,7 @@ class HealthKitRequests {
                 if let results = results as? [HKQuantitySample]
                 {
                     let sample = results[0] as HKQuantitySample
+                    print("HR SAMPLE: \(sample)")
                     let value = sample.quantity.doubleValue(for: heartRateUnit)
                     if error != nil {
                         completionHandler(nil, error)
@@ -217,6 +220,8 @@ class HealthKitRequests {
         
         let waterConsumption = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)
         
+        let bodyMass = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)
+
         
         //   Get the start of the day
         let date = NSDate()
@@ -229,7 +234,7 @@ class HealthKitRequests {
         interval.day = 1
         
         //  Perform the Query
-        let query = HKStatisticsCollectionQuery(quantityType: waterConsumption!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: newDate as Date, intervalComponents:interval as DateComponents)
+        let query = HKStatisticsCollectionQuery(quantityType: waterConsumption!, quantitySamplePredicate: predicate, options: [], anchorDate: newDate as Date, intervalComponents:interval as DateComponents)
         
         query.initialResultsHandler = { query, results, error in
             
@@ -256,6 +261,39 @@ class HealthKitRequests {
         }
         self.healthKitStore.execute(query)
     }
+    func getWeight(completionHandler: @escaping (String?, Error?) -> ()) {
+        // Predicate for the height query
+        let distantPastHeight = NSDate.distantPast as NSDate
+        let currentDate = NSDate()
+        let lastHeightPredicate = HKQuery.predicateForSamples(withStart: distantPastHeight as Date, end: currentDate as Date)
+        let weightType = HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.bodyMass)!
+        
+        // Get the single most recent height
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        
+        // Query HealthKit for the last Height entry.
+        let heightQuery = HKSampleQuery(sampleType: weightType, predicate: lastHeightPredicate, limit: 1, sortDescriptors: [sortDescriptor]) { (sampleQuery, results, error ) -> Void in
+            
+            if let queryError = error {
+                completionHandler(nil, queryError)
+                return
+            }
+            
+            // Set the first HKQuantitySample in results as the most recent height.
+            let lastWeight = results!.first as? HKQuantitySample
+            
+            if let weightInPounds = lastWeight?.quantity.doubleValue(for: HKUnit.pound()) {
+                let rounded = round(10.0 * weightInPounds) / 10.0
+                completionHandler("\(rounded)", nil)
+            }
+
+
+        }
+        
+        // Time to execute the query.
+        self.healthKitStore.execute(heightQuery)
+    }
+
 }
-    
-    
+
+

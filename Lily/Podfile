@@ -15,6 +15,7 @@ target 'Lily' do
     pod 'UICircularProgressRing'
     pod 'PKHUD', '~> 4.0'
     pod "SwiftSiriWaveformView"
+    pod 'SCLAlertView'
 
     target ‘LilyTests’ do
         pod 'p2.OAuth2', '~> 3.0'
