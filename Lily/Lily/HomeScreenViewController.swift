@@ -14,6 +14,7 @@ import UICircularProgressRing
 import PKHUD
 import SwiftSiriWaveformView
 import SCLAlertView
+import SendGrid
 
 class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
@@ -55,6 +56,9 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var activityRing: UICircularProgressRingView!
 
     
+    
+    
+    
     let loginMethod = UserDefaults.standard.string(forKey: "loginMethod")
     
     internal func refreshAudioView(_:Timer) {
@@ -67,6 +71,25 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
 
+    func sendEmail(email: String) {
+
+
+        let personalization = Personalization(recipients: "treinhart4115@gmail.com")
+        let plainText = Content(contentType: ContentType.plainText, value: "Here is your Lily Health Data")
+        let htmlText = Content(contentType: ContentType.htmlText, value: "<h1>Thanks for using Lily!</h1>")
+        let email = Email(
+            personalizations: [personalization],
+            from: Address("Lily@lilyhealth.me"),
+            content: [plainText, htmlText],
+            subject: "Lily Health Data"
+        )
+        do {
+            try Session.shared.send(request: email)
+        } catch {
+            print(error)
+        }
+    }
+    
     @IBAction func questionMarkButtonPressed(_ sender: Any) {
         self.showDetailedHelp()
     }
@@ -112,6 +135,9 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         super.viewDidLoad()
         
         self.title = "Lily"
+        
+        // Send a basic example
+        Session.shared.authentication = Authentication.apiKey("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")
         self.hideSubview()
         self.loadMicrophoneAtLaunch()
         loadWater()
@@ -119,6 +145,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         loadActivity()
         loadHeartRate()
         loadWeightLog()
+        
     }
 
     func loadMicrophoneAtLaunch() {
@@ -183,6 +210,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         alert.addButton("Send") {
             print("Text value: \(txt.text)")
             print("Email from box")
+            self.sendEmail(email: "treinhart4115@gmail.com")
         }
         let alertViewIcon = UIImage(named: "sendIcon") //Replace the IconImage text with the image name
         alert.showEdit("Export Health Data", subTitle: "Please provide an email", circleIconImage: alertViewIcon)
