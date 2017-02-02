@@ -620,6 +620,45 @@ class FitbitRequests {
         }
     }
     
+    
+    func getWaterLastWeek(completionHandler: @escaping ([Water]?, Error?) -> ()) {
+        var weekWaterObjects = [Water]()
+        self.getWaterLogSeriesPeriod(date:"today", period: "7d") { json, error in
+            print("WATER JSON: \(json)")
+            
+            if json != nil {
+                if let sleeps = json?["foods-log-water"] {
+                    for s in sleeps {
+                        let dateTime = s.1["dateTime"].string
+                        let waterInMilli = s.1["value"].doubleValue 
+                        let cupsConsumed = Helpers.millilitersToOz(milli: waterInMilli) * 0.125
+                        let cupsRounded = round(10.0 * cupsConsumed) / 10.0
+
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        let date = dateFormatter.date(from: dateTime!)
+                        let weekDay = Helpers.getWeekDayFromDate(date: (date ?? nil)!)
+                        let thisWater = Water()
+                        thisWater.cupsConsumed = cupsConsumed
+                        thisWater.dayOfWeek = weekDay
+                        print("\(weekDay): \(cupsRounded)")
+                        
+                        let calendar = Calendar.autoupdatingCurrent
+                        let components = calendar.dateComponents([.month, .day], from: date ?? Date())
+                        let month = components.month
+                        let day = components.day
+                        thisWater.dateString = "\(month ?? 1)/\(day ?? 1)"
+                        weekWaterObjects.append(thisWater)
+
+                    }
+                }
+                completionHandler(weekWaterObjects,nil)
+            }
+
+        }
+
+    }
+    
     /**
      ## Get Water Goal ##
      Resource URL
@@ -1330,17 +1369,98 @@ class FitbitRequests {
      
      GET https://api.fitbit.com/1/user/28H22H/sleep/date/2014-09-01.json
     */
-    func getSleepLogs(date: String = "today", completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getSleepLogs(date: String = "today", completionHandler: @escaping (Sleep?, Error?) -> ()) {
+        let sleepObject = Sleep()
         let url = "https://api.fitbit.com/1/user/-/sleep/date/\(date).json"
         restClient.getRequest(url: url) { json, error in
             if error != nil {
-                completionHandler(nil, error)
+                completionHandler(sleepObject, error)
             } else {
-                completionHandler(json,nil)
+                // minuteData can be 1 ("asleep"), 2 ("awake"), or 3 ("really awake").
+                // Can use "restlessCount", "awakeDuration", "efficiency", "awakeCount", "timeInBed"
+                let totalMinutesAsleep = json?["summary"]["totalMinutesAsleep"].int
+                sleepObject.totalMinutesAsleep = totalMinutesAsleep ?? 0
+                
+                if totalMinutesAsleep != nil {
+                    let hoursMinutes = Helpers.minutesToHoursMinutes(minutes: totalMinutesAsleep!)
+                    let hours = hoursMinutes.0
+                    let minutes = hoursMinutes.1
+                    let sleepTime = "\(hours)h \(minutes)m"
+                    sleepObject.sleepLabel = sleepTime
+                    let sleepTimeRounded = round(10.0 * Double(totalMinutesAsleep ?? 0)/60) / 10.0
+                    sleepObject.sleepTimeRounded = sleepTimeRounded
+                    Helpers.postDailyLogToFirebase(key: "sleepTime", value: sleepObject.sleepLabel)
+                } else {
+                    sleepObject.sleepLabel = "0h 0m"
+                    Helpers.postDailyLogToFirebase(key: "sleepTime", value: "0h 0m")
+                }
+                let dateString = (json?["sleep"][0]["dateOfSleep"].string) ?? "1970-01-01"
+                let comps = dateString.components(separatedBy: "-")
+
+                var dateComps = DateComponents()
+                dateComps.year = Int(comps[0])
+                dateComps.month = Int(comps[1])
+                dateComps.day = Int(comps[2])
+                let sleepDate = Calendar.current.date(from: dateComps)!
+                
+                let df = DateFormatter()
+                df.dateStyle = .long
+                df.string(from: sleepDate) // "3/10/76"
+                let longDate = df.string(from: sleepDate)
+
+                sleepObject.dateLong = longDate
+                
+                
+                sleepObject.efficiency = (json?["sleep"][0]["efficiency"].int) ?? 0
+                sleepObject.awakeCount = (json?["sleep"][0]["awakeCount"].int) ?? 0
+                sleepObject.awakeDuration = (json?["sleep"][0]["awakeDuration"].int) ?? 0
+                sleepObject.restlessCount = (json?["sleep"][0]["restlessCount"].int) ?? 0
+                sleepObject.restlessDuration = (json?["sleep"][0]["restlessDuration"].int) ?? 0
+                completionHandler(sleepObject,nil)
+
             }
         }
     }
-   
+
+
+    
+    func getSleepLastWeek(date: String = "today", completionHandler: @escaping ([Sleep]?, Error?) -> ()) {
+        var weekSleepObjects = [Sleep]()
+
+        self.getSleepTimeSeriesFromPeriod(resourcePath: "sleep/minutesAsleep", date: "today", period: "7d") { json, error in
+            
+            if json != nil {
+                if let sleeps = json?["sleep-minutesAsleep"] {
+                    for s in sleeps {
+                        let dateTime = s.1["dateTime"].string
+                        let minutes = s.1["value"].doubleValue
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        let date = dateFormatter.date(from: dateTime!)
+                        
+                        let weekDay = Helpers.getWeekDayFromDate(date: (date ?? nil)!)
+                        let sleepTime = round(10.0 * minutes/60) / 10.0
+                        let thisSleep = Sleep()
+                        thisSleep.sleepTimeRounded = sleepTime
+                        thisSleep.dayOfWeek = weekDay
+                        
+                        let calendar = Calendar.autoupdatingCurrent
+                        let components = calendar.dateComponents([.month, .day], from: date ?? Date())
+                        let month = components.month
+                        let day = components.day
+                        thisSleep.shortDateString = "\(month ?? 1)/\(day ?? 1)"
+                        weekSleepObjects.append(thisSleep)
+                        
+
+                    }
+                }
+                completionHandler(weekSleepObjects,nil)
+
+            }
+        }
+        
+    }
+
     /**
      ## Get Sleep Goal ##
      The Get Sleep Goal endpoint returns a user's current sleep goal using unit in the unit system that corresponds to the Accept-Language header provided in the format requested.
@@ -1360,13 +1480,14 @@ class FitbitRequests {
      
 
     */
-    func getSleepGoal(completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getSleepGoal(completionHandler: @escaping (String?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/sleep/goal.json"
         restClient.getRequest(url: url) { json, error in
             if error != nil {
                 completionHandler(nil, error)
             } else {
-                completionHandler(json,nil)
+                
+                completionHandler(json?["goal"]["minDuration"].string,nil)
             }
         }
     }

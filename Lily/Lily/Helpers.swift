@@ -11,6 +11,16 @@ import UIKit
 import Firebase
 import SwiftyJSON
 
+
+extension Date {
+    func dayOfWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self).capitalized
+        // or capitalized(with: locale)
+    }
+}
+
 class Helpers {
     
     /// TODO need to get the specific user's current date
@@ -56,7 +66,7 @@ class Helpers {
         return (hours, minutes)
     }
     
-    static func millilitersToOz(milli : Int) -> (Double) {
+    static func millilitersToOz(milli : Double) -> (Double) {
         return (Double(milli) * 0.033814)
     }
     static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
@@ -80,4 +90,10 @@ class Helpers {
             ref.child("users/\(uid)/logs/\(dateInFormat)/\(key)").setValue(value)
         }
     }
+
+    static func getWeekDayFromDate(date: Date) -> String {
+        return (date.dayOfWeek() ?? nil)!
+    }
+    
+    
 }

@@ -42,9 +42,18 @@
 		2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD631E0347AF00778DF3 /* Assets.xcassets */; };
 		2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD651E0347AF00778DF3 /* LaunchScreen.storyboard */; };
 		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
+		2FC0BA5D1E415FC1007B291C /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */; };
+		2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA5E1E417D92007B291C /* WaterViewController.swift */; };
+		2FC0BA651E419D98007B291C /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA641E419D97007B291C /* Water.swift */; };
+		2FC0BA671E423DBE007B291C /* lastWeekCardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA661E423DBE007B291C /* lastWeekCardBackground.png */; };
+		2FC0BA6E1E43D556007B291C /* ChevronLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA6C1E43D556007B291C /* ChevronLeft.png */; };
+		2FC0BA6F1E43D556007B291C /* ChevronRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA6D1E43D556007B291C /* ChevronRight.png */; };
+		2FC0BA721E43D5C9007B291C /* Back-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA701E43D5C9007B291C /* Back-50.png */; };
+		2FC0BA731E43D5C9007B291C /* Forward-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA711E43D5C9007B291C /* Forward-50.png */; };
 		2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */; };
 		2FC7FC071E35C9A300A7DA50 /* ErrorMicHelpMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */; };
 		2FC7FC081E35C9A300A7DA50 /* simpleMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7FC061E35C9A300A7DA50 /* simpleMicHelp.png */; };
+		2FCAA5D11E3FBD3E0014452E /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAA5D01E3FBD3E0014452E /* Sleep.swift */; };
 		2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */; };
 		2FDB45F61E21755300A98225 /* LilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDB45F51E21755300A98225 /* LilyTests.swift */; };
 		2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE264141E395ECF004DB460 /* HealthKitRequests.swift */; };
@@ -110,10 +119,19 @@
 		2FA1CD661E0347AF00778DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FA1CD681E0347AF00778DF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
+		2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SleepViewController.swift; path = Lily/SleepViewController.swift; sourceTree = "<group>"; };
+		2FC0BA5E1E417D92007B291C /* WaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaterViewController.swift; path = Lily/WaterViewController.swift; sourceTree = "<group>"; };
+		2FC0BA641E419D97007B291C /* Water.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
+		2FC0BA661E423DBE007B291C /* lastWeekCardBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lastWeekCardBackground.png; sourceTree = "<group>"; };
+		2FC0BA6C1E43D556007B291C /* ChevronLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChevronLeft.png; sourceTree = "<group>"; };
+		2FC0BA6D1E43D556007B291C /* ChevronRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChevronRight.png; sourceTree = "<group>"; };
+		2FC0BA701E43D5C9007B291C /* Back-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back-50.png"; sourceTree = "<group>"; };
+		2FC0BA711E43D5C9007B291C /* Forward-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forward-50.png"; sourceTree = "<group>"; };
 		2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FitbitRequests.swift; path = Lily/FitbitRequests.swift; sourceTree = "<group>"; };
 		2FC69CDC1E101995001A1349 /* Lily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lily.entitlements; sourceTree = "<group>"; };
 		2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErrorMicHelpMessage.png; sourceTree = "<group>"; };
 		2FC7FC061E35C9A300A7DA50 /* simpleMicHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simpleMicHelp.png; sourceTree = "<group>"; };
+		2FCAA5D01E3FBD3E0014452E /* Sleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
 		2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FDB45F31E21755300A98225 /* LilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDB45F51E21755300A98225 /* LilyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilyTests.swift; sourceTree = "<group>"; };
@@ -165,6 +183,11 @@
 		2F2F76111E3131A8000AE4F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2FC0BA701E43D5C9007B291C /* Back-50.png */,
+				2FC0BA711E43D5C9007B291C /* Forward-50.png */,
+				2FC0BA6C1E43D556007B291C /* ChevronLeft.png */,
+				2FC0BA6D1E43D556007B291C /* ChevronRight.png */,
+				2FC0BA661E423DBE007B291C /* lastWeekCardBackground.png */,
 				2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */,
 				2FE264391E3C4C03004DB460 /* exportButtonIcon.png */,
 				2FE264351E3C419A004DB460 /* Lily_background.png */,
@@ -258,6 +281,8 @@
 			children = (
 				2FA1CD5E1E0347AF00778DF3 /* ViewController.swift */,
 				2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */,
+				2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */,
+				2FC0BA5E1E417D92007B291C /* WaterViewController.swift */,
 			);
 			name = ViewControllers;
 			path = ..;
@@ -275,6 +300,8 @@
 				2FA1CD5C1E0347AF00778DF3 /* AppDelegate.swift */,
 				2F398EFE1E16006600A1AEB3 /* Helpers.swift */,
 				2F0F75E91E368B71004BCE2D /* SweetAlert.swift */,
+				2FCAA5D01E3FBD3E0014452E /* Sleep.swift */,
+				2FC0BA641E419D97007B291C /* Water.swift */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -421,13 +448,16 @@
 				2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */,
 				2FA09AF91E3138F10094270F /* Checklist.png in Resources */,
 				2FA09AFB1E3138F10094270F /* Moon.png in Resources */,
+				2FC0BA671E423DBE007B291C /* lastWeekCardBackground.png in Resources */,
 				2FE2642C1E3C399B004DB460 /* LilyLoginImage.png in Resources */,
 				2F91177B1E3C50BB00D1D6F6 /* sendIcon.png in Resources */,
 				2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */,
 				2FE264301E3C3A82004DB460 /* ConnectWithHealthKit.png in Resources */,
+				2FC0BA721E43D5C9007B291C /* Back-50.png in Resources */,
 				2FE2642E1E3C3A6A004DB460 /* ConnectWithFitbit.png in Resources */,
 				2F3FDC911E35921B00B18F25 /* x.png in Resources */,
 				2F2F760E1E312BC9000AE4F7 /* NavigationBar.png in Resources */,
+				2FC0BA731E43D5C9007B291C /* Forward-50.png in Resources */,
 				2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */,
 				2FA09AEF1E3138070094270F /* CardBackground.png in Resources */,
 				2FA09B011E3147F40094270F /* backgroundShade.png in Resources */,
@@ -440,6 +470,8 @@
 				2FA09AF11E3138E30094270F /* water.png in Resources */,
 				2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */,
 				2F3FDC8E1E35905D00B18F25 /* question_mark.png in Resources */,
+				2FC0BA6E1E43D556007B291C /* ChevronLeft.png in Resources */,
+				2FC0BA6F1E43D556007B291C /* ChevronRight.png in Resources */,
 				2FE264361E3C419A004DB460 /* Lily_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,10 +590,14 @@
 				2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */,
 				2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */,
 				2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */,
+				2FC0BA5D1E415FC1007B291C /* SleepViewController.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,
 				2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */,
 				2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */,
 				2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */,
+				2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */,
+				2FC0BA651E419D98007B291C /* Water.swift in Sources */,
+				2FCAA5D11E3FBD3E0014452E /* Sleep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

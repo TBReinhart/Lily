@@ -70,8 +70,11 @@ class HealthKitRequests {
                 }
                 if let result = tmpResult {
                     // do something with my data
+                    // TODO can only get In Bed, Asleep, Awake so we need to make an efficiency based on this
                     for item in result {
+                        print("SLEEP IN HK: ")
                         if let sample = item as? HKCategorySample {
+                            print(sample)
                             let value = (sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue) ? "InBed" : "Asleep"
                             print("Healthkit sleep: \(sample.startDate) \(sample.endDate) - value: \(value)")
                             if value == "Asleep" {
@@ -249,7 +252,7 @@ class HealthKitRequests {
                 myResults.enumerateStatistics(from: yesterday! as Date, to: Calendar.current.date(byAdding: .day, value: 0, to:Date())!  as Date) {
                     statistics, stop in
                     if let quantity = statistics.sumQuantity() {
-                        let water = Int(round(quantity.doubleValue(for: HKUnit.fluidOunceUS())))
+                        let water = Int(round(quantity.doubleValue(for: HKUnit.cupUS())))
                         completionHandler("\(water)", nil)
                     } else {
                         completionHandler("0", nil)

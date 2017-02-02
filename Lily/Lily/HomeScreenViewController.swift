@@ -55,6 +55,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var activityRing: UICircularProgressRingView!
 
+    var sleepObject = Sleep()
     
     
     
@@ -206,15 +207,22 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     func exportPressed() {
         // Add a text field
         let alert = SCLAlertView()
-        let txt = alert.addTextField("default@gmail.com")
+        let txt = alert.addTextField("your-email@gmail.com")
         alert.addButton("Send") {
-            print("Text value: \(txt.text)")
+            print("Text value: \(txt.text ?? nil)")
             print("Email from box")
             self.sendEmail(email: "treinhart4115@gmail.com")
         }
         let alertViewIcon = UIImage(named: "sendIcon") //Replace the IconImage text with the image name
         alert.showEdit("Export Health Data", subTitle: "Please provide an email", circleIconImage: alertViewIcon)
     }
+    
+    
+    
+    func showExportAlert() {
+        
+    }
+    
     
     func micPressed() {
         self.showSubview()
@@ -333,6 +341,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBAction func waterButtonPressed(_ sender: Any) {
         debugPrint("Water Button Pressed")
+        self.performSegue(withIdentifier: "waterSegue", sender: sender)
+
     }
     @IBAction func activityButtonPressed(_ sender: Any) {
         debugPrint("Activity Button Pressed")
@@ -352,6 +362,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     @IBAction func sleepButtonPressed(_ sender: Any) {
         debugPrint("Sleep Button Pressed")
+        self.performSegue(withIdentifier: "sleepSegue", sender: sender)
 
     }
 
@@ -371,13 +382,13 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     func loadWaterHealthKit() {
         self.healthKitReqs.getWaterConsumption() { result, error in
-            let waterConsumedInOunces = result ?? "0"
+            let waterConsumedCups = result ?? "0"
             DispatchQueue.global(qos: .userInitiated).async {
                 DispatchQueue.main.async {
-                    self.waterConsumedLabel.text = waterConsumedInOunces
-                    Helpers.postDailyLogToFirebase(key: "waterOuncesConsumed", value: Int(waterConsumedInOunces)!)
-                    Helpers.postDailyLogToFirebase(key: "waterOuncesGoal", value: 96)
-                    self.waterGoalLabel.text = "of 96 oz"
+                    self.waterConsumedLabel.text = waterConsumedCups
+                    Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value : waterConsumedCups)
+                    Helpers.postDailyLogToFirebase(key: "waterCupsGoal", value: 10.0)
+                    self.waterGoalLabel.text = "of 10 cups"
                 }
             }
         }
@@ -387,12 +398,12 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.fbreqs.getWaterLogs() { json, error in
             let waterInMilli = json?["summary"]["water"].int
             if waterInMilli != nil {
-                let ounces = Int(round(Helpers.millilitersToOz(milli: waterInMilli!)))
-                self.waterConsumedLabel.text = "\(String(ounces))"
-                Helpers.postDailyLogToFirebase(key: "waterOuncesConsumed", value: ounces)
+                let cups = Int(round(Helpers.millilitersToOz(milli: Double(waterInMilli!)) * 0.125))
+                self.waterConsumedLabel.text = "\(String(cups))"
+                Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value: cups)
             } else {
                 self.waterConsumedLabel.text = "0"
-                Helpers.postDailyLogToFirebase(key: "waterOuncesConsumed", value: 0)
+                Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value: 0)
             }
             
         }
@@ -400,19 +411,18 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.fbreqs.getWaterGoal() { json, error in
             let goalInMilli = json?["goal"]["goal"].int
             if goalInMilli != nil {
-                let ounces = Int(round(Helpers.millilitersToOz(milli: goalInMilli!)))
-                self.waterGoalLabel.text = "of \(String(ounces)) oz"
-                Helpers.postDailyLogToFirebase(key: "waterOuncesGoal", value: ounces)
+                let cups = Int(round(Helpers.millilitersToOz(milli: Double(goalInMilli!)) * 0.125))
+                self.waterGoalLabel.text = "of \(String(cups)) cups"
+                Helpers.postDailyLogToFirebase(key: "waterCupsGoal", value: cups)
 
             } else {
-                self.waterGoalLabel.text = "of DEFAULT oz"
-                Helpers.postDailyLogToFirebase(key: "waterOuncesGoal", value: 96)
+                self.waterGoalLabel.text = "of 10 cups"
+                Helpers.postDailyLogToFirebase(key: "waterCupsGoal", value: 10.0)
             }
         }
     }
 
     func loadActivity() {
-//        loadActivityFitbit()
         if self.loginMethod == "HealthKit" {
             loadActivityHealthKit()
         } else if self.loginMethod == "Fitbit" {
@@ -477,7 +487,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     func loadHeartRateFitbit() {
         self.fbreqs.getHeartRateTimeSeriesFromPeriod() {json, error in
-            print("HR: \(json)" )
             let restingHeartRateToday = json?["activities-heart"][0]["value"]["restingHeartRate"].int
             if restingHeartRateToday != nil {
                 self.heartRateLabel.text = "\(restingHeartRateToday!)"
@@ -550,19 +559,9 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func loadSleepFitbit() {
-        self.fbreqs.getSleepLogs() { json, error in
-            let totalMinutesAsleep = json?["summary"]["totalMinutesAsleep"].int
-            if totalMinutesAsleep != nil {
-                let hoursMinutes = Helpers.minutesToHoursMinutes(minutes: totalMinutesAsleep!)
-                let hours = hoursMinutes.0
-                let minutes = hoursMinutes.1
-                let sleepTime = "\(hours)h \(minutes)m"
-                Helpers.postDailyLogToFirebase(key: "sleepTime", value: sleepTime)
-                self.timeSleptLabel.text  = sleepTime
-            } else {
-                self.timeSleptLabel.text  = "DEFAULT"
-                Helpers.postDailyLogToFirebase(key: "sleepTime", value: "0h 0m")
-            }
+        self.fbreqs.getSleepLogs() { sleep, error in
+            self.sleepObject = sleep ?? Sleep()
+            self.timeSleptLabel.text  = self.sleepObject.sleepLabel
         }
     }
 
@@ -572,5 +571,20 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
 
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+        if segue.identifier == "sleepSegue" {
+            
+            print("This is the Sleep Segue")
+            
+        } else if segue.identifier == "waterSegue" {
+            
+            print("This is the Water Segue")
+            
+        }
+     }
 }
