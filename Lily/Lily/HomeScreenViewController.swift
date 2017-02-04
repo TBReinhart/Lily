@@ -288,10 +288,10 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 SweetAlert().showAlert("Is this OK?", subTitle: "\(query ?? "Oops. Something went wrong.")", style: AlertStyle.warning, buttonTitle:"Nope!", buttonColor:Helpers.UIColorFromRGB(rgbValue: 0xD0D0D0) , otherButtonTitle:  "YES!", otherButtonColor: Helpers.UIColorFromRGB(rgbValue: 0xDD6B55)) { (isOtherButton) -> Void in
                     if isOtherButton == true {
                         
-                        SweetAlert().showAlert("Cancelled!", subTitle: "Let's give this another try", style: AlertStyle.error) // left
+                       // SweetAlert().showAlert("Cancelled!", subTitle: "Let's give this another try", style: AlertStyle.error) // left
                     }
                     else {
-                        SweetAlert().showAlert("Awesome!", subTitle: "Doing what you asked!", style: AlertStyle.success)
+                        //SweetAlert().showAlert("Awesome!", subTitle: "Doing what you asked!", style: AlertStyle.success)
                     }
                 }
 
