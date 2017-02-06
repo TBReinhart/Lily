@@ -7,7 +7,7 @@ Over five million women become pregnant every year in the United States. These w
 
  Lily is a mobile health solution which pairs with a Fitbit® product to track pregnancy-specific health information. Lily also addresses the other health-related challenges women experience during pregnancy, such as remembering to journal questions for an OB, drinking water, and reducing stress.
 
-[![](https://i.imgur.com/oO36jue.png)](https://www.youtube.com/watch?v=5l0ZjrW4iOo)
+[![Video:](https://i.imgur.com/oO36jue.png)](https://www.youtube.com/watch?v=5l0ZjrW4iOo)
 
 
 ```markdown
