@@ -133,6 +133,13 @@ class Helpers {
         return longDate
     }
     
+    static func getDateFromyyyyMMdd(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "yyyy-MM-dd"
+        let date = dateFormatter.date(from: dateString)
+        return date ?? Date()
+    }
+    
     static func formatShortDate(date: Date) -> String {
         let calendar = Calendar.current
 

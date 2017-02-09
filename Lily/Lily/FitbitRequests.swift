@@ -1212,6 +1212,73 @@ class FitbitRequests {
             }
         }
     }
+    /*
+    ## Heart Rate Time Series ##
+    Get Heart Rate Time Series
+    The Get Heart Rate Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.
+    
+    If you specify earlier dates in the request, the response will retrieve only data since the user's join date or the first log entry date for the requested collection.
+    
+    Resource URL
+    
+    There are two acceptable formats for retrieving time series data:
+    
+    GET https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[period].json
+    
+    GET https://api.fitbit.com/1/user/-/activities/heart/date/[base-date]/[end-date].json
+    
+    user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+    base-date	The range start date, in the format yyyy-MM-dd or today.
+    end-date	The end date of the range.
+    date	The end date of the period specified in the format yyyy-MM-dd or today.
+    period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m.
+    Example Request
+    
+    https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json
+    
+    */
+    func getHeartRateTimeSeriesFromPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping ([HeartRate]?, Error?) -> ()) {
+        let url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/\(period).json"
+        restClient.getRequest(url: url) { json, error in
+            if error != nil {
+                completionHandler(nil, error)
+            } else {
+                var heartRateList = [HeartRate]()
+                
+                if json != nil {
+                    if let heartRates = json?["activities-heart"] {
+                        for hr in heartRates {
+                            let heartRate = HeartRate()
+                            let restingHeartRate = hr.1["value"]["restingHeartRate"].intValue
+                            let hrZones = hr.1["value"]["heartRateZones"]
+                            let dateString = hr.1["dateTime"].stringValue
+                            let date = Helpers.getDateFromyyyyMMdd(dateString: dateString)
+                            let dayOfWeek = Helpers.getWeekDayFromDate(date: date)
+                            print("Date String: \(dateString)")
+                            print("DOW: \(dayOfWeek)")
+
+                            heartRate.dayOfWeek = dayOfWeek
+
+                            var highestMax = 0
+                            for hrZone in hrZones {
+                                let minutes = hrZone.1["minutes"].intValue
+                                let max = hrZone.1["max"].intValue
+                                if minutes > 0 && max > highestMax {
+                                    highestMax = max
+                                }
+                            }
+                            heartRate.maximumBPM = highestMax
+                            heartRate.averageBPM = restingHeartRate
+                            heartRate.restingHeartRate = restingHeartRate
+                            heartRateList.append(heartRate)
+                        }
+                    }
+                }
+                completionHandler(heartRateList, nil)
+            }
+        }
+    }
+    
     /**
      ## Heart Rate Time Series ##
      Get Heart Rate Time Series
@@ -1237,13 +1304,39 @@ class FitbitRequests {
      https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json
      
      */
-    func getHeartRateTimeSeriesFromPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getHeartRateTimeSeriesFrom1DayPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping (HeartRate?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/\(period).json"
+        let hr = HeartRate()
         restClient.getRequest(url: url) { json, error in
             if error != nil {
                 completionHandler(nil, error)
             } else {
-                completionHandler(json, nil)
+                if json != nil {
+                    let restingHeartRate = json?["activities-heart"][0]["value"]["restingHeartRate"].intValue
+                    let dateString = json?["activities-heart"][0]["value"]["dateTime"].stringValue
+                    print("Date String: \(dateString)")
+                    let date = Helpers.getDateFromyyyyMMdd(dateString: dateString!)
+                    let dayOfWeek = Helpers.getWeekDayFromDate(date: date)
+                    hr.restingHeartRate = restingHeartRate ?? 0
+                    var highestMax = 0
+                    if let hrZones = json?["activities-heart"][0]["value"]["heartRateZones"] {
+                        for hrZone in hrZones {
+                            let minutes = hrZone.1["minutes"].intValue
+                            let max = hrZone.1["max"].intValue
+                            if minutes > 0 && max > highestMax {
+                                highestMax = max
+                            }
+                        }
+                    }
+                    print("Weekday: \(dayOfWeek)")
+
+                    hr.dayOfWeek = dayOfWeek
+                    hr.maximumBPM = highestMax
+                    hr.averageBPM = restingHeartRate ?? 0
+                }
+                
+                completionHandler(hr, nil)
+                
             }
         }
     }

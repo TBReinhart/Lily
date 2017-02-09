@@ -497,8 +497,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func loadHeartRateFitbit() {
-        self.fbreqs.getHeartRateTimeSeriesFromPeriod() {json, error in
-            let restingHeartRateToday = json?["activities-heart"][0]["value"]["restingHeartRate"].int
+        self.fbreqs.getHeartRateTimeSeriesFrom1DayPeriod() {heartRate, error in
+            let restingHeartRateToday = heartRate?.restingHeartRate
             if restingHeartRateToday != nil {
                 self.heartRateLabel.text = "\(restingHeartRateToday!)"
                 Helpers.postDailyLogToFirebase(key: "restingHeartRate", value: restingHeartRateToday!)

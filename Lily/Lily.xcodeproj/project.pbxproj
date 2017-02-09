@@ -20,6 +20,7 @@
 		2F3EAFAF1E4BF8D400214FC4 /* HowShouldISleepCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EAFAD1E4BF8D400214FC4 /* HowShouldISleepCard.png */; };
 		2F3EAFB11E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EAFB01E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png */; };
 		2F3EAFB31E4BF9DE00214FC4 /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EAFB21E4BF9DE00214FC4 /* HeartRateViewController.swift */; };
+		2F3EAFB51E4C229800214FC4 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EAFB41E4C229800214FC4 /* HeartRate.swift */; };
 		2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC881E35905D00B18F25 /* MicWhite.png */; };
 		2F3FDC8D1E35905D00B18F25 /* x_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC891E35905D00B18F25 /* x_button.png */; };
 		2F3FDC8E1E35905D00B18F25 /* question_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC8A1E35905D00B18F25 /* question_mark.png */; };
@@ -104,6 +105,7 @@
 		2F3EAFAD1E4BF8D400214FC4 /* HowShouldISleepCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowShouldISleepCard.png; sourceTree = "<group>"; };
 		2F3EAFB01E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhatShouldMyHeartRateBeCard.png; sourceTree = "<group>"; };
 		2F3EAFB21E4BF9DE00214FC4 /* HeartRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeartRateViewController.swift; path = Lily/HeartRateViewController.swift; sourceTree = "<group>"; };
+		2F3EAFB41E4C229800214FC4 /* HeartRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
 		2F3FDC881E35905D00B18F25 /* MicWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MicWhite.png; sourceTree = "<group>"; };
 		2F3FDC891E35905D00B18F25 /* x_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_button.png; sourceTree = "<group>"; };
 		2F3FDC8A1E35905D00B18F25 /* question_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_mark.png; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				2F398EFE1E16006600A1AEB3 /* Helpers.swift */,
 				2F0F75E91E368B71004BCE2D /* SweetAlert.swift */,
 				2FCAA5D01E3FBD3E0014452E /* Sleep.swift */,
+				2F3EAFB41E4C229800214FC4 /* HeartRate.swift */,
 				2FC0BA641E419D97007B291C /* Water.swift */,
 			);
 			name = Others;
@@ -633,6 +636,7 @@
 				2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */,
 				2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */,
 				2FC0BA651E419D98007B291C /* Water.swift in Sources */,
+				2F3EAFB51E4C229800214FC4 /* HeartRate.swift in Sources */,
 				2FCAA5D11E3FBD3E0014452E /* Sleep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
