@@ -27,7 +27,7 @@ class HealthKitRequests {
                 HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.dietarySugar)!, //sugar intake
                 HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.stepCount)!, //step count
                 HKObjectType.workoutType(), // exercise
-                HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.respiratoryRate)!, // respiratory r ate
+                HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.respiratoryRate)!, // respiratory rate
                 HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.bodyMassIndex)!, //BMI
                 HKObjectType.quantityType(forIdentifier:HKQuantityTypeIdentifier.bodyMass)!, //Body Mass
 

@@ -608,29 +608,34 @@ class FitbitRequests {
      GET https://api.fitbit.com/1/user/-/foods/log/water/date/2015-09-01.json
  
     */
-    func getWaterLogs(date: String = "today", completionHandler: @escaping (JSON?, Error?) -> ()) {
-        
+    func getWaterLogs(date: String = "today", completionHandler: @escaping (Water?, Error?) -> ()) {
+        let water = Water()
         let url = "https://api.fitbit.com/1/user/-/foods/log/water/date/\(date).json"
         restClient.getRequest(url: url) { json, error in
             if error != nil {
                 completionHandler(nil, error)
             } else {
-                completionHandler(json, nil)
+                let waterInMilli = json?["summary"]["water"].doubleValue
+                let cupsConsumed = Helpers.millilitersToOz(milli: waterInMilli ?? 0) * 0.125
+                let cupsRounded = round(10.0 * cupsConsumed) / 10.0
+                water.cupsConsumed = cupsRounded
+                water.dateString = date
+                completionHandler(water, nil)
             }
         }
     }
     
     
-    func getWaterLastWeek(completionHandler: @escaping ([Water]?, Error?) -> ()) {
+    func getWaterLastWeek(date: String = "today", completionHandler: @escaping ([Water]?, Error?) -> ()) {
         var weekWaterObjects = [Water]()
-        self.getWaterLogSeriesPeriod(date:"today", period: "7d") { json, error in
+        self.getWaterLogSeriesPeriod(date:date, period: "7d") { json, error in
             print("WATER JSON: \(json)")
             
             if json != nil {
-                if let sleeps = json?["foods-log-water"] {
-                    for s in sleeps {
-                        let dateTime = s.1["dateTime"].string
-                        let waterInMilli = s.1["value"].doubleValue 
+                if let waters = json?["foods-log-water"] {
+                    for w in waters {
+                        let dateTime = w.1["dateTime"].string
+                        let waterInMilli = w.1["value"].doubleValue
                         let cupsConsumed = Helpers.millilitersToOz(milli: waterInMilli) * 0.125
                         let cupsRounded = round(10.0 * cupsConsumed) / 10.0
 
@@ -639,7 +644,7 @@ class FitbitRequests {
                         let date = dateFormatter.date(from: dateTime!)
                         let weekDay = Helpers.getWeekDayFromDate(date: (date ?? nil)!)
                         let thisWater = Water()
-                        thisWater.cupsConsumed = cupsConsumed
+                        thisWater.cupsConsumed = cupsRounded
                         thisWater.dayOfWeek = weekDay
                         print("\(weekDay): \(cupsRounded)")
                         
@@ -668,13 +673,13 @@ class FitbitRequests {
      user-id	The ID of the user. Use "-" (dash) for current logged-in user.
 
     */
-    func getWaterGoal(completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getWaterGoal(completionHandler: @escaping (String?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/foods/log/water/goal.json"
         restClient.getRequest(url: url) { json, error in
             if error != nil {
                 completionHandler(nil, error)
             } else {
-                completionHandler(json, nil)
+                completionHandler(json?["goal"]["minDuration"].string,nil)
             }
         }
     }
@@ -1403,12 +1408,8 @@ class FitbitRequests {
                 dateComps.day = Int(comps[2])
                 let sleepDate = Calendar.current.date(from: dateComps)!
                 
-                let df = DateFormatter()
-                df.dateStyle = .long
-                df.string(from: sleepDate) // "3/10/76"
-                let longDate = df.string(from: sleepDate)
 
-                sleepObject.dateLong = longDate
+                sleepObject.dateLong = Helpers.getLongDate(date: sleepDate)
                 
                 
                 sleepObject.efficiency = (json?["sleep"][0]["efficiency"].int) ?? 0
@@ -1427,7 +1428,7 @@ class FitbitRequests {
     func getSleepLastWeek(date: String = "today", completionHandler: @escaping ([Sleep]?, Error?) -> ()) {
         var weekSleepObjects = [Sleep]()
 
-        self.getSleepTimeSeriesFromPeriod(resourcePath: "sleep/minutesAsleep", date: "today", period: "7d") { json, error in
+        self.getSleepTimeSeriesFromPeriod(resourcePath: "sleep/minutesAsleep", date: date, period: "7d") { json, error in
             
             if json != nil {
                 if let sleeps = json?["sleep-minutesAsleep"] {

@@ -136,17 +136,26 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         super.viewDidLoad()
         
         self.title = "Lily"
-        
+
         // Send a basic example
         Session.shared.authentication = Authentication.apiKey("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")
         self.hideSubview()
         self.loadMicrophoneAtLaunch()
+    }
+    
+    func loadData() {
         loadWater()
         loadSleep()
         loadActivity()
         loadHeartRate()
         loadWeightLog()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("view will appear home")
+        loadData()
+
     }
 
     func loadMicrophoneAtLaunch() {
@@ -350,6 +359,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     @IBAction func heartRateButtonPressed(_ sender: Any) {
         debugPrint("Heart Rate Button Pressed")
+        self.performSegue(withIdentifier: "heartRateSegue", sender: sender)
+
 
     }
     @IBAction func weightLogButtonPressed(_ sender: Any) {
@@ -385,7 +396,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             let waterConsumedCups = result ?? "0"
             DispatchQueue.global(qos: .userInitiated).async {
                 DispatchQueue.main.async {
-                    self.waterConsumedLabel.text = waterConsumedCups
+                    self.waterConsumedLabel.text = waterConsumedCups ?? "0"
                     Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value : waterConsumedCups)
                     Helpers.postDailyLogToFirebase(key: "waterCupsGoal", value: 10.0)
                     self.waterGoalLabel.text = "of 10 cups"
@@ -395,12 +406,12 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func loadWaterFitbit() {
-        self.fbreqs.getWaterLogs() { json, error in
-            let waterInMilli = json?["summary"]["water"].int
-            if waterInMilli != nil {
-                let cups = Int(round(Helpers.millilitersToOz(milli: Double(waterInMilli!)) * 0.125))
-                self.waterConsumedLabel.text = "\(String(cups))"
-                Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value: cups)
+        self.fbreqs.getWaterLogs() { water, error in
+            let waterInCups = water?.cupsConsumed
+            if waterInCups != nil {
+                let cups = String(format: "%.0f", waterInCups ?? 0)
+                self.waterConsumedLabel.text = "\(cups)"
+                Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value: cups ?? 0)
             } else {
                 self.waterConsumedLabel.text = "0"
                 Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value: 0)
@@ -408,12 +419,11 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             
         }
         
-        self.fbreqs.getWaterGoal() { json, error in
-            let goalInMilli = json?["goal"]["goal"].int
-            if goalInMilli != nil {
-                let cups = Int(round(Helpers.millilitersToOz(milli: Double(goalInMilli!)) * 0.125))
-                self.waterGoalLabel.text = "of \(String(cups)) cups"
-                Helpers.postDailyLogToFirebase(key: "waterCupsGoal", value: cups)
+        self.fbreqs.getWaterGoal() { goal, error in
+            if goal != nil {
+                let cups = Double(goal!)
+                self.waterGoalLabel.text = "of \(cups) cups"
+                Helpers.postDailyLogToFirebase(key: "waterCupsGoal", value: cups ?? 0)
 
             } else {
                 self.waterGoalLabel.text = "of 10 cups"
@@ -453,6 +463,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.activityRing.animationStyle = kCAMediaTimingFunctionLinear
         self.activityRing.fontSize = 25
         self.activityRing.maxValue = CGFloat(Int(goalActiveMinutes)!)
+        self.activityRing.viewStyle = 2
         self.animateRing(value: Int(exerciseMinutes)!)
     }
     
@@ -577,6 +588,9 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        let backItem = UIBarButtonItem()
+        backItem.title = "Home"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
         if segue.identifier == "sleepSegue" {
             
             print("This is the Sleep Segue")
@@ -587,4 +601,5 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             
         }
      }
+
 }

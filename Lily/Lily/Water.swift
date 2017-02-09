@@ -12,7 +12,9 @@ import Foundation
 class Water {
     
     var cupsConsumed = 0.0
-    var dayOfWeek = "Sunday"
+    var waterCupsConsumed = 0.0
+    var totalCupsConsumed = 0.0
+    var dayOfWeek = Helpers.getWeekDayFromDate(date: Date())
     var dateString = "1970-01-01"
     init() {
 

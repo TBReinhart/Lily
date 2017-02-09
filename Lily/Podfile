@@ -17,7 +17,7 @@ target 'Lily' do
     pod "SwiftSiriWaveformView"
     pod 'SCLAlertView'
     pod 'SendGrid', :git => 'https://github.com/scottkawai/sendgrid-swift.git'
-
+    pod 'Dropper'
 
     target ‘LilyTests’ do
         pod 'p2.OAuth2', '~> 3.0'

@@ -88,7 +88,7 @@ class ViewController: UIViewController {
                 debugPrint("RESPONSE in json")
                 debugPrint(json)
                 //HUD.show(.progress)
-
+                print("SUCCESS LOGGING IN")
                 self.extractUserData(json: json)
                 self.createUserHelper(method: "Fitbit")
                 DispatchQueue.main.sync {

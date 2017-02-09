@@ -96,4 +96,62 @@ class Helpers {
     }
     
     
+    static func getShortDateRangeString(date: Date) -> String {
+
+        let end = self.formatShortDate(date: date )
+        let calendar = Calendar.current
+        let sixDaysBefore = calendar.date(byAdding: .day, value: -6, to: date)
+        let start = self.formatShortDate(date: sixDaysBefore!)
+        let rangeString = "\(start)-\(end)"
+        return rangeString
+    }
+    static func getDateNDaysAgo(daysAgo: Int) -> (date: Date, dateString: String) {
+        let calendar = Calendar.current
+        let date = Date()
+        let pastDate = calendar.date(byAdding: .day, value: -1*daysAgo, to: date)
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let pastDateString = df.string(from: pastDate!)
+        return (pastDate ?? Date(), pastDateString)
+    }
+    
+    static func getDateNWeeksAgo(weeksAgo: Int) -> (date: Date, dateString: String) {
+        let calendar = Calendar.current
+        let date = Date()
+        let pastDate = calendar.date(byAdding: .day, value: -7*weeksAgo, to: date)
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let pastDateString = df.string(from: pastDate!)
+        return (pastDate ?? Date(), pastDateString)
+    }
+    
+    static func getLongDate(date: Date) -> String {
+        let df = DateFormatter()
+        df.dateStyle = .long
+        df.string(from: date) // "3/10/76"
+        let longDate = df.string(from: date)
+        return longDate
+    }
+    
+    static func formatShortDate(date: Date) -> String {
+        let calendar = Calendar.current
+
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        var dateComps = DateComponents()
+        
+        dateComps.month = month
+        dateComps.day = day
+        
+        let endDate = Calendar.current.date(from: dateComps)!
+        
+        let df = DateFormatter()
+        df.dateStyle = .short
+        df.string(from: endDate) // "3/10/76"
+        let strDate = df.string(from: endDate) // by using short date we will give user a local readible time 02/01 if in america, 01/02 elsewhere
+        let splt = strDate.components(separatedBy: "/")
+        let short = "\(splt[0])/\(splt[1])"
+        return short
+
+    }
 }
