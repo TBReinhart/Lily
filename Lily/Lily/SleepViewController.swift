@@ -57,6 +57,7 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var dayView07: UICircularProgressRingView!
     
     @IBOutlet weak var sleepOptionDropdownButton: UIButton!
+    
     override func viewDidLoad() {
         self.title = "Lily"
         self.previousWeekDateRangeLabel.text = Helpers.getShortDateRangeString(date: Date())

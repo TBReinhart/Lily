@@ -408,13 +408,38 @@ class FitbitRequests {
      period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y
      Example Request
      */
-    func getDailyActivity(date: String = "today", completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getDailyActivity(date: String = "today", completionHandler: @escaping (Activity, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/activities/date/\(date).json"
         restClient.getRequest(url: url) { json, error in
+            let activity = Activity()
+            activity.dateString = date
             if error != nil {
-                completionHandler(nil, error)
+                completionHandler(activity, error)
             } else {
-                completionHandler(json, nil)
+                
+                if let summary = json?["summary"] {
+                    let sedentaryMinutes = summary["sedentaryMinutes"].intValue
+                    let lightlyActiveMinutes = summary["lightlyActiveMinutes"].intValue
+                    let fairlyActiveMinutes = summary["fairlyActiveMinutes"].intValue
+                    let veryActiveMinutes = summary["veryActiveMInutes"].intValue
+
+                    activity.sedentaryMinutes = sedentaryMinutes
+                    activity.lightlyActiveMinutes = lightlyActiveMinutes
+                    activity.fairlyActiveMinutes = fairlyActiveMinutes
+                    activity.veryActiveMinutes = veryActiveMinutes
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    let dateObj = dateFormatter.date(from: date)
+                    
+                    let weekDay = Helpers.getWeekDayFromDate(date: dateObj ?? Date())
+                    let longDate = Helpers.getLongDate(date: dateObj ?? Date())
+
+                    activity.dayOfWeek = weekDay
+                    activity.longDate = longDate
+
+                }
+                completionHandler(activity, nil)
             }
         }
     }
@@ -436,13 +461,45 @@ class FitbitRequests {
      Example Request
      GET https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json
      */
-    func getActivityTimeSeriesFromPeriod(resourcePath: String, date: String, period: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
-        let url = "https://api.fitbit.com/1/user/-/\(resourcePath)/date/\(date)/\(period).json"
+    func getActivityTimeSeriesFromPeriod(resourcePath: String, date: String, period: String, completionHandler: @escaping ([Activity], Error?) -> ()) {
+        let url = "https://api.fitbit.com/1/user/-/activities/\(resourcePath)/date/\(date)/\(period).json"
+        var activities = [Activity]()
+        
+        
         restClient.getRequest(url: url) { json, error in
             if error != nil {
-                completionHandler(nil, error)
+                completionHandler(activities, error)
             } else {
-                completionHandler(json, nil)
+                let resourcePath = "activities-\(resourcePath)"
+                if let datas = json?[resourcePath] {
+                    print("in datas")
+                    print("\(datas)")
+                    for data in datas {
+                        let activity = Activity()
+                        print("\(data.1)")
+                        let dateTime = data.1["dateTime"].stringValue
+                        let value = data.1["value"].stringValue
+                        
+                        let d = Helpers.getDateFromyyyyMMdd(dateString: dateTime)
+                        let dayOfWeek = Helpers.getWeekDayFromDate(date: d)
+                        activity.dayOfWeek = dayOfWeek
+                        switch resourcePath {
+                        case "activities-minutesSedentary":
+                            activity.sedentaryMinutes = Int(value) ?? 0
+                        case "activities-minutesLightlyActive":
+                            activity.lightlyActiveMinutes = Int(value) ?? 0
+                        case "activities-minutesFairlyActive":
+                            activity.fairlyActiveMinutes = Int(value) ?? 0
+                        case "activities-minutesVeryActive":
+                            activity.veryActiveMinutes = Int(value) ?? 0
+                        default:
+                            activity.sedentaryMinutes = 0
+                        }
+                        
+                        activities.append(activity)
+                    }
+                }
+                completionHandler(activities, nil)
             }
         }
     }

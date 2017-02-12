@@ -355,7 +355,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     @IBAction func activityButtonPressed(_ sender: Any) {
         debugPrint("Activity Button Pressed")
-
+        self.performSegue(withIdentifier: "activitySegue", sender: sender)
     }
     @IBAction func heartRateButtonPressed(_ sender: Any) {
         debugPrint("Heart Rate Button Pressed")
@@ -468,13 +468,13 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     func loadActivityFitbit() {
-        self.fbreqs.getDailyActivity() { json, error in
+        self.fbreqs.getDailyActivity() { activity, error in
             if error != nil {
                 return
             }
-            let goalActiveMinutes = json?["goals"]["activeMinutes"].int ?? 30
-            let fairlyActiveMinutes = json?["summary"]["fairlyActiveMinutes"].int ?? 0
-            let veryActiveMinutes = json?["summary"]["veryActiveMinutes"].int ?? 0
+            let goalActiveMinutes =  30
+            let fairlyActiveMinutes = activity.fairlyActiveMinutes
+            let veryActiveMinutes = activity.veryActiveMinutes
             let totalActiveMinutes = fairlyActiveMinutes + veryActiveMinutes
             Helpers.postDailyLogToFirebase(key: "activityMinutes", value: totalActiveMinutes)
             Helpers.postDailyLogToFirebase(key: "activityMinutesGoal", value: goalActiveMinutes)

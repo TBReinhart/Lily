@@ -95,8 +95,9 @@ class ViewController: UIViewController {
                     
                     print("Segue")
                     HUD.flash(.success, delay: 0.5)
-                    self.performSegue(withIdentifier: "loggedInSegue", sender: self)
                 }
+                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+
 
             }
             catch let error {
