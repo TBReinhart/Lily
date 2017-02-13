@@ -63,7 +63,7 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var specificDayView: UIView!
     @IBOutlet weak var weekView: UIView!
     @IBOutlet weak var weeklyActivityImage: UIImageView!
-    
+    var dayViews = [UIView]()
     var pastWeekActivityTimeLabels = [UILabel]()
     var pastWeekDaysOfWeekLabels = [UILabel]()
     let fbreqs = FitbitRequests()
@@ -78,6 +78,15 @@ class ActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.dayViews = [self.day01View, self.day02View, self.day03View, self.day04View,self.day05View,self.day06View, self.day07View, self.weekTotalView]
+        
+        for v in self.dayViews {
+            v.layer.borderWidth = 0.5
+            v.layer.cornerRadius = 5
+            v.layer.masksToBounds = true
+            v.layer.borderColor = UIColor.black.cgColor
+        }
+        
         self.pastWeekDaysOfWeekLabels   = [self.dayOfWeek01Label,self.dayOfWeek02Label,self.dayOfWeek03Label,self.dayOfWeek04Label,self.dayOfWeek05Label,self.dayOfWeek06Label,self.dayOfWeek07Label]
         self.pastWeekActivityTimeLabels = [self.day01TimeLabel,self.day02TimeLabel,self.day03TimeLabel,self.day04TimeLabel,self.day05TimeLabel,self.day06TimeLabel,self.day07TimeLabel]
         // Do any additional setup after loading the view.
@@ -103,7 +112,7 @@ class ActivityViewController: UIViewController {
     
     @IBAction func activityTypeDropdownButtonPressed(_ sender: Any) {
         if dropper.status == .hidden {
-            dropper.items = ["Sedentary", "Lightly Active", "Fairly Active", "Very Active"]
+            dropper.items = [String("Sedentary"), "Lightly Active", "Fairly Active", "Very Active"]
             dropper.theme = Dropper.Themes.black(UIColor.lightGray) // Uses Black UIColor
             dropper.backgroundColor = UIColor.lightGray
             dropper.cellTextSize = CGFloat(10)

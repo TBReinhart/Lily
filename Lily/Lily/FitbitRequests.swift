@@ -416,12 +416,13 @@ class FitbitRequests {
             if error != nil {
                 completionHandler(activity, error)
             } else {
-                
+                print("Get daily activity json \(json)")
                 if let summary = json?["summary"] {
+                    print("acitvity json \(summary)")
                     let sedentaryMinutes = summary["sedentaryMinutes"].intValue
                     let lightlyActiveMinutes = summary["lightlyActiveMinutes"].intValue
                     let fairlyActiveMinutes = summary["fairlyActiveMinutes"].intValue
-                    let veryActiveMinutes = summary["veryActiveMInutes"].intValue
+                    let veryActiveMinutes = summary["veryActiveMinutes"].intValue
 
                     activity.sedentaryMinutes = sedentaryMinutes
                     activity.lightlyActiveMinutes = lightlyActiveMinutes
