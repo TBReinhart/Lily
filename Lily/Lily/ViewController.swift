@@ -87,7 +87,7 @@ class ViewController: UIViewController {
                 let json = try response.responseJSON()
                 debugPrint("RESPONSE in json")
                 debugPrint(json)
-                HUD.show(.progress)
+//                HUD.show(.progress)
                 print("SUCCESS LOGGING IN")
                 self.extractUserData(json: json)
                 self.createUserHelper(method: "Fitbit")
@@ -95,9 +95,9 @@ class ViewController: UIViewController {
                     
                     print("Segue")
                     HUD.flash(.success, delay: 0.5)
-                    self.performSegue(withIdentifier: "loggedInSegue", sender: self)
 
                 }
+                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
 
 
             }

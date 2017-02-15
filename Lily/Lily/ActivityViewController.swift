@@ -70,9 +70,8 @@ class ActivityViewController: UIViewController {
     var currentWeeksBack = 0
     var currentDaysBack = 0
     var currentActivityType = "minutesVeryActive"
-//    var currentActivityType = "minutesSedentary"
+    let alertController = UIAlertController(title: nil, message: "Choose your activity level", preferredStyle: .actionSheet)
 
-    let dropper = Dropper(width: 70, height: 150)
 
     
     override func viewDidLoad() {
@@ -95,6 +94,49 @@ class ActivityViewController: UIViewController {
 
         self.getActivityNDaysAgo(daysAgo: 0)
         self.getActivityNWeeksAgo(weeksAgo: 0, acitivityType: currentActivityType)
+        
+        let oneAction = UIAlertAction(title: "Sedentary", style: .default) { _ in
+            print("Sedentary")
+            self.selectActivityTypeButton.setTitle("Sedentary", for: .normal)
+
+            self.weeklyActivityImage.image = UIImage(named: "sedentary")
+            self.getActivityNWeeksAgo(weeksAgo: self.currentWeeksBack, acitivityType: "minutesSedentary")
+
+        }
+        let twoAction = UIAlertAction(title: "Lightly Active", style: .default) { _ in
+            print("Lightly Active")
+            self.selectActivityTypeButton.setTitle("Lightly Active", for: .normal)
+
+            self.weeklyActivityImage.image = UIImage(named: "lightly")
+            self.getActivityNWeeksAgo(weeksAgo: self.currentWeeksBack, acitivityType: "minutesLightlyActive")
+
+        }
+        let threeAction = UIAlertAction(title: "Fairly Active", style: .default) { _ in
+            print("Fairly Active")
+            self.selectActivityTypeButton.setTitle("Fairly Active", for: .normal)
+
+            self.weeklyActivityImage.image = UIImage(named: "fairly")
+            self.getActivityNWeeksAgo(weeksAgo: self.currentWeeksBack, acitivityType: "minutesFairlyActive")
+
+        }
+        let fourAction = UIAlertAction(title: "Very Active", style: .default) { _ in
+            print("Very Active")
+            self.selectActivityTypeButton.setTitle("Very Active", for: .normal)
+            self.weeklyActivityImage.image = UIImage(named: "very")
+            self.getActivityNWeeksAgo(weeksAgo: self.currentWeeksBack, acitivityType: "minutesVeryActive")
+
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            print("Cancel")
+        }
+        
+        alertController.addAction(oneAction)
+        alertController.addAction(twoAction)
+        alertController.addAction(threeAction)
+        alertController.addAction(fourAction)
+        alertController.addAction(cancelAction)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,18 +153,7 @@ class ActivityViewController: UIViewController {
     
     
     @IBAction func activityTypeDropdownButtonPressed(_ sender: Any) {
-        if dropper.status == .hidden {
-            dropper.items = [String("Sedentary"), "Lightly Active", "Fairly Active", "Very Active"]
-            dropper.theme = Dropper.Themes.black(UIColor.lightGray) // Uses Black UIColor
-            dropper.backgroundColor = UIColor.lightGray
-            dropper.cellTextSize = CGFloat(10)
-            dropper.delegate = self
-            dropper.spacing = CGFloat(1)
-            dropper.trimCorners = true
-            dropper.showWithAnimation(0.15, options: Dropper.Alignment.center, button: selectActivityTypeButton)
-        } else {
-            dropper.hideWithAnimation(0.1)
-        }
+        self.present(self.alertController, animated: true)
     }
     
     
@@ -277,13 +308,7 @@ class ActivityViewController: UIViewController {
     }
     
 
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (dropper.isHidden == false) { // Checks if Dropper is visible
-            dropper.hideWithAnimation(0.1) // Hides Dropper
-        }
-    }
-    
+
 
 
     /*
@@ -297,34 +322,4 @@ class ActivityViewController: UIViewController {
     */
 
 }
-extension ActivityViewController: DropperDelegate {
-    func DropperSelectedRow(_ path: IndexPath, contents: String) {
-        selectActivityTypeButton.setTitle(contents, for: UIControlState.normal)
-        var changed = true
-        switch contents {
-        case "Sedentary":
-            currentActivityType = "minutesSedentary"
-            weeklyActivityImage.image = UIImage(named: "sedentary")
-            // TODO fix their dimensions
-        case "Lightly Active":
-            currentActivityType = "minutesLightlyActive"
-            weeklyActivityImage.image = UIImage(named: "lightly")
 
-        case "Fairly Active":
-            currentActivityType = "minutesFairlyActive"
-            weeklyActivityImage.image = UIImage(named: "fairly")
-
-        case "Very Active":
-            currentActivityType = "minutesVeryActive"
-            weeklyActivityImage.image = UIImage(named: "very")
-        default:
-            changed = false
-        }
-        if changed {
-            
-            self.getActivityNWeeksAgo(weeksAgo: currentWeeksBack, acitivityType: currentActivityType)
-        }
-        
-        
-    }
-}

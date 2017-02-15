@@ -136,7 +136,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         super.viewDidLoad()
         
         self.title = "Lily"
-
+        self.waterButton.imageView?.contentMode = .scaleAspectFit
+        self.activityRing.contentMode = .scaleAspectFit
         // Send a basic example
         Session.shared.authentication = Authentication.apiKey("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")
         self.hideSubview()
@@ -369,6 +370,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     @IBAction func emotionLogButtonPressed(_ sender: Any) {
         debugPrint("Emotion Log Button Pressed")
+        self.performSegue(withIdentifier: "goalsSegue", sender: sender)
+
 
     }
     @IBAction func sleepButtonPressed(_ sender: Any) {

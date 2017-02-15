@@ -53,7 +53,11 @@ class WaterViewController: UIViewController {
     @IBOutlet weak var day07Label: UILabel!
     @IBOutlet weak var backButtonDay: UIButton!
     @IBOutlet weak var forwardButtonDay: UIButton!
+    @IBOutlet weak var increaseOtherButton: UIButton!
     
+    @IBOutlet weak var decreaseOtherButton: UIButton!
+    @IBOutlet weak var increaseWaterButton: UIButton!
+    @IBOutlet weak var decreaseWaterButton: UIButton!
     @IBOutlet weak var weekRangeLabel: UILabel!
     @IBOutlet weak var specificLongDateLabel: UILabel!
     @IBOutlet weak var backButtonWeek: UIButton!
@@ -63,7 +67,12 @@ class WaterViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.enteredBackground(notification:)), name:NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.appWillTerminate(notification:)), name:NSNotification.Name.UIApplicationWillTerminate, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.appWillResign(notification:)), name:NSNotification.Name.UIApplicationWillResignActive, object: nil)
-
+        self.increaseWaterButton.imageView?.contentMode = .scaleAspectFit
+        self.decreaseWaterButton.imageView?.contentMode = .scaleAspectFit
+        self.decreaseOtherButton.imageView?.contentMode = .scaleAspectFit
+        self.increaseOtherButton.imageView?.contentMode = .scaleAspectFit
+        self.dayView03.contentMode = .scaleAspectFit
+        
         dayLabels = [self.day01Label,
                   self.day02Label,
                   self.day03Label,

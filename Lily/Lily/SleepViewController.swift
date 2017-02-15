@@ -55,7 +55,8 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var dayView05: UICircularProgressRingView!
     @IBOutlet weak var dayView06: UICircularProgressRingView!
     @IBOutlet weak var dayView07: UICircularProgressRingView!
-    
+    let alertController = UIAlertController(title: nil, message: "Choose your sleep metric", preferredStyle: .actionSheet)
+
     @IBOutlet weak var sleepOptionDropdownButton: UIButton!
     
     override func viewDidLoad() {
@@ -91,6 +92,27 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         self.getSleepNumberOfWeeksAgo(weeksAgo: 0)
         super.viewDidLoad()
 
+        let oneAction = UIAlertAction(title: "Hours of Sleep", style: .default) { _ in
+            print("ONE")
+        }
+        let twoAction = UIAlertAction(title: "Minutes of Restless Sleep", style: .default) { _ in
+            print("TWO")
+        }
+        let threeAction = UIAlertAction(title: "Sleep Efficiency", style: .default) { _ in
+            print("THREE")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            print("Cancel")
+        }
+
+        alertController.addAction(oneAction)
+        alertController.addAction(twoAction)
+        alertController.addAction(threeAction)
+        alertController.addAction(cancelAction)
+
+        
+
+        
 
     }
     
@@ -287,31 +309,8 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func sleepOptionDropdownPressed(_ sender: Any) {
-        
-        if dropper.status == .hidden {
-            dropper.items = ["Hours of Sleep", "Minutes of Restless Sleep", "Sleep Efficiency"]
-            dropper.theme = Dropper.Themes.black(UIColor.lightGray) // Uses Black UIColor
-            dropper.backgroundColor = UIColor.lightGray
-            dropper.cellTextSize = CGFloat(10)
-            dropper.delegate = self
-            dropper.spacing = CGFloat(1)
-            dropper.trimCorners = true
-            dropper.showWithAnimation(0.15, options: Dropper.Alignment.center, button: sleepOptionDropdownButton)
-        } else {
-            dropper.hideWithAnimation(0.1)
-        }
-    }
+        self.present(self.alertController, animated: true)
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (dropper.isHidden == false) { // Checks if Dropper is visible
-            dropper.hideWithAnimation(0.1) // Hides Dropper
-        }
-    }
 
-}
-
-extension SleepViewController: DropperDelegate {
-    func DropperSelectedRow(_ path: IndexPath, contents: String) {
-        sleepOptionDropdownButton.setTitle(contents, for: UIControlState.normal)
     }
 }
