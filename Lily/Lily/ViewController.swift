@@ -85,15 +85,10 @@ class ViewController: UIViewController {
         loader.perform(request: userDataRequest) { response in
             do {
                 let json = try response.responseJSON()
-                debugPrint("RESPONSE in json")
-                debugPrint(json)
 //                HUD.show(.progress)
-                print("SUCCESS LOGGING IN")
                 self.extractUserData(json: json)
                 self.createUserHelper(method: "Fitbit")
                 DispatchQueue.main.sync {
-                    
-                    print("Segue")
                     HUD.flash(.success, delay: 0.5)
 
                 }
@@ -102,7 +97,6 @@ class ViewController: UIViewController {
 
             }
             catch let error {
-                debugPrint(error)
                 self.signInEmbeddedButton?.isEnabled = true
                 HUD.flash(.error, delay: 1.0)
                 self.didCancelOrFail(error)
@@ -125,7 +119,6 @@ class ViewController: UIViewController {
                     val = value as! NSNumber
                     val = "\(val)"
                 } else if attribute == "encodedId" {
-                    print("ENCODED ID: \(val)")
                     val = value as! String
                     // TODO do something with encodedId
                     continue
@@ -149,7 +142,6 @@ class ViewController: UIViewController {
 
     func createUser(user: String, email: String, password: String) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
-            debugPrint("Error: \(error)")
             if error != nil {
                 if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
                     switch errCode {
@@ -174,7 +166,6 @@ class ViewController: UIViewController {
         // Do NOT use this value to authenticate with your backend server,
         // if you have one. Use getTokenWithCompletion:completion: instead.
         let email = user?.email ?? "None"
-        print("EMAIL: \(email)")
         if let uid = user?.uid {
             //ref.child("users/\(uid)/username").setValue("Tom R.")
             ref.child("users/\(uid)/email").setValue(email)
@@ -205,7 +196,6 @@ class ViewController: UIViewController {
     /// request most basic user profile
     var userDataRequest: URLRequest {
         let request = URLRequest(url: URL(string: "https://api.fitbit.com/1/user/-/profile.json")!)
-        debugPrint(request)
         return request
     }
     /**
@@ -214,9 +204,6 @@ class ViewController: UIViewController {
     */
     func didCancelOrFail(_ error: Error?) {
         DispatchQueue.main.async {
-            if let error = error {
-                print("Authorization went wrong: \(error)")
-            }
             self.resetButtons()
         }
     }

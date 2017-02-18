@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import Firebase
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
@@ -29,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         //Set navigation bar Back button tint colour
         UINavigationBar.appearance().tintColor = UIColor.white
         FIRApp.configure()
+        IQKeyboardManager.sharedManager().enable = true
 
         return true
     }

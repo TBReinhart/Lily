@@ -98,7 +98,7 @@
             <objects>
                 <navigationController id="o3e-h5-diT" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="zXi-PS-vui"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="k8m-dy-eLL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k8m-dy-eLL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3184,7 +3184,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJ9-gN-AID">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1080"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvw-ue-ue4">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bvw-ue-ue4">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1080"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WoT-wn-apO" userLabel="Water Goal">
@@ -3214,6 +3214,9 @@
                                                             <constraint firstAttribute="width" constant="28" id="ybQ-ih-Kb5"/>
                                                         </constraints>
                                                         <state key="normal" image="alarm_clock_disabled.png"/>
+                                                        <connections>
+                                                            <action selector="waterConsumptionReminderButtonPressed:" destination="Syt-Xa-wYk" eventType="touchUpInside" id="lUQ-rk-kNv"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3232,9 +3235,36 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7y-gr-P90" userLabel="Daily Glasses of Water">
                                                 <rect key="frame" x="8" y="49" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily glasses of water" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIq-Jz-zYx">
+                                                        <rect key="frame" x="24" y="0.0" width="211" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="6wn-Ac-JS8"/>
+                                                            <constraint firstAttribute="width" constant="211" id="VM7-9N-3gb"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10 cups" placeholder="10" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="17d-3A-wuL">
+                                                        <rect key="frame" x="258" y="0.0" width="93" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="93" id="fzD-Rv-159"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="QIq-Jz-zYx" firstAttribute="leading" secondItem="t7y-gr-P90" secondAttribute="leading" constant="24" id="3N5-YA-qXW"/>
                                                     <constraint firstAttribute="height" constant="38" id="Cmq-7J-Ijz"/>
+                                                    <constraint firstItem="QIq-Jz-zYx" firstAttribute="top" secondItem="t7y-gr-P90" secondAttribute="top" id="Kqf-uH-2jX"/>
+                                                    <constraint firstAttribute="trailing" secondItem="17d-3A-wuL" secondAttribute="trailing" constant="8" id="MZ1-Wq-WdQ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="QIq-Jz-zYx" secondAttribute="bottom" id="dDe-yj-Gj1"/>
+                                                    <constraint firstAttribute="bottom" secondItem="17d-3A-wuL" secondAttribute="bottom" id="lL5-OG-e30"/>
+                                                    <constraint firstItem="17d-3A-wuL" firstAttribute="top" secondItem="t7y-gr-P90" secondAttribute="top" id="q87-sq-1n9"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cng-9l-u1S" userLabel="Activity Goal">
@@ -3264,6 +3294,9 @@
                                                             <constraint firstAttribute="height" constant="28" id="NEn-b7-29I"/>
                                                         </constraints>
                                                         <state key="normal" image="alarm_clock_disabled.png"/>
+                                                        <connections>
+                                                            <action selector="activityGoalReminderButtonPressed:" destination="Syt-Xa-wYk" eventType="touchUpInside" id="XYK-Jo-LbO"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3280,46 +3313,214 @@
                                                     <constraint firstAttribute="trailing" secondItem="tk3-aM-ptQ" secondAttribute="trailing" constant="8" id="u4J-Cv-CBX"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKD-Z7-pOP" userLabel="Daily Glasses of Water">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKD-Z7-pOP" userLabel="Minutes of vigorous exercise">
                                                 <rect key="frame" x="8" y="138" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes of vigorous exercise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkd-pR-eKI">
+                                                        <rect key="frame" x="24" y="0.0" width="211" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="AUT-Ck-zZH"/>
+                                                            <constraint firstAttribute="width" constant="211" id="OIG-kS-e5b"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="30 mins" placeholder="30" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kf8-sd-LAa">
+                                                        <rect key="frame" x="258" y="0.0" width="93" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="93" id="goI-l4-Skd"/>
+                                                            <constraint firstAttribute="height" constant="38" id="xtv-uk-zZ2"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="kf8-sd-LAa" secondAttribute="trailing" constant="8" id="DyZ-o7-mAJ"/>
+                                                    <constraint firstItem="wkd-pR-eKI" firstAttribute="leading" secondItem="HKD-Z7-pOP" secondAttribute="leading" constant="24" id="IUi-rS-Zo8"/>
                                                     <constraint firstAttribute="height" constant="38" id="bux-Ic-8KW"/>
+                                                    <constraint firstItem="kf8-sd-LAa" firstAttribute="top" secondItem="HKD-Z7-pOP" secondAttribute="top" id="cAH-l2-nSa"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wkd-pR-eKI" secondAttribute="bottom" id="cMA-tS-BlN"/>
+                                                    <constraint firstAttribute="bottom" secondItem="kf8-sd-LAa" secondAttribute="bottom" id="oqQ-8X-2qp"/>
+                                                    <constraint firstItem="wkd-pR-eKI" firstAttribute="top" secondItem="HKD-Z7-pOP" secondAttribute="top" id="usp-dz-2nZ"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIe-bN-xsc" userLabel="Daily Glasses of Water">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIe-bN-xsc" userLabel="minutes of moderate exercise">
                                                 <rect key="frame" x="8" y="178" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes of moderate exercise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xJ-lM-CRg">
+                                                        <rect key="frame" x="24" y="0.0" width="211" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="H1C-VA-ayx"/>
+                                                            <constraint firstAttribute="width" constant="211" id="Mah-Pj-i8M"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15 mins" placeholder="15" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j2M-he-DKe">
+                                                        <rect key="frame" x="251" y="0.0" width="100" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="9z8-MU-msy"/>
+                                                            <constraint firstAttribute="height" constant="38" id="n2O-yA-RjG"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="j2M-he-DKe" secondAttribute="bottom" id="5dw-4Y-yAq"/>
+                                                    <constraint firstItem="9xJ-lM-CRg" firstAttribute="leading" secondItem="bIe-bN-xsc" secondAttribute="leading" constant="24" id="SSQ-tS-zUm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="j2M-he-DKe" secondAttribute="trailing" constant="8" id="VVo-La-8ah"/>
+                                                    <constraint firstItem="j2M-he-DKe" firstAttribute="top" secondItem="bIe-bN-xsc" secondAttribute="top" id="f74-me-Wz9"/>
                                                     <constraint firstAttribute="height" constant="38" id="p5P-e2-zqH"/>
+                                                    <constraint firstItem="9xJ-lM-CRg" firstAttribute="top" secondItem="bIe-bN-xsc" secondAttribute="top" id="w23-bM-SRH"/>
+                                                    <constraint firstAttribute="bottom" secondItem="9xJ-lM-CRg" secondAttribute="bottom" id="yhA-YS-Bw7"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZC-d6-xR9" userLabel="Daily Glasses of Water">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZC-d6-xR9" userLabel="minutes of light exercise">
                                                 <rect key="frame" x="8" y="218" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes of light exercise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZs-yd-Ogo">
+                                                        <rect key="frame" x="24" y="0.0" width="211" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="211" id="69V-hF-spx"/>
+                                                            <constraint firstAttribute="height" constant="38" id="du2-m9-uBq"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15 mins" placeholder="15" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="R91-CJ-6dt">
+                                                        <rect key="frame" x="251" y="0.0" width="100" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="FL8-tf-6CC"/>
+                                                            <constraint firstAttribute="height" constant="38" id="KfG-QX-iMc"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="R91-CJ-6dt" firstAttribute="top" secondItem="yZC-d6-xR9" secondAttribute="top" id="2Vq-hU-GrH"/>
                                                     <constraint firstAttribute="height" constant="38" id="D3d-nM-Ewe"/>
+                                                    <constraint firstItem="uZs-yd-Ogo" firstAttribute="top" secondItem="yZC-d6-xR9" secondAttribute="top" id="Kzf-w3-5fr"/>
+                                                    <constraint firstAttribute="bottom" secondItem="R91-CJ-6dt" secondAttribute="bottom" id="gOk-xt-fH4"/>
+                                                    <constraint firstItem="uZs-yd-Ogo" firstAttribute="leading" secondItem="yZC-d6-xR9" secondAttribute="leading" constant="24" id="h3F-QR-C1N"/>
+                                                    <constraint firstAttribute="bottom" secondItem="uZs-yd-Ogo" secondAttribute="bottom" id="r7Z-Oc-Tfj"/>
+                                                    <constraint firstAttribute="trailing" secondItem="R91-CJ-6dt" secondAttribute="trailing" constant="8" id="sMT-q4-WM6"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XSW-3C-3vL" userLabel="Daily Glasses of Water">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XSW-3C-3vL" userLabel="time spent sedentary">
                                                 <rect key="frame" x="8" y="258" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time spent sedentary" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ff-V9-Bzn">
+                                                        <rect key="frame" x="24" y="0.0" width="211" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="211" id="9iz-B4-JPP"/>
+                                                            <constraint firstAttribute="height" constant="38" id="BFn-BM-UDT"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8 hr 15 mins" placeholder="815" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ODu-QN-Ghg">
+                                                        <rect key="frame" x="243" y="0.0" width="108" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="edp-zw-dGs"/>
+                                                            <constraint firstAttribute="width" constant="108" id="gkw-1e-vxk"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="ODu-QN-Ghg" secondAttribute="bottom" id="0GJ-tn-efr"/>
+                                                    <constraint firstItem="ODu-QN-Ghg" firstAttribute="top" secondItem="XSW-3C-3vL" secondAttribute="top" id="PqM-t8-rfn"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ODu-QN-Ghg" secondAttribute="trailing" constant="8" id="TyI-Tt-QqT"/>
                                                     <constraint firstAttribute="height" constant="38" id="na2-Xh-hdE"/>
+                                                    <constraint firstAttribute="bottom" secondItem="6Ff-V9-Bzn" secondAttribute="bottom" id="rQe-Mr-lYl"/>
+                                                    <constraint firstItem="6Ff-V9-Bzn" firstAttribute="leading" secondItem="XSW-3C-3vL" secondAttribute="leading" constant="24" id="sxO-wb-Q1b"/>
+                                                    <constraint firstItem="6Ff-V9-Bzn" firstAttribute="top" secondItem="XSW-3C-3vL" secondAttribute="top" id="whu-fA-6HV"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rn-3b-dDE" userLabel="Daily Glasses of Water">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rn-3b-dDE" userLabel="amount of sleep">
                                                 <rect key="frame" x="8" y="347" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount of sleep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8g-bw-6yZ">
+                                                        <rect key="frame" x="24" y="0.0" width="211" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="211" id="8LR-Cy-MrX"/>
+                                                            <constraint firstAttribute="height" constant="38" id="xAg-P9-2Vt"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8 hr 15 mins" placeholder="8:15" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jVM-Y4-ADV">
+                                                        <rect key="frame" x="243" y="0.0" width="108" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="108" id="Mvg-Wi-jHI"/>
+                                                            <constraint firstAttribute="height" constant="38" id="iKs-IZ-ymy"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="9So-DJ-rpx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="i8g-bw-6yZ" secondAttribute="bottom" id="AIw-5m-Hqv"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jVM-Y4-ADV" secondAttribute="bottom" id="Ldk-BH-5Xn"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jVM-Y4-ADV" secondAttribute="trailing" constant="8" id="Nma-KX-puv"/>
+                                                    <constraint firstItem="i8g-bw-6yZ" firstAttribute="leading" secondItem="8rn-3b-dDE" secondAttribute="leading" constant="24" id="SYm-Vd-Zlj"/>
+                                                    <constraint firstItem="jVM-Y4-ADV" firstAttribute="top" secondItem="8rn-3b-dDE" secondAttribute="top" id="eho-91-tly"/>
+                                                    <constraint firstItem="i8g-bw-6yZ" firstAttribute="top" secondItem="8rn-3b-dDE" secondAttribute="top" id="qlO-qJ-ixp"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39d-GI-ROg" userLabel="Daily Glasses of Water">
                                                 <rect key="frame" x="8" y="387" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep efficiency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d37-wc-SWV">
+                                                        <rect key="frame" x="24" y="0.0" width="156" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="D0S-zA-emd"/>
+                                                            <constraint firstAttribute="width" constant="156" id="LK8-BB-Kbf"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="85 %" placeholder="85" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1gX-VT-z7P">
+                                                        <rect key="frame" x="251" y="0.0" width="100" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="4PE-DE-VGJ"/>
+                                                            <constraint firstAttribute="width" constant="100" id="Zz0-no-US8"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="1gX-VT-z7P" secondAttribute="trailing" constant="8" id="6m1-cR-65t"/>
+                                                    <constraint firstAttribute="bottom" secondItem="1gX-VT-z7P" secondAttribute="bottom" id="FhQ-Cl-T4g"/>
+                                                    <constraint firstItem="d37-wc-SWV" firstAttribute="leading" secondItem="39d-GI-ROg" secondAttribute="leading" constant="24" id="XGV-RO-s3j"/>
                                                     <constraint firstAttribute="height" constant="38" id="Xi4-e3-BDk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="d37-wc-SWV" secondAttribute="bottom" id="rys-8l-y80"/>
+                                                    <constraint firstItem="1gX-VT-z7P" firstAttribute="top" secondItem="39d-GI-ROg" secondAttribute="top" id="uzw-QS-U9z"/>
+                                                    <constraint firstItem="d37-wc-SWV" firstAttribute="top" secondItem="39d-GI-ROg" secondAttribute="top" id="zBc-gz-zNB"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5o-nD-Hkh" userLabel="Heart Rate Goal">
@@ -3349,6 +3550,9 @@
                                                             <constraint firstAttribute="height" constant="28" id="Itf-iH-Jbc"/>
                                                         </constraints>
                                                         <state key="normal" image="alarm_clock_disabled.png"/>
+                                                        <connections>
+                                                            <action selector="heartRateReminderButtonPressed:" destination="Syt-Xa-wYk" eventType="touchUpInside" id="5QT-JY-25S"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3368,16 +3572,72 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIj-RP-5cY" userLabel="Daily Glasses of Water">
                                                 <rect key="frame" x="8" y="476" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resting heart rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9W-hV-RVi">
+                                                        <rect key="frame" x="24" y="0.0" width="143" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="143" id="8Em-nt-qk2"/>
+                                                            <constraint firstAttribute="height" constant="38" id="HUA-WG-MxK"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="75 bpm" placeholder="75" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="g3T-Dg-MQH">
+                                                        <rect key="frame" x="251" y="0.0" width="100" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="MXs-97-oWt"/>
+                                                            <constraint firstAttribute="height" constant="38" id="jFj-4N-xHE"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="Q9W-hV-RVi" firstAttribute="top" secondItem="CIj-RP-5cY" secondAttribute="top" id="Anx-TR-gMt"/>
+                                                    <constraint firstAttribute="bottom" secondItem="g3T-Dg-MQH" secondAttribute="bottom" id="Idf-WI-uxQ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Q9W-hV-RVi" secondAttribute="bottom" id="Mro-1b-nuE"/>
+                                                    <constraint firstItem="g3T-Dg-MQH" firstAttribute="top" secondItem="CIj-RP-5cY" secondAttribute="top" id="bMN-vc-w8O"/>
+                                                    <constraint firstAttribute="trailing" secondItem="g3T-Dg-MQH" secondAttribute="trailing" constant="8" id="d06-kN-JYJ"/>
                                                     <constraint firstAttribute="height" constant="38" id="fjQ-mJ-LBf"/>
+                                                    <constraint firstItem="Q9W-hV-RVi" firstAttribute="leading" secondItem="CIj-RP-5cY" secondAttribute="leading" constant="24" id="jgd-nn-HhI"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysH-Jb-fc8" userLabel="Daily Glasses of Water">
                                                 <rect key="frame" x="8" y="516" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum heart rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPX-rb-0mp">
+                                                        <rect key="frame" x="22" y="0.0" width="143" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="143" id="jeD-Y1-WCd"/>
+                                                            <constraint firstAttribute="height" constant="38" id="jfu-Ac-0bZ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="140 bpm" placeholder="140" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qN9-QD-AIf">
+                                                        <rect key="frame" x="251" y="0.0" width="100" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="bYE-Ht-yIe"/>
+                                                            <constraint firstAttribute="width" constant="100" id="q53-th-qXl"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="0y0-6S-u6P"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qN9-QD-AIf" secondAttribute="bottom" id="6Bs-ij-I2D"/>
+                                                    <constraint firstItem="WPX-rb-0mp" firstAttribute="top" secondItem="ysH-Jb-fc8" secondAttribute="top" id="MUs-Y0-aIi"/>
+                                                    <constraint firstItem="WPX-rb-0mp" firstAttribute="leading" secondItem="ysH-Jb-fc8" secondAttribute="leading" constant="22" id="UIW-zW-kQz"/>
+                                                    <constraint firstAttribute="bottom" secondItem="WPX-rb-0mp" secondAttribute="bottom" id="fH7-2j-hTx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qN9-QD-AIf" secondAttribute="trailing" constant="8" id="jpj-AA-O2l"/>
+                                                    <constraint firstItem="qN9-QD-AIf" firstAttribute="top" secondItem="ysH-Jb-fc8" secondAttribute="top" id="soj-9z-4d3"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4l-fi-u9g" userLabel="Weight Goal">
@@ -3407,6 +3667,9 @@
                                                             <constraint firstAttribute="height" constant="28" id="q3w-eo-qNX"/>
                                                         </constraints>
                                                         <state key="normal" image="alarm_clock_disabled.png"/>
+                                                        <connections>
+                                                            <action selector="weightReminderButtonPressed:" destination="Syt-Xa-wYk" eventType="touchUpInside" id="eQ8-bz-TZh"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3422,6 +3685,76 @@
                                                     <constraint firstAttribute="bottom" secondItem="6Lk-TY-Wem" secondAttribute="bottom" constant="5" id="qKa-4m-nhe"/>
                                                     <constraint firstAttribute="bottom" secondItem="wvZ-QG-Jzj" secondAttribute="bottom" constant="6" id="sTK-aI-d4R"/>
                                                     <constraint firstItem="6Lk-TY-Wem" firstAttribute="top" secondItem="c4l-fi-u9g" secondAttribute="top" constant="5" id="xz1-95-4AA"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPz-JQ-QxK" userLabel="Daily Glasses of Water">
+                                                <rect key="frame" x="8" y="605" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzL-9U-Y3B">
+                                                        <rect key="frame" x="24" y="0.0" width="93" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="93" id="Nvg-tV-E09"/>
+                                                            <constraint firstAttribute="height" constant="38" id="ooz-dc-xtf"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="145 lbs" placeholder="145" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gsw-Vf-0zj">
+                                                        <rect key="frame" x="251" y="0.0" width="100" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="yG3-4y-FEc"/>
+                                                            <constraint firstAttribute="width" constant="100" id="zpk-az-OGB"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="gsw-Vf-0zj" firstAttribute="top" secondItem="qPz-JQ-QxK" secondAttribute="top" id="4em-u3-ki4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="TzL-9U-Y3B" secondAttribute="bottom" id="5gm-ne-HJ1"/>
+                                                    <constraint firstAttribute="bottom" secondItem="gsw-Vf-0zj" secondAttribute="bottom" id="G1v-93-Kq6"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gsw-Vf-0zj" secondAttribute="trailing" constant="8" id="U8H-48-eIf"/>
+                                                    <constraint firstAttribute="height" constant="38" id="W8l-1Q-JlN"/>
+                                                    <constraint firstItem="TzL-9U-Y3B" firstAttribute="top" secondItem="qPz-JQ-QxK" secondAttribute="top" id="Xgv-yP-80k"/>
+                                                    <constraint firstItem="TzL-9U-Y3B" firstAttribute="leading" secondItem="qPz-JQ-QxK" secondAttribute="leading" constant="24" id="jMN-vH-xiZ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PtX-eB-oz7" userLabel="Daily Glasses of Water">
+                                                <rect key="frame" x="8" y="645" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achieve weight by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tf9-ts-z7n">
+                                                        <rect key="frame" x="24" y="0.0" width="138" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="oM5-5p-vgR"/>
+                                                            <constraint firstAttribute="width" constant="138" id="sm4-fg-2zb"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2/17/2017" placeholder="2/17/2017" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-Tq-mmC">
+                                                        <rect key="frame" x="251" y="0.0" width="100" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="I8D-kx-bg8"/>
+                                                            <constraint firstAttribute="height" constant="38" id="UfT-Fc-zh0"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="ULH-Tq-mmC" secondAttribute="trailing" constant="8" id="0F1-rl-j36"/>
+                                                    <constraint firstItem="Tf9-ts-z7n" firstAttribute="top" secondItem="PtX-eB-oz7" secondAttribute="top" id="92h-qu-cIb"/>
+                                                    <constraint firstItem="Tf9-ts-z7n" firstAttribute="leading" secondItem="PtX-eB-oz7" secondAttribute="leading" constant="24" id="KpC-Nn-Lmm"/>
+                                                    <constraint firstItem="ULH-Tq-mmC" firstAttribute="top" secondItem="PtX-eB-oz7" secondAttribute="top" id="UPI-kk-DfN"/>
+                                                    <constraint firstAttribute="height" constant="38" id="fgX-Qt-dp3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ULH-Tq-mmC" secondAttribute="bottom" id="tZc-Du-12d"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Tf9-ts-z7n" secondAttribute="bottom" id="usp-kV-CH9"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hb2-7D-bAa" userLabel="Baby Movement Goal">
@@ -3451,6 +3784,9 @@
                                                             <constraint firstAttribute="height" constant="28" id="Fba-Dt-0xB"/>
                                                         </constraints>
                                                         <state key="normal" image="alarm_clock_disabled.png"/>
+                                                        <connections>
+                                                            <action selector="babyMovementReminderButtonPressed:" destination="Syt-Xa-wYk" eventType="touchUpInside" id="ci3-bk-vwO"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3495,6 +3831,9 @@
                                                             <constraint firstAttribute="height" constant="28" id="ML9-Ky-0Or"/>
                                                         </constraints>
                                                         <state key="normal" image="alarm_clock_disabled.png"/>
+                                                        <connections>
+                                                            <action selector="emotionsReminderButtonPressed:" destination="Syt-Xa-wYk" eventType="touchUpInside" id="9zb-Y0-i8Y"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3509,20 +3848,6 @@
                                                     <constraint firstItem="a4H-zd-Hlk" firstAttribute="top" secondItem="anK-jR-REF" secondAttribute="top" constant="5" id="gjw-B4-cwd"/>
                                                     <constraint firstAttribute="trailing" secondItem="a4H-zd-Hlk" secondAttribute="trailing" constant="8" id="tCy-SB-MI7"/>
                                                     <constraint firstAttribute="bottom" secondItem="oRe-E7-rv0" secondAttribute="bottom" constant="6" id="x3r-xe-cD2"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPz-JQ-QxK" userLabel="Daily Glasses of Water">
-                                                <rect key="frame" x="8" y="605" width="359" height="38"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="38" id="W8l-1Q-JlN"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PtX-eB-oz7" userLabel="Daily Glasses of Water">
-                                                <rect key="frame" x="8" y="645" width="359" height="38"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="38" id="fgX-Qt-dp3"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQq-zC-4mG" userLabel="Call The Doctor">
@@ -3559,23 +3884,109 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHu-BX-nyK" userLabel="Daily Glasses of Water">
                                                 <rect key="frame" x="8" y="734" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me to journal every" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgF-0L-ji5">
+                                                        <rect key="frame" x="24" y="0.0" width="176" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="176" id="UQM-PE-9Ku"/>
+                                                            <constraint firstAttribute="height" constant="38" id="Y7I-rg-1Nh"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="24 hr" placeholder="24" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qfC-7B-lNw">
+                                                        <rect key="frame" x="271" y="0.0" width="80" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="H3O-Q6-pD5"/>
+                                                            <constraint firstAttribute="height" constant="38" id="bf3-HD-Mde"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="BgF-0L-ji5" firstAttribute="top" secondItem="KHu-BX-nyK" secondAttribute="top" id="1it-JD-03y"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qfC-7B-lNw" secondAttribute="trailing" constant="8" id="KC4-gy-puX"/>
+                                                    <constraint firstItem="qfC-7B-lNw" firstAttribute="top" secondItem="KHu-BX-nyK" secondAttribute="top" id="LVM-Rf-ZQh"/>
                                                     <constraint firstAttribute="height" constant="38" id="Nzn-Kc-xHi"/>
+                                                    <constraint firstAttribute="bottom" secondItem="BgF-0L-ji5" secondAttribute="bottom" id="WWP-a5-2IM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qfC-7B-lNw" secondAttribute="bottom" id="lEH-bQ-IdD"/>
+                                                    <constraint firstItem="BgF-0L-ji5" firstAttribute="leading" secondItem="KHu-BX-nyK" secondAttribute="leading" constant="24" id="z19-Xn-n8U"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEF-Ro-MEb" userLabel="Daily Glasses of Water">
                                                 <rect key="frame" x="8" y="823" width="359" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movement every" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVi-h8-ZO2">
+                                                        <rect key="frame" x="24" y="0.0" width="176" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="gLl-lS-a9f"/>
+                                                            <constraint firstAttribute="width" constant="176" id="wCg-dh-TeW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8 hr" placeholder="8" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="r0s-kg-0K4">
+                                                        <rect key="frame" x="271" y="0.0" width="80" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="0HL-u5-VXH"/>
+                                                            <constraint firstAttribute="width" constant="80" id="L6u-l5-uTC"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="r0s-kg-0K4" secondAttribute="bottom" id="LBd-xt-ePb"/>
+                                                    <constraint firstAttribute="trailing" secondItem="r0s-kg-0K4" secondAttribute="trailing" constant="8" id="PNb-wl-iZA"/>
                                                     <constraint firstAttribute="height" constant="38" id="XfJ-2L-rOD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="VVi-h8-ZO2" secondAttribute="bottom" id="nGd-b5-Hr4"/>
+                                                    <constraint firstItem="VVi-h8-ZO2" firstAttribute="leading" secondItem="oEF-Ro-MEb" secondAttribute="leading" constant="24" id="rS3-fw-2Xd"/>
+                                                    <constraint firstItem="VVi-h8-ZO2" firstAttribute="top" secondItem="oEF-Ro-MEb" secondAttribute="top" id="zKu-fR-nJH"/>
+                                                    <constraint firstItem="r0s-kg-0K4" firstAttribute="top" secondItem="oEF-Ro-MEb" secondAttribute="top" id="zoO-It-gPV"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-3F-wXv" userLabel="Daily Glasses of Water">
                                                 <rect key="frame" x="8" y="912" width="359" height="38"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svV-XD-VOG">
+                                                        <rect key="frame" x="205" y="0.0" width="146" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="38" id="hc1-9U-RRY"/>
+                                                            <constraint firstAttribute="width" constant="146" id="u42-19-RrI"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <state key="normal" title="440-465-6171"/>
+                                                        <connections>
+                                                            <action selector="callOBGYNButtonPressed:" destination="Syt-Xa-wYk" eventType="touchUpInside" id="GWa-9C-3m0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OB/GYN Office" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvC-KT-Vmr">
+                                                        <rect key="frame" x="8" y="0.0" width="176" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="176" id="0Gt-lZ-WPr"/>
+                                                            <constraint firstAttribute="height" constant="38" id="zEl-X2-nKT"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="svV-XD-VOG" secondAttribute="trailing" constant="8" id="1Ys-8o-rC2"/>
                                                     <constraint firstAttribute="height" constant="38" id="QqI-5e-YCS"/>
+                                                    <constraint firstAttribute="bottom" secondItem="EvC-KT-Vmr" secondAttribute="bottom" id="abM-hF-qs9"/>
+                                                    <constraint firstItem="EvC-KT-Vmr" firstAttribute="leading" secondItem="gSg-3F-wXv" secondAttribute="leading" constant="8" id="deS-mO-vEb"/>
+                                                    <constraint firstItem="svV-XD-VOG" firstAttribute="top" secondItem="gSg-3F-wXv" secondAttribute="top" id="fBc-wu-h6N"/>
+                                                    <constraint firstItem="EvC-KT-Vmr" firstAttribute="top" secondItem="gSg-3F-wXv" secondAttribute="top" id="i9X-e3-u8B"/>
+                                                    <constraint firstAttribute="bottom" secondItem="svV-XD-VOG" secondAttribute="bottom" id="ltf-ey-f0W"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aei-Bd-Ti4" userLabel="Sleep Goal">
@@ -3605,6 +4016,9 @@
                                                             <constraint firstAttribute="height" constant="28" id="hoz-ha-JeM"/>
                                                         </constraints>
                                                         <state key="normal" image="alarm_clock_disabled.png"/>
+                                                        <connections>
+                                                            <action selector="sleepGoalReminderButtonPressed:" destination="Syt-Xa-wYk" eventType="touchUpInside" id="7Db-5z-uZ9"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3662,7 +4076,7 @@
                                             <constraint firstItem="PtX-eB-oz7" firstAttribute="top" secondItem="qPz-JQ-QxK" secondAttribute="bottom" constant="2" id="Xn2-lY-Ljm"/>
                                             <constraint firstAttribute="trailing" secondItem="c4l-fi-u9g" secondAttribute="trailing" constant="8" id="YMU-uA-Ttx"/>
                                             <constraint firstAttribute="trailing" secondItem="e5o-nD-Hkh" secondAttribute="trailing" constant="8" id="YP3-6c-fqt"/>
-                                            <constraint firstAttribute="height" constant="1000" id="Yx5-ON-da1"/>
+                                            <constraint firstAttribute="height" constant="1080" id="Yx5-ON-da1"/>
                                             <constraint firstItem="qPz-JQ-QxK" firstAttribute="top" secondItem="c4l-fi-u9g" secondAttribute="bottom" constant="3" id="ZGQ-gf-Bt5"/>
                                             <constraint firstItem="8rn-3b-dDE" firstAttribute="leading" secondItem="Bvw-ue-ue4" secondAttribute="leading" constant="8" id="a1R-hU-9BU"/>
                                             <constraint firstItem="anK-jR-REF" firstAttribute="leading" secondItem="Bvw-ue-ue4" secondAttribute="leading" constant="8" id="aWU-fi-8XZ"/>
@@ -3717,18 +4131,52 @@
                     <size key="freeformSize" width="375" height="1080"/>
                     <connections>
                         <outlet property="activityGoalImage" destination="tJy-fn-L6X" id="lRq-I6-zcS"/>
+                        <outlet property="activityGoalReminderButton" destination="tk3-aM-ptQ" id="lSl-Bp-DkM"/>
+                        <outlet property="amountOfSleepTextField" destination="jVM-Y4-ADV" id="gUs-Tn-cqc"/>
+                        <outlet property="amountOfSleepView" destination="8rn-3b-dDE" id="8qy-wR-eZa"/>
                         <outlet property="babyMovementGoalImage" destination="PfF-Mh-lXS" id="bX0-iy-dph"/>
+                        <outlet property="babyMovementReminderButton" destination="lTh-gs-g1A" id="otb-fd-G5V"/>
+                        <outlet property="babyMovementView" destination="oEF-Ro-MEb" id="FAk-dc-fq9"/>
                         <outlet property="callTheDoctorImage" destination="MYW-TD-k65" id="gH8-XH-e2X"/>
+                        <outlet property="dailyGlassesOfWaterGoalTextField" destination="17d-3A-wuL" id="hot-P4-BCT"/>
+                        <outlet property="dailyGlassesOfWaterView" destination="t7y-gr-P90" id="VqB-IC-kwi"/>
                         <outlet property="emotionsGoalImage" destination="UWd-IG-Mey" id="bmR-aI-bvd"/>
+                        <outlet property="emotionsReminderButton" destination="a4H-zd-Hlk" id="Cpk-Nt-Ucp"/>
+                        <outlet property="emotionsTextField" destination="qfC-7B-lNw" id="0gB-nP-607"/>
+                        <outlet property="emotionsView" destination="KHu-BX-nyK" id="Wxy-D6-ENf"/>
                         <outlet property="heartRateGoalImage" destination="G1e-Kd-sHH" id="sRo-Fs-7jd"/>
+                        <outlet property="heartRateReminderButton" destination="GV7-aY-I4w" id="Xvk-jx-x12"/>
+                        <outlet property="lightExerciseTextField" destination="R91-CJ-6dt" id="juL-1d-Mqq"/>
+                        <outlet property="maxHeartRateTextField" destination="qN9-QD-AIf" id="Pc1-46-oez"/>
+                        <outlet property="maxHeartRateView" destination="ysH-Jb-fc8" id="Rh6-ts-0q9"/>
+                        <outlet property="minutesOfLightExerciseView" destination="yZC-d6-xR9" id="43O-VO-BkT"/>
+                        <outlet property="minutesOfModerateExerciseView" destination="bIe-bN-xsc" id="lOo-3g-pNP"/>
+                        <outlet property="minutesOfVigorousExerciseView" destination="HKD-Z7-pOP" id="pyb-cm-pRs"/>
+                        <outlet property="moderateExerciseTextField" destination="j2M-he-DKe" id="Slk-jc-huk"/>
+                        <outlet property="movementTextField" destination="r0s-kg-0K4" id="HAZ-G0-I0E"/>
+                        <outlet property="obgynPhoneButton" destination="svV-XD-VOG" id="2eU-0Z-eKj"/>
+                        <outlet property="restingHeartRateTextField" destination="g3T-Dg-MQH" id="1Dy-i9-3h0"/>
+                        <outlet property="restingHeartRateView" destination="CIj-RP-5cY" id="9ga-PO-xy2"/>
+                        <outlet property="sedentaryTextField" destination="ODu-QN-Ghg" id="oVv-cl-ZR9"/>
+                        <outlet property="sleepEfficiencyTextField" destination="1gX-VT-z7P" id="3VQ-ei-JoP"/>
+                        <outlet property="sleepEfficiencyView" destination="39d-GI-ROg" id="foc-fs-hCt"/>
                         <outlet property="sleepGoalImage" destination="sMU-Xf-px4" id="aM2-ZS-mqy"/>
+                        <outlet property="sleepGoalReminderButton" destination="Eeq-xU-umh" id="1X1-Nq-B7y"/>
+                        <outlet property="timeSpentSedentaryView" destination="XSW-3C-3vL" id="gJ3-cc-tG7"/>
+                        <outlet property="vigorousExerciseTextField" destination="kf8-sd-LAa" id="Wlr-cx-v74"/>
+                        <outlet property="waterConsumptionReminderButton" destination="VZh-yg-OU3" id="amV-6h-Snl"/>
                         <outlet property="waterConumptionGoalImage" destination="cL9-75-EXX" id="aST-CG-o5K"/>
+                        <outlet property="weightDateTextField" destination="ULH-Tq-mmC" id="mmy-73-Xfx"/>
+                        <outlet property="weightGoalDateView" destination="PtX-eB-oz7" id="Y9g-IO-5Aa"/>
                         <outlet property="weightGoalImage" destination="6Lk-TY-Wem" id="JRy-XN-UMX"/>
+                        <outlet property="weightReminderButton" destination="ZM8-q1-3zQ" id="ewU-SF-gfc"/>
+                        <outlet property="weightTextField" destination="gsw-Vf-0zj" id="gWJ-DA-qfM"/>
+                        <outlet property="weightView" destination="qPz-JQ-QxK" id="DRE-B0-8OJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSz-uz-P4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2359" y="1545"/>
+            <point key="canvasLocation" x="-2360.144927536232" y="1544.8369565217392"/>
         </scene>
     </scenes>
     <resources>

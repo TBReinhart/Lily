@@ -98,23 +98,18 @@ class WaterViewController: UIViewController {
     }
     
     func enteredBackground(notification : NSNotification) {
-        print("Observer method called")
     }
     
     func appWillTerminate(notification: NSNotification) {
-        print("WILL TERM")
     }
     func appWillResign(notification: NSNotification) {
-        print("RESIGN")
         self.saveWaterLogsToFitbit()
     }
     
     func saveWaterLogsToFitbit() {
         let newCups = self.glassesOfWaterConsumed - self.totalFitbitWaterConsumedToday
-        print("NEW CUPS OF WATER: \(newCups)")
         if newCups < 1 { return }
         self.fbreqs.logWater(date: self.specificWater.dateString, amount: "\(newCups)", unit: "cup") { response, err in
-            print("RESPONSE: \(response), Error: \(err)")
             
         }
     }
@@ -153,14 +148,12 @@ class WaterViewController: UIViewController {
     }
 
     func swipeLeftSpecificDate() {
-        print("go forward day")
         if currentDaysBack == 0 {
             return
         }
         self.saveWaterLogsToFitbit()
 
         currentDaysBack -= 1
-        print(currentDaysBack)
         
         if currentDaysBack == 0 {
             self.forwardButtonDay.isHidden = true
@@ -172,29 +165,24 @@ class WaterViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("WILL DISAPPEAR")
         self.saveWaterLogsToFitbit()
         // Show the navigation bar on other view controllers
     }
     
     func swipeRightSpecificDate() {
         // this means go back
-        print("go back day")
         self.saveWaterLogsToFitbit()
         self.forwardButtonDay.isHidden = false
         currentDaysBack += 1
-        print(currentDaysBack)
         self.specificDateLabel.text = ""
         self.setSpecificDate(daysAgo:currentDaysBack)
     }
     
     func swipeLeftWeek() {
-        print("go forward week")
         if currentWeeksBack == 0 {
             return
         }
         currentWeeksBack -= 1
-        print(currentWeeksBack)
         if currentWeeksBack == 0 {
             self.forwardButtonWeek.isHidden = true
         }
@@ -203,18 +191,12 @@ class WaterViewController: UIViewController {
     
     func swipeRightWeek() {
         // this means go back
-        print("go back week")
-        print(currentWeeksBack)
         self.forwardButtonWeek.isHidden = false
         currentWeeksBack += 1
         self.getWaterNWeeksAgo(weeksAgo: currentWeeksBack)
         
     }
     
-    func loadWaterFitibt() {
-
-        
-    }
     
     @IBAction func adviceButtonLinkPressed(_ sender: Any) {
         let svc = SFSafariViewController(url: URL(string:"http://www.mayoclinic.org/healthy-lifestyle/pregnancy-week-by-week/in-depth/pregnancy-nutrition/art-20043844?pg=2" )!)
@@ -225,7 +207,6 @@ class WaterViewController: UIViewController {
     func getWaterGoal() {
         self.fbreqs.getWaterGoal() { waterGoal, error in
             if let goal = waterGoal {
-                print("GOAL PRINT: \(goal)")
                 self.recommendedGlassesLabel.text = "of recommended \(goal) glasses"
                  self.recommendedGlassesLabel.lineBreakMode = .byWordWrapping // or NSLineBreakMode.ByWordWrapping
                 self.recommendedGlassesLabel.numberOfLines = 0         // Do any additional setup after loading the view.
@@ -265,7 +246,7 @@ class WaterViewController: UIViewController {
     
     func loadWaterNDaysAgo(daysAgo: Int, completionHandler: @escaping (Water?, Error?) -> ()) {
         let past = Helpers.getDateNDaysAgo(daysAgo: daysAgo)
-        let date = past.date
+//        let date = past.date
         let dateString = past.dateString
         self.fbreqs.getWaterLogs(date: dateString) { water, error in
             if let water = water {
@@ -282,14 +263,12 @@ class WaterViewController: UIViewController {
         let date = past.date
         let labelRange = Helpers.getShortDateRangeString(date: date)
         let dateString = past.dateString
-        print("water date string: \(dateString)")
         self.weekRangeLabel.text = labelRange
 
         self.fbreqs.getWaterLastWeek(date: dateString) { waters, error in
             if waters != nil {
                 var i = 0
                 for water in waters! {
-                    print("Water: \(water.cupsConsumed) DOW: \(water.dayOfWeek)")
                     let cupsConsumed = water.cupsConsumed
                     self.dayLabels[i].text = water.dayOfWeek
                     self.setProgressRing(ring: self.dayViews[i], value: cupsConsumed)

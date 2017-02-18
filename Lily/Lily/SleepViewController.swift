@@ -9,11 +9,9 @@
 import UIKit
 import SwiftyJSON
 import UICircularProgressRing
-import Dropper
 import SafariServices
 
 class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
-    let dropper = Dropper(width: 75, height: 200)
     var currentWeeksBack = 0
     var currentDaysBack = 0
     var fbreqs = FitbitRequests()
@@ -93,16 +91,12 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
 
         let oneAction = UIAlertAction(title: "Hours of Sleep", style: .default) { _ in
-            print("ONE")
         }
         let twoAction = UIAlertAction(title: "Minutes of Restless Sleep", style: .default) { _ in
-            print("TWO")
         }
         let threeAction = UIAlertAction(title: "Sleep Efficiency", style: .default) { _ in
-            print("THREE")
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            print("Cancel")
         }
 
         alertController.addAction(oneAction)
@@ -153,7 +147,6 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     
 
     func handleTap(_ sender: UITapGestureRecognizer) {
-        print("Hello World")
     }
     @IBAction func adviceButtonLinkPressed(_ sender: Any) {
         let svc = SFSafariViewController(url: URL(string:"http://www.mayoclinic.org/healthy-lifestyle/pregnancy-week-by-week/in-depth/sleep-during-pregnancy/art-20043827" )!)
@@ -162,12 +155,10 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
 
     
     func swipeLeftSpecificDate() {
-        print("go forward day")
         if currentDaysBack == 0 {
             return
         }
         currentDaysBack -= 1
-        print(currentDaysBack)
         
         if currentDaysBack == 0 {
             self.forwardButtonSpecificDate.isHidden = true
@@ -179,21 +170,17 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func swipeRightSpecificDate() {
         // this means go back
-        print("go back day")
         self.forwardButtonSpecificDate.isHidden = false
         currentDaysBack += 1
-        print(currentDaysBack)
         self.specificDateLabel.text = ""
         self.setSpecificDateSleep(daysAgo: currentDaysBack)
     }
     
     func swipeLeftWeek() {
-        print("go forward week")
         if currentWeeksBack == 0 {
             return
         }
         currentWeeksBack -= 1
-        print(currentWeeksBack)
         if currentWeeksBack == 0 {
             self.forwardButtonWeek.isHidden = true
         }
@@ -202,8 +189,6 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func swipeRightWeek() {
         // this means go back
-        print("go back week")
-        print(currentWeeksBack)
         self.forwardButtonWeek.isHidden = false
         currentWeeksBack += 1
         self.getSleepNumberOfWeeksAgo(weeksAgo: currentWeeksBack)
@@ -213,7 +198,6 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     func loadSleepFitbit() {
         self.loadSleepGoal() { sleepGoal, error in
             if let goal = sleepGoal {
-                print("GOAL PRINT: \(goal)")
                 self.specificNightProgressRing.maxValue = CGFloat(goal)
                 for v in self.lastWeekViews {
                     v.maxValue = CGFloat(goal)
@@ -232,11 +216,9 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
             let minutesRestless = sleep?.restlessCount
             let sleepEfficiency = sleep?.efficiency
             let specificTimeSlept = String(format:"%.1f", sleep?.sleepTimeRounded ?? 0.0)
-            print("TIME SPECIFIC: \(sleep?.dateLong)")
             
             self.specificLongDateLabel.text = sleep?.dateLong ?? "January 1, 2017"
             
-            print("SPECIFIC SLEEP: \(specificTimeSlept)")
             self.setProgressRing(ring: self.specificNightProgressRing, value: Double(specificTimeSlept)!)
             self.specificRestlessLabel.text = "\(minutesRestless ?? 0)"
             self.specificEfficiencyLabel.text = "\(sleepEfficiency ?? 100)%"
@@ -256,17 +238,14 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         let labelRange = Helpers.getShortDateRangeString(date: date)
         let dateString = past.dateString
         self.previousWeekDateRangeLabel.text = labelRange
-        print("Label: \(labelRange)")
-        print("Date String: \(dateString)")
         self.fbreqs.getSleepLastWeek(date: dateString) { sleeps, error in
             if sleeps != nil {
                 self.weekSleepObjects = sleeps!
-                print("PRINTING SLEEPS IN WEEKS AGO: \(weeksAgo)")
                 var i = 0
                 for sleep in self.weekSleepObjects {
                     let dow = sleep?.dayOfWeek ?? "NONE"
                     let sleepTimeRounded = sleep?.sleepTimeRounded ?? 0.0
-                    let shortDateString = sleep?.shortDateString ?? "1/1"
+//                    let shortDateString = sleep?.shortDateString ?? "1/1"
                     self.labels[i].text = dow
                     self.setProgressRing(ring: self.lastWeekViews[i], value: sleepTimeRounded)
                     i += 1
@@ -293,7 +272,7 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func loadSleepNDaysAgo(daysAgo: Int, completionHandler: @escaping (Sleep?, Error?) -> ()) {
         let past = Helpers.getDateNDaysAgo(daysAgo: daysAgo)
-        let date = past.date
+//        let date = past.date
         let dateString = past.dateString
         self.fbreqs.getSleepLogs(date: dateString) { sleep, error in
             completionHandler(sleep ?? Sleep(), nil)

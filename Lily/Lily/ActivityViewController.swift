@@ -8,7 +8,6 @@
 
 import UIKit
 import SafariServices
-import Dropper
 
 class ActivityViewController: UIViewController {
 
@@ -73,6 +72,7 @@ class ActivityViewController: UIViewController {
     let alertController = UIAlertController(title: nil, message: "Choose your activity level", preferredStyle: .actionSheet)
 
 
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +96,6 @@ class ActivityViewController: UIViewController {
         self.getActivityNWeeksAgo(weeksAgo: 0, acitivityType: currentActivityType)
         
         let oneAction = UIAlertAction(title: "Sedentary", style: .default) { _ in
-            print("Sedentary")
             self.selectActivityTypeButton.setTitle("Sedentary", for: .normal)
 
             self.weeklyActivityImage.image = UIImage(named: "sedentary")
@@ -104,7 +103,6 @@ class ActivityViewController: UIViewController {
 
         }
         let twoAction = UIAlertAction(title: "Lightly Active", style: .default) { _ in
-            print("Lightly Active")
             self.selectActivityTypeButton.setTitle("Lightly Active", for: .normal)
 
             self.weeklyActivityImage.image = UIImage(named: "lightly")
@@ -112,7 +110,6 @@ class ActivityViewController: UIViewController {
 
         }
         let threeAction = UIAlertAction(title: "Fairly Active", style: .default) { _ in
-            print("Fairly Active")
             self.selectActivityTypeButton.setTitle("Fairly Active", for: .normal)
 
             self.weeklyActivityImage.image = UIImage(named: "fairly")
@@ -120,7 +117,6 @@ class ActivityViewController: UIViewController {
 
         }
         let fourAction = UIAlertAction(title: "Very Active", style: .default) { _ in
-            print("Very Active")
             self.selectActivityTypeButton.setTitle("Very Active", for: .normal)
             self.weeklyActivityImage.image = UIImage(named: "very")
             self.getActivityNWeeksAgo(weeksAgo: self.currentWeeksBack, acitivityType: "minutesVeryActive")
@@ -128,7 +124,6 @@ class ActivityViewController: UIViewController {
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            print("Cancel")
         }
         
         alertController.addAction(oneAction)
@@ -192,14 +187,11 @@ class ActivityViewController: UIViewController {
     
     
     func swipeLeftSpecificDate() {
-        print("go forward day")
         if currentDaysBack == 0 {
             return
         }
         
         currentDaysBack -= 1
-        print(currentDaysBack)
-        
         if currentDaysBack == 0 {
             self.dayForwardButton.isHidden = true
             self.todayLabel.text = "Today"
@@ -250,8 +242,7 @@ class ActivityViewController: UIViewController {
                     time =  "\(activity.fairlyActiveMinutes)"
                 case "minutesVeryActive":
                     time =  "\(activity.veryActiveMinutes)"
-                default:
-                    debugPrint("error in switch statement")
+                default: break
                 }
                 let minutes = Int(time) ?? 0
                 weeklyTotalMinutes += minutes
@@ -276,21 +267,17 @@ class ActivityViewController: UIViewController {
     
     func swipeRightSpecificDate() {
         // this means go back
-        print("go back day")
         self.dayForwardButton.isHidden = false
         currentDaysBack += 1
-        print(currentDaysBack)
         self.getActivityNDaysAgo(daysAgo: currentDaysBack)
         
     }
     
     func swipeLeftWeek() {
-        print("go forward week")
         if currentWeeksBack == 0 {
             return
         }
         currentWeeksBack -= 1
-        print(currentWeeksBack)
         if currentWeeksBack == 0 {
             self.weekForwardButton.isHidden = true
         }
@@ -300,8 +287,6 @@ class ActivityViewController: UIViewController {
     
     func swipeRightWeek() {
         // this means go back
-        print("go back week")
-        print(currentWeeksBack)
         self.weekForwardButton.isHidden = false
         currentWeeksBack += 1
         self.getActivityNWeeksAgo(weeksAgo: currentWeeksBack, acitivityType: currentActivityType)

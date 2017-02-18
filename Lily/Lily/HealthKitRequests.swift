@@ -223,7 +223,7 @@ class HealthKitRequests {
         
         let waterConsumption = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)
         
-        let bodyMass = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)
+//        let bodyMass = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)
 
         
         //   Get the start of the day

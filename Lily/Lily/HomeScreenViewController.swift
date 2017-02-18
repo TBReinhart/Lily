@@ -154,7 +154,6 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("view will appear home")
         loadData()
 
     }
@@ -288,9 +287,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             
             var isFinal = false
             if result != nil {
-                print(result?.bestTranscription.formattedString ?? "NIL")
                 isFinal = (result?.isFinal)!
-                print("FINAL: \(isFinal)    ")
                 var query = result?.bestTranscription.formattedString
                 query = query?.replacingOccurrences(of: "Cagle's", with: "kegels")
                 query = query?.replacingOccurrences(of: "Cagle", with: "kegel")
@@ -350,32 +347,26 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     @IBAction func waterButtonPressed(_ sender: Any) {
-        debugPrint("Water Button Pressed")
         self.performSegue(withIdentifier: "waterSegue", sender: sender)
 
     }
     @IBAction func activityButtonPressed(_ sender: Any) {
-        debugPrint("Activity Button Pressed")
         self.performSegue(withIdentifier: "activitySegue", sender: sender)
     }
     @IBAction func heartRateButtonPressed(_ sender: Any) {
-        debugPrint("Heart Rate Button Pressed")
         self.performSegue(withIdentifier: "heartRateSegue", sender: sender)
 
 
     }
     @IBAction func weightLogButtonPressed(_ sender: Any) {
-        debugPrint("Weight Button Pressed")
 
     }
     @IBAction func emotionLogButtonPressed(_ sender: Any) {
-        debugPrint("Emotion Log Button Pressed")
         self.performSegue(withIdentifier: "goalsSegue", sender: sender)
 
 
     }
     @IBAction func sleepButtonPressed(_ sender: Any) {
-        debugPrint("Sleep Button Pressed")
         self.performSegue(withIdentifier: "sleepSegue", sender: sender)
 
     }
@@ -399,7 +390,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             let waterConsumedCups = result ?? "0"
             DispatchQueue.global(qos: .userInitiated).async {
                 DispatchQueue.main.async {
-                    self.waterConsumedLabel.text = waterConsumedCups ?? "0"
+                    self.waterConsumedLabel.text = waterConsumedCups 
                     Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value : waterConsumedCups)
                     Helpers.postDailyLogToFirebase(key: "waterCupsGoal", value: 10.0)
                     self.waterGoalLabel.text = "of 10 cups"
@@ -414,7 +405,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
             if waterInCups != nil {
                 let cups = String(format: "%.0f", waterInCups ?? 0)
                 self.waterConsumedLabel.text = "\(cups)"
-                Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value: cups ?? 0)
+                Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value: cups )
             } else {
                 self.waterConsumedLabel.text = "0"
                 Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value: 0)
@@ -596,11 +587,9 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
         if segue.identifier == "sleepSegue" {
             
-            print("This is the Sleep Segue")
             
         } else if segue.identifier == "waterSegue" {
             
-            print("This is the Water Segue")
             
         }
      }

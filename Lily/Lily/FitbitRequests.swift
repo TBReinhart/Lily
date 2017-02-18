@@ -290,7 +290,6 @@ class FitbitRequests {
             if let devices = json?.array {
                 for device in devices {
                     if let id = device["id"].string {
-                        print("ID: \(id)")
                         let idInt:Int? = Int(id)     // firstText is UITextField
                         ids.append(idInt!)
                     }
@@ -416,9 +415,7 @@ class FitbitRequests {
             if error != nil {
                 completionHandler(activity, error)
             } else {
-                print("Get daily activity json \(json)")
                 if let summary = json?["summary"] {
-                    print("acitvity json \(summary)")
                     let sedentaryMinutes = summary["sedentaryMinutes"].intValue
                     let lightlyActiveMinutes = summary["lightlyActiveMinutes"].intValue
                     let fairlyActiveMinutes = summary["fairlyActiveMinutes"].intValue
@@ -473,11 +470,8 @@ class FitbitRequests {
             } else {
                 let resourcePath = "activities-\(resourcePath)"
                 if let datas = json?[resourcePath] {
-                    print("in datas")
-                    print("\(datas)")
                     for data in datas {
                         let activity = Activity()
-                        print("\(data.1)")
                         let dateTime = data.1["dateTime"].stringValue
                         let value = data.1["value"].stringValue
                         
@@ -560,7 +554,6 @@ class FitbitRequests {
             "recurring": true,
             "weekDays":days
         ]
-        print("PARAMATERS FOR ADDING ALARM: \(parameters)")
         let url = "https://api.fitbit.com/1/user/-/devices/tracker/\(trackerId)/alarms.json"
         restClient.postRequest(url: url, parameters: parameters) { json, error in
             if error != nil {
@@ -615,10 +608,8 @@ class FitbitRequests {
             parameters.updateValue(label ?? "", forKey: "label")
         }
         
-        print("PARAMATERS FOR ADDING ALARM: \(parameters)")
         let url = "https://api.fitbit.com/1/user/-/devices/tracker/\(trackerId)/alarms/\(alarmId).json"
         restClient.postRequest(url: url, parameters: parameters) { json, error in
-            print("RESPONSE UPDATING ALARM: \(json)")
             if error != nil {
                 completionHandler(nil, error)
             } else {
@@ -687,7 +678,6 @@ class FitbitRequests {
     func getWaterLastWeek(date: String = "today", completionHandler: @escaping ([Water]?, Error?) -> ()) {
         var weekWaterObjects = [Water]()
         self.getWaterLogSeriesPeriod(date:date, period: "7d") { json, error in
-            print("WATER JSON: \(json)")
             
             if json != nil {
                 if let waters = json?["foods-log-water"] {
@@ -704,7 +694,6 @@ class FitbitRequests {
                         let thisWater = Water()
                         thisWater.cupsConsumed = cupsRounded
                         thisWater.dayOfWeek = weekDay
-                        print("\(weekDay): \(cupsRounded)")
                         
                         let calendar = Calendar.autoupdatingCurrent
                         let components = calendar.dateComponents([.month, .day], from: date ?? Date())
@@ -956,7 +945,6 @@ class FitbitRequests {
         
         if unit != nil {
             parameters.updateValue(unit!, forKey: "unit")
-            print("for some reason not nil")
         }
         
         let url = "https://api.fitbit.com/1/user/-/foods/log/water.json"
@@ -992,7 +980,6 @@ class FitbitRequests {
         
         if unit != nil {
             parameters.updateValue(unit!, forKey: "unit")
-            print("for some reason not nil")
         }
         
         let url = "https://api.fitbit.com/1/user/-/foods/log/water/\(logId).json"
@@ -1312,8 +1299,7 @@ class FitbitRequests {
                             let dateString = hr.1["dateTime"].stringValue
                             let date = Helpers.getDateFromyyyyMMdd(dateString: dateString)
                             let dayOfWeek = Helpers.getWeekDayFromDate(date: date)
-                            print("Date String: \(dateString)")
-                            print("DOW: \(dayOfWeek)")
+
 
                             heartRate.dayOfWeek = dayOfWeek
 
@@ -1372,7 +1358,6 @@ class FitbitRequests {
                 if json != nil {
                     let restingHeartRate = json?["activities-heart"][0]["value"]["restingHeartRate"].intValue
                     let dateString = json?["activities-heart"][0]["value"]["dateTime"].stringValue
-                    print("Date String: \(dateString)")
                     let date = Helpers.getDateFromyyyyMMdd(dateString: dateString!)
                     let dayOfWeek = Helpers.getWeekDayFromDate(date: date)
                     hr.restingHeartRate = restingHeartRate ?? 0
@@ -1386,7 +1371,6 @@ class FitbitRequests {
                             }
                         }
                     }
-                    print("Weekday: \(dayOfWeek)")
 
                     hr.dayOfWeek = dayOfWeek
                     hr.maximumBPM = highestMax
@@ -1493,8 +1477,6 @@ class FitbitRequests {
             url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/1d/\(detailLevel).json"
         } else {
             url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/1d/\(detailLevel)/time/\(startTime!)/\(endTime!).json"
-            
-            print(url)
 
         }
         
@@ -2023,7 +2005,6 @@ class FitbitRequests {
     
     func openFitbitApp() {
         let url = URL(string: "fitbit://")!
-        debugPrint("Attempting to open fitbit")
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {

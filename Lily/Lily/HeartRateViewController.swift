@@ -107,7 +107,6 @@ class HeartRateViewController: UIViewController {
     func getHeartRateNDaysAgo(daysAgo: Int) {
         let date = Helpers.getDateNDaysAgo(daysAgo: daysAgo).dateString
         self.fbreqs.getHeartRateTimeSeriesFrom1DayPeriod(date: date, period: "1d") { heartRate, err in
-            print("HR: \(heartRate)")
             self.restingBPMLabel.text = "\(heartRate?.restingHeartRate ?? 0)"
             self.averageBPMLabel.text = "\(heartRate?.averageBPM ?? 0)"
             self.maximumBPMLabel.text = "\(heartRate?.maximumBPM ?? 0)"
@@ -152,14 +151,11 @@ class HeartRateViewController: UIViewController {
     
     
     func swipeLeftSpecificDate() {
-        print("go forward day")
         if currentDaysBack == 0 {
             return
         }
         
         currentDaysBack -= 1
-        print(currentDaysBack)
-        
         if currentDaysBack == 0 {
             self.forwardDayButton.isHidden = true
             self.dayLabel.text = "Today"
@@ -171,22 +167,19 @@ class HeartRateViewController: UIViewController {
     
     func swipeRightSpecificDate() {
         // this means go back
-        print("go back day")
+
         self.forwardDayButton.isHidden = false
         currentDaysBack += 1
-        print(currentDaysBack)
         self.dayLabel.text = ""
         self.getHeartRateNDaysAgo(daysAgo: currentDaysBack)
 
     }
     
     func swipeLeftWeek() {
-        print("go forward week")
         if currentWeeksBack == 0 {
             return
         }
         currentWeeksBack -= 1
-        print(currentWeeksBack)
         if currentWeeksBack == 0 {
             self.forwardWeekButton.isHidden = true
         }
@@ -195,8 +188,6 @@ class HeartRateViewController: UIViewController {
     
     func swipeRightWeek() {
         // this means go back
-        print("go back week")
-        print(currentWeeksBack)
         self.forwardWeekButton.isHidden = false
         currentWeeksBack += 1
         self.getHeartRateNWeeksAgo(weeksAgo: currentWeeksBack)
