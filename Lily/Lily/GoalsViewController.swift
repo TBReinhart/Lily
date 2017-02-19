@@ -191,8 +191,6 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
                 self.weightTextField.placeholder = goals["weightGoal"].stringValue
                 self.weightText = goals["weightGoal"].stringValue + self.weightUnit
                 self.weightTextField.text = self.weightText
-                
-                                // ...
             }) { (error) in
                 print(error.localizedDescription)
             }

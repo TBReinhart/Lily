@@ -91,6 +91,7 @@ class ActivityViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.makeViewSwipeable()
         self.weekRangeLabel.text = Helpers.getShortDateRangeString(date: Date())
+        self.weekRangeLabel.adjustsFontSizeToFitWidth = true
 
         self.getActivityNDaysAgo(daysAgo: 0)
         self.getActivityNWeeksAgo(weeksAgo: 0, acitivityType: currentActivityType)
@@ -195,7 +196,11 @@ class ActivityViewController: UIViewController {
         if currentDaysBack == 0 {
             self.dayForwardButton.isHidden = true
             self.todayLabel.text = "Today"
+        } else {
+            let date = Helpers.getDateNDaysAgo(daysAgo: currentDaysBack)
+            self.todayLabel.text = Helpers.getWeekDayFromDate(date: date.0)
         }
+        
         self.getActivityNDaysAgo(daysAgo: currentDaysBack)
         
     }
@@ -209,6 +214,8 @@ class ActivityViewController: UIViewController {
             self.setLabelWithTime(label: self.fairlyActiveTimeLabel, minutes: activity.fairlyActiveMinutes)
             self.setLabelWithTime(label: self.veryActiveTimeLabel, minutes: activity.veryActiveMinutes)
             self.todayLabel.text = activity.dayOfWeek
+            self.todayLabel.adjustsFontSizeToFitWidth = true
+
         }
 
     }
@@ -216,8 +223,8 @@ class ActivityViewController: UIViewController {
     func setLabelWithTime(label: UILabel, minutes: Int) {
         let formattedTime = Helpers.minutesToHoursMinutes(minutes: Int(minutes) )
         label.text = "\(formattedTime.0)h \(formattedTime.1)m"
-        label.sizeToFit()
-        
+        label.adjustsFontSizeToFitWidth = true
+
     }
     
     
@@ -227,6 +234,8 @@ class ActivityViewController: UIViewController {
         let date = past.date
         let labelRange = Helpers.getShortDateRangeString(date: date)
         self.weekRangeLabel.text = labelRange
+        self.weekRangeLabel.adjustsFontSizeToFitWidth = true
+
         var weeklyTotalMinutes = 0
 
         self.fbreqs.getActivityTimeSeriesFromPeriod(resourcePath: "\(acitivityType)", date: endDate, period: "7d") { activities, err in

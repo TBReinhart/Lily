@@ -30,6 +30,7 @@
 		2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */; };
 		2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */; };
 		2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6591AB1E03B29C0040AA4A /* Services.plist */; };
+		2F8587271E59458C00D7594A /* Login.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8587261E59458C00D7594A /* Login.png */; };
 		2F889DB81E4F8A0200F22584 /* very.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB41E4F8A0200F22584 /* very.png */; };
 		2F889DB91E4F8A0200F22584 /* fairly.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB51E4F8A0200F22584 /* fairly.png */; };
 		2F889DBA1E4F8A0200F22584 /* lightly.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB61E4F8A0200F22584 /* lightly.png */; };
@@ -133,6 +134,7 @@
 		2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundMicHelp.png; sourceTree = "<group>"; };
 		2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micWithOrangeBorder.png; sourceTree = "<group>"; };
 		2F6591AB1E03B29C0040AA4A /* Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
+		2F8587261E59458C00D7594A /* Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login.png; sourceTree = "<group>"; };
 		2F889DB41E4F8A0200F22584 /* very.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = very.png; sourceTree = "<group>"; };
 		2F889DB51E4F8A0200F22584 /* fairly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fairly.png; sourceTree = "<group>"; };
 		2F889DB61E4F8A0200F22584 /* lightly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightly.png; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		2F2F76111E3131A8000AE4F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F8587261E59458C00D7594A /* Login.png */,
 				2F938F5D1E5238A9006D64A9 /* small_emotion_log.png */,
 				2F938F591E523141006D64A9 /* NavigationBar.png */,
 				2F938F451E522F1A006D64A9 /* small_call_doctor.png */,
@@ -570,6 +573,7 @@
 				2F889DBA1E4F8A0200F22584 /* lightly.png in Resources */,
 				2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */,
 				2F3EAFA91E4A55B200214FC4 /* upArrow.png in Resources */,
+				2F8587271E59458C00D7594A /* Login.png in Resources */,
 				2F3EAFAF1E4BF8D400214FC4 /* HowShouldISleepCard.png in Resources */,
 				2F3FDC931E3592E200B18F25 /* Help Subview.png in Resources */,
 				2FA1CD621E0347AF00778DF3 /* Main.storyboard in Resources */,
@@ -848,7 +852,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 087B0A496F522C14AA1FEBCB /* Pods-Lily.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lily/Lily.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -866,7 +870,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2B9CDFF0524D10FD589A9B0E /* Pods-Lily.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lily/Lily.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

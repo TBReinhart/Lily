@@ -53,13 +53,13 @@ open class OAuth2Requestable {
 	public init(verbose: Bool) {
 		self.verbose = verbose
 		logger = verbose ? OAuth2DebugLogger() : nil
-		logger?.debug("OAuth2", msg: "Initialization finished")
+//		logger?.debug("OAuth2", msg: "Initialization finished")
 	}
 	
 	public init(logger: OAuth2Logger?) {
 		self.logger = logger
 		self.verbose = (nil != logger)
-		logger?.debug("OAuth2", msg: "Initialization finished")
+//		logger?.debug("OAuth2", msg: "Initialization finished")
 	}
 	
 	

@@ -88,6 +88,11 @@ class HeartRateViewController: UIViewController {
     
     func getHeartRateNWeeksAgo(weeksAgo: Int) {
         let endDate = Helpers.getDateNWeeksAgo(weeksAgo: weeksAgo).dateString
+        let past = Helpers.getDateNWeeksAgo(weeksAgo: weeksAgo)
+        let date = past.date
+        let labelRange = Helpers.getShortDateRangeString(date: date)
+        self.weekRange.text = labelRange
+        self.weekRange.adjustsFontSizeToFitWidth = true
         
         self.fbreqs.getHeartRateTimeSeriesFromPeriod(date: endDate, period: "7d") { heartRates, err in
             if let hrs = heartRates {
@@ -159,7 +164,12 @@ class HeartRateViewController: UIViewController {
         if currentDaysBack == 0 {
             self.forwardDayButton.isHidden = true
             self.dayLabel.text = "Today"
+        } else {
+            let date = Helpers.getDateNDaysAgo(daysAgo: currentDaysBack)
+            self.dayLabel.text = Helpers.getWeekDayFromDate(date: date.0)
         }
+        self.dayLabel.adjustsFontSizeToFitWidth = true
+
         self.getHeartRateNDaysAgo(daysAgo: currentDaysBack)
 
         
@@ -170,7 +180,10 @@ class HeartRateViewController: UIViewController {
 
         self.forwardDayButton.isHidden = false
         currentDaysBack += 1
-        self.dayLabel.text = ""
+        let date = Helpers.getDateNDaysAgo(daysAgo: currentDaysBack)
+        self.dayLabel.text = Helpers.getWeekDayFromDate(date: date.0)
+        self.dayLabel.adjustsFontSizeToFitWidth = true
+
         self.getHeartRateNDaysAgo(daysAgo: currentDaysBack)
 
     }

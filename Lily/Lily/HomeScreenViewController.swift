@@ -21,6 +21,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var subviewHelp: UIView!
 
     
+    @IBOutlet weak var waterCardImage: UIImageView!
     @IBOutlet weak var waterButton: UIButton!
     @IBOutlet weak var activityButton: UIButton!
     @IBOutlet weak var heartRateButton: UIButton!
@@ -134,7 +135,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        self.waterCardImage.contentMode = .scaleAspectFit
+
         self.title = "Lily"
         self.waterButton.imageView?.contentMode = .scaleAspectFit
         self.activityRing.contentMode = .scaleAspectFit

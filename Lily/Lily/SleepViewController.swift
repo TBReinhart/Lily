@@ -60,6 +60,8 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         self.title = "Lily"
         self.previousWeekDateRangeLabel.text = Helpers.getShortDateRangeString(date: Date())
+        self.previousWeekDateRangeLabel.adjustsFontSizeToFitWidth = true
+
         self.makeViewSwipeable()
         self.forwardButtonSpecificDate.isHidden = true
         self.forwardButtonWeek.isHidden = true
@@ -163,7 +165,12 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         if currentDaysBack == 0 {
             self.forwardButtonSpecificDate.isHidden = true
             self.specificDateLabel.text = "Last Night"
+        }  else {
+            let date = Helpers.getDateNDaysAgo(daysAgo: currentDaysBack)
+            self.specificDateLabel.text = Helpers.getWeekDayFromDate(date: date.0)
         }
+        self.specificDateLabel.adjustsFontSizeToFitWidth = true
+
         self.setSpecificDateSleep(daysAgo: currentDaysBack)
         
     }
@@ -172,7 +179,10 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         // this means go back
         self.forwardButtonSpecificDate.isHidden = false
         currentDaysBack += 1
-        self.specificDateLabel.text = ""
+        let date = Helpers.getDateNDaysAgo(daysAgo: currentDaysBack)
+        self.specificDateLabel.text = Helpers.getWeekDayFromDate(date: date.0)
+        self.specificDateLabel.adjustsFontSizeToFitWidth = true
+
         self.setSpecificDateSleep(daysAgo: currentDaysBack)
     }
     

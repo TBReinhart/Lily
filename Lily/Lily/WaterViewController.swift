@@ -158,7 +158,12 @@ class WaterViewController: UIViewController {
         if currentDaysBack == 0 {
             self.forwardButtonDay.isHidden = true
             self.specificDateLabel.text = "Last Night"
+        } else {
+            let date = Helpers.getDateNDaysAgo(daysAgo: currentDaysBack)
+            self.specificDateLabel.text = Helpers.getWeekDayFromDate(date: date.0)
         }
+        self.specificDateLabel.adjustsFontSizeToFitWidth = true
+
         self.setSpecificDate(daysAgo:currentDaysBack)
         
     }
@@ -174,7 +179,10 @@ class WaterViewController: UIViewController {
         self.saveWaterLogsToFitbit()
         self.forwardButtonDay.isHidden = false
         currentDaysBack += 1
-        self.specificDateLabel.text = ""
+        let date = Helpers.getDateNDaysAgo(daysAgo: currentDaysBack)
+        self.specificDateLabel.text = Helpers.getWeekDayFromDate(date: date.0)
+        self.specificDateLabel.adjustsFontSizeToFitWidth = true
+
         self.setSpecificDate(daysAgo:currentDaysBack)
     }
     
@@ -264,6 +272,8 @@ class WaterViewController: UIViewController {
         let labelRange = Helpers.getShortDateRangeString(date: date)
         let dateString = past.dateString
         self.weekRangeLabel.text = labelRange
+        self.weekRangeLabel.adjustsFontSizeToFitWidth = true
+
 
         self.fbreqs.getWaterLastWeek(date: dateString) { waters, error in
             if waters != nil {

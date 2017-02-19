@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
     
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Lily_background")!)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Lily_background")!)
     }
 
     
