@@ -18,7 +18,10 @@ class ViewController: UIViewController {
     
     
     var loader: OAuth2DataLoader?
-    
+    let healthKitReqs = HealthKitRequests()
+    let myId = UIDevice.current.identifierForVendor!.uuidString
+    var ref: FIRDatabaseReference!
+
     
     /// Instance of OAuth2 login credentials
     var oauth2 = OAuth2CodeGrant(settings: [
@@ -36,6 +39,31 @@ class ViewController: UIViewController {
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var signInEmbeddedButton: UIButton?
     @IBOutlet var forgetButton: UIButton?
+    
+    override func viewDidLoad() {
+    
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Lily_background")!)
+    }
+
+    
+    @IBAction func loginWithHealthKit(_ sender: Any) {
+        if(healthKitReqs.checkAuthorization()) {
+            if(healthKitReqs.isHealthDataAvailable()) {
+                HUD.show(.progress)
+                self.createUserHelper(method: "HealthKit")
+                HUD.flash(.success, delay: 0.5)
+                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+            }
+        }
+    }
+    
+    func createUserHelper(method: String) {
+        UserDefaults.standard.setValue(method, forKey: "loginMethod")
+        let email = self.myId + "@lilyhealth.me"
+        let password = self.myId
+        self.createUser(user: self.myId, email: email, password: password)
+    }
+
     
     /**
      ## Embedded Sign In ##
@@ -57,21 +85,18 @@ class ViewController: UIViewController {
         loader.perform(request: userDataRequest) { response in
             do {
                 let json = try response.responseJSON()
-                debugPrint("RESPONSE in json")
-                debugPrint(json)
-                HUD.show(.progress)
-
+//                HUD.show(.progress)
                 self.extractUserData(json: json)
+                self.createUserHelper(method: "Fitbit")
                 DispatchQueue.main.sync {
-                    
-                    print("Segue")
                     HUD.flash(.success, delay: 0.5)
-                    self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+
                 }
+                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+
 
             }
             catch let error {
-                debugPrint(error)
                 self.signInEmbeddedButton?.isEnabled = true
                 HUD.flash(.error, delay: 1.0)
                 self.didCancelOrFail(error)
@@ -89,15 +114,13 @@ class ViewController: UIViewController {
         for attribute in attributes {
             if let value = (json["user"] as? [String : Any])?[attribute] {
                 var val = value
+                self.addAttributeToFirebaseUser(attributeName: attribute, value: val)
                 if attribute == "height" {
                     val = value as! NSNumber
                     val = "\(val)"
                 } else if attribute == "encodedId" {
-                    print("ENCODED ID: \(val)")
                     val = value as! String
-                    let email = val as! String + "@lilyhealth.me"
-                    let password = val as! String
-                    createUser(user: password, email: email, password: password)
+                    // TODO do something with encodedId
                     continue
                 }
                 
@@ -107,25 +130,52 @@ class ViewController: UIViewController {
         
     }
     
+    func addAttributeToFirebaseUser(attributeName: String, value: Any) {
+        self.ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        if let uid = user?.uid {
+            ref.child("users/\(uid)/\(attributeName)").setValue(value)
+        }
+    }
+    
+    
 
     func createUser(user: String, email: String, password: String) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
-            debugPrint("USER: \(user)")
-            debugPrint("Error: \(error)")
-            if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
-                
-                switch errCode {
-                case .errorCodeInvalidEmail:
-                    print("invalid email") // really shouldn't happen at this point since we are creating email
-                case .errorCodeEmailAlreadyInUse:
-                    print("email in use")
-                    self.signIn(user: password, email: email, password: password)
-                default:
-                    print("Create User Error: \(error)")
+            if error != nil {
+                if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+                    switch errCode {
+                    case .errorCodeInvalidEmail:
+                        print("invalid email") // really shouldn't happen at this point since we are creating email
+                    case .errorCodeEmailAlreadyInUse:
+                        print("email in use")
+                        self.signIn(user: password, email: email, password: password)
+                    default:
+                        print("Create User Error: \(error)")
+                    }
                 }
+                self.createOrUpdateFirebaseUserProfile()
             }
         }
     }
+    
+    func createOrUpdateFirebaseUserProfile() {
+        self.ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        // The user's ID, unique to the Firebase project.
+        // Do NOT use this value to authenticate with your backend server,
+        // if you have one. Use getTokenWithCompletion:completion: instead.
+        let email = user?.email ?? "None"
+        if let uid = user?.uid {
+            //ref.child("users/\(uid)/username").setValue("Tom R.")
+            ref.child("users/\(uid)/email").setValue(email)
+            ref.child("users/\(uid)/loginMethod").setValue(UserDefaults.standard.string(forKey: "loginMethod") ?? "None")
+
+        }
+        //let photoURL = user?.photoURL
+
+    }
+    
     
     func signIn(user: String, email: String, password: String) {
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
@@ -146,7 +196,6 @@ class ViewController: UIViewController {
     /// request most basic user profile
     var userDataRequest: URLRequest {
         let request = URLRequest(url: URL(string: "https://api.fitbit.com/1/user/-/profile.json")!)
-        debugPrint(request)
         return request
     }
     /**
@@ -155,9 +204,6 @@ class ViewController: UIViewController {
     */
     func didCancelOrFail(_ error: Error?) {
         DispatchQueue.main.async {
-            if let error = error {
-                print("Authorization went wrong: \(error)")
-            }
             self.resetButtons()
         }
     }
@@ -168,6 +214,5 @@ class ViewController: UIViewController {
         signInEmbeddedButton?.isEnabled = true
         forgetButton?.isHidden = true
     }
-    
-    
+        
 }

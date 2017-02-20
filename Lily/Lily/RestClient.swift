@@ -66,7 +66,6 @@ class RestClient {
                 break
                 
             case .failure(_):
-                print(response.result.error ?? "FAILURE")
                 sessionManager.session.invalidateAndCancel()
                 completionHandler(nil, response.result.error)
 
@@ -100,7 +99,6 @@ class RestClient {
             switch(response.result) {
             case .success(let value):
                 if response.result.value != nil{
-                    print(response.result.value ?? "NONE")
                 }
                 let json = JSON(value)
                 sessionManager.session.invalidateAndCancel()
@@ -108,7 +106,6 @@ class RestClient {
                 break
                 
             case .failure(_):
-                print(response.result.error ?? "FAILURE")
                 sessionManager.session.invalidateAndCancel()
                 completionHandler(nil, response.result.error)
                 break
@@ -142,7 +139,6 @@ class RestClient {
             switch(response.result) {
             case .success(let value):
                 if response.result.value != nil{
-                    print(response.result.value ?? "NONE")
                 }
                 let json = JSON(value)
                 sessionManager.session.invalidateAndCancel()
@@ -150,7 +146,6 @@ class RestClient {
                 break
                 
             case .failure(_):
-                print(response.result.error ?? "FAILURE")
                 sessionManager.session.invalidateAndCancel()
 
                 completionHandler(nil, response.result.error)

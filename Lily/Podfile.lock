@@ -39,8 +39,11 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
   - GTMSessionFetcher/Core (1.1.7)
+  - IQKeyboardManagerSwift (4.0.7)
   - p2.OAuth2 (3.0.1)
   - PKHUD (4.1.0)
+  - SCLAlertView (0.7.0)
+  - SendGrid (0.2.1)
   - SwiftSiriWaveformView (2.0.0)
   - SwiftyJSON (3.1.3)
   - UICircularProgressRing (1.1.6)
@@ -50,11 +53,23 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - IQKeyboardManagerSwift
   - p2.OAuth2 (~> 3.0)
   - PKHUD (~> 4.0)
+  - SCLAlertView
+  - SendGrid (from `https://github.com/scottkawai/sendgrid-swift.git`)
   - SwiftSiriWaveformView
   - SwiftyJSON
   - UICircularProgressRing
+
+EXTERNAL SOURCES:
+  SendGrid:
+    :git: https://github.com/scottkawai/sendgrid-swift.git
+
+CHECKOUT OPTIONS:
+  SendGrid:
+    :commit: b67369e1da9cb68e03c9cff277967c1d0ba11219
+    :git: https://github.com/scottkawai/sendgrid-swift.git
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
@@ -68,12 +83,15 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
   p2.OAuth2: 1c58296b53820e57ea63a8977541d2e4780df141
   PKHUD: a0ecdee9f67d9b462c0c5e4ba38400292ea6ae6e
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
+  SendGrid: 7b5a99da6955f457629e18cfe405ceeec2a90498
   SwiftSiriWaveformView: 85328da51cf5f3c6a0dbcdf9186f4417edf1b538
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   UICircularProgressRing: 892adf48ea0bdc218057c4e62c5e3a8609bd5b1c
 
-PODFILE CHECKSUM: 2fc26f36091fbba61e02e4f234f40e0b9fc9bb4d
+PODFILE CHECKSUM: 81446c20e1d16aef0218e4394721d6971389be0c
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

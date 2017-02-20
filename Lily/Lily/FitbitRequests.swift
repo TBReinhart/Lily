@@ -290,7 +290,6 @@ class FitbitRequests {
             if let devices = json?.array {
                 for device in devices {
                     if let id = device["id"].string {
-                        print("ID: \(id)")
                         let idInt:Int? = Int(id)     // firstText is UITextField
                         ids.append(idInt!)
                     }
@@ -408,13 +407,37 @@ class FitbitRequests {
      period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y
      Example Request
      */
-    func getDailyActivity(date: String = "today", completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getDailyActivity(date: String = "today", completionHandler: @escaping (Activity, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/activities/date/\(date).json"
         restClient.getRequest(url: url) { json, error in
+            let activity = Activity()
+            activity.dateString = date
             if error != nil {
-                completionHandler(nil, error)
+                completionHandler(activity, error)
             } else {
-                completionHandler(json, nil)
+                if let summary = json?["summary"] {
+                    let sedentaryMinutes = summary["sedentaryMinutes"].intValue
+                    let lightlyActiveMinutes = summary["lightlyActiveMinutes"].intValue
+                    let fairlyActiveMinutes = summary["fairlyActiveMinutes"].intValue
+                    let veryActiveMinutes = summary["veryActiveMinutes"].intValue
+
+                    activity.sedentaryMinutes = sedentaryMinutes
+                    activity.lightlyActiveMinutes = lightlyActiveMinutes
+                    activity.fairlyActiveMinutes = fairlyActiveMinutes
+                    activity.veryActiveMinutes = veryActiveMinutes
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    let dateObj = dateFormatter.date(from: date)
+                    
+                    let weekDay = Helpers.getWeekDayFromDate(date: dateObj ?? Date())
+                    let longDate = Helpers.getLongDate(date: dateObj ?? Date())
+
+                    activity.dayOfWeek = weekDay
+                    activity.longDate = longDate
+
+                }
+                completionHandler(activity, nil)
             }
         }
     }
@@ -436,13 +459,42 @@ class FitbitRequests {
      Example Request
      GET https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json
      */
-    func getActivityTimeSeriesFromPeriod(resourcePath: String, date: String, period: String, completionHandler: @escaping (JSON?, Error?) -> ()) {
-        let url = "https://api.fitbit.com/1/user/-/\(resourcePath)/date/\(date)/\(period).json"
+    func getActivityTimeSeriesFromPeriod(resourcePath: String, date: String, period: String, completionHandler: @escaping ([Activity], Error?) -> ()) {
+        let url = "https://api.fitbit.com/1/user/-/activities/\(resourcePath)/date/\(date)/\(period).json"
+        var activities = [Activity]()
+        
+        
         restClient.getRequest(url: url) { json, error in
             if error != nil {
-                completionHandler(nil, error)
+                completionHandler(activities, error)
             } else {
-                completionHandler(json, nil)
+                let resourcePath = "activities-\(resourcePath)"
+                if let datas = json?[resourcePath] {
+                    for data in datas {
+                        let activity = Activity()
+                        let dateTime = data.1["dateTime"].stringValue
+                        let value = data.1["value"].stringValue
+                        
+                        let d = Helpers.getDateFromyyyyMMdd(dateString: dateTime)
+                        let dayOfWeek = Helpers.getWeekDayFromDate(date: d)
+                        activity.dayOfWeek = dayOfWeek
+                        switch resourcePath {
+                        case "activities-minutesSedentary":
+                            activity.sedentaryMinutes = Int(value) ?? 0
+                        case "activities-minutesLightlyActive":
+                            activity.lightlyActiveMinutes = Int(value) ?? 0
+                        case "activities-minutesFairlyActive":
+                            activity.fairlyActiveMinutes = Int(value) ?? 0
+                        case "activities-minutesVeryActive":
+                            activity.veryActiveMinutes = Int(value) ?? 0
+                        default:
+                            activity.sedentaryMinutes = 0
+                        }
+                        
+                        activities.append(activity)
+                    }
+                }
+                completionHandler(activities, nil)
             }
         }
     }
@@ -502,7 +554,6 @@ class FitbitRequests {
             "recurring": true,
             "weekDays":days
         ]
-        print("PARAMATERS FOR ADDING ALARM: \(parameters)")
         let url = "https://api.fitbit.com/1/user/-/devices/tracker/\(trackerId)/alarms.json"
         restClient.postRequest(url: url, parameters: parameters) { json, error in
             if error != nil {
@@ -557,10 +608,8 @@ class FitbitRequests {
             parameters.updateValue(label ?? "", forKey: "label")
         }
         
-        print("PARAMATERS FOR ADDING ALARM: \(parameters)")
         let url = "https://api.fitbit.com/1/user/-/devices/tracker/\(trackerId)/alarms/\(alarmId).json"
         restClient.postRequest(url: url, parameters: parameters) { json, error in
-            print("RESPONSE UPDATING ALARM: \(json)")
             if error != nil {
                 completionHandler(nil, error)
             } else {
@@ -608,16 +657,58 @@ class FitbitRequests {
      GET https://api.fitbit.com/1/user/-/foods/log/water/date/2015-09-01.json
  
     */
-    func getWaterLogs(date: String = "today", completionHandler: @escaping (JSON?, Error?) -> ()) {
-        
+    func getWaterLogs(date: String = "today", completionHandler: @escaping (Water?, Error?) -> ()) {
+        let water = Water()
         let url = "https://api.fitbit.com/1/user/-/foods/log/water/date/\(date).json"
         restClient.getRequest(url: url) { json, error in
             if error != nil {
                 completionHandler(nil, error)
             } else {
-                completionHandler(json, nil)
+                let waterInMilli = json?["summary"]["water"].doubleValue
+                let cupsConsumed = Helpers.millilitersToOz(milli: waterInMilli ?? 0) * 0.125
+                let cupsRounded = round(10.0 * cupsConsumed) / 10.0
+                water.cupsConsumed = cupsRounded
+                water.dateString = date
+                completionHandler(water, nil)
             }
         }
+    }
+    
+    
+    func getWaterLastWeek(date: String = "today", completionHandler: @escaping ([Water]?, Error?) -> ()) {
+        var weekWaterObjects = [Water]()
+        self.getWaterLogSeriesPeriod(date:date, period: "7d") { json, error in
+            
+            if json != nil {
+                if let waters = json?["foods-log-water"] {
+                    for w in waters {
+                        let dateTime = w.1["dateTime"].string
+                        let waterInMilli = w.1["value"].doubleValue
+                        let cupsConsumed = Helpers.millilitersToOz(milli: waterInMilli) * 0.125
+                        let cupsRounded = round(10.0 * cupsConsumed) / 10.0
+
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        let date = dateFormatter.date(from: dateTime!)
+                        let weekDay = Helpers.getWeekDayFromDate(date: (date ?? nil)!)
+                        let thisWater = Water()
+                        thisWater.cupsConsumed = cupsRounded
+                        thisWater.dayOfWeek = weekDay
+                        
+                        let calendar = Calendar.autoupdatingCurrent
+                        let components = calendar.dateComponents([.month, .day], from: date ?? Date())
+                        let month = components.month
+                        let day = components.day
+                        thisWater.dateString = "\(month ?? 1)/\(day ?? 1)"
+                        weekWaterObjects.append(thisWater)
+
+                    }
+                }
+                completionHandler(weekWaterObjects,nil)
+            }
+
+        }
+
     }
     
     /**
@@ -629,13 +720,13 @@ class FitbitRequests {
      user-id	The ID of the user. Use "-" (dash) for current logged-in user.
 
     */
-    func getWaterGoal(completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getWaterGoal(completionHandler: @escaping (String?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/foods/log/water/goal.json"
         restClient.getRequest(url: url) { json, error in
             if error != nil {
                 completionHandler(nil, error)
             } else {
-                completionHandler(json, nil)
+                completionHandler(json?["goal"]["minDuration"].string,nil)
             }
         }
     }
@@ -854,7 +945,6 @@ class FitbitRequests {
         
         if unit != nil {
             parameters.updateValue(unit!, forKey: "unit")
-            print("for some reason not nil")
         }
         
         let url = "https://api.fitbit.com/1/user/-/foods/log/water.json"
@@ -890,7 +980,6 @@ class FitbitRequests {
         
         if unit != nil {
             parameters.updateValue(unit!, forKey: "unit")
-            print("for some reason not nil")
         }
         
         let url = "https://api.fitbit.com/1/user/-/foods/log/water/\(logId).json"
@@ -1168,6 +1257,72 @@ class FitbitRequests {
             }
         }
     }
+    /*
+    ## Heart Rate Time Series ##
+    Get Heart Rate Time Series
+    The Get Heart Rate Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.
+    
+    If you specify earlier dates in the request, the response will retrieve only data since the user's join date or the first log entry date for the requested collection.
+    
+    Resource URL
+    
+    There are two acceptable formats for retrieving time series data:
+    
+    GET https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[period].json
+    
+    GET https://api.fitbit.com/1/user/-/activities/heart/date/[base-date]/[end-date].json
+    
+    user-id	The encoded ID of the user. Use "-" (dash) for current logged-in user.
+    base-date	The range start date, in the format yyyy-MM-dd or today.
+    end-date	The end date of the range.
+    date	The end date of the period specified in the format yyyy-MM-dd or today.
+    period	The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m.
+    Example Request
+    
+    https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json
+    
+    */
+    func getHeartRateTimeSeriesFromPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping ([HeartRate]?, Error?) -> ()) {
+        let url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/\(period).json"
+        restClient.getRequest(url: url) { json, error in
+            if error != nil {
+                completionHandler(nil, error)
+            } else {
+                var heartRateList = [HeartRate]()
+                
+                if json != nil {
+                    if let heartRates = json?["activities-heart"] {
+                        for hr in heartRates {
+                            let heartRate = HeartRate()
+                            let restingHeartRate = hr.1["value"]["restingHeartRate"].intValue
+                            let hrZones = hr.1["value"]["heartRateZones"]
+                            let dateString = hr.1["dateTime"].stringValue
+                            let date = Helpers.getDateFromyyyyMMdd(dateString: dateString)
+                            let dayOfWeek = Helpers.getWeekDayFromDate(date: date)
+
+
+                            heartRate.dayOfWeek = dayOfWeek
+
+                            var highestMax = 0
+                            for hrZone in hrZones {
+                                let minutes = hrZone.1["minutes"].intValue
+                                let max = hrZone.1["max"].intValue
+                                if minutes > 0 && max > highestMax {
+                                    highestMax = max
+                                }
+                            }
+                            heartRate.maximumBPM = highestMax
+                            heartRate.averageBPM = restingHeartRate
+                            heartRate.restingHeartRate = restingHeartRate
+                            heartRateList.append(heartRate)
+                        }
+                    }
+                }
+                completionHandler(heartRateList, nil)
+            }
+        }
+    }
+    
     /**
      ## Heart Rate Time Series ##
      Get Heart Rate Time Series
@@ -1193,13 +1348,37 @@ class FitbitRequests {
      https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json
      
      */
-    func getHeartRateTimeSeriesFromPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getHeartRateTimeSeriesFrom1DayPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping (HeartRate?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/\(period).json"
+        let hr = HeartRate()
         restClient.getRequest(url: url) { json, error in
             if error != nil {
                 completionHandler(nil, error)
             } else {
-                completionHandler(json, nil)
+                if json != nil {
+                    let restingHeartRate = json?["activities-heart"][0]["value"]["restingHeartRate"].intValue
+                    let dateString = json?["activities-heart"][0]["value"]["dateTime"].stringValue
+                    let date = Helpers.getDateFromyyyyMMdd(dateString: dateString!)
+                    let dayOfWeek = Helpers.getWeekDayFromDate(date: date)
+                    hr.restingHeartRate = restingHeartRate ?? 0
+                    var highestMax = 0
+                    if let hrZones = json?["activities-heart"][0]["value"]["heartRateZones"] {
+                        for hrZone in hrZones {
+                            let minutes = hrZone.1["minutes"].intValue
+                            let max = hrZone.1["max"].intValue
+                            if minutes > 0 && max > highestMax {
+                                highestMax = max
+                            }
+                        }
+                    }
+
+                    hr.dayOfWeek = dayOfWeek
+                    hr.maximumBPM = highestMax
+                    hr.averageBPM = restingHeartRate ?? 0
+                }
+                
+                completionHandler(hr, nil)
+                
             }
         }
     }
@@ -1298,8 +1477,6 @@ class FitbitRequests {
             url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/1d/\(detailLevel).json"
         } else {
             url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/1d/\(detailLevel)/time/\(startTime!)/\(endTime!).json"
-            
-            print(url)
 
         }
         
@@ -1330,17 +1507,94 @@ class FitbitRequests {
      
      GET https://api.fitbit.com/1/user/28H22H/sleep/date/2014-09-01.json
     */
-    func getSleepLogs(date: String = "today", completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getSleepLogs(date: String = "today", completionHandler: @escaping (Sleep?, Error?) -> ()) {
+        let sleepObject = Sleep()
         let url = "https://api.fitbit.com/1/user/-/sleep/date/\(date).json"
         restClient.getRequest(url: url) { json, error in
             if error != nil {
-                completionHandler(nil, error)
+                completionHandler(sleepObject, error)
             } else {
-                completionHandler(json,nil)
+                // minuteData can be 1 ("asleep"), 2 ("awake"), or 3 ("really awake").
+                // Can use "restlessCount", "awakeDuration", "efficiency", "awakeCount", "timeInBed"
+                let totalMinutesAsleep = json?["summary"]["totalMinutesAsleep"].int
+                sleepObject.totalMinutesAsleep = totalMinutesAsleep ?? 0
+                
+                if totalMinutesAsleep != nil {
+                    let hoursMinutes = Helpers.minutesToHoursMinutes(minutes: totalMinutesAsleep!)
+                    let hours = hoursMinutes.0
+                    let minutes = hoursMinutes.1
+                    let sleepTime = "\(hours)h \(minutes)m"
+                    sleepObject.sleepLabel = sleepTime
+                    let sleepTimeRounded = round(10.0 * Double(totalMinutesAsleep ?? 0)/60) / 10.0
+                    sleepObject.sleepTimeRounded = sleepTimeRounded
+                    Helpers.postDailyLogToFirebase(key: "sleepTime", value: sleepObject.sleepLabel)
+                } else {
+                    sleepObject.sleepLabel = "0h 0m"
+                    Helpers.postDailyLogToFirebase(key: "sleepTime", value: "0h 0m")
+                }
+                let dateString = (json?["sleep"][0]["dateOfSleep"].string) ?? "1970-01-01"
+                let comps = dateString.components(separatedBy: "-")
+
+                var dateComps = DateComponents()
+                dateComps.year = Int(comps[0])
+                dateComps.month = Int(comps[1])
+                dateComps.day = Int(comps[2])
+                let sleepDate = Calendar.current.date(from: dateComps)!
+                
+
+                sleepObject.dateLong = Helpers.getLongDate(date: sleepDate)
+                
+                
+                sleepObject.efficiency = (json?["sleep"][0]["efficiency"].int) ?? 0
+                sleepObject.awakeCount = (json?["sleep"][0]["awakeCount"].int) ?? 0
+                sleepObject.awakeDuration = (json?["sleep"][0]["awakeDuration"].int) ?? 0
+                sleepObject.restlessCount = (json?["sleep"][0]["restlessCount"].int) ?? 0
+                sleepObject.restlessDuration = (json?["sleep"][0]["restlessDuration"].int) ?? 0
+                completionHandler(sleepObject,nil)
+
             }
         }
     }
-   
+
+
+    
+    func getSleepLastWeek(date: String = "today", completionHandler: @escaping ([Sleep]?, Error?) -> ()) {
+        var weekSleepObjects = [Sleep]()
+
+        self.getSleepTimeSeriesFromPeriod(resourcePath: "sleep/minutesAsleep", date: date, period: "7d") { json, error in
+            
+            if json != nil {
+                if let sleeps = json?["sleep-minutesAsleep"] {
+                    for s in sleeps {
+                        let dateTime = s.1["dateTime"].string
+                        let minutes = s.1["value"].doubleValue
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        let date = dateFormatter.date(from: dateTime!)
+                        
+                        let weekDay = Helpers.getWeekDayFromDate(date: (date ?? nil)!)
+                        let sleepTime = round(10.0 * minutes/60) / 10.0
+                        let thisSleep = Sleep()
+                        thisSleep.sleepTimeRounded = sleepTime
+                        thisSleep.dayOfWeek = weekDay
+                        
+                        let calendar = Calendar.autoupdatingCurrent
+                        let components = calendar.dateComponents([.month, .day], from: date ?? Date())
+                        let month = components.month
+                        let day = components.day
+                        thisSleep.shortDateString = "\(month ?? 1)/\(day ?? 1)"
+                        weekSleepObjects.append(thisSleep)
+                        
+
+                    }
+                }
+                completionHandler(weekSleepObjects,nil)
+
+            }
+        }
+        
+    }
+
     /**
      ## Get Sleep Goal ##
      The Get Sleep Goal endpoint returns a user's current sleep goal using unit in the unit system that corresponds to the Accept-Language header provided in the format requested.
@@ -1360,13 +1614,14 @@ class FitbitRequests {
      
 
     */
-    func getSleepGoal(completionHandler: @escaping (JSON?, Error?) -> ()) {
+    func getSleepGoal(completionHandler: @escaping (String?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/sleep/goal.json"
         restClient.getRequest(url: url) { json, error in
             if error != nil {
                 completionHandler(nil, error)
             } else {
-                completionHandler(json,nil)
+                
+                completionHandler(json?["goal"]["minDuration"].string,nil)
             }
         }
     }
@@ -1750,7 +2005,6 @@ class FitbitRequests {
     
     func openFitbitApp() {
         let url = URL(string: "fitbit://")!
-        debugPrint("Attempting to open fitbit")
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {

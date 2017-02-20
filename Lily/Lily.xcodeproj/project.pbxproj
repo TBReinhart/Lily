@@ -8,11 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		2F0F75EA1E368B71004BCE2D /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F75E91E368B71004BCE2D /* SweetAlert.swift */; };
-		2F2F760E1E312BC9000AE4F7 /* NavigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F760D1E312BC9000AE4F7 /* NavigationBar.png */; };
 		2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */; };
+		2F3975BC1E394E39005C7926 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3975BB1E394E39005C7926 /* HealthKit.framework */; };
 		2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F398E8F1E12288A00A1AEB3 /* Lily.xcdatamodeld */; };
 		2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F398EFC1E14CAB100A1AEB3 /* LilyCoreData.swift */; };
 		2F398EFF1E16006600A1AEB3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F398EFE1E16006600A1AEB3 /* Helpers.swift */; };
+		2F3EAFA81E4A55B200214FC4 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EAFA61E4A55B200214FC4 /* downArrow.png */; };
+		2F3EAFA91E4A55B200214FC4 /* upArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EAFA71E4A55B200214FC4 /* upArrow.png */; };
+		2F3EAFAE1E4BF8D400214FC4 /* WhatShouldIDrinkCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EAFAC1E4BF8D400214FC4 /* WhatShouldIDrinkCard.png */; };
+		2F3EAFAF1E4BF8D400214FC4 /* HowShouldISleepCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EAFAD1E4BF8D400214FC4 /* HowShouldISleepCard.png */; };
+		2F3EAFB11E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EAFB01E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png */; };
+		2F3EAFB31E4BF9DE00214FC4 /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EAFB21E4BF9DE00214FC4 /* HeartRateViewController.swift */; };
+		2F3EAFB51E4C229800214FC4 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EAFB41E4C229800214FC4 /* HeartRate.swift */; };
+		2F3EAFB71E4D0C0500214FC4 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EAFB61E4D0C0500214FC4 /* ActivityViewController.swift */; };
+		2F3EAFB91E4D0E4D00214FC4 /* HowShouldIBeExercisingCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EAFB81E4D0E4D00214FC4 /* HowShouldIBeExercisingCard.png */; };
 		2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC881E35905D00B18F25 /* MicWhite.png */; };
 		2F3FDC8D1E35905D00B18F25 /* x_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC891E35905D00B18F25 /* x_button.png */; };
 		2F3FDC8E1E35905D00B18F25 /* question_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC8A1E35905D00B18F25 /* question_mark.png */; };
@@ -21,7 +30,27 @@
 		2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */; };
 		2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */; };
 		2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6591AB1E03B29C0040AA4A /* Services.plist */; };
+		2F8587271E59458C00D7594A /* Login.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8587261E59458C00D7594A /* Login.png */; };
+		2F889DB81E4F8A0200F22584 /* very.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB41E4F8A0200F22584 /* very.png */; };
+		2F889DB91E4F8A0200F22584 /* fairly.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB51E4F8A0200F22584 /* fairly.png */; };
+		2F889DBA1E4F8A0200F22584 /* lightly.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB61E4F8A0200F22584 /* lightly.png */; };
+		2F889DBB1E4F8A0200F22584 /* sedentary.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB71E4F8A0200F22584 /* sedentary.png */; };
 		2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */; };
+		2F91177B1E3C50BB00D1D6F6 /* sendIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */; };
+		2F91BE351E462BA20030821A /* DropdownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F91BE341E462BA20030821A /* DropdownArrow.png */; };
+		2F938F441E5211FE006D64A9 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F938F431E5211FE006D64A9 /* GoalsViewController.swift */; };
+		2F938F4F1E522F1A006D64A9 /* small_call_doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F451E522F1A006D64A9 /* small_call_doctor.png */; };
+		2F938F511E522F1A006D64A9 /* small_baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F471E522F1A006D64A9 /* small_baby.png */; };
+		2F938F521E522F1A006D64A9 /* small_scale.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F481E522F1A006D64A9 /* small_scale.png */; };
+		2F938F531E522F1A006D64A9 /* small_heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F491E522F1A006D64A9 /* small_heart.png */; };
+		2F938F541E522F1A006D64A9 /* small_moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F4A1E522F1A006D64A9 /* small_moon.png */; };
+		2F938F551E522F1A006D64A9 /* small_activity.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F4B1E522F1A006D64A9 /* small_activity.png */; };
+		2F938F561E522F1A006D64A9 /* small_water.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F4C1E522F1A006D64A9 /* small_water.png */; };
+		2F938F571E522F1A006D64A9 /* alarm_clock_enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F4D1E522F1A006D64A9 /* alarm_clock_enabled.png */; };
+		2F938F581E522F1A006D64A9 /* alarm_clock_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F4E1E522F1A006D64A9 /* alarm_clock_disabled.png */; };
+		2F938F5A1E523141006D64A9 /* NavigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F591E523141006D64A9 /* NavigationBar.png */; };
+		2F938F5E1E5238A9006D64A9 /* small_emotion_log.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F938F5D1E5238A9006D64A9 /* small_emotion_log.png */; };
+		2F980E871E50D1CB0024C5EC /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F980E861E50D1CB0024C5EC /* Activity.swift */; };
 		2FA09AED1E31321F0094270F /* blackjack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AEC1E31321F0094270F /* blackjack.otf */; };
 		2FA09AEF1E3138070094270F /* CardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AEE1E3138070094270F /* CardBackground.png */; };
 		2FA09AF11E3138E30094270F /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA09AF01E3138E30094270F /* water.png */; };
@@ -40,11 +69,30 @@
 		2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD631E0347AF00778DF3 /* Assets.xcassets */; };
 		2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD651E0347AF00778DF3 /* LaunchScreen.storyboard */; };
 		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
+		2FC0BA5D1E415FC1007B291C /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */; };
+		2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA5E1E417D92007B291C /* WaterViewController.swift */; };
+		2FC0BA651E419D98007B291C /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA641E419D97007B291C /* Water.swift */; };
+		2FC0BA671E423DBE007B291C /* lastWeekCardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA661E423DBE007B291C /* lastWeekCardBackground.png */; };
+		2FC0BA6E1E43D556007B291C /* ChevronLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA6C1E43D556007B291C /* ChevronLeft.png */; };
+		2FC0BA6F1E43D556007B291C /* ChevronRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA6D1E43D556007B291C /* ChevronRight.png */; };
+		2FC0BA721E43D5C9007B291C /* Back-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA701E43D5C9007B291C /* Back-50.png */; };
+		2FC0BA731E43D5C9007B291C /* Forward-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA711E43D5C9007B291C /* Forward-50.png */; };
+		2FC0BA771E44E913007B291C /* ForwardButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA751E44E913007B291C /* ForwardButton.png */; };
+		2FC0BA791E44EA32007B291C /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA781E44EA32007B291C /* BackButton.png */; };
 		2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */; };
 		2FC7FC071E35C9A300A7DA50 /* ErrorMicHelpMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */; };
 		2FC7FC081E35C9A300A7DA50 /* simpleMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7FC061E35C9A300A7DA50 /* simpleMicHelp.png */; };
+		2FCAA5D11E3FBD3E0014452E /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAA5D01E3FBD3E0014452E /* Sleep.swift */; };
 		2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */; };
 		2FDB45F61E21755300A98225 /* LilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDB45F51E21755300A98225 /* LilyTests.swift */; };
+		2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE264141E395ECF004DB460 /* HealthKitRequests.swift */; };
+		2FE264261E3C38EC004DB460 /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264241E3C38EC004DB460 /* white_background.png */; };
+		2FE2642C1E3C399B004DB460 /* LilyLoginImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2642B1E3C399B004DB460 /* LilyLoginImage.png */; };
+		2FE2642E1E3C3A6A004DB460 /* ConnectWithFitbit.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2642D1E3C3A6A004DB460 /* ConnectWithFitbit.png */; };
+		2FE264301E3C3A82004DB460 /* ConnectWithHealthKit.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2642F1E3C3A82004DB460 /* ConnectWithHealthKit.png */; };
+		2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264311E3C3A9B004DB460 /* OrLoginImage.png */; };
+		2FE264361E3C419A004DB460 /* Lily_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264351E3C419A004DB460 /* Lily_background.png */; };
+		2FE2643A1E3C4C03004DB460 /* exportButtonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264391E3C4C03004DB460 /* exportButtonIcon.png */; };
 		672BB027D2BACD0ACB5F68C2 /* Pods_Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */; };
 		A6B15886DD2C5CF0E96A3F0D /* Pods_Lily_LilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,11 +112,20 @@
 		2A3F7A2A05BA366D8C23C744 /* Pods-Lily-LilyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily-LilyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9CDFF0524D10FD589A9B0E /* Pods-Lily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lily/Pods-Lily.release.xcconfig"; sourceTree = "<group>"; };
 		2F0F75E91E368B71004BCE2D /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
-		2F2F760D1E312BC9000AE4F7 /* NavigationBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NavigationBar.png; path = ../../SketchTemplates/NavigationBar.png; sourceTree = "<group>"; };
 		2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenViewController.swift; path = Lily/HomeScreenViewController.swift; sourceTree = "<group>"; };
+		2F3975BB1E394E39005C7926 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		2F398E901E12288A00A1AEB3 /* Lily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lily.xcdatamodel; sourceTree = "<group>"; };
 		2F398EFC1E14CAB100A1AEB3 /* LilyCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LilyCoreData.swift; sourceTree = "<group>"; };
 		2F398EFE1E16006600A1AEB3 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		2F3EAFA61E4A55B200214FC4 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
+		2F3EAFA71E4A55B200214FC4 /* upArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upArrow.png; sourceTree = "<group>"; };
+		2F3EAFAC1E4BF8D400214FC4 /* WhatShouldIDrinkCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhatShouldIDrinkCard.png; sourceTree = "<group>"; };
+		2F3EAFAD1E4BF8D400214FC4 /* HowShouldISleepCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowShouldISleepCard.png; sourceTree = "<group>"; };
+		2F3EAFB01E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhatShouldMyHeartRateBeCard.png; sourceTree = "<group>"; };
+		2F3EAFB21E4BF9DE00214FC4 /* HeartRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeartRateViewController.swift; path = Lily/HeartRateViewController.swift; sourceTree = "<group>"; };
+		2F3EAFB41E4C229800214FC4 /* HeartRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
+		2F3EAFB61E4D0C0500214FC4 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Lily/ActivityViewController.swift; sourceTree = "<group>"; };
+		2F3EAFB81E4D0E4D00214FC4 /* HowShouldIBeExercisingCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowShouldIBeExercisingCard.png; sourceTree = "<group>"; };
 		2F3FDC881E35905D00B18F25 /* MicWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MicWhite.png; sourceTree = "<group>"; };
 		2F3FDC891E35905D00B18F25 /* x_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_button.png; sourceTree = "<group>"; };
 		2F3FDC8A1E35905D00B18F25 /* question_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_mark.png; sourceTree = "<group>"; };
@@ -77,7 +134,27 @@
 		2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundMicHelp.png; sourceTree = "<group>"; };
 		2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micWithOrangeBorder.png; sourceTree = "<group>"; };
 		2F6591AB1E03B29C0040AA4A /* Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
+		2F8587261E59458C00D7594A /* Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login.png; sourceTree = "<group>"; };
+		2F889DB41E4F8A0200F22584 /* very.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = very.png; sourceTree = "<group>"; };
+		2F889DB51E4F8A0200F22584 /* fairly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fairly.png; sourceTree = "<group>"; };
+		2F889DB61E4F8A0200F22584 /* lightly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightly.png; sourceTree = "<group>"; };
+		2F889DB71E4F8A0200F22584 /* sedentary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sedentary.png; sourceTree = "<group>"; };
 		2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2RetryHandler.swift; sourceTree = "<group>"; };
+		2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendIcon.png; sourceTree = "<group>"; };
+		2F91BE341E462BA20030821A /* DropdownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DropdownArrow.png; sourceTree = "<group>"; };
+		2F938F431E5211FE006D64A9 /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoalsViewController.swift; path = Lily/GoalsViewController.swift; sourceTree = "<group>"; };
+		2F938F451E522F1A006D64A9 /* small_call_doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_call_doctor.png; sourceTree = "<group>"; };
+		2F938F471E522F1A006D64A9 /* small_baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_baby.png; sourceTree = "<group>"; };
+		2F938F481E522F1A006D64A9 /* small_scale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_scale.png; sourceTree = "<group>"; };
+		2F938F491E522F1A006D64A9 /* small_heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_heart.png; sourceTree = "<group>"; };
+		2F938F4A1E522F1A006D64A9 /* small_moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_moon.png; sourceTree = "<group>"; };
+		2F938F4B1E522F1A006D64A9 /* small_activity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_activity.png; sourceTree = "<group>"; };
+		2F938F4C1E522F1A006D64A9 /* small_water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_water.png; sourceTree = "<group>"; };
+		2F938F4D1E522F1A006D64A9 /* alarm_clock_enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_clock_enabled.png; sourceTree = "<group>"; };
+		2F938F4E1E522F1A006D64A9 /* alarm_clock_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_clock_disabled.png; sourceTree = "<group>"; };
+		2F938F591E523141006D64A9 /* NavigationBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavigationBar.png; sourceTree = "<group>"; };
+		2F938F5D1E5238A9006D64A9 /* small_emotion_log.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_emotion_log.png; sourceTree = "<group>"; };
+		2F980E861E50D1CB0024C5EC /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		2FA09AEC1E31321F0094270F /* blackjack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = blackjack.otf; path = blackjack/blackjack.otf; sourceTree = "<group>"; };
 		2FA09AEE1E3138070094270F /* CardBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardBackground.png; sourceTree = "<group>"; };
 		2FA09AF01E3138E30094270F /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
@@ -98,14 +175,33 @@
 		2FA1CD661E0347AF00778DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FA1CD681E0347AF00778DF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
+		2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SleepViewController.swift; path = Lily/SleepViewController.swift; sourceTree = "<group>"; };
+		2FC0BA5E1E417D92007B291C /* WaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaterViewController.swift; path = Lily/WaterViewController.swift; sourceTree = "<group>"; };
+		2FC0BA641E419D97007B291C /* Water.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
+		2FC0BA661E423DBE007B291C /* lastWeekCardBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lastWeekCardBackground.png; sourceTree = "<group>"; };
+		2FC0BA6C1E43D556007B291C /* ChevronLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChevronLeft.png; sourceTree = "<group>"; };
+		2FC0BA6D1E43D556007B291C /* ChevronRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChevronRight.png; sourceTree = "<group>"; };
+		2FC0BA701E43D5C9007B291C /* Back-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back-50.png"; sourceTree = "<group>"; };
+		2FC0BA711E43D5C9007B291C /* Forward-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forward-50.png"; sourceTree = "<group>"; };
+		2FC0BA751E44E913007B291C /* ForwardButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForwardButton.png; sourceTree = "<group>"; };
+		2FC0BA781E44EA32007B291C /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButton.png; sourceTree = "<group>"; };
 		2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FitbitRequests.swift; path = Lily/FitbitRequests.swift; sourceTree = "<group>"; };
 		2FC69CDC1E101995001A1349 /* Lily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lily.entitlements; sourceTree = "<group>"; };
 		2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErrorMicHelpMessage.png; sourceTree = "<group>"; };
 		2FC7FC061E35C9A300A7DA50 /* simpleMicHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simpleMicHelp.png; sourceTree = "<group>"; };
+		2FCAA5D01E3FBD3E0014452E /* Sleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
 		2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FDB45F31E21755300A98225 /* LilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDB45F51E21755300A98225 /* LilyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilyTests.swift; sourceTree = "<group>"; };
 		2FDB45F71E21755300A98225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FE264141E395ECF004DB460 /* HealthKitRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HealthKitRequests.swift; path = Lily/HealthKitRequests.swift; sourceTree = "<group>"; };
+		2FE264241E3C38EC004DB460 /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
+		2FE2642B1E3C399B004DB460 /* LilyLoginImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LilyLoginImage.png; sourceTree = "<group>"; };
+		2FE2642D1E3C3A6A004DB460 /* ConnectWithFitbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConnectWithFitbit.png; sourceTree = "<group>"; };
+		2FE2642F1E3C3A82004DB460 /* ConnectWithHealthKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConnectWithHealthKit.png; sourceTree = "<group>"; };
+		2FE264311E3C3A9B004DB460 /* OrLoginImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrLoginImage.png; sourceTree = "<group>"; };
+		2FE264351E3C419A004DB460 /* Lily_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lily_background.png; sourceTree = "<group>"; };
+		2FE264391E3C4C03004DB460 /* exportButtonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exportButtonIcon.png; sourceTree = "<group>"; };
 		75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCA35F4FE7800240D9C439 /* Pods-Lily-LilyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily-LilyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily_LilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				672BB027D2BACD0ACB5F68C2 /* Pods_Lily.framework in Frameworks */,
+				2F3975BC1E394E39005C7926 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +231,7 @@
 		0DB7693B6EAC8585F56C3BD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F3975BB1E394E39005C7926 /* HealthKit.framework */,
 				75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */,
 				EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */,
 			);
@@ -143,6 +241,44 @@
 		2F2F76111E3131A8000AE4F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F8587261E59458C00D7594A /* Login.png */,
+				2F938F5D1E5238A9006D64A9 /* small_emotion_log.png */,
+				2F938F591E523141006D64A9 /* NavigationBar.png */,
+				2F938F451E522F1A006D64A9 /* small_call_doctor.png */,
+				2F938F471E522F1A006D64A9 /* small_baby.png */,
+				2F938F481E522F1A006D64A9 /* small_scale.png */,
+				2F938F491E522F1A006D64A9 /* small_heart.png */,
+				2F938F4A1E522F1A006D64A9 /* small_moon.png */,
+				2F938F4B1E522F1A006D64A9 /* small_activity.png */,
+				2F938F4C1E522F1A006D64A9 /* small_water.png */,
+				2F938F4D1E522F1A006D64A9 /* alarm_clock_enabled.png */,
+				2F938F4E1E522F1A006D64A9 /* alarm_clock_disabled.png */,
+				2F889DB41E4F8A0200F22584 /* very.png */,
+				2F889DB51E4F8A0200F22584 /* fairly.png */,
+				2F889DB61E4F8A0200F22584 /* lightly.png */,
+				2F889DB71E4F8A0200F22584 /* sedentary.png */,
+				2F3EAFB81E4D0E4D00214FC4 /* HowShouldIBeExercisingCard.png */,
+				2F3EAFB01E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png */,
+				2F3EAFAC1E4BF8D400214FC4 /* WhatShouldIDrinkCard.png */,
+				2F3EAFAD1E4BF8D400214FC4 /* HowShouldISleepCard.png */,
+				2F3EAFA61E4A55B200214FC4 /* downArrow.png */,
+				2F3EAFA71E4A55B200214FC4 /* upArrow.png */,
+				2F91BE341E462BA20030821A /* DropdownArrow.png */,
+				2FC0BA781E44EA32007B291C /* BackButton.png */,
+				2FC0BA751E44E913007B291C /* ForwardButton.png */,
+				2FC0BA701E43D5C9007B291C /* Back-50.png */,
+				2FC0BA711E43D5C9007B291C /* Forward-50.png */,
+				2FC0BA6C1E43D556007B291C /* ChevronLeft.png */,
+				2FC0BA6D1E43D556007B291C /* ChevronRight.png */,
+				2FC0BA661E423DBE007B291C /* lastWeekCardBackground.png */,
+				2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */,
+				2FE264391E3C4C03004DB460 /* exportButtonIcon.png */,
+				2FE264351E3C419A004DB460 /* Lily_background.png */,
+				2FE264311E3C3A9B004DB460 /* OrLoginImage.png */,
+				2FE2642F1E3C3A82004DB460 /* ConnectWithHealthKit.png */,
+				2FE2642D1E3C3A6A004DB460 /* ConnectWithFitbit.png */,
+				2FE2642B1E3C399B004DB460 /* LilyLoginImage.png */,
+				2FE264241E3C38EC004DB460 /* white_background.png */,
 				2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */,
 				2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */,
 				2FC7FC061E35C9A300A7DA50 /* simpleMicHelp.png */,
@@ -197,7 +333,6 @@
 				2FB4C3BD1E1D79F700C39109 /* Fitbit */,
 				2FB4C3BC1E1D79DF00C39109 /* Core Data */,
 				2FA1CD631E0347AF00778DF3 /* Assets.xcassets */,
-				2F2F760D1E312BC9000AE4F7 /* NavigationBar.png */,
 				2FA1CD651E0347AF00778DF3 /* LaunchScreen.storyboard */,
 				2F2F76111E3131A8000AE4F7 /* Resources */,
 				2FB4C3BF1E1D7A4000C39109 /* Others */,
@@ -217,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */,
+				2FE264141E395ECF004DB460 /* HealthKitRequests.swift */,
 			);
 			name = Fitbit;
 			path = ..;
@@ -227,6 +363,11 @@
 			children = (
 				2FA1CD5E1E0347AF00778DF3 /* ViewController.swift */,
 				2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */,
+				2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */,
+				2FC0BA5E1E417D92007B291C /* WaterViewController.swift */,
+				2F3EAFB21E4BF9DE00214FC4 /* HeartRateViewController.swift */,
+				2F3EAFB61E4D0C0500214FC4 /* ActivityViewController.swift */,
+				2F938F431E5211FE006D64A9 /* GoalsViewController.swift */,
 			);
 			name = ViewControllers;
 			path = ..;
@@ -244,6 +385,10 @@
 				2FA1CD5C1E0347AF00778DF3 /* AppDelegate.swift */,
 				2F398EFE1E16006600A1AEB3 /* Helpers.swift */,
 				2F0F75E91E368B71004BCE2D /* SweetAlert.swift */,
+				2FCAA5D01E3FBD3E0014452E /* Sleep.swift */,
+				2F3EAFB41E4C229800214FC4 /* HeartRate.swift */,
+				2FC0BA641E419D97007B291C /* Water.swift */,
+				2F980E861E50D1CB0024C5EC /* Activity.swift */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -336,6 +481,9 @@
 						DevelopmentTeam = T2JRV3NNQC;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -374,31 +522,68 @@
 			files = (
 				2FC7FC071E35C9A300A7DA50 /* ErrorMicHelpMessage.png in Resources */,
 				2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */,
+				2F938F581E522F1A006D64A9 /* alarm_clock_disabled.png in Resources */,
 				2FA09AFA1E3138F10094270F /* Flame.png in Resources */,
+				2F889DB91E4F8A0200F22584 /* fairly.png in Resources */,
+				2F3EAFA81E4A55B200214FC4 /* downArrow.png in Resources */,
+				2F938F5E1E5238A9006D64A9 /* small_emotion_log.png in Resources */,
 				2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */,
+				2F938F551E522F1A006D64A9 /* small_activity.png in Resources */,
 				2FC7FC081E35C9A300A7DA50 /* simpleMicHelp.png in Resources */,
+				2F938F511E522F1A006D64A9 /* small_baby.png in Resources */,
 				2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */,
+				2F938F571E522F1A006D64A9 /* alarm_clock_enabled.png in Resources */,
 				2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */,
+				2FE264261E3C38EC004DB460 /* white_background.png in Resources */,
 				2FA09AED1E31321F0094270F /* blackjack.otf in Resources */,
 				2FA09B051E31BEF80094270F /* microphone.png in Resources */,
+				2F889DB81E4F8A0200F22584 /* very.png in Resources */,
+				2FE2643A1E3C4C03004DB460 /* exportButtonIcon.png in Resources */,
 				2FA09AF81E3138F10094270F /* balance.png in Resources */,
+				2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */,
+				2FC0BA771E44E913007B291C /* ForwardButton.png in Resources */,
+				2FC0BA791E44EA32007B291C /* BackButton.png in Resources */,
 				2FA09AF91E3138F10094270F /* Checklist.png in Resources */,
 				2FA09AFB1E3138F10094270F /* Moon.png in Resources */,
+				2FC0BA671E423DBE007B291C /* lastWeekCardBackground.png in Resources */,
+				2F3EAFAE1E4BF8D400214FC4 /* WhatShouldIDrinkCard.png in Resources */,
+				2FE2642C1E3C399B004DB460 /* LilyLoginImage.png in Resources */,
+				2F91177B1E3C50BB00D1D6F6 /* sendIcon.png in Resources */,
 				2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */,
+				2FE264301E3C3A82004DB460 /* ConnectWithHealthKit.png in Resources */,
+				2F938F561E522F1A006D64A9 /* small_water.png in Resources */,
+				2FC0BA721E43D5C9007B291C /* Back-50.png in Resources */,
+				2FE2642E1E3C3A6A004DB460 /* ConnectWithFitbit.png in Resources */,
+				2F938F541E522F1A006D64A9 /* small_moon.png in Resources */,
+				2F91BE351E462BA20030821A /* DropdownArrow.png in Resources */,
 				2F3FDC911E35921B00B18F25 /* x.png in Resources */,
-				2F2F760E1E312BC9000AE4F7 /* NavigationBar.png in Resources */,
+				2F889DBB1E4F8A0200F22584 /* sedentary.png in Resources */,
+				2FC0BA731E43D5C9007B291C /* Forward-50.png in Resources */,
 				2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */,
+				2F938F521E522F1A006D64A9 /* small_scale.png in Resources */,
 				2FA09AEF1E3138070094270F /* CardBackground.png in Resources */,
+				2F938F5A1E523141006D64A9 /* NavigationBar.png in Resources */,
+				2F938F531E522F1A006D64A9 /* small_heart.png in Resources */,
+				2F3EAFB91E4D0E4D00214FC4 /* HowShouldIBeExercisingCard.png in Resources */,
 				2FA09B011E3147F40094270F /* backgroundShade.png in Resources */,
 				2F3FDC8D1E35905D00B18F25 /* x_button.png in Resources */,
+				2F938F4F1E522F1A006D64A9 /* small_call_doctor.png in Resources */,
 				2FA09AF71E3138F10094270F /* Heart.png in Resources */,
 				2FA09B071E31C3A80094270F /* microphone@2x.png in Resources */,
+				2F889DBA1E4F8A0200F22584 /* lightly.png in Resources */,
 				2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */,
+				2F3EAFA91E4A55B200214FC4 /* upArrow.png in Resources */,
+				2F8587271E59458C00D7594A /* Login.png in Resources */,
+				2F3EAFAF1E4BF8D400214FC4 /* HowShouldISleepCard.png in Resources */,
 				2F3FDC931E3592E200B18F25 /* Help Subview.png in Resources */,
 				2FA1CD621E0347AF00778DF3 /* Main.storyboard in Resources */,
 				2FA09AF11E3138E30094270F /* water.png in Resources */,
 				2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */,
 				2F3FDC8E1E35905D00B18F25 /* question_mark.png in Resources */,
+				2F3EAFB11E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png in Resources */,
+				2FC0BA6E1E43D556007B291C /* ChevronLeft.png in Resources */,
+				2FC0BA6F1E43D556007B291C /* ChevronRight.png in Resources */,
+				2FE264361E3C419A004DB460 /* Lily_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,9 +701,19 @@
 				2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */,
 				2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */,
 				2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */,
+				2F3EAFB31E4BF9DE00214FC4 /* HeartRateViewController.swift in Sources */,
+				2FC0BA5D1E415FC1007B291C /* SleepViewController.swift in Sources */,
+				2F938F441E5211FE006D64A9 /* GoalsViewController.swift in Sources */,
+				2F980E871E50D1CB0024C5EC /* Activity.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,
 				2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */,
+				2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */,
 				2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */,
+				2F3EAFB71E4D0C0500214FC4 /* ActivityViewController.swift in Sources */,
+				2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */,
+				2FC0BA651E419D98007B291C /* Water.swift in Sources */,
+				2F3EAFB51E4C229800214FC4 /* HeartRate.swift in Sources */,
+				2FCAA5D11E3FBD3E0014452E /* Sleep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,9 +852,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 087B0A496F522C14AA1FEBCB /* Pods-Lily.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lily/Lily.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T2JRV3NNQC;
 				INFOPLIST_FILE = Lily/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
@@ -674,9 +870,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2B9CDFF0524D10FD589A9B0E /* Pods-Lily.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lily/Lily.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T2JRV3NNQC;
 				INFOPLIST_FILE = Lily/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
