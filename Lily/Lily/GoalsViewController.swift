@@ -265,8 +265,12 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         let enabled = self.toggleImage(button: self.waterConsumptionReminderButton)
         if enabled {
             setReminder(reminder: "Water")
+            // water = every 2 hours
         }
     
+        
+        
+        
     }
     
     
@@ -359,6 +363,7 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         let enabled = self.toggleImage(button: self.activityGoalReminderButton)
         if enabled {
             setReminder(reminder: "Activity")
+            //activity = every 2 hours;
         }
     }
     
@@ -366,6 +371,7 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         let enabled = self.toggleImage(button: self.sleepGoalReminderButton)
         if enabled {
             setReminder(reminder: "Sleep")
+            // sleep ... maybe we remove that one?;         
         }
     }
     
@@ -373,6 +379,7 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         let enabled = self.toggleImage(button: self.heartRateReminderButton)
         if enabled {
             setReminder(reminder: "HeartRate")
+           // heart rate = whenever above the maximum heart rate the user sets.
         }
     }
     
@@ -380,6 +387,7 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         let enabled = self.toggleImage(button: self.weightReminderButton)
         if enabled {
             setReminder(reminder: "Weight")
+            //  weight = every 3 days; 
         }
     }
     
@@ -387,6 +395,8 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         let enabled = self.toggleImage(button: self.emotionsReminderButton)
         if enabled {
             setReminder(reminder: "Emotions")
+            //  emotions= frequency they set
+
         }
     }
     
@@ -394,6 +404,7 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         let enabled = self.toggleImage(button: self.babyMovementReminderButton)
         if enabled {
             setReminder(reminder: "BabyMovement")
+            // baby movement = every 8 hours; 
         }
     }
     

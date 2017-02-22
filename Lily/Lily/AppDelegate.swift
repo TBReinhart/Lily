@@ -32,11 +32,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true
 
+        
+        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
+        
         return true
     }
+    // http://www.appcoda.com/push-notification-ios/
+    // Step 8
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("DEVICE TOKEN = \(deviceToken)")
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
 
-
+        print(token)
+    }
     
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("FAILED TO REGISTER FOR NOTIFICATIONS")
+        print(error)
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(userInfo)
+    }
+    
+
     /**
      ## Set URL Scheme ##
      Sets URL scheme such that the app can be reopened after performing authentication through fitbit
