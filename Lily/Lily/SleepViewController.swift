@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import UICircularProgressRing
 import SafariServices
+import BusyNavigationBar
 
 class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     var currentWeeksBack = 0
@@ -18,6 +19,12 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
     var sleepObject = Sleep()
     var weekSleepObjects = [Sleep?](repeating: nil, count:7)
 
+    var options = BusyNavigationBarOptions()
+
+    // TODO
+    // create a "cache" of this screen and refresh every so often
+    // http://stackoverflow.com/questions/28418035/synchronizing-remote-json-data-to-local-cache-storage-in-ios-swift
+    
     @IBOutlet weak var specificDateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var specificDateView: UIView!
@@ -61,7 +68,24 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         self.title = "Lily"
         self.previousWeekDateRangeLabel.text = Helpers.getShortDateRangeString(date: Date())
         self.previousWeekDateRangeLabel.adjustsFontSizeToFitWidth = true
-
+        self.options.animationType = .stripes
+        /// Color of the shapes. Defaults to gray.
+        self.options.color = UIColor.gray
+        /// Alpha of the animation layer. Remember that there is also an additional (constant) gradient mask over the animation layer. Defaults to 0.5.
+        self.options.alpha = 0.5
+        /// Width of the bar. Defaults to 20.
+        self.options.barWidth = 20
+        /// Gap between bars. Defaults to 30.
+        self.options.gapWidth = 30
+        /// Speed of the animation. 1 corresponds to 0.5 sec. Defaults to 1.
+        self.options.speed = 1
+        /// Flag for enabling the transparent masking layer over the animation layer.
+        self.options.transparentMaskEnabled = true
+        self.navigationController?.navigationBar.start(options)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+            self.navigationController?.navigationBar.stop()
+        })
         self.makeViewSwipeable()
         self.forwardButtonSpecificDate.isHidden = true
         self.forwardButtonWeek.isHidden = true

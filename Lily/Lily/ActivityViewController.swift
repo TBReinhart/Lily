@@ -8,7 +8,7 @@
 
 import UIKit
 import SafariServices
-
+import BusyNavigationBar
 class ActivityViewController: UIViewController {
 
     
@@ -20,7 +20,8 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var day06View: UIView!
     @IBOutlet weak var day07View: UIView!
     @IBOutlet weak var weekTotalView: UIView!
-    
+    var options = BusyNavigationBarOptions()
+
     @IBOutlet weak var dayOfWeek01Label: UILabel!
     @IBOutlet weak var dayOfWeek02Label: UILabel!
     @IBOutlet weak var dayOfWeek03Label: UILabel!
@@ -76,7 +77,24 @@ class ActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.options.animationType = .stripes
+        /// Color of the shapes. Defaults to gray.
+        self.options.color = UIColor.gray
+        /// Alpha of the animation layer. Remember that there is also an additional (constant) gradient mask over the animation layer. Defaults to 0.5.
+        self.options.alpha = 0.5
+        /// Width of the bar. Defaults to 20.
+        self.options.barWidth = 20
+        /// Gap between bars. Defaults to 30.
+        self.options.gapWidth = 30
+        /// Speed of the animation. 1 corresponds to 0.5 sec. Defaults to 1.
+        self.options.speed = 1
+        /// Flag for enabling the transparent masking layer over the animation layer.
+        self.options.transparentMaskEnabled = true
+        self.navigationController?.navigationBar.start(options)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+            self.navigationController?.navigationBar.stop()
+        })
         self.dayViews = [self.day01View, self.day02View, self.day03View, self.day04View,self.day05View,self.day06View, self.day07View, self.weekTotalView]
         
         for v in self.dayViews {

@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import SwiftyJSON
+import UserNotifications
+
 class GoalsViewController: UIViewController, UITextFieldDelegate {
 
     
@@ -86,24 +88,26 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
     var emotionsText = "24 hours"
     var movementText = "8 hours"
 
+    let reminderButtonIdentifiers = ["waterButton","activityButton","movementButton","heartRateButton","weightButton","emotionsButton"]
     
     var goalsDict = [String: String]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerLocal()
+        self.loadReminderButtons()
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.enteredBackground(notification:)), name:NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.appWillTerminate(notification:)), name:NSNotification.Name.UIApplicationWillTerminate, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.appWillResign(notification:)), name:NSNotification.Name.UIApplicationWillResignActive, object: nil)
 
-        
+        //scheduleLocal(frequency: 5, message: "TIME: hours = \(hour):\(minutes):\(seconds)")
         self.loadGoalsFromFirebase()
+        
         
         self.setGoalsDict()
         self.setDelegates()
-
-
 
 
         //Looks for single or multiple taps.
@@ -115,6 +119,93 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
     
     }
+    
+    func loadReminderButtons() {
+        let defaults = UserDefaults.standard
+
+
+        if defaults.bool(forKey: "waterButton") {
+            let _ = self.toggleImage(button: self.waterConsumptionReminderButton)
+        }
+        if defaults.bool(forKey: "activityButton") {
+            let _ = self.toggleImage(button: self.activityGoalReminderButton)
+        }
+        if defaults.bool(forKey: "sleepButton") {
+            let _ = self.toggleImage(button: self.sleepGoalReminderButton)
+        }
+        if defaults.bool(forKey: "heartRateButton") {
+            let _ = self.toggleImage(button: self.heartRateReminderButton)
+        }
+        if defaults.bool(forKey: "emotionsButton") {
+            let _ = self.toggleImage(button: self.emotionsReminderButton)
+        }
+        if defaults.bool(forKey: "movementButton") {
+            let _ = self.toggleImage(button: self.babyMovementReminderButton)
+        }
+        if defaults.bool(forKey: "weightButton") {
+            let _ = self.toggleImage(button: self.weightReminderButton)
+        }
+    }
+    
+    func registerLocal() {
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Yay!")
+            } else {
+                print("D'oh")
+            }
+        }
+    }
+    func scheduleLocal(frequencyInHours: Int, message: String, title: String, uid: String, identifier: String) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = message
+        content.categoryIdentifier = identifier
+        content.userInfo = ["customData": "fizzbuzz"]
+        content.sound = UNNotificationSound.default()
+        
+
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 10
+        dateComponents.minute = 30
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let timeAsHours = (60*60) * frequencyInHours
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(timeAsHours), repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(timeAsHours), repeats: true)
+
+        let request = UNNotificationRequest(
+            identifier: identifier,
+            content: content,
+            trigger: trigger)
+        UNUserNotificationCenter.current().add(request,withCompletionHandler: nil)
+    }
+    
+    
+    func listNotifs() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {requests -> () in
+            print("\(requests.count) requests -------")
+            for request in requests{
+                print(request.identifier)
+            }
+        })
+        UNUserNotificationCenter.current().getDeliveredNotifications(completionHandler: {deliveredNotifications -> () in
+            print("\(deliveredNotifications.count) Delivered notifications-------")
+            for notification in deliveredNotifications{
+                print(notification.request.identifier)
+            }
+        })
+    }
+    
+    func removeAlarm(identifier: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+    }
+    
+    
+
+    
     func enteredBackground(notification : NSNotification) {
     }
     
@@ -135,11 +226,16 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         self.firebaseRef = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
         if let uid = user?.uid {
+            print("LOADING GOALS FROM FIREBASE")
             firebaseRef.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-//                let value = snapshot.value as? NSDictionary
                 let json = JSON(snapshot.value!)
                 let goals = json["Goals"]
+                print("GOALS: \(goals)")
                 
+                
+                if goals["waterGoal"] == JSON.null || goals["waterGoal"].stringValue.characters.count == 0 {
+                    return
+                }
                 self.dailyGlassesOfWaterGoalTextField.placeholder = goals["waterGoal"].stringValue
                 self.dailyGlassesOfWaterText = goals["waterGoal"].stringValue + self.waterUnits
                 self.dailyGlassesOfWaterGoalTextField.text = self.dailyGlassesOfWaterText
@@ -199,6 +295,13 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setGoalsDict() {
+        // TODO save locally
+        /**
+         var data = NSKeyedArchiver.archivedDataWithRootObject(jo)
+         var userDefaults = NSUserDefaults.standardUserDefaults()
+         userDefaults.setObject(data, forKey:akey)
+        */
+        
         goalsDict["waterGoal"] = self.dailyGlassesOfWaterGoalTextField.placeholder
         goalsDict["vigorousGoal"] = self.vigorousExerciseTextField.placeholder
         goalsDict["moderateGoal"] = self.moderateExerciseTextField.placeholder
@@ -253,8 +356,9 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
         self.emotionsView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector (self.emotionsPressed(_:))))
         self.babyMovementView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector (self.babyMovementPressed(_:))))
     }
-    func updateGoalsToFirebase() {
-        
+    
+    func saveButtonStatus(identifier: String, enabled: Bool) {
+        UserDefaults.standard.setValue(enabled, forKey: identifier)
     }
     
     func dismissKeyboard() {
@@ -264,11 +368,13 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func waterConsumptionReminderButtonPressed(_ sender: Any) {
         let enabled = self.toggleImage(button: self.waterConsumptionReminderButton)
         if enabled {
-            setReminder(reminder: "Water")
-            // water = every 2 hours
+            self.scheduleLocal(frequencyInHours: 2, message: "Drink up!", title: "Water time", uid: "water", identifier: "water")
+        } else {
+            self.removeAlarm(identifier: "water")
         }
     
-        
+        self.saveButtonStatus(identifier: "waterButton", enabled: enabled)
+
         
         
     }
@@ -362,56 +468,74 @@ class GoalsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func activityGoalReminderButtonPressed(_ sender: Any) {
         let enabled = self.toggleImage(button: self.activityGoalReminderButton)
         if enabled {
-            setReminder(reminder: "Activity")
-            //activity = every 2 hours;
+            self.scheduleLocal(frequencyInHours: 2, message: "Let's work out", title: "Activity time", uid: "activity", identifier: "activity")
+        } else {
+            self.removeAlarm(identifier: "activity")
         }
+        self.saveButtonStatus(identifier: "activityButton", enabled: enabled)
+
     }
     
     @IBAction func sleepGoalReminderButtonPressed(_ sender: Any) {
         let enabled = self.toggleImage(button: self.sleepGoalReminderButton)
         if enabled {
-            setReminder(reminder: "Sleep")
-            // sleep ... maybe we remove that one?;         
+            self.scheduleLocal(frequencyInHours: 12, message: "How'd you sleep last night?", title: "Sleep!", uid: "sleep", identifier: "sleep")
+        } else {
+            self.removeAlarm(identifier: "sleep")
         }
+        self.saveButtonStatus(identifier: "sleepButton", enabled: enabled)
+
     }
     
     @IBAction func heartRateReminderButtonPressed(_ sender: Any) {
         let enabled = self.toggleImage(button: self.heartRateReminderButton)
         if enabled {
-            setReminder(reminder: "HeartRate")
-           // heart rate = whenever above the maximum heart rate the user sets.
+            self.scheduleLocal(frequencyInHours: 8, message: "Watch your heart rate!", title: "Heart Rate", uid: "heartRate", identifier: "heartRate")
+        } else {
+            self.removeAlarm(identifier: "heartRate")
         }
+        self.saveButtonStatus(identifier: "heartRateButton", enabled: enabled)
+
     }
-    
+
     @IBAction func weightReminderButtonPressed(_ sender: Any) {
         let enabled = self.toggleImage(button: self.weightReminderButton)
         if enabled {
-            setReminder(reminder: "Weight")
-            //  weight = every 3 days; 
+            self.scheduleLocal(frequencyInHours: 24, message: "Take a second to log your weight", title: "Time to check your weight progress!", uid: "weight", identifier: "weight")
+        } else {
+            self.removeAlarm(identifier: "wight")
         }
+        self.saveButtonStatus(identifier: "weightButton", enabled: enabled)
+
     }
     
     @IBAction func emotionsReminderButtonPressed(_ sender: Any) {
         let enabled = self.toggleImage(button: self.emotionsReminderButton)
         if enabled {
-            setReminder(reminder: "Emotions")
-            //  emotions= frequency they set
-
+            self.scheduleLocal(frequencyInHours: 6, message: "Take a second to log your emotions", title: "How're you feeling today?", uid: "emotions", identifier: "water")
+        } else {
+            self.removeAlarm(identifier: "emotions")
         }
+        self.saveButtonStatus(identifier: "emotionsButton", enabled: enabled)
+
     }
-    
+
     @IBAction func babyMovementReminderButtonPressed(_ sender: Any) {
         let enabled = self.toggleImage(button: self.babyMovementReminderButton)
         if enabled {
-            setReminder(reminder: "BabyMovement")
-            // baby movement = every 8 hours; 
+            self.scheduleLocal(frequencyInHours: 2, message: "Has your baby kicked?", title: "Baby Movement", uid: "movement", identifier: "movement")
+        } else {
+            self.removeAlarm(identifier: "movement")
         }
+        self.saveButtonStatus(identifier: "movementButton", enabled: enabled)
+
     }
     
     @IBAction func callOBGYNButtonPressed(_ sender: Any) {
         if let url = URL(string: "tel://\(self.obgynPhoneButton.currentTitle!)") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+
     }
 
 

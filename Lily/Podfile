@@ -18,7 +18,8 @@ target 'Lily' do
     pod 'SCLAlertView'
     pod 'SendGrid', :git => 'https://github.com/scottkawai/sendgrid-swift.git'
     pod 'IQKeyboardManagerSwift'
-
+    pod 'SMIconLabel'
+    pod "BusyNavigationBar"
 
     target ‘LilyTests’ do
         pod 'p2.OAuth2', '~> 3.0'

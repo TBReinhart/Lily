@@ -9,6 +9,7 @@
 import UIKit
 import UICircularProgressRing
 import SafariServices
+import BusyNavigationBar
 
 class WaterViewController: UIViewController {
 
@@ -42,7 +43,8 @@ class WaterViewController: UIViewController {
     var dayLabels = [UILabel]()
     var dayViews = [UICircularProgressRingView]()
     
-    
+    var options = BusyNavigationBarOptions()
+
     
     @IBOutlet weak var day01Label: UILabel!
     @IBOutlet weak var day02Label: UILabel!
@@ -63,6 +65,22 @@ class WaterViewController: UIViewController {
     @IBOutlet weak var backButtonWeek: UIButton!
     @IBOutlet weak var forwardButtonWeek: UIButton!
     override func viewDidLoad() {
+        
+        self.options.animationType = .stripes
+        /// Color of the shapes. Defaults to gray.
+        self.options.color = UIColor.gray
+        /// Alpha of the animation layer. Remember that there is also an additional (constant) gradient mask over the animation layer. Defaults to 0.5.
+        self.options.alpha = 0.5
+        /// Width of the bar. Defaults to 20.
+        self.options.barWidth = 20
+        /// Gap between bars. Defaults to 30.
+        self.options.gapWidth = 30
+        /// Speed of the animation. 1 corresponds to 0.5 sec. Defaults to 1.
+        self.options.speed = 1
+        /// Flag for enabling the transparent masking layer over the animation layer.
+        self.options.transparentMaskEnabled = true
+        // Start animation
+        self.navigationController?.navigationBar.start(options)
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.enteredBackground(notification:)), name:NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.appWillTerminate(notification:)), name:NSNotification.Name.UIApplicationWillTerminate, object: nil)
@@ -233,6 +251,8 @@ class WaterViewController: UIViewController {
     
     func setSpecificDate(daysAgo: Int) {
         self.loadWaterNDaysAgo(daysAgo: daysAgo) { water, err in
+            self.navigationController?.navigationBar.stop()
+
             self.specificWater = water ?? Water()
             self.specificWater.dateString = Helpers.getDateNDaysAgo(daysAgo: daysAgo).dateString
             

@@ -15,6 +15,8 @@ import PKHUD
 import SwiftSiriWaveformView
 import SCLAlertView
 import SendGrid
+import UserNotifications
+import BusyNavigationBar
 
 class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
@@ -44,7 +46,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     @IBOutlet weak var tapToSpeakLabel: UILabel!
-    
+    var options = BusyNavigationBarOptions()
+
     // Siri Wave Vars
     var timer:Timer?
     var change:CGFloat = 0.01
@@ -133,7 +136,27 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
     }
     override func viewDidLoad() {
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        self.options.animationType = .stripes
+        /// Color of the shapes. Defaults to gray.
+        self.options.color = UIColor.gray
+        /// Alpha of the animation layer. Remember that there is also an additional (constant) gradient mask over the animation layer. Defaults to 0.5.
+        self.options.alpha = 0.5
+        /// Width of the bar. Defaults to 20.
+        self.options.barWidth = 20
+        /// Gap between bars. Defaults to 30.
+        self.options.gapWidth = 30
+        /// Speed of the animation. 1 corresponds to 0.5 sec. Defaults to 1.
+        self.options.speed = 1
+        /// Flag for enabling the transparent masking layer over the animation layer.
+        self.options.transparentMaskEnabled = true
+        self.navigationController?.navigationBar.start(options)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+            self.navigationController?.navigationBar.stop()
+        })
+
         super.viewDidLoad()
         self.waterCardImage.contentMode = .scaleAspectFit
 
@@ -461,6 +484,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.activityRing.maxValue = CGFloat(Int(goalActiveMinutes)!)
         self.activityRing.viewStyle = 2
         self.animateRing(value: Int(exerciseMinutes)!)
+
     }
     
     func loadActivityFitbit() {

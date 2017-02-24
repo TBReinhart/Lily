@@ -8,7 +8,7 @@
 
 import UIKit
 import SafariServices
-
+import BusyNavigationBar
 class HeartRateViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -22,7 +22,8 @@ class HeartRateViewController: UIViewController {
     
     var pastHeartRateLabels = [UILabel]()
     var pastDayOfWeekLabels = [UILabel]()
-    
+    var options = BusyNavigationBarOptions()
+
     @IBOutlet weak var day01View: UIView!
     @IBOutlet weak var day02View: UIView!
     @IBOutlet weak var day03View: UIView!
@@ -64,6 +65,24 @@ class HeartRateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.options.animationType = .stripes
+        /// Color of the shapes. Defaults to gray.
+        self.options.color = UIColor.gray
+        /// Alpha of the animation layer. Remember that there is also an additional (constant) gradient mask over the animation layer. Defaults to 0.5.
+        self.options.alpha = 0.5
+        /// Width of the bar. Defaults to 20.
+        self.options.barWidth = 20
+        /// Gap between bars. Defaults to 30.
+        self.options.gapWidth = 30
+        /// Speed of the animation. 1 corresponds to 0.5 sec. Defaults to 1.
+        self.options.speed = 1
+        /// Flag for enabling the transparent masking layer over the animation layer.
+        self.options.transparentMaskEnabled = true
+        self.navigationController?.navigationBar.start(options)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+            self.navigationController?.navigationBar.stop()
+        })
         self.pastDayOfWeekLabels = [self.day01DayOfWeek,self.day02DayOfWeek,self.day03DayOfWeek,self.day04DayOfWeek,self.day05DayOfWeek,self.day06DayOfWeek,self.day07DayOfWeek]
         self.pastHeartRateLabels = [self.day01HeartRate,self.day02HeartRate,self.day03HeartRate,self.day04HeartRate,self.day05HeartRate,self.day06HeartRate,self.day07HeartRate]
         self.makeViewSwipeable()

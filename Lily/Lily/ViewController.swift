@@ -168,6 +168,7 @@ class ViewController: UIViewController {
         let email = user?.email ?? "None"
         if let uid = user?.uid {
             //ref.child("users/\(uid)/username").setValue("Tom R.")
+            print("MY UID \(uid)")
             ref.child("users/\(uid)/email").setValue(email)
             ref.child("users/\(uid)/loginMethod").setValue(UserDefaults.standard.string(forKey: "loginMethod") ?? "None")
 
