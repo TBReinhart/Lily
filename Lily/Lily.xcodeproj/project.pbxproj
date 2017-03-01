@@ -15,6 +15,11 @@
 		2F0044831E5FB85D000E8BF6 /* Baby.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F0044821E5FB85D000E8BF6 /* Baby.png */; };
 		2F0044871E5FBF48000E8BF6 /* WaterTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0044861E5FBF48000E8BF6 /* WaterTileView.swift */; };
 		2F0044891E5FBF74000E8BF6 /* WaterTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0044881E5FBF74000E8BF6 /* WaterTile.xib */; };
+		2F00448C1E61C22E000E8BF6 /* WhatHappenedThatDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F00448B1E61C22E000E8BF6 /* WhatHappenedThatDay.xib */; };
+		2F00448E1E61C2B2000E8BF6 /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F00448D1E61C2B2000E8BF6 /* Calendar.png */; };
+		2F0044901E61C54E000E8BF6 /* WhatHappenedThatDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */; };
+		2F0044921E61D837000E8BF6 /* SleepTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0044911E61D837000E8BF6 /* SleepTile.xib */; };
+		2F0044981E61DAFA000E8BF6 /* SleepTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0044971E61DAFA000E8BF6 /* SleepTileView.swift */; };
 		2F0F75EA1E368B71004BCE2D /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F75E91E368B71004BCE2D /* SweetAlert.swift */; };
 		2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */; };
 		2F3975BC1E394E39005C7926 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3975BB1E394E39005C7926 /* HealthKit.framework */; };
@@ -38,6 +43,7 @@
 		2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */; };
 		2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */; };
 		2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6591AB1E03B29C0040AA4A /* Services.plist */; };
+		2F7AD0431E66814900D29079 /* DragDropCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7AD0421E66814900D29079 /* DragDropCollectionView.swift */; };
 		2F8127021E5EA46B00B625E1 /* TileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8127011E5EA46B00B625E1 /* TileView.xib */; };
 		2F8127041E5F326200B625E1 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8127031E5F326200B625E1 /* TileView.swift */; };
 		2F8127061E5F330000B625E1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8127051E5F330000B625E1 /* HomeViewController.swift */; };
@@ -80,6 +86,8 @@
 		2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD631E0347AF00778DF3 /* Assets.xcassets */; };
 		2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD651E0347AF00778DF3 /* LaunchScreen.storyboard */; };
 		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
+		2FB99A471E663E070098865E /* ActivityTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB99A461E663E070098865E /* ActivityTileView.swift */; };
+		2FB99A491E663E330098865E /* ActivityTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB99A481E663E330098865E /* ActivityTile.xib */; };
 		2FC0BA5D1E415FC1007B291C /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */; };
 		2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA5E1E417D92007B291C /* WaterViewController.swift */; };
 		2FC0BA651E419D98007B291C /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA641E419D97007B291C /* Water.swift */; };
@@ -130,6 +138,11 @@
 		2F0044821E5FB85D000E8BF6 /* Baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Baby.png; sourceTree = "<group>"; };
 		2F0044861E5FBF48000E8BF6 /* WaterTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaterTileView.swift; path = Lily/WaterTileView.swift; sourceTree = "<group>"; };
 		2F0044881E5FBF74000E8BF6 /* WaterTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WaterTile.xib; path = Lily/WaterTile.xib; sourceTree = "<group>"; };
+		2F00448B1E61C22E000E8BF6 /* WhatHappenedThatDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WhatHappenedThatDay.xib; path = Lily/WhatHappenedThatDay.xib; sourceTree = "<group>"; };
+		2F00448D1E61C2B2000E8BF6 /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
+		2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhatHappenedThatDay.swift; path = Lily/WhatHappenedThatDay.swift; sourceTree = "<group>"; };
+		2F0044911E61D837000E8BF6 /* SleepTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SleepTile.xib; path = Lily/SleepTile.xib; sourceTree = "<group>"; };
+		2F0044971E61DAFA000E8BF6 /* SleepTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SleepTileView.swift; path = Lily/SleepTileView.swift; sourceTree = "<group>"; };
 		2F0F75E91E368B71004BCE2D /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenViewController.swift; path = Lily/HomeScreenViewController.swift; sourceTree = "<group>"; };
 		2F3975BB1E394E39005C7926 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -153,6 +166,7 @@
 		2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundMicHelp.png; sourceTree = "<group>"; };
 		2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micWithOrangeBorder.png; sourceTree = "<group>"; };
 		2F6591AB1E03B29C0040AA4A /* Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
+		2F7AD0421E66814900D29079 /* DragDropCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDropCollectionView.swift; sourceTree = "<group>"; };
 		2F8127011E5EA46B00B625E1 /* TileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TileView.xib; path = Lily/TileView.xib; sourceTree = "<group>"; };
 		2F8127031E5F326200B625E1 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileView.swift; path = Lily/TileView.swift; sourceTree = "<group>"; };
 		2F8127051E5F330000B625E1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Lily/HomeViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +211,8 @@
 		2FA1CD661E0347AF00778DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FA1CD681E0347AF00778DF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
+		2FB99A461E663E070098865E /* ActivityTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityTileView.swift; path = Lily/ActivityTileView.swift; sourceTree = "<group>"; };
+		2FB99A481E663E330098865E /* ActivityTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityTile.xib; path = Lily/ActivityTile.xib; sourceTree = "<group>"; };
 		2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SleepViewController.swift; path = Lily/SleepViewController.swift; sourceTree = "<group>"; };
 		2FC0BA5E1E417D92007B291C /* WaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaterViewController.swift; path = Lily/WaterViewController.swift; sourceTree = "<group>"; };
 		2FC0BA641E419D97007B291C /* Water.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
@@ -265,8 +281,14 @@
 			children = (
 				2F8127011E5EA46B00B625E1 /* TileView.xib */,
 				2F0044881E5FBF74000E8BF6 /* WaterTile.xib */,
+				2F0044911E61D837000E8BF6 /* SleepTile.xib */,
+				2F00448B1E61C22E000E8BF6 /* WhatHappenedThatDay.xib */,
+				2FB99A481E663E330098865E /* ActivityTile.xib */,
+				2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */,
 				2F0044861E5FBF48000E8BF6 /* WaterTileView.swift */,
 				2F8127031E5F326200B625E1 /* TileView.swift */,
+				2F0044971E61DAFA000E8BF6 /* SleepTileView.swift */,
+				2FB99A461E663E070098865E /* ActivityTileView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -274,6 +296,7 @@
 		2F2F76111E3131A8000AE4F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F00448D1E61C2B2000E8BF6 /* Calendar.png */,
 				2F0044821E5FB85D000E8BF6 /* Baby.png */,
 				2F00447A1E5FB7F1000E8BF6 /* journal.png */,
 				2F00447B1E5FB7F1000E8BF6 /* CallDoctor.png */,
@@ -427,6 +450,7 @@
 				2F398EFE1E16006600A1AEB3 /* Helpers.swift */,
 				2F0F75E91E368B71004BCE2D /* SweetAlert.swift */,
 				2FCAA5D01E3FBD3E0014452E /* Sleep.swift */,
+				2F7AD0421E66814900D29079 /* DragDropCollectionView.swift */,
 				2F3EAFB41E4C229800214FC4 /* HeartRate.swift */,
 				2FC0BA641E419D97007B291C /* Water.swift */,
 				2F980E861E50D1CB0024C5EC /* Activity.swift */,
@@ -571,6 +595,7 @@
 				2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */,
 				2F938F581E522F1A006D64A9 /* alarm_clock_disabled.png in Resources */,
 				2FA09AFA1E3138F10094270F /* Flame.png in Resources */,
+				2F0044921E61D837000E8BF6 /* SleepTile.xib in Resources */,
 				2F889DB91E4F8A0200F22584 /* fairly.png in Resources */,
 				2F3EAFA81E4A55B200214FC4 /* downArrow.png in Resources */,
 				2F938F5E1E5238A9006D64A9 /* small_emotion_log.png in Resources */,
@@ -585,6 +610,7 @@
 				2FA09AED1E31321F0094270F /* blackjack.otf in Resources */,
 				2FA09B051E31BEF80094270F /* microphone.png in Resources */,
 				2F889DB81E4F8A0200F22584 /* very.png in Resources */,
+				2F00448E1E61C2B2000E8BF6 /* Calendar.png in Resources */,
 				2FE2643A1E3C4C03004DB460 /* exportButtonIcon.png in Resources */,
 				2FA09AF81E3138F10094270F /* balance.png in Resources */,
 				2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */,
@@ -606,6 +632,7 @@
 				2F0044831E5FB85D000E8BF6 /* Baby.png in Resources */,
 				2F91BE351E462BA20030821A /* DropdownArrow.png in Resources */,
 				2F3FDC911E35921B00B18F25 /* x.png in Resources */,
+				2F00448C1E61C22E000E8BF6 /* WhatHappenedThatDay.xib in Resources */,
 				2F889DBB1E4F8A0200F22584 /* sedentary.png in Resources */,
 				2FC0BA731E43D5C9007B291C /* Forward-50.png in Resources */,
 				2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */,
@@ -615,6 +642,7 @@
 				2F938F531E522F1A006D64A9 /* small_heart.png in Resources */,
 				2F3EAFB91E4D0E4D00214FC4 /* HowShouldIBeExercisingCard.png in Resources */,
 				2FA09B011E3147F40094270F /* backgroundShade.png in Resources */,
+				2FB99A491E663E330098865E /* ActivityTile.xib in Resources */,
 				2F3FDC8D1E35905D00B18F25 /* x_button.png in Resources */,
 				2F938F4F1E522F1A006D64A9 /* small_call_doctor.png in Resources */,
 				2FA09AF71E3138F10094270F /* Heart.png in Resources */,
@@ -748,6 +776,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA1CD5F1E0347AF00778DF3 /* ViewController.swift in Sources */,
+				2F7AD0431E66814900D29079 /* DragDropCollectionView.swift in Sources */,
 				2F8127041E5F326200B625E1 /* TileView.swift in Sources */,
 				2F0044871E5FBF48000E8BF6 /* WaterTileView.swift in Sources */,
 				2F0F75EA1E368B71004BCE2D /* SweetAlert.swift in Sources */,
@@ -763,11 +792,14 @@
 				2F980E871E50D1CB0024C5EC /* Activity.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,
 				2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */,
+				2F0044981E61DAFA000E8BF6 /* SleepTileView.swift in Sources */,
 				2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */,
 				2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */,
 				2F3EAFB71E4D0C0500214FC4 /* ActivityViewController.swift in Sources */,
 				2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */,
 				2F0044791E5F6E5B000E8BF6 /* TileCollectionViewCell.swift in Sources */,
+				2F0044901E61C54E000E8BF6 /* WhatHappenedThatDay.swift in Sources */,
+				2FB99A471E663E070098865E /* ActivityTileView.swift in Sources */,
 				2FC0BA651E419D98007B291C /* Water.swift in Sources */,
 				2F3EAFB51E4C229800214FC4 /* HeartRate.swift in Sources */,
 				2FCAA5D11E3FBD3E0014452E /* Sleep.swift in Sources */,

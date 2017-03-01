@@ -313,6 +313,7 @@ class WaterViewController: UIViewController {
         ring.maxValue = 10
         ring.setProgress(value: CGFloat(value), animationDuration: TimeInterval(animationDuration), completion: nil)
         
+        
     }
     func updateTotalGlassesConsumed() {
         self.setProgressRing(ring: self.specificDateWaterView, value: self.totalGlassesConsumed, animationDuration:  0)

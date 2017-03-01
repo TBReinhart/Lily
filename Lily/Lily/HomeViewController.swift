@@ -9,38 +9,30 @@
 import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-//
-//    @IBOutlet weak var tileView01: TileView!
-//    @IBOutlet weak var tileView02: TileView!
-    fileprivate let sectionInsets = UIEdgeInsets(top: 25.0, left: 20.0, bottom: 50.0, right: 20.0)
 
+    fileprivate let sectionInsets = UIEdgeInsets(top: 25.0, left: 20.0, bottom: 50.0, right: 20.0)
+    
     
     @IBOutlet weak var TileCollectionView: UICollectionView!
-    /**
-     Weight
-     Emotion
-     Baby Movement Log
-     My Journal
-     Call the Doctor
-     My Goals
-     Tile Store
-    */
-    var images = ["balance", "Checklist", "Heart" ,"Baby", "journal", "CallDoctor", "Star", "Store", "water"]
-    let titles: [String: String] = ["balance":"Weight Log", "Checklist": "Emotion Log", "Baby":"Baby Movement Log", "Heart":"Heart Rate", "journal": "My Journal", "CallDoctor": "Call the Doctor", "Star": "My Goals", "Store": "Tile Store", "water": "Water Consumption"]
-    fileprivate var longPressGesture: UILongPressGestureRecognizer!
 
+    var images = ["Activity", "Moon", "balance", "Checklist", "Heart" ,"Baby", "journal", "CallDoctor", "Star", "Store", "water", "Calendar"]
+    
+    
+    let titles: [String: String] = ["Activity":"Activity", "balance":"Weight Log", "Checklist": "Emotion Log", "Baby":"Baby Movement Log", "Heart":"Heart Rate", "journal": "My Journal", "CallDoctor": "Call the Doctor", "Star": "My Goals", "Store": "Tile Store", "water": "Water Consumption", "Calendar":"What happened that day?", "Moon":"Sleep"]
+    fileprivate var longPressGesture: UILongPressGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.TileCollectionView.delegate = self
         self.TileCollectionView.dataSource = self
         
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         self.TileCollectionView.addGestureRecognizer(longPressGesture)
         self.automaticallyAdjustsScrollViewInsets = false
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,9 +45,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TileCell", for: indexPath) as! TileCollectionViewCell
         let tile = images[indexPath.row]
         
-        
         let tileView = self.getTile(tile: tile)
-        cell.genericTileView.addSubview(tileView)
+        cell.setView(v: tileView)
+        tileView.bindFrameToSuperviewBounds()
         tileView.bindFrameToSuperviewBounds()
         
         return cell
@@ -69,29 +61,87 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             waterTile.setGoalsCupLabel(text: "of 10 cups")
             waterTile.setImage(name: "water")
             return waterTile
+        } else if tile == "Calendar" {
+            let whtdTile = WhatHappenedThatDay()
+            whtdTile.setImage(name: "Calendar")
+            whtdTile.setDowLabel(dow: "Samedi")
+            whtdTile.setNumberLabel(number: "25")
+            return whtdTile
+        } else if tile == "Moon" {
+            let sleepTile = SleepTileView()
+            sleepTile.setImage(name: "Moon")
+            sleepTile.setTimeLabel(time: "9h 30m")
+            return sleepTile
+        } else if tile == "Activity" {
+            let activityTile = ActivityTileView()
+            activityTile.setTotalLabel(total: "30")
+            activityTile.setProgressRing(value: 10.0, maxValue: 30.0)
+            activityTile.setMainLabel(title: "Activity")
+            return activityTile
+        } else {
+            let tileView = TileView()
+            tileView.image.image = UIImage(named: tile)
+            tileView.mainLabel.text = titles[tile]
+            tileView.bottomLabel.text = ""
+            tileView.middleLabel.isHidden = true
+            
+            if tile == "Heart" {
+                tileView.middleLabel.isHidden = false
+                tileView.middleLabel.text = "76"
+            }
+            return tileView
         }
-
         
-        let tileView = TileView()
-        tileView.image.image = UIImage(named: tile)
-        tileView.mainLabel.text = titles[tile]
-        tileView.bottomLabel.text = ""
-        tileView.middleLabel.isHidden = true
         
-        if tile == "Heart" {
-            tileView.middleLabel.isHidden = false
-            tileView.middleLabel.text = "76"
-        }
-        return tileView
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected item: \(indexPath.row)")
+        print(self.images[indexPath.row])
+        // ["Activity", "Moon", "balance", "Checklist", "Heart" ,"Baby", "journal", "CallDoctor", "Star", "Store", "water", "Calendar"]
+        switch self.images[indexPath.row] {
+        case "Activity":
+            self.performSegue(withIdentifier: "activitySegue", sender: nil)
+        case "Moon":
+            self.performSegue(withIdentifier: "sleepSegue", sender: nil)
+        case "Checklist":
+            self.performSegue(withIdentifier: "emotionsSegue", sender: nil)
+        case "Heart":
+            self.performSegue(withIdentifier: "heartRateSegue", sender: nil)
+        case "Baby":
+            self.performSegue(withIdentifier: "babyMovementSegue", sender: nil)
+        case "journal":
+            self.performSegue(withIdentifier: "journalSegue", sender: nil)
+        case "CallDoctor":
+            if let url = URL(string: "tel://\(7247669463)") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        case "Star":
+            self.performSegue(withIdentifier: "goalsSegue", sender: nil)
+        case "Store":
+            self.performSegue(withIdentifier: "storeSegue", sender: nil)
+        case "Calendar":
+            self.performSegue(withIdentifier: "thisDaySegue", sender: nil)
+        case "water":
+            self.performSegue(withIdentifier: "waterSegue", sender: nil)
+        default:
+            return
+        }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        let backItem = UIBarButtonItem()
+        backItem.title = "Home"
+        navigationItem.backBarButtonItem = backItem
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                         moveItemAt sourceIndexPath: IndexPath,
                         to destinationIndexPath: IndexPath) {
         // move your data order
+        swap(&self.images[sourceIndexPath.row], &self.images[destinationIndexPath.row])
     }
     
     
@@ -118,7 +168,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-
+    
     
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         
