@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeeklyView" customModule="Lily" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="wp7-gJ-OSk"/>
+                <outlet property="weeklyBarView" destination="cVU-jZ-Qhy" id="kHC-Qu-m8Q"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="204"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVU-jZ-Qhy" customClass="WeeklyBarView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="25" width="375" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="cVU-jZ-Qhy" secondAttribute="height" multiplier="75:7" id="NS9-c7-0KO"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0a-5h-ok8">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="half_circle" translatesAutoresizingMaskIntoConstraints="NO" id="Guf-of-8Pt">
+                            <rect key="frame" x="172" y="0.0" width="30" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Guf-of-8Pt" secondAttribute="height" multiplier="6:5" id="zjh-Hb-afq"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.90980392156862744" green="0.92549019607843142" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Guf-of-8Pt" firstAttribute="centerY" secondItem="H0a-5h-ok8" secondAttribute="centerY" id="2Qh-Bd-kXf"/>
+                        <constraint firstItem="Guf-of-8Pt" firstAttribute="centerX" secondItem="H0a-5h-ok8" secondAttribute="centerX" id="NKn-Mn-1bC"/>
+                        <constraint firstAttribute="width" secondItem="H0a-5h-ok8" secondAttribute="height" multiplier="15:1" id="UkV-eg-uWj"/>
+                        <constraint firstItem="Guf-of-8Pt" firstAttribute="width" secondItem="H0a-5h-ok8" secondAttribute="width" multiplier="0.08" id="df3-0A-8Km"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="261-ce-BDe" customClass="WeeklyMiddleView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="137" y="76" width="100" height="128"/>
+                    <color key="backgroundColor" red="0.89019607840000003" green="0.74117647060000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="261-ce-BDe" secondAttribute="height" multiplier="25:32" id="sYt-je-pDu"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average time to 10 kicks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ob7-ZK-TAg">
+                    <rect key="frame" x="137" y="64" width="100" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ob7-ZK-TAg" secondAttribute="height" multiplier="25:3" id="PX1-ix-G8L"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
+                    <color key="textColor" red="0.43529411764705883" green="0.43137254901960786" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cVU-jZ-Qhy" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="1lH-ph-YRe"/>
+                <constraint firstAttribute="bottom" secondItem="261-ce-BDe" secondAttribute="bottom" id="9hv-0E-EcJ"/>
+                <constraint firstItem="261-ce-BDe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="F1U-nd-QgU"/>
+                <constraint firstAttribute="trailing" secondItem="cVU-jZ-Qhy" secondAttribute="trailing" id="Jxq-1Q-KqO"/>
+                <constraint firstItem="cVU-jZ-Qhy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="K0A-or-2Q3"/>
+                <constraint firstItem="261-ce-BDe" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.26667" id="Tx4-0L-S1a"/>
+                <constraint firstItem="cVU-jZ-Qhy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="VUw-FW-fdg"/>
+                <constraint firstItem="ob7-ZK-TAg" firstAttribute="width" secondItem="261-ce-BDe" secondAttribute="width" id="ahs-bd-aHf"/>
+                <constraint firstItem="261-ce-BDe" firstAttribute="top" secondItem="ob7-ZK-TAg" secondAttribute="bottom" id="bDz-JH-XIX"/>
+                <constraint firstItem="H0a-5h-ok8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bWe-zO-RNV"/>
+                <constraint firstItem="ob7-ZK-TAg" firstAttribute="top" secondItem="cVU-jZ-Qhy" secondAttribute="bottom" constant="4" id="fWi-Sp-xnf"/>
+                <constraint firstItem="H0a-5h-ok8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hx3-9Y-Kgs"/>
+                <constraint firstItem="H0a-5h-ok8" firstAttribute="width" secondItem="cVU-jZ-Qhy" secondAttribute="width" id="ofT-6l-gM1"/>
+                <constraint firstItem="261-ce-BDe" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.36" id="tIt-t7-pKI"/>
+                <constraint firstItem="ob7-ZK-TAg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vz2-1T-pGd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="24.5" y="-188"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="half_circle" width="70" height="35"/>
+    </resources>
+</document>

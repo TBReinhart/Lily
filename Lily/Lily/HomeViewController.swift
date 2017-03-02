@@ -48,7 +48,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let tileView = self.getTile(tile: tile)
         cell.setView(v: tileView)
         tileView.bindFrameToSuperviewBounds()
-        tileView.bindFrameToSuperviewBounds()
         
         return cell
     }
@@ -125,6 +124,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             self.performSegue(withIdentifier: "thisDaySegue", sender: nil)
         case "water":
             self.performSegue(withIdentifier: "waterSegue", sender: nil)
+        case "balance":
+            self.performSegue(withIdentifier: "weightSegue", sender: nil)
         default:
             return
         }

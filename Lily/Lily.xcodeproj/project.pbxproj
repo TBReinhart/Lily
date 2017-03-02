@@ -43,6 +43,12 @@
 		2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */; };
 		2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */; };
 		2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6591AB1E03B29C0040AA4A /* Services.plist */; };
+		2F683F211E68695200CC2641 /* WeeklyBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F683F201E68695200CC2641 /* WeeklyBarView.swift */; };
+		2F683F231E68701400CC2641 /* WeeklyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F683F221E68701400CC2641 /* WeeklyView.xib */; };
+		2F683F251E68702800CC2641 /* WeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F683F241E68702800CC2641 /* WeeklyView.swift */; };
+		2F683F271E68730B00CC2641 /* half_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F683F261E68730B00CC2641 /* half_circle.png */; };
+		2F683F291E68763000CC2641 /* weeklyMiddleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F683F281E68763000CC2641 /* weeklyMiddleView.xib */; };
+		2F683F2B1E68796300CC2641 /* WeeklyMiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F683F2A1E68796300CC2641 /* WeeklyMiddleView.swift */; };
 		2F7AD0431E66814900D29079 /* DragDropCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7AD0421E66814900D29079 /* DragDropCollectionView.swift */; };
 		2F8127021E5EA46B00B625E1 /* TileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8127011E5EA46B00B625E1 /* TileView.xib */; };
 		2F8127041E5F326200B625E1 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8127031E5F326200B625E1 /* TileView.swift */; };
@@ -52,6 +58,19 @@
 		2F889DB91E4F8A0200F22584 /* fairly.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB51E4F8A0200F22584 /* fairly.png */; };
 		2F889DBA1E4F8A0200F22584 /* lightly.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB61E4F8A0200F22584 /* lightly.png */; };
 		2F889DBB1E4F8A0200F22584 /* sedentary.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F889DB71E4F8A0200F22584 /* sedentary.png */; };
+		2F8A4E6C1E67122800F4C017 /* KickSoFarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E6B1E67122800F4C017 /* KickSoFarView.xib */; };
+		2F8A4E6E1E67127A00F4C017 /* kick.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E6D1E67127A00F4C017 /* kick.png */; };
+		2F8A4E701E67150800F4C017 /* KicksSoFarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A4E6F1E67150800F4C017 /* KicksSoFarView.swift */; };
+		2F8A4E721E6715F900F4C017 /* BabyMovementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A4E711E6715F900F4C017 /* BabyMovementViewController.swift */; };
+		2F8A4E741E6791F000F4C017 /* DayWithTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E731E6791F000F4C017 /* DayWithTimeView.xib */; };
+		2F8A4E761E67B83400F4C017 /* DayWithTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A4E751E67B83400F4C017 /* DayWithTimeView.swift */; };
+		2F8A4E7A1E67BA4300F4C017 /* cancel_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E771E67BA4300F4C017 /* cancel_button.png */; };
+		2F8A4E7B1E67BA4300F4C017 /* pause_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E781E67BA4300F4C017 /* pause_button.png */; };
+		2F8A4E7C1E67BA4300F4C017 /* kick_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E791E67BA4300F4C017 /* kick_button.png */; };
+		2F8A4E7E1E67BE5800F4C017 /* DailyKickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E7D1E67BE5800F4C017 /* DailyKickView.xib */; };
+		2F8A4E801E67BE6700F4C017 /* DailyKickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A4E7F1E67BE6700F4C017 /* DailyKickView.swift */; };
+		2F8A4E821E67BEF900F4C017 /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E811E67BEF900F4C017 /* Line.png */; };
+		2F8A4E841E67C0BB00F4C017 /* kick_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E831E67C0BB00F4C017 /* kick_label.png */; };
 		2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */; };
 		2F91177B1E3C50BB00D1D6F6 /* sendIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */; };
 		2F91BE351E462BA20030821A /* DropdownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F91BE341E462BA20030821A /* DropdownArrow.png */; };
@@ -85,6 +104,10 @@
 		2FA1CD621E0347AF00778DF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD601E0347AF00778DF3 /* Main.storyboard */; };
 		2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD631E0347AF00778DF3 /* Assets.xcassets */; };
 		2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA1CD651E0347AF00778DF3 /* LaunchScreen.storyboard */; };
+		2FA9EC9F1E685D1D004ECF1E /* KickTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9EC9E1E685D1D004ECF1E /* KickTableViewCell.swift */; };
+		2FA9ECA11E685DA2004ECF1E /* KickCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9ECA01E685DA2004ECF1E /* KickCellView.xib */; };
+		2FA9ECA31E6864E9004ECF1E /* WeeklyTimesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */; };
+		2FA9ECA51E686549004ECF1E /* WeeklyBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */; };
 		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
 		2FB99A471E663E070098865E /* ActivityTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB99A461E663E070098865E /* ActivityTileView.swift */; };
 		2FB99A491E663E330098865E /* ActivityTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB99A481E663E330098865E /* ActivityTile.xib */; };
@@ -166,6 +189,12 @@
 		2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundMicHelp.png; sourceTree = "<group>"; };
 		2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micWithOrangeBorder.png; sourceTree = "<group>"; };
 		2F6591AB1E03B29C0040AA4A /* Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
+		2F683F201E68695200CC2641 /* WeeklyBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeeklyBarView.swift; path = Lily/WeeklyBarView.swift; sourceTree = "<group>"; };
+		2F683F221E68701400CC2641 /* WeeklyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeeklyView.xib; path = Lily/WeeklyView.xib; sourceTree = "<group>"; };
+		2F683F241E68702800CC2641 /* WeeklyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeeklyView.swift; path = Lily/WeeklyView.swift; sourceTree = "<group>"; };
+		2F683F261E68730B00CC2641 /* half_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = half_circle.png; sourceTree = "<group>"; };
+		2F683F281E68763000CC2641 /* weeklyMiddleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = weeklyMiddleView.xib; path = Lily/weeklyMiddleView.xib; sourceTree = "<group>"; };
+		2F683F2A1E68796300CC2641 /* WeeklyMiddleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeeklyMiddleView.swift; path = Lily/WeeklyMiddleView.swift; sourceTree = "<group>"; };
 		2F7AD0421E66814900D29079 /* DragDropCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDropCollectionView.swift; sourceTree = "<group>"; };
 		2F8127011E5EA46B00B625E1 /* TileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TileView.xib; path = Lily/TileView.xib; sourceTree = "<group>"; };
 		2F8127031E5F326200B625E1 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileView.swift; path = Lily/TileView.swift; sourceTree = "<group>"; };
@@ -175,6 +204,19 @@
 		2F889DB51E4F8A0200F22584 /* fairly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fairly.png; sourceTree = "<group>"; };
 		2F889DB61E4F8A0200F22584 /* lightly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightly.png; sourceTree = "<group>"; };
 		2F889DB71E4F8A0200F22584 /* sedentary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sedentary.png; sourceTree = "<group>"; };
+		2F8A4E6B1E67122800F4C017 /* KickSoFarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KickSoFarView.xib; path = Lily/KickSoFarView.xib; sourceTree = "<group>"; };
+		2F8A4E6D1E67127A00F4C017 /* kick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kick.png; sourceTree = "<group>"; };
+		2F8A4E6F1E67150800F4C017 /* KicksSoFarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KicksSoFarView.swift; path = Lily/KicksSoFarView.swift; sourceTree = "<group>"; };
+		2F8A4E711E6715F900F4C017 /* BabyMovementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BabyMovementViewController.swift; path = Lily/BabyMovementViewController.swift; sourceTree = "<group>"; };
+		2F8A4E731E6791F000F4C017 /* DayWithTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DayWithTimeView.xib; path = Lily/DayWithTimeView.xib; sourceTree = "<group>"; };
+		2F8A4E751E67B83400F4C017 /* DayWithTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayWithTimeView.swift; path = Lily/DayWithTimeView.swift; sourceTree = "<group>"; };
+		2F8A4E771E67BA4300F4C017 /* cancel_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_button.png; sourceTree = "<group>"; };
+		2F8A4E781E67BA4300F4C017 /* pause_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_button.png; sourceTree = "<group>"; };
+		2F8A4E791E67BA4300F4C017 /* kick_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kick_button.png; sourceTree = "<group>"; };
+		2F8A4E7D1E67BE5800F4C017 /* DailyKickView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DailyKickView.xib; path = Lily/DailyKickView.xib; sourceTree = "<group>"; };
+		2F8A4E7F1E67BE6700F4C017 /* DailyKickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DailyKickView.swift; path = Lily/DailyKickView.swift; sourceTree = "<group>"; };
+		2F8A4E811E67BEF900F4C017 /* Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Line.png; sourceTree = "<group>"; };
+		2F8A4E831E67C0BB00F4C017 /* kick_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kick_label.png; sourceTree = "<group>"; };
 		2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2RetryHandler.swift; sourceTree = "<group>"; };
 		2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendIcon.png; sourceTree = "<group>"; };
 		2F91BE341E462BA20030821A /* DropdownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DropdownArrow.png; sourceTree = "<group>"; };
@@ -210,6 +252,10 @@
 		2FA1CD631E0347AF00778DF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FA1CD661E0347AF00778DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FA1CD681E0347AF00778DF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FA9EC9E1E685D1D004ECF1E /* KickTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KickTableViewCell.swift; path = Lily/KickTableViewCell.swift; sourceTree = "<group>"; };
+		2FA9ECA01E685DA2004ECF1E /* KickCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KickCellView.xib; sourceTree = "<group>"; };
+		2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeeklyTimesView.xib; path = Lily/WeeklyTimesView.xib; sourceTree = "<group>"; };
+		2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeeklyBarView.xib; path = Lily/WeeklyBarView.xib; sourceTree = "<group>"; };
 		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
 		2FB99A461E663E070098865E /* ActivityTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityTileView.swift; path = Lily/ActivityTileView.swift; sourceTree = "<group>"; };
 		2FB99A481E663E330098865E /* ActivityTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityTile.xib; path = Lily/ActivityTile.xib; sourceTree = "<group>"; };
@@ -284,6 +330,20 @@
 				2F0044911E61D837000E8BF6 /* SleepTile.xib */,
 				2F00448B1E61C22E000E8BF6 /* WhatHappenedThatDay.xib */,
 				2FB99A481E663E330098865E /* ActivityTile.xib */,
+				2F8A4E6B1E67122800F4C017 /* KickSoFarView.xib */,
+				2F8A4E731E6791F000F4C017 /* DayWithTimeView.xib */,
+				2FA9ECA01E685DA2004ECF1E /* KickCellView.xib */,
+				2F8A4E7D1E67BE5800F4C017 /* DailyKickView.xib */,
+				2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */,
+				2F683F281E68763000CC2641 /* weeklyMiddleView.xib */,
+				2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */,
+				2F683F221E68701400CC2641 /* WeeklyView.xib */,
+				2F683F241E68702800CC2641 /* WeeklyView.swift */,
+				2F683F2A1E68796300CC2641 /* WeeklyMiddleView.swift */,
+				2F683F201E68695200CC2641 /* WeeklyBarView.swift */,
+				2F8A4E7F1E67BE6700F4C017 /* DailyKickView.swift */,
+				2F8A4E751E67B83400F4C017 /* DayWithTimeView.swift */,
+				2F8A4E6F1E67150800F4C017 /* KicksSoFarView.swift */,
 				2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */,
 				2F0044861E5FBF48000E8BF6 /* WaterTileView.swift */,
 				2F8127031E5F326200B625E1 /* TileView.swift */,
@@ -296,6 +356,13 @@
 		2F2F76111E3131A8000AE4F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F683F261E68730B00CC2641 /* half_circle.png */,
+				2F8A4E831E67C0BB00F4C017 /* kick_label.png */,
+				2F8A4E811E67BEF900F4C017 /* Line.png */,
+				2F8A4E771E67BA4300F4C017 /* cancel_button.png */,
+				2F8A4E781E67BA4300F4C017 /* pause_button.png */,
+				2F8A4E791E67BA4300F4C017 /* kick_button.png */,
+				2F8A4E6D1E67127A00F4C017 /* kick.png */,
 				2F00448D1E61C2B2000E8BF6 /* Calendar.png */,
 				2F0044821E5FB85D000E8BF6 /* Baby.png */,
 				2F00447A1E5FB7F1000E8BF6 /* journal.png */,
@@ -430,7 +497,9 @@
 				2F3EAFB61E4D0C0500214FC4 /* ActivityViewController.swift */,
 				2F938F431E5211FE006D64A9 /* GoalsViewController.swift */,
 				2F8127051E5F330000B625E1 /* HomeViewController.swift */,
+				2F8A4E711E6715F900F4C017 /* BabyMovementViewController.swift */,
 				2F0044781E5F6E5B000E8BF6 /* TileCollectionViewCell.swift */,
+				2FA9EC9E1E685D1D004ECF1E /* KickTableViewCell.swift */,
 				2F00448A1E5FC05C000E8BF6 /* Views */,
 			);
 			name = ViewControllers;
@@ -602,17 +671,22 @@
 				2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */,
 				2F938F551E522F1A006D64A9 /* small_activity.png in Resources */,
 				2FC7FC081E35C9A300A7DA50 /* simpleMicHelp.png in Resources */,
+				2F8A4E7B1E67BA4300F4C017 /* pause_button.png in Resources */,
 				2F938F511E522F1A006D64A9 /* small_baby.png in Resources */,
 				2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */,
 				2F938F571E522F1A006D64A9 /* alarm_clock_enabled.png in Resources */,
 				2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */,
 				2FE264261E3C38EC004DB460 /* white_background.png in Resources */,
+				2F8A4E841E67C0BB00F4C017 /* kick_label.png in Resources */,
 				2FA09AED1E31321F0094270F /* blackjack.otf in Resources */,
+				2F8A4E741E6791F000F4C017 /* DayWithTimeView.xib in Resources */,
 				2FA09B051E31BEF80094270F /* microphone.png in Resources */,
+				2FA9ECA51E686549004ECF1E /* WeeklyBarView.xib in Resources */,
 				2F889DB81E4F8A0200F22584 /* very.png in Resources */,
 				2F00448E1E61C2B2000E8BF6 /* Calendar.png in Resources */,
 				2FE2643A1E3C4C03004DB460 /* exportButtonIcon.png in Resources */,
 				2FA09AF81E3138F10094270F /* balance.png in Resources */,
+				2FA9ECA31E6864E9004ECF1E /* WeeklyTimesView.xib in Resources */,
 				2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */,
 				2FC0BA771E44E913007B291C /* ForwardButton.png in Resources */,
 				2FC0BA791E44EA32007B291C /* BackButton.png in Resources */,
@@ -625,11 +699,16 @@
 				2F0044811E5FB7F1000E8BF6 /* Star.png in Resources */,
 				2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */,
 				2FE264301E3C3A82004DB460 /* ConnectWithHealthKit.png in Resources */,
+				2F8A4E7C1E67BA4300F4C017 /* kick_button.png in Resources */,
 				2F938F561E522F1A006D64A9 /* small_water.png in Resources */,
 				2FC0BA721E43D5C9007B291C /* Back-50.png in Resources */,
+				2F8A4E7E1E67BE5800F4C017 /* DailyKickView.xib in Resources */,
 				2FE2642E1E3C3A6A004DB460 /* ConnectWithFitbit.png in Resources */,
+				2F683F271E68730B00CC2641 /* half_circle.png in Resources */,
 				2F938F541E522F1A006D64A9 /* small_moon.png in Resources */,
 				2F0044831E5FB85D000E8BF6 /* Baby.png in Resources */,
+				2F8A4E821E67BEF900F4C017 /* Line.png in Resources */,
+				2F8A4E6E1E67127A00F4C017 /* kick.png in Resources */,
 				2F91BE351E462BA20030821A /* DropdownArrow.png in Resources */,
 				2F3FDC911E35921B00B18F25 /* x.png in Resources */,
 				2F00448C1E61C22E000E8BF6 /* WhatHappenedThatDay.xib in Resources */,
@@ -640,6 +719,7 @@
 				2FA09AEF1E3138070094270F /* CardBackground.png in Resources */,
 				2F938F5A1E523141006D64A9 /* NavigationBar.png in Resources */,
 				2F938F531E522F1A006D64A9 /* small_heart.png in Resources */,
+				2F683F231E68701400CC2641 /* WeeklyView.xib in Resources */,
 				2F3EAFB91E4D0E4D00214FC4 /* HowShouldIBeExercisingCard.png in Resources */,
 				2FA09B011E3147F40094270F /* backgroundShade.png in Resources */,
 				2FB99A491E663E330098865E /* ActivityTile.xib in Resources */,
@@ -657,10 +737,14 @@
 				2F0044891E5FBF74000E8BF6 /* WaterTile.xib in Resources */,
 				2F3FDC931E3592E200B18F25 /* Help Subview.png in Resources */,
 				2FA1CD621E0347AF00778DF3 /* Main.storyboard in Resources */,
+				2F683F291E68763000CC2641 /* weeklyMiddleView.xib in Resources */,
+				2F8A4E7A1E67BA4300F4C017 /* cancel_button.png in Resources */,
 				2FA09AF11E3138E30094270F /* water.png in Resources */,
 				2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */,
 				2F3FDC8E1E35905D00B18F25 /* question_mark.png in Resources */,
+				2F8A4E6C1E67122800F4C017 /* KickSoFarView.xib in Resources */,
 				2F3EAFB11E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png in Resources */,
+				2FA9ECA11E685DA2004ECF1E /* KickCellView.xib in Resources */,
 				2FC0BA6E1E43D556007B291C /* ChevronLeft.png in Resources */,
 				2F00447E1E5FB7F1000E8BF6 /* journal.png in Resources */,
 				2FC0BA6F1E43D556007B291C /* ChevronRight.png in Resources */,
@@ -787,11 +871,16 @@
 				2F8127061E5F330000B625E1 /* HomeViewController.swift in Sources */,
 				2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */,
 				2F3EAFB31E4BF9DE00214FC4 /* HeartRateViewController.swift in Sources */,
+				2F8A4E721E6715F900F4C017 /* BabyMovementViewController.swift in Sources */,
 				2FC0BA5D1E415FC1007B291C /* SleepViewController.swift in Sources */,
+				2FA9EC9F1E685D1D004ECF1E /* KickTableViewCell.swift in Sources */,
 				2F938F441E5211FE006D64A9 /* GoalsViewController.swift in Sources */,
 				2F980E871E50D1CB0024C5EC /* Activity.swift in Sources */,
+				2F683F251E68702800CC2641 /* WeeklyView.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,
 				2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */,
+				2F683F2B1E68796300CC2641 /* WeeklyMiddleView.swift in Sources */,
+				2F8A4E761E67B83400F4C017 /* DayWithTimeView.swift in Sources */,
 				2F0044981E61DAFA000E8BF6 /* SleepTileView.swift in Sources */,
 				2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */,
 				2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */,
@@ -799,9 +888,12 @@
 				2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */,
 				2F0044791E5F6E5B000E8BF6 /* TileCollectionViewCell.swift in Sources */,
 				2F0044901E61C54E000E8BF6 /* WhatHappenedThatDay.swift in Sources */,
+				2F683F211E68695200CC2641 /* WeeklyBarView.swift in Sources */,
 				2FB99A471E663E070098865E /* ActivityTileView.swift in Sources */,
 				2FC0BA651E419D98007B291C /* Water.swift in Sources */,
+				2F8A4E701E67150800F4C017 /* KicksSoFarView.swift in Sources */,
 				2F3EAFB51E4C229800214FC4 /* HeartRate.swift in Sources */,
+				2F8A4E801E67BE6700F4C017 /* DailyKickView.swift in Sources */,
 				2FCAA5D11E3FBD3E0014452E /* Sleep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
