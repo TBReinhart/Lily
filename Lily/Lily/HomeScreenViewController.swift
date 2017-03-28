@@ -482,7 +482,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.activityGoalLabel.text = "of \(goalActiveMinutes) min"
         self.activityMinutesLabel.text = "\(exerciseMinutes)"
         self.activityRing.animationStyle = kCAMediaTimingFunctionLinear
-        self.activityRing.fontSize = 25
+//        self.activityRing.fontSize = 25
         self.activityRing.maxValue = CGFloat(Int(goalActiveMinutes)!)
         self.activityRing.viewStyle = 2
         self.animateRing(value: Int(exerciseMinutes)!)

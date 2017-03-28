@@ -48,21 +48,23 @@ private extension UILabel {
 }
 
 /**
- The internal subclass for CALayer.
+ The internal subclass for CAShapeLayer.
  This is the class that handles all the drawing and animation.
  This class is not interacted with, instead properties are set in UICircularProgressRingView
  and those are delegated to here.
  
  */
-class UICircularProgressRingLayer: CALayer {
+class UICircularProgressRingLayer: CAShapeLayer {
     
     // MARK: Properties
     
     /**
-     The NSManaged properties for the CALayer.
+     The NSManaged properties for the layer.
      These properties are initialized in UICircularProgressRingView.
      They're also assigned by mutating UICircularProgressRingView.
      */
+    @NSManaged var fullCircle: Bool
+    
     @NSManaged var value: CGFloat
     @NSManaged var maxValue: CGFloat
     
@@ -83,8 +85,7 @@ class UICircularProgressRingLayer: CALayer {
     
     @NSManaged var shouldShowValueText: Bool
     @NSManaged var fontColor: UIColor
-    @NSManaged var fontSize: CGFloat
-    @NSManaged var customFontWithName: String?
+    @NSManaged var font: UIFont
     @NSManaged var valueIndicator: String
     @NSManaged var showFloatingPoint: Bool
     @NSManaged var decimalPlaces: Int
@@ -149,20 +150,19 @@ class UICircularProgressRingLayer: CALayer {
      Sets path properties according to how the user has decided to customize the view.
      */
     private func drawOuterRing() {
-        guard outerRingWidth > 0 else {
-            print("Not drawing outer ring since outer Ring Width <= 0")
-            return
-        }
+        guard outerRingWidth > 0 else { return }
         
         let width = bounds.width
         let height = bounds.width
         let center = CGPoint(x: bounds.midX, y: bounds.midY)
         let outerRadius = max(width, height)/2 - outerRingWidth/2
+        let start = fullCircle ? 0 : startAngle.toRads
+        let end = fullCircle ? CGFloat.pi*2 : endAngle.toRads
         
         let outerPath = UIBezierPath(arcCenter: center,
                                      radius: outerRadius,
-                                     startAngle: startAngle.toRads,
-                                     endAngle: endAngle.toRads,
+                                     startAngle: start,
+                                     endAngle: end,
                                      clockwise: true)
         
         outerPath.lineWidth = outerRingWidth
@@ -170,7 +170,7 @@ class UICircularProgressRingLayer: CALayer {
         
         // If the style is 3 or 4, make sure to draw either dashes or dotted path
         if viewStyle == 3 {
-            outerPath.setLineDash(patternForDashes, count: 1, phase: 0.0)
+            outerPath.setLineDash(patternForDashes, count: patternForDashes.count, phase: 0.0)
         } else if viewStyle == 4 {
             outerPath.setLineDash([0, outerPath.lineWidth * 2], count: 2, phase: 0)
             outerPath.lineCapStyle = .round
@@ -185,19 +185,22 @@ class UICircularProgressRingLayer: CALayer {
      Sets path properties according to how the user has decided to customize the view.
      */
     private func drawInnerRing() {
-        guard innerRingWidth > 0 else {
-            print("Not drawing inner ring since Inner Ring Width <= 0")
-            return
-        }
+        guard innerRingWidth > 0 else { return }
         
         let center = CGPoint(x: bounds.midX, y: bounds.midY)
         
-        // Calculate the center difference between the end and start angle
-        let angleDiff: CGFloat = endAngle.toRads - startAngle.toRads
-        // Calculate how much we should draw depending on the value set
-        let arcLenPerValue = angleDiff / CGFloat(maxValue)
-        // The inner end angle some basic math is done
-        let innerEndAngle = arcLenPerValue * CGFloat(value) + startAngle.toRads
+        var innerEndAngle: CGFloat = 0.0
+        
+        if fullCircle {
+            innerEndAngle = (360.0 / CGFloat(maxValue)) * CGFloat(value) + startAngle
+        } else {
+            // Calculate the center difference between the end and start angle
+            let angleDiff: CGFloat = endAngle - startAngle
+            // Calculate how much we should draw depending on the value set
+            let arcLenPerValue = angleDiff / CGFloat(maxValue)
+            // The inner end angle some basic math is done
+            innerEndAngle = arcLenPerValue * CGFloat(value) + startAngle
+        }
         
         // The radius for style 1 is set below
         // The radius for style 1 is a bit less than the outer, this way it looks like its inside the circle
@@ -211,7 +214,7 @@ class UICircularProgressRingLayer: CALayer {
         let innerPath = UIBezierPath(arcCenter: center,
                                      radius: radiusIn,
                                      startAngle: startAngle.toRads,
-                                     endAngle: innerEndAngle,
+                                     endAngle: innerEndAngle.toRads,
                                      clockwise: true)
         innerPath.lineWidth = innerRingWidth
         innerPath.lineCapStyle = innerCapStyle
@@ -224,20 +227,13 @@ class UICircularProgressRingLayer: CALayer {
      Only drawn if shouldShowValueText = true
      */
     private func drawValueLabel() {
-        guard shouldShowValueText else {
-            print("Not drawing value label because shouldShowValueText = false")
-            return
-        }
+        guard shouldShowValueText else { return }
         
         // Draws the text field
         // Some basic label properties are set
-        valueLabel.font = UIFont.systemFont(ofSize: fontSize)
+        valueLabel.font = self.font
         valueLabel.textAlignment = .center
         valueLabel.textColor = fontColor
-        
-        if let fName = customFontWithName {
-            valueLabel.font = UIFont(name: fName, size: fontSize)
-        }
         
         valueLabel.update(withValue: value, valueIndicator: valueIndicator,
                           showsDecimal: showFloatingPoint, decimalPlaces: decimalPlaces)
