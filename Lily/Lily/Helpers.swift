@@ -90,6 +90,71 @@ class Helpers {
             ref.child("users/\(uid)/logs/\(dateInFormat)/\(key)").setValue(value)
         }
     }
+    static func checkIfUserExists(key: String) {
+        var ref: FIRDatabaseReference!
+        let user = FIRAuth.auth()?.currentUser
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let dateInFormat = dateFormatter.string(from: NSDate() as Date)
+        if let uid = user?.uid {
+            print("MY UID: \(uid)")
+            let refToCehck = ref.child("users/\(uid)/logs/")
+            
+            refToCehck.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if snapshot.hasChild(dateInFormat){
+                    
+                    print("key exists")
+                    
+                } else{
+                    
+                    print("key doesn't exist")
+                }
+                
+                
+            })
+        }
+    }
+    static func createEmptyDailyLog() {
+        Helpers.postDailyLogToFirebase(key: "activityMinutes", value : 0)
+        Helpers.postDailyLogToFirebase(key: "activityMinutesGoal", value : 30)
+        Helpers.postDailyLogToFirebase(key: "restingHeartRate", value : 0)
+        Helpers.postDailyLogToFirebase(key: "sleepTime", value : "0h 00m")
+        Helpers.postDailyLogToFirebase(key: "waterCupsConsumed", value : 0)
+        Helpers.postDailyLogToFirebase(key: "waterCupsGoal", value : 10)
+        Helpers.postDailyLogToFirebase(key: "kicksTotal", value : 0)
+        Helpers.postDailyLogToFirebase(key: "kicksTotalTime", value : 0)
+        
+    }
+    
+    static func postDailyLogToFirebaseUpdateValue(key: String, value: Int) {
+        var ref: FIRDatabaseReference!
+
+        let user = FIRAuth.auth()?.currentUser
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let dateInFormat = dateFormatter.string(from: NSDate() as Date)
+
+        
+        if let uid = user?.uid {
+            print("MY UID: \(uid)")
+                print("users/\(uid)/logs/\(dateInFormat)/\(key)")
+                let prntRef = FIRDatabase.database().reference().child("users/\(uid)/logs/\(dateInFormat)/\(key)")
+                prntRef.runTransactionBlock({ (currentData: FIRMutableData) -> FIRTransactionResult in
+                if let post = currentData.value as? Int {
+                    currentData.value = post + value
+
+                    return FIRTransactionResult.success(withValue: currentData)
+                }
+                return FIRTransactionResult.success(withValue: currentData)
+            }) { (error, committed, snapshot) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+
+    }
 
     static func getWeekDayFromDate(date: Date) -> String {
         return (date.dayOfWeek() ?? nil)!
@@ -110,13 +175,26 @@ class Helpers {
         let date = Date()
         let pastDate = calendar.date(byAdding: .day, value: -1*daysAgo, to: date)
         let df = DateFormatter()
+//        df.dateFormat = "MM-dd-yyyy"
         df.dateFormat = "yyyy-MM-dd"
         let pastDateString = df.string(from: pastDate!)
         return (pastDate ?? Date(), pastDateString)
     }
     
     
-    
+    static func get7DayRange(weeksAgo: Int) -> [(String, String)] {
+        let daysAgo = weeksAgo*7
+        var days = [(String, String)]()
+        for i in (daysAgo...daysAgo+6).reversed() {
+            let dayStr = self.getDateNDaysAgo(daysAgo: i)
+            let weekDay = self.getWeekDayFromDate(date: dayStr.0)
+            let tuple = (weekDay, dayStr.1)
+            days.append(tuple)
+        }
+        print(days)
+        return days
+    }
+
     static func getDateNWeeksAgo(weeksAgo: Int) -> (date: Date, dateString: String) {
         let calendar = Calendar.current
         let date = Date()
@@ -140,6 +218,12 @@ class Helpers {
         dateFormatter.dateFormat =  "yyyy-MM-dd"
         let date = dateFormatter.date(from: dateString)
         return date ?? Date()
+    }
+    static func timeString(time:Int) -> String {
+        let hours = time / 3600
+        let minutes = time / 60 % 60
+        let seconds = time % 60
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
     
     static func formatShortDate(date: Date) -> String {

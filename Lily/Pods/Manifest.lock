@@ -41,6 +41,7 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
   - GTMSessionFetcher/Core (1.1.7)
   - IQKeyboardManagerSwift (4.0.7)
+  - MZTimerLabel (0.5.4)
   - p2.OAuth2 (3.0.1)
   - PKHUD (4.1.0)
   - SCLAlertView (0.7.0)
@@ -57,6 +58,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - IQKeyboardManagerSwift
+  - MZTimerLabel
   - p2.OAuth2 (~> 3.0)
   - PKHUD (~> 4.0)
   - SCLAlertView
@@ -89,6 +91,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
+  MZTimerLabel: cd9bfb9304540ef2a9e163384fca9c978f0dbf83
   p2.OAuth2: 1c58296b53820e57ea63a8977541d2e4780df141
   PKHUD: a0ecdee9f67d9b462c0c5e4ba38400292ea6ae6e
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
@@ -98,6 +101,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   UICircularProgressRing: 892adf48ea0bdc218057c4e62c5e3a8609bd5b1c
 
-PODFILE CHECKSUM: 9862f35f870afdb32e7864ab923f460daeb18a3c
+PODFILE CHECKSUM: c334b80e58ce70d1ab2ec7faf0c5f2ce3ca49844
 
 COCOAPODS: 1.1.1

@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
     
+    var globalTimer: Timer?
+    var globalSeconds = 0
+    var globalTimerHasStarted = false
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Set Navigation bar background image
@@ -23,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         
         UINavigationBar.appearance().titleTextAttributes = [
-            NSFontAttributeName: UIFont(name: "BlackJack", size: 24)!,
+//            NSFontAttributeName: UIFont(name: "BlackJack", size: 24)!,
             NSForegroundColorAttributeName: UIColor.white
         ]
 

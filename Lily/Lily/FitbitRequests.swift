@@ -1350,12 +1350,15 @@ class FitbitRequests {
      */
     func getHeartRateTimeSeriesFrom1DayPeriod(date: String = "today", period: String = "1d", completionHandler: @escaping (HeartRate?, Error?) -> ()) {
         let url = "https://api.fitbit.com/1/user/-/activities/heart/date/\(date)/\(period).json"
+        print(url)
         let hr = HeartRate()
         restClient.getRequest(url: url) { json, error in
             if error != nil {
                 completionHandler(nil, error)
             } else {
                 if json != nil {
+                    print("HR doh \(json)")
+
                     let restingHeartRate = json?["activities-heart"][0]["value"]["restingHeartRate"].intValue
                     let dateString = json?["activities-heart"][0]["value"]["dateTime"].stringValue
                     let date = Helpers.getDateFromyyyyMMdd(dateString: dateString!)
@@ -1375,6 +1378,7 @@ class FitbitRequests {
                     hr.dayOfWeek = dayOfWeek
                     hr.maximumBPM = highestMax
                     hr.averageBPM = restingHeartRate ?? 0
+                    print(hr.restingHeartRate)
                 }
                 
                 completionHandler(hr, nil)

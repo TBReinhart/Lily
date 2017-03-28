@@ -37,6 +37,8 @@ class WeeklyMiddleView: UIView {
         
         
     }
+    
+    
     func setTopLabel(text: String) {
         self.topTextLabel.text = text
     }

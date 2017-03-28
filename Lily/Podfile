@@ -20,7 +20,7 @@ target 'Lily' do
     pod 'IQKeyboardManagerSwift'
     pod 'SMIconLabel'
     pod "BusyNavigationBar"
-
+    pod 'MZTimerLabel'
     target ‘LilyTests’ do
         pod 'p2.OAuth2', '~> 3.0'
         pod 'Alamofire', '~> 4.0'

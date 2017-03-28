@@ -51,8 +51,7 @@ class ViewController: UIViewController {
             if(healthKitReqs.isHealthDataAvailable()) {
                 HUD.show(.progress)
                 self.createUserHelper(method: "HealthKit")
-                HUD.flash(.success, delay: 0.5)
-                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+
             }
         }
     }
@@ -88,12 +87,6 @@ class ViewController: UIViewController {
 //                HUD.show(.progress)
                 self.extractUserData(json: json)
                 self.createUserHelper(method: "Fitbit")
-                DispatchQueue.main.sync {
-                    HUD.flash(.success, delay: 0.5)
-
-                }
-                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
-
 
             }
             catch let error {
@@ -154,10 +147,20 @@ class ViewController: UIViewController {
                         print("Create User Error: \(error)")
                     }
                 }
+                Helpers.createEmptyDailyLog()
                 self.createOrUpdateFirebaseUserProfile()
+            } else {
+                // already registered fitbit but on new device
+                print("No error")
+                Helpers.createEmptyDailyLog()
+
+                HUD.flash(.success, delay: 0.5)
+                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
             }
         }
     }
+    
+    
     
     func createOrUpdateFirebaseUserProfile() {
         self.ref = FIRDatabase.database().reference()
@@ -167,7 +170,6 @@ class ViewController: UIViewController {
         // if you have one. Use getTokenWithCompletion:completion: instead.
         let email = user?.email ?? "None"
         if let uid = user?.uid {
-            //ref.child("users/\(uid)/username").setValue("Tom R.")
             print("MY UID \(uid)")
             ref.child("users/\(uid)/email").setValue(email)
             ref.child("users/\(uid)/loginMethod").setValue(UserDefaults.standard.string(forKey: "loginMethod") ?? "None")
@@ -183,7 +185,8 @@ class ViewController: UIViewController {
             if error != nil {
                 debugPrint("ERROR: \(error)")
             }
-            
+            HUD.flash(.success, delay: 0.5)
+            self.performSegue(withIdentifier: "loggedInSegue", sender: self)
         }
     }
 

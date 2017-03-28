@@ -20,9 +20,19 @@
 		2F0044901E61C54E000E8BF6 /* WhatHappenedThatDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */; };
 		2F0044921E61D837000E8BF6 /* SleepTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0044911E61D837000E8BF6 /* SleepTile.xib */; };
 		2F0044981E61DAFA000E8BF6 /* SleepTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0044971E61DAFA000E8BF6 /* SleepTileView.swift */; };
+		2F0A47751E8085DF00C13800 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A47741E8085DF00C13800 /* JournalViewController.swift */; };
 		2F0F75EA1E368B71004BCE2D /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F75E91E368B71004BCE2D /* SweetAlert.swift */; };
+		2F2A1C6A1E841E2C00B5C077 /* JournalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A1C691E841E2C00B5C077 /* JournalEntryViewController.swift */; };
 		2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */; };
 		2F3975BC1E394E39005C7926 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3975BB1E394E39005C7926 /* HealthKit.framework */; };
+		2F3983B11E803C96001F0B78 /* TileStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3983B01E803C96001F0B78 /* TileStoreViewController.swift */; };
+		2F3983B71E803ECA001F0B78 /* nutrition.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3983B21E803ECA001F0B78 /* nutrition.png */; };
+		2F3983B81E803ECA001F0B78 /* morning_sickness.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3983B31E803ECA001F0B78 /* morning_sickness.png */; };
+		2F3983B91E803ECA001F0B78 /* medication_log.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3983B41E803ECA001F0B78 /* medication_log.png */; };
+		2F3983BB1E803ECA001F0B78 /* baby_heart_rate.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3983B61E803ECA001F0B78 /* baby_heart_rate.png */; };
+		2F3983BD1E8040D2001F0B78 /* contraction_timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3983BC1E8040D2001F0B78 /* contraction_timer.png */; };
+		2F3983BF1E804983001F0B78 /* HalfCircleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3983BE1E804983001F0B78 /* HalfCircleView.xib */; };
+		2F3983C11E8049FA001F0B78 /* HalfCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3983C01E8049FA001F0B78 /* HalfCircleView.swift */; };
 		2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F398E8F1E12288A00A1AEB3 /* Lily.xcdatamodeld */; };
 		2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F398EFC1E14CAB100A1AEB3 /* LilyCoreData.swift */; };
 		2F398EFF1E16006600A1AEB3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F398EFE1E16006600A1AEB3 /* Helpers.swift */; };
@@ -43,12 +53,27 @@
 		2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */; };
 		2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */; };
 		2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6591AB1E03B29C0040AA4A /* Services.plist */; };
+		2F6702EA1E89DA9700E27733 /* grey_log_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6702E81E89DA9700E27733 /* grey_log_button.png */; };
+		2F6702EB1E89DA9700E27733 /* green_log_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F6702E91E89DA9700E27733 /* green_log_button.png */; };
 		2F683F211E68695200CC2641 /* WeeklyBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F683F201E68695200CC2641 /* WeeklyBarView.swift */; };
 		2F683F231E68701400CC2641 /* WeeklyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F683F221E68701400CC2641 /* WeeklyView.xib */; };
 		2F683F251E68702800CC2641 /* WeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F683F241E68702800CC2641 /* WeeklyView.swift */; };
 		2F683F271E68730B00CC2641 /* half_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F683F261E68730B00CC2641 /* half_circle.png */; };
 		2F683F291E68763000CC2641 /* weeklyMiddleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F683F281E68763000CC2641 /* weeklyMiddleView.xib */; };
 		2F683F2B1E68796300CC2641 /* WeeklyMiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F683F2A1E68796300CC2641 /* WeeklyMiddleView.swift */; };
+		2F7658671E86D3D700B8F624 /* like_laughing_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F76585A1E86D3D700B8F624 /* like_laughing_circle.png */; };
+		2F7658681E86D3D700B8F624 /* excited_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F76585B1E86D3D700B8F624 /* excited_circle.png */; };
+		2F7658691E86D3D700B8F624 /* happy_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F76585C1E86D3D700B8F624 /* happy_circle.png */; };
+		2F76586A1E86D3D700B8F624 /* miserable_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F76585D1E86D3D700B8F624 /* miserable_circle.png */; };
+		2F76586B1E86D3D700B8F624 /* like_crying_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F76585E1E86D3D700B8F624 /* like_crying_circle.png */; };
+		2F76586C1E86D3D700B8F624 /* sad_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F76585F1E86D3D700B8F624 /* sad_circle.png */; };
+		2F76586D1E86D3D700B8F624 /* scared_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7658601E86D3D700B8F624 /* scared_circle.png */; };
+		2F76586E1E86D3D700B8F624 /* nervous_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7658611E86D3D700B8F624 /* nervous_circle.png */; };
+		2F76586F1E86D3D700B8F624 /* overwhelmed_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7658621E86D3D700B8F624 /* overwhelmed_circle.png */; };
+		2F7658701E86D3D700B8F624 /* irate_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7658631E86D3D700B8F624 /* irate_circle.png */; };
+		2F7658711E86D3D700B8F624 /* angry_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7658641E86D3D700B8F624 /* angry_circle.png */; };
+		2F7658721E86D3D700B8F624 /* frustrated_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7658651E86D3D700B8F624 /* frustrated_circle.png */; };
+		2F7658981E86F65000B8F624 /* EmotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7658971E86F65000B8F624 /* EmotionsViewController.swift */; };
 		2F7AD0431E66814900D29079 /* DragDropCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7AD0421E66814900D29079 /* DragDropCollectionView.swift */; };
 		2F8127021E5EA46B00B625E1 /* TileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8127011E5EA46B00B625E1 /* TileView.xib */; };
 		2F8127041E5F326200B625E1 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8127031E5F326200B625E1 /* TileView.swift */; };
@@ -111,6 +136,9 @@
 		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
 		2FB99A471E663E070098865E /* ActivityTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB99A461E663E070098865E /* ActivityTileView.swift */; };
 		2FB99A491E663E330098865E /* ActivityTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB99A481E663E330098865E /* ActivityTile.xib */; };
+		2FBD8D751E871022001529FF /* EmotionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FBD8D741E871022001529FF /* EmotionCellView.xib */; };
+		2FBD8D771E8714DF001529FF /* default_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FBD8D761E8714DF001529FF /* default_circle.png */; };
+		2FBD8D7B1E8716AC001529FF /* EmotionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD8D7A1E8716AC001529FF /* EmotionCellView.swift */; };
 		2FC0BA5D1E415FC1007B291C /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */; };
 		2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA5E1E417D92007B291C /* WaterViewController.swift */; };
 		2FC0BA651E419D98007B291C /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0BA641E419D97007B291C /* Water.swift */; };
@@ -121,10 +149,13 @@
 		2FC0BA731E43D5C9007B291C /* Forward-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA711E43D5C9007B291C /* Forward-50.png */; };
 		2FC0BA771E44E913007B291C /* ForwardButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA751E44E913007B291C /* ForwardButton.png */; };
 		2FC0BA791E44EA32007B291C /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA781E44EA32007B291C /* BackButton.png */; };
+		2FC356421E8820C90055724F /* EmotionViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC356411E8820C90055724F /* EmotionViewCollectionViewCell.swift */; };
 		2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */; };
 		2FC7FC071E35C9A300A7DA50 /* ErrorMicHelpMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */; };
 		2FC7FC081E35C9A300A7DA50 /* simpleMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7FC061E35C9A300A7DA50 /* simpleMicHelp.png */; };
 		2FCAA5D11E3FBD3E0014452E /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCAA5D01E3FBD3E0014452E /* Sleep.swift */; };
+		2FCD14191E80E4C400771EA7 /* trash_entry.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCD14171E80E4C400771EA7 /* trash_entry.png */; };
+		2FCD141A1E80E4C400771EA7 /* new_entry.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCD14181E80E4C400771EA7 /* new_entry.png */; };
 		2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */; };
 		2FDB45F61E21755300A98225 /* LilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDB45F51E21755300A98225 /* LilyTests.swift */; };
 		2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE264141E395ECF004DB460 /* HealthKitRequests.swift */; };
@@ -135,6 +166,9 @@
 		2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264311E3C3A9B004DB460 /* OrLoginImage.png */; };
 		2FE264361E3C419A004DB460 /* Lily_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264351E3C419A004DB460 /* Lily_background.png */; };
 		2FE2643A1E3C4C03004DB460 /* exportButtonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE264391E3C4C03004DB460 /* exportButtonIcon.png */; };
+		2FFCB40F1E68B766008622BB /* WeeklyTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCB40E1E68B766008622BB /* WeeklyTimesView.swift */; };
+		2FFCB4151E68FD0F008622BB /* AdvicePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCB4141E68FD0F008622BB /* AdvicePanelView.swift */; };
+		2FFCB4171E68FD1B008622BB /* AdvicePanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FFCB4161E68FD1B008622BB /* AdvicePanelView.xib */; };
 		672BB027D2BACD0ACB5F68C2 /* Pods_Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */; };
 		A6B15886DD2C5CF0E96A3F0D /* Pods_Lily_LilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */; };
 /* End PBXBuildFile section */
@@ -166,9 +200,19 @@
 		2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhatHappenedThatDay.swift; path = Lily/WhatHappenedThatDay.swift; sourceTree = "<group>"; };
 		2F0044911E61D837000E8BF6 /* SleepTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SleepTile.xib; path = Lily/SleepTile.xib; sourceTree = "<group>"; };
 		2F0044971E61DAFA000E8BF6 /* SleepTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SleepTileView.swift; path = Lily/SleepTileView.swift; sourceTree = "<group>"; };
+		2F0A47741E8085DF00C13800 /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JournalViewController.swift; path = Lily/JournalViewController.swift; sourceTree = "<group>"; };
 		2F0F75E91E368B71004BCE2D /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
-		2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenViewController.swift; path = Lily/HomeScreenViewController.swift; sourceTree = "<group>"; };
+		2F2A1C691E841E2C00B5C077 /* JournalEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JournalEntryViewController.swift; path = Lily/JournalEntryViewController.swift; sourceTree = "<group>"; };
+		2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		2F3975BB1E394E39005C7926 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		2F3983B01E803C96001F0B78 /* TileStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileStoreViewController.swift; path = Lily/TileStoreViewController.swift; sourceTree = "<group>"; };
+		2F3983B21E803ECA001F0B78 /* nutrition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nutrition.png; sourceTree = "<group>"; };
+		2F3983B31E803ECA001F0B78 /* morning_sickness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = morning_sickness.png; sourceTree = "<group>"; };
+		2F3983B41E803ECA001F0B78 /* medication_log.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medication_log.png; sourceTree = "<group>"; };
+		2F3983B61E803ECA001F0B78 /* baby_heart_rate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_heart_rate.png; sourceTree = "<group>"; };
+		2F3983BC1E8040D2001F0B78 /* contraction_timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contraction_timer.png; sourceTree = "<group>"; };
+		2F3983BE1E804983001F0B78 /* HalfCircleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HalfCircleView.xib; path = Lily/HalfCircleView.xib; sourceTree = "<group>"; };
+		2F3983C01E8049FA001F0B78 /* HalfCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HalfCircleView.swift; path = Lily/HalfCircleView.swift; sourceTree = "<group>"; };
 		2F398E901E12288A00A1AEB3 /* Lily.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lily.xcdatamodel; sourceTree = "<group>"; };
 		2F398EFC1E14CAB100A1AEB3 /* LilyCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LilyCoreData.swift; sourceTree = "<group>"; };
 		2F398EFE1E16006600A1AEB3 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -189,12 +233,27 @@
 		2F3FDC941E35A69100B18F25 /* backgroundMicHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundMicHelp.png; sourceTree = "<group>"; };
 		2F446D9D1E36E5D3003A6CF4 /* micWithOrangeBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micWithOrangeBorder.png; sourceTree = "<group>"; };
 		2F6591AB1E03B29C0040AA4A /* Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
+		2F6702E81E89DA9700E27733 /* grey_log_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey_log_button.png; sourceTree = "<group>"; };
+		2F6702E91E89DA9700E27733 /* green_log_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_log_button.png; sourceTree = "<group>"; };
 		2F683F201E68695200CC2641 /* WeeklyBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeeklyBarView.swift; path = Lily/WeeklyBarView.swift; sourceTree = "<group>"; };
 		2F683F221E68701400CC2641 /* WeeklyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeeklyView.xib; path = Lily/WeeklyView.xib; sourceTree = "<group>"; };
 		2F683F241E68702800CC2641 /* WeeklyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeeklyView.swift; path = Lily/WeeklyView.swift; sourceTree = "<group>"; };
 		2F683F261E68730B00CC2641 /* half_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = half_circle.png; sourceTree = "<group>"; };
 		2F683F281E68763000CC2641 /* weeklyMiddleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = weeklyMiddleView.xib; path = Lily/weeklyMiddleView.xib; sourceTree = "<group>"; };
 		2F683F2A1E68796300CC2641 /* WeeklyMiddleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeeklyMiddleView.swift; path = Lily/WeeklyMiddleView.swift; sourceTree = "<group>"; };
+		2F76585A1E86D3D700B8F624 /* like_laughing_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like_laughing_circle.png; sourceTree = "<group>"; };
+		2F76585B1E86D3D700B8F624 /* excited_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = excited_circle.png; sourceTree = "<group>"; };
+		2F76585C1E86D3D700B8F624 /* happy_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = happy_circle.png; sourceTree = "<group>"; };
+		2F76585D1E86D3D700B8F624 /* miserable_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miserable_circle.png; sourceTree = "<group>"; };
+		2F76585E1E86D3D700B8F624 /* like_crying_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like_crying_circle.png; sourceTree = "<group>"; };
+		2F76585F1E86D3D700B8F624 /* sad_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sad_circle.png; sourceTree = "<group>"; };
+		2F7658601E86D3D700B8F624 /* scared_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scared_circle.png; sourceTree = "<group>"; };
+		2F7658611E86D3D700B8F624 /* nervous_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nervous_circle.png; sourceTree = "<group>"; };
+		2F7658621E86D3D700B8F624 /* overwhelmed_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overwhelmed_circle.png; sourceTree = "<group>"; };
+		2F7658631E86D3D700B8F624 /* irate_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = irate_circle.png; sourceTree = "<group>"; };
+		2F7658641E86D3D700B8F624 /* angry_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angry_circle.png; sourceTree = "<group>"; };
+		2F7658651E86D3D700B8F624 /* frustrated_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frustrated_circle.png; sourceTree = "<group>"; };
+		2F7658971E86F65000B8F624 /* EmotionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionsViewController.swift; path = Lily/EmotionsViewController.swift; sourceTree = "<group>"; };
 		2F7AD0421E66814900D29079 /* DragDropCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDropCollectionView.swift; sourceTree = "<group>"; };
 		2F8127011E5EA46B00B625E1 /* TileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TileView.xib; path = Lily/TileView.xib; sourceTree = "<group>"; };
 		2F8127031E5F326200B625E1 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileView.swift; path = Lily/TileView.swift; sourceTree = "<group>"; };
@@ -259,6 +318,9 @@
 		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
 		2FB99A461E663E070098865E /* ActivityTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityTileView.swift; path = Lily/ActivityTileView.swift; sourceTree = "<group>"; };
 		2FB99A481E663E330098865E /* ActivityTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityTile.xib; path = Lily/ActivityTile.xib; sourceTree = "<group>"; };
+		2FBD8D741E871022001529FF /* EmotionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmotionCellView.xib; path = Lily/EmotionCellView.xib; sourceTree = "<group>"; };
+		2FBD8D761E8714DF001529FF /* default_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_circle.png; sourceTree = "<group>"; };
+		2FBD8D7A1E8716AC001529FF /* EmotionCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionCellView.swift; path = Lily/EmotionCellView.swift; sourceTree = "<group>"; };
 		2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SleepViewController.swift; path = Lily/SleepViewController.swift; sourceTree = "<group>"; };
 		2FC0BA5E1E417D92007B291C /* WaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaterViewController.swift; path = Lily/WaterViewController.swift; sourceTree = "<group>"; };
 		2FC0BA641E419D97007B291C /* Water.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
@@ -269,11 +331,14 @@
 		2FC0BA711E43D5C9007B291C /* Forward-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forward-50.png"; sourceTree = "<group>"; };
 		2FC0BA751E44E913007B291C /* ForwardButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForwardButton.png; sourceTree = "<group>"; };
 		2FC0BA781E44EA32007B291C /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButton.png; sourceTree = "<group>"; };
+		2FC356411E8820C90055724F /* EmotionViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionViewCollectionViewCell.swift; path = Lily/EmotionViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FitbitRequests.swift; path = Lily/FitbitRequests.swift; sourceTree = "<group>"; };
 		2FC69CDC1E101995001A1349 /* Lily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lily.entitlements; sourceTree = "<group>"; };
 		2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErrorMicHelpMessage.png; sourceTree = "<group>"; };
 		2FC7FC061E35C9A300A7DA50 /* simpleMicHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simpleMicHelp.png; sourceTree = "<group>"; };
 		2FCAA5D01E3FBD3E0014452E /* Sleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
+		2FCD14171E80E4C400771EA7 /* trash_entry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash_entry.png; sourceTree = "<group>"; };
+		2FCD14181E80E4C400771EA7 /* new_entry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_entry.png; sourceTree = "<group>"; };
 		2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FDB45F31E21755300A98225 /* LilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDB45F51E21755300A98225 /* LilyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilyTests.swift; sourceTree = "<group>"; };
@@ -286,6 +351,9 @@
 		2FE264311E3C3A9B004DB460 /* OrLoginImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrLoginImage.png; sourceTree = "<group>"; };
 		2FE264351E3C419A004DB460 /* Lily_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lily_background.png; sourceTree = "<group>"; };
 		2FE264391E3C4C03004DB460 /* exportButtonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exportButtonIcon.png; sourceTree = "<group>"; };
+		2FFCB40E1E68B766008622BB /* WeeklyTimesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeeklyTimesView.swift; path = Lily/WeeklyTimesView.swift; sourceTree = "<group>"; };
+		2FFCB4141E68FD0F008622BB /* AdvicePanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvicePanelView.swift; path = Lily/AdvicePanelView.swift; sourceTree = "<group>"; };
+		2FFCB4161E68FD1B008622BB /* AdvicePanelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AdvicePanelView.xib; path = Lily/AdvicePanelView.xib; sourceTree = "<group>"; };
 		75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCA35F4FE7800240D9C439 /* Pods-Lily-LilyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily-LilyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily_LilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,30 +393,8 @@
 		2F00448A1E5FC05C000E8BF6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2F8127011E5EA46B00B625E1 /* TileView.xib */,
-				2F0044881E5FBF74000E8BF6 /* WaterTile.xib */,
-				2F0044911E61D837000E8BF6 /* SleepTile.xib */,
-				2F00448B1E61C22E000E8BF6 /* WhatHappenedThatDay.xib */,
-				2FB99A481E663E330098865E /* ActivityTile.xib */,
-				2F8A4E6B1E67122800F4C017 /* KickSoFarView.xib */,
-				2F8A4E731E6791F000F4C017 /* DayWithTimeView.xib */,
-				2FA9ECA01E685DA2004ECF1E /* KickCellView.xib */,
-				2F8A4E7D1E67BE5800F4C017 /* DailyKickView.xib */,
-				2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */,
-				2F683F281E68763000CC2641 /* weeklyMiddleView.xib */,
-				2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */,
-				2F683F221E68701400CC2641 /* WeeklyView.xib */,
-				2F683F241E68702800CC2641 /* WeeklyView.swift */,
-				2F683F2A1E68796300CC2641 /* WeeklyMiddleView.swift */,
-				2F683F201E68695200CC2641 /* WeeklyBarView.swift */,
-				2F8A4E7F1E67BE6700F4C017 /* DailyKickView.swift */,
-				2F8A4E751E67B83400F4C017 /* DayWithTimeView.swift */,
-				2F8A4E6F1E67150800F4C017 /* KicksSoFarView.swift */,
-				2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */,
-				2F0044861E5FBF48000E8BF6 /* WaterTileView.swift */,
-				2F8127031E5F326200B625E1 /* TileView.swift */,
-				2F0044971E61DAFA000E8BF6 /* SleepTileView.swift */,
-				2FB99A461E663E070098865E /* ActivityTileView.swift */,
+				2F7658951E86F5BB00B8F624 /* xibs */,
+				2F7658961E86F5C500B8F624 /* view code */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -356,6 +402,28 @@
 		2F2F76111E3131A8000AE4F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F6702E81E89DA9700E27733 /* grey_log_button.png */,
+				2F6702E91E89DA9700E27733 /* green_log_button.png */,
+				2FBD8D761E8714DF001529FF /* default_circle.png */,
+				2F76585A1E86D3D700B8F624 /* like_laughing_circle.png */,
+				2F76585B1E86D3D700B8F624 /* excited_circle.png */,
+				2F76585C1E86D3D700B8F624 /* happy_circle.png */,
+				2F76585D1E86D3D700B8F624 /* miserable_circle.png */,
+				2F76585E1E86D3D700B8F624 /* like_crying_circle.png */,
+				2F76585F1E86D3D700B8F624 /* sad_circle.png */,
+				2F7658601E86D3D700B8F624 /* scared_circle.png */,
+				2F7658611E86D3D700B8F624 /* nervous_circle.png */,
+				2F7658621E86D3D700B8F624 /* overwhelmed_circle.png */,
+				2F7658631E86D3D700B8F624 /* irate_circle.png */,
+				2F7658641E86D3D700B8F624 /* angry_circle.png */,
+				2F7658651E86D3D700B8F624 /* frustrated_circle.png */,
+				2FCD14171E80E4C400771EA7 /* trash_entry.png */,
+				2FCD14181E80E4C400771EA7 /* new_entry.png */,
+				2F3983BC1E8040D2001F0B78 /* contraction_timer.png */,
+				2F3983B21E803ECA001F0B78 /* nutrition.png */,
+				2F3983B31E803ECA001F0B78 /* morning_sickness.png */,
+				2F3983B41E803ECA001F0B78 /* medication_log.png */,
+				2F3983B61E803ECA001F0B78 /* baby_heart_rate.png */,
 				2F683F261E68730B00CC2641 /* half_circle.png */,
 				2F8A4E831E67C0BB00F4C017 /* kick_label.png */,
 				2F8A4E811E67BEF900F4C017 /* Line.png */,
@@ -432,6 +500,53 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		2F7658951E86F5BB00B8F624 /* xibs */ = {
+			isa = PBXGroup;
+			children = (
+				2F8127011E5EA46B00B625E1 /* TileView.xib */,
+				2FBD8D741E871022001529FF /* EmotionCellView.xib */,
+				2F0044881E5FBF74000E8BF6 /* WaterTile.xib */,
+				2F0044911E61D837000E8BF6 /* SleepTile.xib */,
+				2F00448B1E61C22E000E8BF6 /* WhatHappenedThatDay.xib */,
+				2FB99A481E663E330098865E /* ActivityTile.xib */,
+				2F8A4E6B1E67122800F4C017 /* KickSoFarView.xib */,
+				2F8A4E731E6791F000F4C017 /* DayWithTimeView.xib */,
+				2FA9ECA01E685DA2004ECF1E /* KickCellView.xib */,
+				2F8A4E7D1E67BE5800F4C017 /* DailyKickView.xib */,
+				2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */,
+				2F683F281E68763000CC2641 /* weeklyMiddleView.xib */,
+				2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */,
+				2FFCB4161E68FD1B008622BB /* AdvicePanelView.xib */,
+				2F683F221E68701400CC2641 /* WeeklyView.xib */,
+				2F3983BE1E804983001F0B78 /* HalfCircleView.xib */,
+			);
+			name = xibs;
+			sourceTree = "<group>";
+		};
+		2F7658961E86F5C500B8F624 /* view code */ = {
+			isa = PBXGroup;
+			children = (
+				2F0044781E5F6E5B000E8BF6 /* TileCollectionViewCell.swift */,
+				2FC356411E8820C90055724F /* EmotionViewCollectionViewCell.swift */,
+				2FFCB40E1E68B766008622BB /* WeeklyTimesView.swift */,
+				2FBD8D7A1E8716AC001529FF /* EmotionCellView.swift */,
+				2F683F241E68702800CC2641 /* WeeklyView.swift */,
+				2F3983C01E8049FA001F0B78 /* HalfCircleView.swift */,
+				2FFCB4141E68FD0F008622BB /* AdvicePanelView.swift */,
+				2F683F2A1E68796300CC2641 /* WeeklyMiddleView.swift */,
+				2F683F201E68695200CC2641 /* WeeklyBarView.swift */,
+				2F8A4E7F1E67BE6700F4C017 /* DailyKickView.swift */,
+				2F8A4E751E67B83400F4C017 /* DayWithTimeView.swift */,
+				2F8A4E6F1E67150800F4C017 /* KicksSoFarView.swift */,
+				2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */,
+				2F0044861E5FBF48000E8BF6 /* WaterTileView.swift */,
+				2F8127031E5F326200B625E1 /* TileView.swift */,
+				2F0044971E61DAFA000E8BF6 /* SleepTileView.swift */,
+				2FB99A461E663E070098865E /* ActivityTileView.swift */,
+			);
+			name = "view code";
+			sourceTree = "<group>";
+		};
 		2FA1CD501E0347AF00778DF3 = {
 			isa = PBXGroup;
 			children = (
@@ -490,16 +605,18 @@
 			isa = PBXGroup;
 			children = (
 				2FA1CD5E1E0347AF00778DF3 /* ViewController.swift */,
-				2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */,
 				2FC0BA5C1E415FC1007B291C /* SleepViewController.swift */,
 				2FC0BA5E1E417D92007B291C /* WaterViewController.swift */,
 				2F3EAFB21E4BF9DE00214FC4 /* HeartRateViewController.swift */,
 				2F3EAFB61E4D0C0500214FC4 /* ActivityViewController.swift */,
 				2F938F431E5211FE006D64A9 /* GoalsViewController.swift */,
 				2F8127051E5F330000B625E1 /* HomeViewController.swift */,
+				2F3983B01E803C96001F0B78 /* TileStoreViewController.swift */,
 				2F8A4E711E6715F900F4C017 /* BabyMovementViewController.swift */,
-				2F0044781E5F6E5B000E8BF6 /* TileCollectionViewCell.swift */,
 				2FA9EC9E1E685D1D004ECF1E /* KickTableViewCell.swift */,
+				2F0A47741E8085DF00C13800 /* JournalViewController.swift */,
+				2F2A1C691E841E2C00B5C077 /* JournalEntryViewController.swift */,
+				2F7658971E86F65000B8F624 /* EmotionsViewController.swift */,
 				2F00448A1E5FC05C000E8BF6 /* Views */,
 			);
 			name = ViewControllers;
@@ -509,6 +626,8 @@
 		2FB4C3BF1E1D7A4000C39109 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				2F2F760F1E312E3D000AE4F7 /* HomeScreenViewController.swift */,
+				2F398EFE1E16006600A1AEB3 /* Helpers.swift */,
 				2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */,
 				2F6591AB1E03B29C0040AA4A /* Services.plist */,
 				2FA1CD681E0347AF00778DF3 /* Info.plist */,
@@ -516,7 +635,6 @@
 				2F398E8F1E12288A00A1AEB3 /* Lily.xcdatamodeld */,
 				2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */,
 				2FA1CD5C1E0347AF00778DF3 /* AppDelegate.swift */,
-				2F398EFE1E16006600A1AEB3 /* Helpers.swift */,
 				2F0F75E91E368B71004BCE2D /* SweetAlert.swift */,
 				2FCAA5D01E3FBD3E0014452E /* Sleep.swift */,
 				2F7AD0421E66814900D29079 /* DragDropCollectionView.swift */,
@@ -660,22 +778,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FC7FC071E35C9A300A7DA50 /* ErrorMicHelpMessage.png in Resources */,
+				2FCD14191E80E4C400771EA7 /* trash_entry.png in Resources */,
+				2F7658681E86D3D700B8F624 /* excited_circle.png in Resources */,
 				2F0044801E5FB7F1000E8BF6 /* Store.png in Resources */,
+				2F76586F1E86D3D700B8F624 /* overwhelmed_circle.png in Resources */,
+				2FCD141A1E80E4C400771EA7 /* new_entry.png in Resources */,
+				2F3983BB1E803ECA001F0B78 /* baby_heart_rate.png in Resources */,
 				2F6591AC1E03B29C0040AA4A /* Services.plist in Resources */,
 				2F938F581E522F1A006D64A9 /* alarm_clock_disabled.png in Resources */,
 				2FA09AFA1E3138F10094270F /* Flame.png in Resources */,
 				2F0044921E61D837000E8BF6 /* SleepTile.xib in Resources */,
 				2F889DB91E4F8A0200F22584 /* fairly.png in Resources */,
 				2F3EAFA81E4A55B200214FC4 /* downArrow.png in Resources */,
+				2F7658671E86D3D700B8F624 /* like_laughing_circle.png in Resources */,
 				2F938F5E1E5238A9006D64A9 /* small_emotion_log.png in Resources */,
+				2FBD8D751E871022001529FF /* EmotionCellView.xib in Resources */,
 				2FA1CD671E0347AF00778DF3 /* LaunchScreen.storyboard in Resources */,
 				2F938F551E522F1A006D64A9 /* small_activity.png in Resources */,
 				2FC7FC081E35C9A300A7DA50 /* simpleMicHelp.png in Resources */,
 				2F8A4E7B1E67BA4300F4C017 /* pause_button.png in Resources */,
 				2F938F511E522F1A006D64A9 /* small_baby.png in Resources */,
 				2FA1CD641E0347AF00778DF3 /* Assets.xcassets in Resources */,
+				2F3983B91E803ECA001F0B78 /* medication_log.png in Resources */,
 				2F938F571E522F1A006D64A9 /* alarm_clock_enabled.png in Resources */,
 				2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */,
+				2F3983BF1E804983001F0B78 /* HalfCircleView.xib in Resources */,
 				2FE264261E3C38EC004DB460 /* white_background.png in Resources */,
 				2F8A4E841E67C0BB00F4C017 /* kick_label.png in Resources */,
 				2FA09AED1E31321F0094270F /* blackjack.otf in Resources */,
@@ -685,12 +812,14 @@
 				2F889DB81E4F8A0200F22584 /* very.png in Resources */,
 				2F00448E1E61C2B2000E8BF6 /* Calendar.png in Resources */,
 				2FE2643A1E3C4C03004DB460 /* exportButtonIcon.png in Resources */,
+				2F6702EA1E89DA9700E27733 /* grey_log_button.png in Resources */,
 				2FA09AF81E3138F10094270F /* balance.png in Resources */,
 				2FA9ECA31E6864E9004ECF1E /* WeeklyTimesView.xib in Resources */,
 				2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */,
 				2FC0BA771E44E913007B291C /* ForwardButton.png in Resources */,
 				2FC0BA791E44EA32007B291C /* BackButton.png in Resources */,
 				2FA09AF91E3138F10094270F /* Checklist.png in Resources */,
+				2F3983B71E803ECA001F0B78 /* nutrition.png in Resources */,
 				2FA09AFB1E3138F10094270F /* Moon.png in Resources */,
 				2FC0BA671E423DBE007B291C /* lastWeekCardBackground.png in Resources */,
 				2F3EAFAE1E4BF8D400214FC4 /* WhatShouldIDrinkCard.png in Resources */,
@@ -700,23 +829,33 @@
 				2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */,
 				2FE264301E3C3A82004DB460 /* ConnectWithHealthKit.png in Resources */,
 				2F8A4E7C1E67BA4300F4C017 /* kick_button.png in Resources */,
+				2F3983BD1E8040D2001F0B78 /* contraction_timer.png in Resources */,
+				2F76586B1E86D3D700B8F624 /* like_crying_circle.png in Resources */,
 				2F938F561E522F1A006D64A9 /* small_water.png in Resources */,
 				2FC0BA721E43D5C9007B291C /* Back-50.png in Resources */,
 				2F8A4E7E1E67BE5800F4C017 /* DailyKickView.xib in Resources */,
 				2FE2642E1E3C3A6A004DB460 /* ConnectWithFitbit.png in Resources */,
 				2F683F271E68730B00CC2641 /* half_circle.png in Resources */,
 				2F938F541E522F1A006D64A9 /* small_moon.png in Resources */,
+				2F3983B81E803ECA001F0B78 /* morning_sickness.png in Resources */,
 				2F0044831E5FB85D000E8BF6 /* Baby.png in Resources */,
 				2F8A4E821E67BEF900F4C017 /* Line.png in Resources */,
+				2F7658721E86D3D700B8F624 /* frustrated_circle.png in Resources */,
+				2F76586A1E86D3D700B8F624 /* miserable_circle.png in Resources */,
+				2F76586D1E86D3D700B8F624 /* scared_circle.png in Resources */,
 				2F8A4E6E1E67127A00F4C017 /* kick.png in Resources */,
+				2FBD8D771E8714DF001529FF /* default_circle.png in Resources */,
 				2F91BE351E462BA20030821A /* DropdownArrow.png in Resources */,
+				2F7658711E86D3D700B8F624 /* angry_circle.png in Resources */,
 				2F3FDC911E35921B00B18F25 /* x.png in Resources */,
 				2F00448C1E61C22E000E8BF6 /* WhatHappenedThatDay.xib in Resources */,
+				2F6702EB1E89DA9700E27733 /* green_log_button.png in Resources */,
 				2F889DBB1E4F8A0200F22584 /* sedentary.png in Resources */,
 				2FC0BA731E43D5C9007B291C /* Forward-50.png in Resources */,
 				2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */,
 				2F938F521E522F1A006D64A9 /* small_scale.png in Resources */,
 				2FA09AEF1E3138070094270F /* CardBackground.png in Resources */,
+				2F7658691E86D3D700B8F624 /* happy_circle.png in Resources */,
 				2F938F5A1E523141006D64A9 /* NavigationBar.png in Resources */,
 				2F938F531E522F1A006D64A9 /* small_heart.png in Resources */,
 				2F683F231E68701400CC2641 /* WeeklyView.xib in Resources */,
@@ -724,12 +863,14 @@
 				2FA09B011E3147F40094270F /* backgroundShade.png in Resources */,
 				2FB99A491E663E330098865E /* ActivityTile.xib in Resources */,
 				2F3FDC8D1E35905D00B18F25 /* x_button.png in Resources */,
+				2F76586C1E86D3D700B8F624 /* sad_circle.png in Resources */,
 				2F938F4F1E522F1A006D64A9 /* small_call_doctor.png in Resources */,
 				2FA09AF71E3138F10094270F /* Heart.png in Resources */,
 				2F8127021E5EA46B00B625E1 /* TileView.xib in Resources */,
 				2F00447F1E5FB7F1000E8BF6 /* CallDoctor.png in Resources */,
 				2FA09B071E31C3A80094270F /* microphone@2x.png in Resources */,
 				2F889DBA1E4F8A0200F22584 /* lightly.png in Resources */,
+				2F76586E1E86D3D700B8F624 /* nervous_circle.png in Resources */,
 				2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */,
 				2F3EAFA91E4A55B200214FC4 /* upArrow.png in Resources */,
 				2F8587271E59458C00D7594A /* Login.png in Resources */,
@@ -741,6 +882,8 @@
 				2F8A4E7A1E67BA4300F4C017 /* cancel_button.png in Resources */,
 				2FA09AF11E3138E30094270F /* water.png in Resources */,
 				2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */,
+				2F7658701E86D3D700B8F624 /* irate_circle.png in Resources */,
+				2FFCB4171E68FD1B008622BB /* AdvicePanelView.xib in Resources */,
 				2F3FDC8E1E35905D00B18F25 /* question_mark.png in Resources */,
 				2F8A4E6C1E67122800F4C017 /* KickSoFarView.xib in Resources */,
 				2F3EAFB11E4BF9C000214FC4 /* WhatShouldMyHeartRateBeCard.png in Resources */,
@@ -861,8 +1004,10 @@
 			files = (
 				2FA1CD5F1E0347AF00778DF3 /* ViewController.swift in Sources */,
 				2F7AD0431E66814900D29079 /* DragDropCollectionView.swift in Sources */,
+				2FBD8D7B1E8716AC001529FF /* EmotionCellView.swift in Sources */,
 				2F8127041E5F326200B625E1 /* TileView.swift in Sources */,
 				2F0044871E5FBF48000E8BF6 /* WaterTileView.swift in Sources */,
+				2F7658981E86F65000B8F624 /* EmotionsViewController.swift in Sources */,
 				2F0F75EA1E368B71004BCE2D /* SweetAlert.swift in Sources */,
 				2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */,
 				2F398EFF1E16006600A1AEB3 /* Helpers.swift in Sources */,
@@ -876,25 +1021,32 @@
 				2FA9EC9F1E685D1D004ECF1E /* KickTableViewCell.swift in Sources */,
 				2F938F441E5211FE006D64A9 /* GoalsViewController.swift in Sources */,
 				2F980E871E50D1CB0024C5EC /* Activity.swift in Sources */,
+				2F0A47751E8085DF00C13800 /* JournalViewController.swift in Sources */,
 				2F683F251E68702800CC2641 /* WeeklyView.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,
 				2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */,
 				2F683F2B1E68796300CC2641 /* WeeklyMiddleView.swift in Sources */,
+				2FFCB40F1E68B766008622BB /* WeeklyTimesView.swift in Sources */,
 				2F8A4E761E67B83400F4C017 /* DayWithTimeView.swift in Sources */,
+				2FFCB4151E68FD0F008622BB /* AdvicePanelView.swift in Sources */,
 				2F0044981E61DAFA000E8BF6 /* SleepTileView.swift in Sources */,
 				2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */,
 				2F2F76101E312E3D000AE4F7 /* HomeScreenViewController.swift in Sources */,
+				2F3983B11E803C96001F0B78 /* TileStoreViewController.swift in Sources */,
 				2F3EAFB71E4D0C0500214FC4 /* ActivityViewController.swift in Sources */,
 				2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */,
 				2F0044791E5F6E5B000E8BF6 /* TileCollectionViewCell.swift in Sources */,
+				2F2A1C6A1E841E2C00B5C077 /* JournalEntryViewController.swift in Sources */,
 				2F0044901E61C54E000E8BF6 /* WhatHappenedThatDay.swift in Sources */,
 				2F683F211E68695200CC2641 /* WeeklyBarView.swift in Sources */,
 				2FB99A471E663E070098865E /* ActivityTileView.swift in Sources */,
 				2FC0BA651E419D98007B291C /* Water.swift in Sources */,
+				2FC356421E8820C90055724F /* EmotionViewCollectionViewCell.swift in Sources */,
 				2F8A4E701E67150800F4C017 /* KicksSoFarView.swift in Sources */,
 				2F3EAFB51E4C229800214FC4 /* HeartRate.swift in Sources */,
 				2F8A4E801E67BE6700F4C017 /* DailyKickView.swift in Sources */,
 				2FCAA5D11E3FBD3E0014452E /* Sleep.swift in Sources */,
+				2F3983C11E8049FA001F0B78 /* HalfCircleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

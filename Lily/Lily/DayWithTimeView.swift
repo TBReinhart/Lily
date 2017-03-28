@@ -52,12 +52,16 @@ class DayWithTimeView: UIView {
     
     func setDayLabel(title: String) {
         self.dayLabel.text = title
+        self.dayLabel.adjustsFontSizeToFitWidth = true
+
     }
     
 
     
     func setTimeLabel(time: String) {
         self.timeLabel.text = time
+        self.timeLabel.adjustsFontSizeToFitWidth = true
+
     }
 }
 

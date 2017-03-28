@@ -59,7 +59,7 @@
                         <action selector="pauseButtonPressed:" destination="-1" eventType="touchUpInside" id="fO6-pj-70t"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:02:04" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBj-44-g6k">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBj-44-g6k">
                     <rect key="frame" x="82" y="111" width="200" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="MBj-44-g6k" secondAttribute="height" multiplier="200:43" id="kWg-c0-Jy4"/>

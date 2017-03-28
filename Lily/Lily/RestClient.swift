@@ -54,7 +54,7 @@ class RestClient {
         //let manager = Alamofire.Manager(configuration: configuration)
         
         sessionManager.request(url, method: .get).responseJSON { (response:DataResponse<Any>) in
-            
+            print("URL Req: \(url)")
             switch(response.result) {
             case .success(let value):
                 if response.result.value != nil{

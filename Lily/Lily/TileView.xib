@@ -31,7 +31,7 @@
                         <constraint firstAttribute="width" secondItem="Dd7-LI-5Pl" secondAttribute="height" multiplier="1:1" id="4ud-71-Zbz"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lCM-Xp-8IR" userLabel="Top Label">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lCM-Xp-8IR" userLabel="Top Label">
                     <rect key="frame" x="0.0" y="20" width="303" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="s0r-MO-mNm"/>

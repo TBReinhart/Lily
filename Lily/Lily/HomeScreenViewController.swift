@@ -424,6 +424,8 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
+
+    
     func loadWaterFitbit() {
         self.fbreqs.getWaterLogs() { water, error in
             let waterInCups = water?.cupsConsumed

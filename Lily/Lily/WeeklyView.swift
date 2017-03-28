@@ -13,6 +13,7 @@ class WeeklyView: UIView {
 
     @IBOutlet var view: UIView!
     @IBOutlet weak var weeklyBarView: WeeklyBarView!
+    @IBOutlet weak var weeklyMiddleView: WeeklyMiddleView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
