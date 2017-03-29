@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="c08-AQ-FeL">
-                    <rect key="frame" x="0.0" y="20" width="303" height="24"/>
+                    <rect key="frame" x="0.0" y="17" width="303" height="24"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -49,13 +49,13 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
-                            <color key="value" red="0.78738981485366821" green="0.24644413590431213" blue="0.27221894264221191" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="value" red="0.87058823529411766" green="0.47058823529411764" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
-                            <color key="value" red="0.89126098155975342" green="0.3545563817024231" blue="0.39968371391296387" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="value" red="0.87058823529411766" green="0.47058823529411764" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                            <color key="value" red="0.78738981485366821" green="0.24644413590431213" blue="0.27221894264221191" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="value" red="0.87058823529411766" green="0.47058823529411764" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                             <real key="value" value="30"/>
@@ -69,7 +69,7 @@
                 <constraint firstItem="c08-AQ-FeL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Wth-9n-NHQ"/>
                 <constraint firstItem="0Ws-cI-bbX" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.65" id="cfS-Kx-hbK"/>
                 <constraint firstItem="0Ws-cI-bbX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lSF-gs-hgK"/>
-                <constraint firstItem="c08-AQ-FeL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="tir-av-woc"/>
+                <constraint firstItem="c08-AQ-FeL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="17" id="tir-av-woc"/>
                 <constraint firstAttribute="trailing" secondItem="c08-AQ-FeL" secondAttribute="trailing" id="zlu-lV-yl2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

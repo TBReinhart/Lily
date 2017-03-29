@@ -31,6 +31,7 @@ class ActivityTileView: UIView {
         UINib(nibName: "ActivityTile", bundle: bundle).instantiate(withOwner: self, options: nil)
         addSubview(view)
         view.frame = bounds
+        self.progressView.outerRingColor = self.progressView.outerRingColor.withAlphaComponent(0.3)
     }
     
     func setProgressRing(value: Double, maxValue: Double, animationDuration: Double = 3) {

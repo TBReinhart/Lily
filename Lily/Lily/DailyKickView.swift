@@ -9,7 +9,6 @@
 import UIKit
 
 @IBDesignable
-
 class DailyKickView: UIView {
     @IBOutlet var view: UIView!
     @IBOutlet weak var dayLabel: UILabel!
@@ -19,13 +18,14 @@ class DailyKickView: UIView {
     @IBOutlet weak var cancelButton: UIButton!
     
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//    let appDelegate = AppDelegate.getDelegate()
     var firstKick = true
     var timer = Timer()
     var isTimerRunning = false
     var resumeTapped = false
     var finalSeconds = 0
-
+    var globalSeconds = 0
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,8 +47,8 @@ class DailyKickView: UIView {
         view.frame = bounds
         self.pauseButton.isEnabled = false
         self.cancelButton.isEnabled = false
-        self.timeLabel.text = timeString(time: TimeInterval(appDelegate.globalSeconds))
-        if appDelegate.globalSeconds != 0 {
+        self.timeLabel.text = timeString(time: TimeInterval(globalSeconds))
+        if globalSeconds != 0 {
             runTimer()
         }
     }
@@ -80,10 +80,10 @@ class DailyKickView: UIView {
 
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
-        finalSeconds = appDelegate.globalSeconds
+        finalSeconds = globalSeconds
         timer.invalidate()
-        appDelegate.globalSeconds = 0
-        timeLabel.text = timeString(time: TimeInterval(appDelegate.globalSeconds))
+        globalSeconds = 0
+        timeLabel.text = timeString(time: TimeInterval(globalSeconds))
         isTimerRunning = false
         pauseButton.isEnabled = false
         self.resumeTapped = false
@@ -93,8 +93,8 @@ class DailyKickView: UIView {
     
     func updateTimer(){
         print("updating timer")
-        appDelegate.globalSeconds = appDelegate.globalSeconds + 1
-        timeLabel.text = timeString(time: TimeInterval(appDelegate.globalSeconds))
+        globalSeconds = globalSeconds + 1
+        timeLabel.text = timeString(time: TimeInterval(globalSeconds))
         
     }
     

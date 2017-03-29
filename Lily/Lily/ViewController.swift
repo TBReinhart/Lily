@@ -70,6 +70,8 @@ class ViewController: UIViewController {
      Embedded Sign In is a permitted style of logging in users according to API docs.
     */
     @IBAction func signInEmbedded(_ sender: UIButton?) {
+        HUD.show(.progress)
+
         if oauth2.isAuthorizing {
             oauth2.abortAuthorization()
             return
@@ -84,7 +86,6 @@ class ViewController: UIViewController {
         loader.perform(request: userDataRequest) { response in
             do {
                 let json = try response.responseJSON()
-//                HUD.show(.progress)
                 self.extractUserData(json: json)
                 self.createUserHelper(method: "Fitbit")
 
@@ -181,6 +182,7 @@ class ViewController: UIViewController {
     
     
     func signIn(user: String, email: String, password: String) {
+
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
                 debugPrint("ERROR: \(error)")

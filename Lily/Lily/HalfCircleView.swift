@@ -7,8 +7,8 @@
 //
 
 import UIKit
-@IBDesignable
 
+@IBDesignable
 class HalfCircleView: UIView {
 
     @IBOutlet var view: UIView!

@@ -80,7 +80,7 @@ class HeartRateViewController: UIViewController {
         self.options.transparentMaskEnabled = true
         self.navigationController?.navigationBar.start(options)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.navigationController?.navigationBar.stop()
         })
         self.pastDayOfWeekLabels = [self.day01DayOfWeek,self.day02DayOfWeek,self.day03DayOfWeek,self.day04DayOfWeek,self.day05DayOfWeek,self.day06DayOfWeek,self.day07DayOfWeek]

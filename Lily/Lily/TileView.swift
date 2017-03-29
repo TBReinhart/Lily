@@ -9,7 +9,6 @@ import UIKit
 import SMIconLabel
 
 @IBDesignable
-
 class TileView: UIView {
 
     @IBOutlet var view: UIView!

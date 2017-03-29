@@ -92,7 +92,7 @@ class ActivityViewController: UIViewController {
         self.options.transparentMaskEnabled = true
         self.navigationController?.navigationBar.start(options)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.navigationController?.navigationBar.stop()
         })
         self.dayViews = [self.day01View, self.day02View, self.day03View, self.day04View,self.day05View,self.day06View, self.day07View, self.weekTotalView]

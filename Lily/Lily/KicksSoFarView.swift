@@ -9,7 +9,6 @@
 import UIKit
 
 @IBDesignable
-
 class KicksSoFarView: UIView {
     @IBOutlet var view: UIView!
     @IBOutlet weak var image: UIImageView!

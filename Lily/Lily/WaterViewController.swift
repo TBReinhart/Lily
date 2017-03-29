@@ -81,6 +81,9 @@ class WaterViewController: UIViewController {
         self.options.transparentMaskEnabled = true
         // Start animation
         self.navigationController?.navigationBar.start(options)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            self.navigationController?.navigationBar.stop()
+        })
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.enteredBackground(notification:)), name:NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.appWillTerminate(notification:)), name:NSNotification.Name.UIApplicationWillTerminate, object: nil)

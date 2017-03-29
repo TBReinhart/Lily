@@ -7,8 +7,8 @@
 //
 
 import UIKit
-@IBDesignable
 
+@IBDesignable
 class WeeklyMiddleView: UIView {
     
     @IBOutlet var view: UIView!

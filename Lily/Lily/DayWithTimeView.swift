@@ -17,7 +17,6 @@
 import UIKit
 
 @IBDesignable
-
 class DayWithTimeView: UIView {
     @IBOutlet var view: UIView!
     @IBOutlet weak var dayLabel: UILabel!

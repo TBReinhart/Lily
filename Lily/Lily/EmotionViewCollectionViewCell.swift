@@ -17,6 +17,10 @@ class EmotionViewCollectionViewCell: UICollectionViewCell {
         
     }
     
+    func isEmotionSelected() -> Bool {
+        return emotionView.isSelected
+    }
+    
     func setView(v: UIView) {
         for view in self.subviews {
             view.removeFromSuperview()

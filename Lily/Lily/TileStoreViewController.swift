@@ -92,7 +92,7 @@ class TileStoreViewController: UIViewController, UICollectionViewDelegate, UICol
         case "journal":
             self.performSegue(withIdentifier: "journalSegue", sender: nil)
         case "CallDoctor":
-            if let url = URL(string: "tel://\(7247669463)") {
+            if let url = URL(string: "tel:7247669463") {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         case "Star":

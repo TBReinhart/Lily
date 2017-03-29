@@ -43,6 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         return true
     }
+    
+    class func getDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
     // http://www.appcoda.com/push-notification-ios/
     // Step 8
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

@@ -83,7 +83,7 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         self.options.transparentMaskEnabled = true
         self.navigationController?.navigationBar.start(options)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.navigationController?.navigationBar.stop()
         })
         self.makeViewSwipeable()
