@@ -37,7 +37,7 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
         tableview.delegate = self
         tableview.dataSource = self
         dayNames = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Week Average"]
-        dayTimes = ["0:00:00", "0:00:00","0:00:00", "0:00:00", "0:00:00", "0:00:00", "0:00:00", "0:00:00"]
+        dayTimes = ["1:35:49", "1:42:04","1:25:14", "1:12:55", "1:02:02", "1:05:25", "1:42:20", "1:24:05"]
 
         self.setAdvice(advice: self.advice)
         self.setAdviceLink(source: self.source)
@@ -211,19 +211,24 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
                 self.weeklyKicksTime += json["kicksTotalTime"].intValue
                 self.daysRecorded += 1
                 let avgStr = Helpers.timeString(time: kickAvgSeconds)
-                self.weeklyTimesView.views[index].setTimeLabel(time: avgStr)
+                print(avgStr)
+                self.weeklyTimesView.views[index].setTimeLabel(time: self.dayTimes[index])
+                // TODO uncomment
+               // self.weeklyTimesView.views[index].setTimeLabel(time: avgStr)
                 if self.daysRecorded == 7 {
-                    print("Total kicks \(self.weeklyKicks)")
-                    print("Weekly kicks time \(self.weeklyKicksTime)")
                     var weeklyAvgTime = 0
                     if self.weeklyKicks != 0 {
                         weeklyAvgTime = (self.weeklyKicksTime / self.weeklyKicks) * 10
                     }
-                    print("weekly avg time \(weeklyAvgTime)")
-                    print("Weekly avg kicks per day \(self.weeklyKicks / 7)")
-                    self.weeklyTimesView.weeklyView.weeklyMiddleView.setMainStatLabel(text: String(self.weeklyKicks / 7))
+                    print(weeklyAvgTime)
+                    // TODO uncomment
+                   // self.weeklyTimesView.weeklyView.weeklyMiddleView.setMainStatLabel(text: String(self.weeklyKicks / 7))
+                    self.weeklyTimesView.weeklyView.weeklyMiddleView.setMainStatLabel(text: "10")
+
                     //self.weeklyTimesView.weeklyView.weeklyMiddleView.setStatDetailLabel(text: "Kicks/day")
-                    self.weeklyTimesView.views[7].setTimeLabel(time: Helpers.timeString(time: weeklyAvgTime))
+                    self.weeklyTimesView.views[7].setTimeLabel(time: self.dayTimes[index])
+                    // TODO uncomment
+                    //self.weeklyTimesView.views[7].setTimeLabel(time: Helpers.timeString(time: weeklyAvgTime))
                 }
                 
             }) { (error) in

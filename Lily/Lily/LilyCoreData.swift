@@ -28,8 +28,8 @@ class LilyCoreData {
             for item in user {
                 print(item.objectID)
                 for key in item.entity.attributesByName.keys{
-                    let value: Any? = item.value(forKey: key)
-                    print("\(key) = \(value)")
+                    let _: Any? = item.value(forKey: key)
+                    //print("\(key) = \(value)")
                 }
             }
         } catch let error as NSError {

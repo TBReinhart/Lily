@@ -83,11 +83,14 @@ class ViewController: UIViewController {
         let loader = OAuth2DataLoader(oauth2: oauth2)
         self.loader = loader
         // loads basic user profile now that logged in
+        HUD.hide()
+
         loader.perform(request: userDataRequest) { response in
             do {
                 let json = try response.responseJSON()
                 self.extractUserData(json: json)
                 self.createUserHelper(method: "Fitbit")
+                
 
             }
             catch let error {
@@ -145,7 +148,7 @@ class ViewController: UIViewController {
                         print("email in use")
                         self.signIn(user: password, email: email, password: password)
                     default:
-                        print("Create User Error: \(error)")
+                        print("Create User Error: \(String(describing: error))")
                     }
                 }
                 Helpers.createEmptyDailyLog()
@@ -185,7 +188,7 @@ class ViewController: UIViewController {
 
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                debugPrint("ERROR: \(error)")
+                debugPrint("ERROR: \(String(describing: error))")
             }
             HUD.flash(.success, delay: 0.5)
             self.performSegue(withIdentifier: "loggedInSegue", sender: self)

@@ -133,6 +133,8 @@
 		2FA9ECA11E685DA2004ECF1E /* KickCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9ECA01E685DA2004ECF1E /* KickCellView.xib */; };
 		2FA9ECA31E6864E9004ECF1E /* WeeklyTimesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */; };
 		2FA9ECA51E686549004ECF1E /* WeeklyBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */; };
+		2FB3CEFE1E8D585600281E8C /* VoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB3CEFD1E8D585600281E8C /* VoiceView.xib */; };
+		2FB3CF001E8D593700281E8C /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB3CEFF1E8D593700281E8C /* VoiceView.swift */; };
 		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
 		2FB99A471E663E070098865E /* ActivityTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB99A461E663E070098865E /* ActivityTileView.swift */; };
 		2FB99A491E663E330098865E /* ActivityTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB99A481E663E330098865E /* ActivityTile.xib */; };
@@ -315,6 +317,8 @@
 		2FA9ECA01E685DA2004ECF1E /* KickCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KickCellView.xib; sourceTree = "<group>"; };
 		2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeeklyTimesView.xib; path = Lily/WeeklyTimesView.xib; sourceTree = "<group>"; };
 		2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeeklyBarView.xib; path = Lily/WeeklyBarView.xib; sourceTree = "<group>"; };
+		2FB3CEFD1E8D585600281E8C /* VoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VoiceView.xib; path = Lily/VoiceView.xib; sourceTree = "<group>"; };
+		2FB3CEFF1E8D593700281E8C /* VoiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceView.swift; path = Lily/VoiceView.swift; sourceTree = "<group>"; };
 		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
 		2FB99A461E663E070098865E /* ActivityTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityTileView.swift; path = Lily/ActivityTileView.swift; sourceTree = "<group>"; };
 		2FB99A481E663E330098865E /* ActivityTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityTile.xib; path = Lily/ActivityTile.xib; sourceTree = "<group>"; };
@@ -504,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8127011E5EA46B00B625E1 /* TileView.xib */,
+				2FB3CEFD1E8D585600281E8C /* VoiceView.xib */,
 				2FBD8D741E871022001529FF /* EmotionCellView.xib */,
 				2F0044881E5FBF74000E8BF6 /* WaterTile.xib */,
 				2F0044911E61D837000E8BF6 /* SleepTile.xib */,
@@ -527,6 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				2F0044781E5F6E5B000E8BF6 /* TileCollectionViewCell.swift */,
+				2FB3CEFF1E8D593700281E8C /* VoiceView.swift */,
 				2FC356411E8820C90055724F /* EmotionViewCollectionViewCell.swift */,
 				2FFCB40E1E68B766008622BB /* WeeklyTimesView.swift */,
 				2FBD8D7A1E8716AC001529FF /* EmotionCellView.swift */,
@@ -725,7 +731,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Tom Reinhart";
 				TargetAttributes = {
 					2FA1CD581E0347AF00778DF3 = {
@@ -828,6 +834,7 @@
 				2F0044811E5FB7F1000E8BF6 /* Star.png in Resources */,
 				2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */,
 				2FE264301E3C3A82004DB460 /* ConnectWithHealthKit.png in Resources */,
+				2FB3CEFE1E8D585600281E8C /* VoiceView.xib in Resources */,
 				2F8A4E7C1E67BA4300F4C017 /* kick_button.png in Resources */,
 				2F3983BD1E8040D2001F0B78 /* contraction_timer.png in Resources */,
 				2F76586B1E86D3D700B8F624 /* like_crying_circle.png in Resources */,
@@ -1035,6 +1042,7 @@
 				2F3983B11E803C96001F0B78 /* TileStoreViewController.swift in Sources */,
 				2F3EAFB71E4D0C0500214FC4 /* ActivityViewController.swift in Sources */,
 				2FC0BA5F1E417D92007B291C /* WaterViewController.swift in Sources */,
+				2FB3CF001E8D593700281E8C /* VoiceView.swift in Sources */,
 				2F0044791E5F6E5B000E8BF6 /* TileCollectionViewCell.swift in Sources */,
 				2F2A1C6A1E841E2C00B5C077 /* JournalEntryViewController.swift in Sources */,
 				2F0044901E61C54E000E8BF6 /* WhatHappenedThatDay.swift in Sources */,

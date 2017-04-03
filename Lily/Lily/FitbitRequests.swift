@@ -1357,8 +1357,6 @@ class FitbitRequests {
                 completionHandler(nil, error)
             } else {
                 if json != nil {
-                    print("HR doh \(json)")
-
                     let restingHeartRate = json?["activities-heart"][0]["value"]["restingHeartRate"].intValue
                     let dateString = json?["activities-heart"][0]["value"]["dateTime"].stringValue
                     let date = Helpers.getDateFromyyyyMMdd(dateString: dateString!)
@@ -1374,7 +1372,6 @@ class FitbitRequests {
                             }
                         }
                     }
-
                     hr.dayOfWeek = dayOfWeek
                     hr.maximumBPM = highestMax
                     hr.averageBPM = restingHeartRate ?? 0

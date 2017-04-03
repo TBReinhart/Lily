@@ -10,20 +10,14 @@ import UIKit
 import SCLAlertView
 import SendGrid
 import UserNotifications
-import Speech
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SFSpeechRecognizerDelegate {
-
-    fileprivate let sectionInsets = UIEdgeInsets(top: 25.0, left: 20.0, bottom: 50.0, right: 20.0)
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))  //1
-    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    private var recognitionTask: SFSpeechRecognitionTask?
-    private let audioEngine = AVAudioEngine()
-    // Siri Wave Vars
-    var timer:Timer?
-    var change:CGFloat = 0.01
-//    @IBOutlet weak var audioView: SwiftSiriWaveformView!
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    var voiceView: VoiceView!
     
+    fileprivate let sectionInsets = UIEdgeInsets(top: 25.0, left: 20.0, bottom: 50.0, right: 20.0)
+    var fbreqs = FitbitRequests()
+    var refreshControl:UIRefreshControl!
+
     
     
     @IBOutlet weak var TileCollectionView: UICollectionView!
@@ -44,24 +38,57 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         self.TileCollectionView.addGestureRecognizer(longPressGesture)
         self.automaticallyAdjustsScrollViewInsets = false
-        
+        self.loadNavBar()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UIApplication.shared.applicationIconBadgeNumber = 0
         Session.shared.authentication = Authentication.apiKey("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")
-        self.loadMicrophoneAtLaunch()
+        let screenSize: CGRect = UIScreen.main.bounds
+        voiceView = VoiceView(frame: CGRect(x: 0, y: 0, width: screenSize.width , height: screenSize.height))
+        voiceView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        voiceView.xButton.addTarget(self, action:#selector(self.xPressed), for: UIControlEvents.touchUpInside)
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        self.TileCollectionView.addSubview(refreshControl)
     }
+    
+    func refresh() {
+        
+    }
+
+    func loadNavBar() {
+        ///
+        let micButton = UIButton.init(type: .custom)
+        micButton.setImage(UIImage.init(named: "microphone.png"), for: UIControlState.normal)
+        micButton.addTarget(self, action:#selector(self.micPressed), for: UIControlEvents.touchUpInside)
+        micButton.frame = CGRect.init(x: 0, y: 0, width: 20, height: 30)
+        let rightBarButton = UIBarButtonItem.init(customView: micButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let exportButton = UIButton.init(type: .custom)
+        exportButton.setImage(UIImage.init(named: "exportButtonIcon"), for: UIControlState.normal)
+        exportButton.addTarget(self, action:#selector(self.exportPressed), for: UIControlEvents.touchUpInside)
+        exportButton.frame = CGRect.init(x: 0, y: 0, width: 20, height: 30)
+        let leftBarButton = UIBarButtonItem.init(customView: exportButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+    }
+    
+    
     func exportPressed() {
         // Add a text field
         let alert = SCLAlertView()
         let txt = alert.addTextField("your-email@gmail.com")
         alert.addButton("Send") {
-            print("Text value: \(txt.text ?? nil)")
+            print("Text value: \(String(describing: txt.text))")
             print("Email from box")
             self.sendEmail(email: "treinhart4115@gmail.com")
         }
         let alertViewIcon = UIImage(named: "sendIcon") //Replace the IconImage text with the image name
         alert.showEdit("Export Health Data", subTitle: "Please provide an email", circleIconImage: alertViewIcon)
     }
+    
     func sendEmail(email: String) {
         let personalization = Personalization(recipients: "treinhart4115@gmail.com")
         let plainText = Content(contentType: ContentType.plainText, value: "Here is your Lily Health Data")
@@ -79,102 +106,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func startRecording() {
-        if recognitionTask != nil {
-            recognitionTask?.cancel()
-            recognitionTask = nil
-        }
-        
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setMode(AVAudioSessionModeMeasurement)
-            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
-        } catch {
-            print("audioSession properties weren't set because of an error.")
-        }
-        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        
-        guard let inputNode = audioEngine.inputNode else {
-            fatalError("Audio engine has no input node")
-        }
-        
-        guard let recognitionRequest = recognitionRequest else {
-            fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
-        }
-        
-        recognitionRequest.shouldReportPartialResults = false
-        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
-            
-            var isFinal = false
-            if result != nil {
-                isFinal = (result?.isFinal)!
-                var query = result?.bestTranscription.formattedString
-                query = query?.replacingOccurrences(of: "Cagle's", with: "kegels")
-                query = query?.replacingOccurrences(of: "Cagle", with: "kegel")
-                
-                SweetAlert().showAlert("Is this OK?", subTitle: "\(query ?? "Oops. Something went wrong.")", style: AlertStyle.warning, buttonTitle:"Nope!", buttonColor:Helpers.UIColorFromRGB(rgbValue: 0xD0D0D0) , otherButtonTitle:  "YES!", otherButtonColor: Helpers.UIColorFromRGB(rgbValue: 0xDD6B55)) { (isOtherButton) -> Void in
-                    if isOtherButton == true {
-                        
-                        // SweetAlert().showAlert("Cancelled!", subTitle: "Let's give this another try", style: AlertStyle.error) // left
-                    }
-                    else {
-                        //SweetAlert().showAlert("Awesome!", subTitle: "Doing what you asked!", style: AlertStyle.success)
-                    }
-                }
-                
-                
-            }
-            if error != nil || isFinal {
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
-                self.enableMics()
-            }
-        })
-        
-        let recordingFormat = inputNode.outputFormat(forBus: 0)
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
-            self.recognitionRequest?.append(buffer)
-        }
-        
-        audioEngine.prepare()
-        
-        do {
-            try audioEngine.start()
-        } catch {
-            print("audioEngine couldn't start because of an error.")
-        }
-//        self.tapToSpeakLabel.isHidden = false
-//        self.tapToSpeakLabel.text = "Say something, I'm listening!"
-        
-    }
-    
-    func disableMics() {
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
-//        self.tapToSpeakButton.isEnabled = false
-    }
-    func enableMics() {
-        
-        self.navigationItem.rightBarButtonItem?.isEnabled = true
-//        self.tapToSpeakButton.isEnabled = true
-        
-    }
-    
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        if available {
-            self.enableMics()
-        } else {
-            self.disableMics()
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    // MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
@@ -189,29 +120,59 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    func loadSleepNDaysAgo(daysAgo: Int, completionHandler: @escaping (Sleep?, Error?) -> ()) {
+        let past = Helpers.getDateNDaysAgo(daysAgo: daysAgo)
+        let dateString = past.dateString
+        self.fbreqs.getSleepLogs(date: dateString) { sleep, error in
+            completionHandler(sleep ?? Sleep(), nil)
+            
+            
+        }
+    }
+    func loadWaterNDaysAgo(daysAgo: Int, completionHandler: @escaping (Water?, Error?) -> ()) {
+        let past = Helpers.getDateNDaysAgo(daysAgo: daysAgo)
+        let dateString = past.dateString
+        self.fbreqs.getWaterLogs(date: dateString) { water, error in
+            if let water = water {
+                completionHandler(water , nil)
+            }
+        }
+    }
+    
+    
     func getTile(tile: String) -> UIView {
         // TODO fill in
         if tile == "water" {
             let waterTile = WaterTileView()
-            waterTile.setCupsLabel(cups: "8")
+            self.loadWaterNDaysAgo(daysAgo: 0) { water, err in
+                let waterConsumed = water?.cupsConsumed ?? 0
+                waterTile.setCupsLabel(cups: "\(Int(waterConsumed))")
+
+            }
             waterTile.setGoalsCupLabel(text: "of 10 cups")
             waterTile.setImage(name: "water")
             return waterTile
         } else if tile == "Calendar" {
             let whtdTile = WhatHappenedThatDay()
             whtdTile.setImage(name: "Calendar")
-            whtdTile.setDowLabel(dow: "Tuesday")
-            whtdTile.setNumberLabel(number: "28")
+            whtdTile.setDowLabel(dow: Helpers.getDayOfWeek(date: Date())!)
+            whtdTile.setNumberLabel(number: "\(Helpers.getDateComponent(date: Date()).day)")
             return whtdTile
         } else if tile == "Moon" {
             let sleepTile = SleepTileView()
             sleepTile.setImage(name: "Moon")
-            sleepTile.setTimeLabel(time: "6h 51m")
+            self.loadSleepNDaysAgo(daysAgo: 0) { sleep, err in
+                sleepTile.setTimeLabel(time: (sleep?.sleepLabel)!)
+
+            }
             return sleepTile
         } else if tile == "Activity" {
             let activityTile = ActivityTileView()
             activityTile.setTotalLabel(total: "30")
-            activityTile.setProgressRing(value: 12.0, maxValue: 30.0)
+            let d = Helpers.getDateNDaysAgo(daysAgo: 0).dateString
+            self.fbreqs.getDailyActivity(date: d) { activity, err in
+                activityTile.setProgressRing(value: Double(activity.veryActiveMinutes + activity.fairlyActiveMinutes), maxValue: 30.0)
+            }
             activityTile.setMainLabel(title: "Activity")
             return activityTile
         } else {
@@ -224,113 +185,30 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             }
             tileView.middleLabel.isHidden = true
-            
             if tile == "Heart" {
                 tileView.middleLabel.isHidden = false
                 tileView.middleLabel.text = "54"
             }
             return tileView
         }
-        
-        
-        
     }
     
     func micPressed() {
-//        
-//        if audioEngine.isRunning {
-//            audioEngine.stop()
-//            recognitionRequest?.endAudio()
-//            self.navigationItem.rightBarButtonItem?.isEnabled = false
-//            self.audioView.isHidden = true
-//            self.tapToSpeakLabel.text = "Tap to speak"
-//            self.tapToSpeakButton.setImage(UIImage(named: "MicWhite"), for: .normal)
-//            
-//            self.tapToSpeakButton.isEnabled = true
-//            
-//        } else {
-//            startRecording()
-//            self.tapToSpeakLabel.isHidden = false
-//            self.audioView.isHidden = false
-//            self.tapToSpeakButton.setImage(UIImage(named: "micWithOrangeBorder"), for: .normal)
-//            self.tapToSpeakLabel.text = "Tap to stop recording"
-//            self.tapToSpeakButton.isEnabled = true
-//            
-//        }
-        
+
+        self.navigationController?.navigationBar.layer.zPosition = -1
+        self.view.addSubview(self.voiceView)
+        self.voiceView.isHidden = false
+        self.voiceView.micButtonPressed(self.voiceView.micButton)
     }
     
-    internal func refreshAudioView(_:Timer) {
-//        if self.audioView.amplitude <= self.audioView.idleAmplitude || self.audioView.amplitude > 1.0 {
-//            self.change *= -1.0
-//        }
-//        
-//        // Simply set the amplitude to whatever you need and the view will update itself.
-//        self.audioView.amplitude += self.change
+    func xPressed() {
+        self.navigationController?.navigationBar.layer.zPosition = 0
     }
-    
-    func loadMicrophoneAtLaunch() {
-
-        ///
-        let micButton = UIButton.init(type: .custom)
-        micButton.setImage(UIImage.init(named: "microphone.png"), for: UIControlState.normal)
-        micButton.addTarget(self, action:#selector(self.micPressed), for: UIControlEvents.touchUpInside)
-        micButton.frame = CGRect.init(x: 0, y: 0, width: 20, height: 30) //CGRectMake(0, 0, 30, 30)
-        let rightBarButton = UIBarButtonItem.init(customView: micButton)
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        let exportButton = UIButton.init(type: .custom)
-        exportButton.setImage(UIImage.init(named: "exportButtonIcon"), for: UIControlState.normal)
-        exportButton.addTarget(self, action:#selector(self.exportPressed), for: UIControlEvents.touchUpInside)
-        exportButton.frame = CGRect.init(x: 0, y: 0, width: 20, height: 30) //CGRectMake(0, 0, 30, 30)
-        let leftBarButton = UIBarButtonItem.init(customView: exportButton)
-        self.navigationItem.leftBarButtonItem = leftBarButton
-        
-        
-
-        timer = Timer.scheduledTimer(timeInterval: 0.009, target: self, selector: #selector(refreshAudioView(_:)), userInfo: nil, repeats: true)
-        
-        self.disableMics()
-        
-        speechRecognizer?.delegate = self  //3
-        
-        SFSpeechRecognizer.requestAuthorization { (authStatus) in  //4
-            
-            var isButtonEnabled = false
-            
-            switch authStatus {  //5
-            case .authorized:
-                isButtonEnabled = true
-                
-            case .denied:
-                isButtonEnabled = false
-                //                print("User denied access to speech recognition")
-                
-            case .restricted:
-                isButtonEnabled = false
-                //                print("Speech recognition restricted on this device")
-                
-            case .notDetermined:
-                isButtonEnabled = false
-                //                print("Speech recognition not yet authorized")
-            }
-            
-            OperationQueue.main.addOperation() {
-                if isButtonEnabled {
-                    self.enableMics()
-                } else {
-                    self.disableMics()
-                }
-            }
-        }
-    }
-
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected item: \(indexPath.row)")
         print(self.images[indexPath.row])
-        // ["Activity", "Moon", "balance", "Checklist", "Heart" ,"Baby", "journal", "CallDoctor", "Star", "Store", "water", "Calendar"]
         switch self.images[indexPath.row] {
         case "Activity":
             self.performSegue(withIdentifier: "activitySegue", sender: nil)
@@ -362,6 +240,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return
         }
     }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -373,7 +254,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView,
                         moveItemAt sourceIndexPath: IndexPath,
                         to destinationIndexPath: IndexPath) {
-        // move your data order
         swap(&self.images[sourceIndexPath.row], &self.images[destinationIndexPath.row])
     }
     

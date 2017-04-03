@@ -48,6 +48,7 @@ PODS:
   - SMIconLabel (0.4.0)
   - SwiftSiriWaveformView (2.0.0)
   - SwiftyJSON (3.1.3)
+  - TouchVisualizer (2.0.1)
   - UICircularProgressRing (1.1.6)
 
 DEPENDENCIES:
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - SMIconLabel
   - SwiftSiriWaveformView
   - SwiftyJSON
+  - TouchVisualizer (~> 2.0.1)
   - UICircularProgressRing
 
 EXTERNAL SOURCES:
@@ -96,8 +98,9 @@ SPEC CHECKSUMS:
   SMIconLabel: a30e4316fb3d7808549005faa6a6798c06c2eeba
   SwiftSiriWaveformView: 85328da51cf5f3c6a0dbcdf9186f4417edf1b538
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
+  TouchVisualizer: d1bd1b438d084245332c222d9e14416c271c5f25
   UICircularProgressRing: 892adf48ea0bdc218057c4e62c5e3a8609bd5b1c
 
-PODFILE CHECKSUM: aeebd4c5f34e4e8a4fb6f4bf814ed56712c78045
+PODFILE CHECKSUM: 14d87ac448bdbb3d39f6f6d60f5008e93e87834b
 
 COCOAPODS: 1.1.1

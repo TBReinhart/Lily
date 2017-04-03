@@ -91,14 +91,13 @@ class Helpers {
         }
     }
     static func checkIfUserExists(key: String) {
-        var ref: FIRDatabaseReference!
         let user = FIRAuth.auth()?.currentUser
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let dateInFormat = dateFormatter.string(from: NSDate() as Date)
         if let uid = user?.uid {
             print("MY UID: \(uid)")
-            let refToCehck = ref.child("users/\(uid)/logs/")
+            let refToCehck = FIRDatabaseReference().child("users/\(uid)/logs/")
             
             refToCehck.observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -128,7 +127,7 @@ class Helpers {
     }
     
     static func postDailyLogToFirebaseUpdateValue(key: String, value: Int) {
-        var ref: FIRDatabaseReference!
+        var _: FIRDatabaseReference!
 
         let user = FIRAuth.auth()?.currentUser
         let dateFormatter = DateFormatter()
@@ -247,4 +246,20 @@ class Helpers {
         return short
 
     }
+    static func getDayOfWeek(date: Date) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: date).capitalized
+        // or use capitalized(with: locale) if you want
+    }
+    
+    static func getDateComponent(date: Date) -> (day: Int, month: Int, year: Int) {
+        let calendar = Calendar.current
+        
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        return (day, month, year)
+    }
 }
+

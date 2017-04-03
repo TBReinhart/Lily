@@ -243,7 +243,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         let alert = SCLAlertView()
         let txt = alert.addTextField("your-email@gmail.com")
         alert.addButton("Send") {
-            print("Text value: \(txt.text ?? nil)")
+            print("Text value: \(String(describing: txt.text ?? nil))")
             print("Email from box")
             self.sendEmail(email: "treinhart4115@gmail.com")
         }
@@ -443,7 +443,7 @@ class HomeScreenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.fbreqs.getWaterGoal() { goal, error in
             if goal != nil {
                 let cups = Double(goal!)
-                self.waterGoalLabel.text = "of \(cups) cups"
+                self.waterGoalLabel.text = "of \(String(describing: cups)) cups"
                 Helpers.postDailyLogToFirebase(key: "waterCupsGoal", value: cups ?? 0)
 
             } else {

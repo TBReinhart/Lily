@@ -34,7 +34,6 @@ class WeeklyBarView: UIView {
         view.frame = bounds
         addSubview(view)
         
-        
     }
     func hideBackButton() {
         self.backButton.isHidden = true

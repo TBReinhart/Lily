@@ -92,7 +92,6 @@ class DailyKickView: UIView {
     
     
     func updateTimer(){
-        print("updating timer")
         globalSeconds = globalSeconds + 1
         timeLabel.text = timeString(time: TimeInterval(globalSeconds))
         

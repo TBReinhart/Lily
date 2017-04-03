@@ -9,12 +9,13 @@ import UIKit
 import CoreData
 import Firebase
 import IQKeyboardManagerSwift
+import TouchVisualizer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
-    
+
     var globalTimer: Timer?
     var globalSeconds = 0
     var globalTimerHasStarted = false
@@ -24,9 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let navBgImage:UIImage = UIImage(named: "NavigationBar.png")!
         UINavigationBar.appearance().setBackgroundImage(navBgImage, for: .default)
         
+        Visualizer.start()
+//        Visualizer.stop()
+
         
         UINavigationBar.appearance().titleTextAttributes = [
-//            NSFontAttributeName: UIFont(name: "BlackJack", size: 24)!,
             NSForegroundColorAttributeName: UIColor.white
         ]
 

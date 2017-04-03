@@ -242,7 +242,7 @@ class HealthKitRequests {
         query.initialResultsHandler = { query, results, error in
             
             if error != nil {
-                print("error \(error)")
+                print("error \(String(describing: error))")
                 completionHandler(nil, error)
                 return
             }

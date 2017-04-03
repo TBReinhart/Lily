@@ -50,7 +50,7 @@ open class OAuth2WebViewController: UIViewController, UIWebViewDelegate {
 					interceptComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
 				}
 				else {
-					oauth?.logger?.debug("OAuth2", msg: "Failed to parse URL \(interceptURLString), discarding")
+					oauth?.logger?.debug("OAuth2", msg: "Failed to parse URL \(String(describing: interceptURLString)), discarding")
 					interceptURLString = nil
 				}
 			}
