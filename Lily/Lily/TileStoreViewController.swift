@@ -23,13 +23,6 @@ class TileStoreViewController: UIViewController, UICollectionViewDelegate, UICol
         self.TileCollectionView.delegate = self
         self.TileCollectionView.dataSource = self
         self.automaticallyAdjustsScrollViewInsets = false
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -50,13 +43,6 @@ class TileStoreViewController: UIViewController, UICollectionViewDelegate, UICol
         let tileView = TileView()
         tileView.image.image = UIImage(named: tile)
         tileView.image.contentMode = .scaleAspectFit
-
-//        if titles[tile] == "Morning Sickness Tracker" {
-//            tileView.mainLabel.text = "Morning Sickness\n Tracker"
-//        } else {
-//            tileView.mainLabel.text = titles[tile]
-//        }
-        
         tileView.mainLabel.text = titles[tile]
 
         

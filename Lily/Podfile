@@ -8,6 +8,7 @@ target 'Lily' do
    # Pods for Lily
     pod 'p2.OAuth2', '~> 3.0'
     pod 'Alamofire', '~> 4.0'
+    pod 'Charts'
     pod 'SwiftyJSON'
     pod 'Firebase/Core'
     pod 'Firebase/Auth'

@@ -20,6 +20,7 @@
 		2F0044901E61C54E000E8BF6 /* WhatHappenedThatDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */; };
 		2F0044921E61D837000E8BF6 /* SleepTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F0044911E61D837000E8BF6 /* SleepTile.xib */; };
 		2F0044981E61DAFA000E8BF6 /* SleepTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0044971E61DAFA000E8BF6 /* SleepTileView.swift */; };
+		2F039EEC1E941395001021E6 /* WeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F039EEB1E941395001021E6 /* WeightViewController.swift */; };
 		2F0A47751E8085DF00C13800 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A47741E8085DF00C13800 /* JournalViewController.swift */; };
 		2F0F75EA1E368B71004BCE2D /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F75E91E368B71004BCE2D /* SweetAlert.swift */; };
 		2F2A1C6A1E841E2C00B5C077 /* JournalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2A1C691E841E2C00B5C077 /* JournalEntryViewController.swift */; };
@@ -202,6 +203,7 @@
 		2F00448F1E61C54E000E8BF6 /* WhatHappenedThatDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhatHappenedThatDay.swift; path = Lily/WhatHappenedThatDay.swift; sourceTree = "<group>"; };
 		2F0044911E61D837000E8BF6 /* SleepTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SleepTile.xib; path = Lily/SleepTile.xib; sourceTree = "<group>"; };
 		2F0044971E61DAFA000E8BF6 /* SleepTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SleepTileView.swift; path = Lily/SleepTileView.swift; sourceTree = "<group>"; };
+		2F039EEB1E941395001021E6 /* WeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeightViewController.swift; path = Lily/WeightViewController.swift; sourceTree = "<group>"; };
 		2F0A47741E8085DF00C13800 /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JournalViewController.swift; path = Lily/JournalViewController.swift; sourceTree = "<group>"; };
 		2F0F75E91E368B71004BCE2D /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		2F2A1C691E841E2C00B5C077 /* JournalEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JournalEntryViewController.swift; path = Lily/JournalEntryViewController.swift; sourceTree = "<group>"; };
@@ -521,9 +523,9 @@
 				2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */,
 				2F683F281E68763000CC2641 /* weeklyMiddleView.xib */,
 				2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */,
+				2F3983BE1E804983001F0B78 /* HalfCircleView.xib */,
 				2FFCB4161E68FD1B008622BB /* AdvicePanelView.xib */,
 				2F683F221E68701400CC2641 /* WeeklyView.xib */,
-				2F3983BE1E804983001F0B78 /* HalfCircleView.xib */,
 			);
 			name = xibs;
 			sourceTree = "<group>";
@@ -623,6 +625,7 @@
 				2F0A47741E8085DF00C13800 /* JournalViewController.swift */,
 				2F2A1C691E841E2C00B5C077 /* JournalEntryViewController.swift */,
 				2F7658971E86F65000B8F624 /* EmotionsViewController.swift */,
+				2F039EEB1E941395001021E6 /* WeightViewController.swift */,
 				2F00448A1E5FC05C000E8BF6 /* Views */,
 			);
 			name = ViewControllers;
@@ -1032,6 +1035,7 @@
 				2F683F251E68702800CC2641 /* WeeklyView.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,
 				2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */,
+				2F039EEC1E941395001021E6 /* WeightViewController.swift in Sources */,
 				2F683F2B1E68796300CC2641 /* WeeklyMiddleView.swift in Sources */,
 				2FFCB40F1E68B766008622BB /* WeeklyTimesView.swift in Sources */,
 				2F8A4E761E67B83400F4C017 /* DayWithTimeView.swift in Sources */,
