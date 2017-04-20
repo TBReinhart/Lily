@@ -234,7 +234,7 @@
         <scene sceneID="FCx-4b-5Z4">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" id="k97-H2-mPo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7rC-1i-Mcq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7rC-1i-Mcq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

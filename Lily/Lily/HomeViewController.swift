@@ -28,10 +28,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var TileCollectionView: UICollectionView!
 
-    var images = ["water", "Activity", "Heart" ,  "balance", "Moon", "Checklist", "Calendar", "Baby", "journal", "CallDoctor", "Star", "Store"]
+    var images = ["water", "Activity", "Heart" ,  "balance", "Moon", "Checklist", "Calendar", "Baby", "journal", "CallDoctor", "Star"]
     
     
-    let titles: [String: String] = ["Activity":"Activity", "balance":"Weight Log", "Checklist": "Emotion Log", "Baby":"Baby Movement Log", "Heart":"Heart Rate", "journal": "My Journal", "CallDoctor": "Call the Doctor", "Star": "My Goals", "Store": "Tile Store", "water": "Water Consumption", "Calendar":"What happened that day?", "Moon":"Sleep"]
+    let titles: [String: String] = ["Activity":"Activity", "balance":"Weight Log", "Checklist": "Emotion Log", "Baby":"Baby Movement Log", "Heart":"Heart Rate", "journal": "My Journal", "CallDoctor": "Call the Doctor", "Star": "My Goals", "water": "Water Consumption", "Calendar":"What happened that day?", "Moon":"Sleep"]
     fileprivate var longPressGesture: UILongPressGestureRecognizer!
     
     override func viewDidLoad() {
@@ -54,7 +54,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         voiceView.xButton.addTarget(self, action:#selector(self.xPressed), for: UIControlEvents.touchUpInside)
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.attributedTitle = NSAttributedString(string: "")
         self.refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
         self.TileCollectionView.addSubview(refreshControl)
     }

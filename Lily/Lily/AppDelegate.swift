@@ -45,7 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
-        
+        UserDefaults.standard.setValue(false, forKey:"_UIConstraintBasedLayoutLogUnsatisfiable") // disables warnings for views in console
+
         checkIfUserInFirebase()
         
         
@@ -62,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             // if a firebase user, then need to make sure logged in
             if let loginMethod = UserDefaults.standard.value(forKey: "loginMethod") as? String {
                 if loginMethod == "Fitbit" {
+                    print("will try and get fitbit tokens")
                     isLoggedInToFitbit()
                 } else if loginMethod == "HealthKit" {
                     // check something
@@ -77,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         }
     }
     
-    var oauth2 = OAuth2CodeGrant(settings: [
+    var oauth2 = OAuth2ImplicitGrant(settings: [
         "client_id": "2285YX",
         "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
         "authorize_uri": "https://www.fitbit.com/oauth2/authorize",
@@ -91,9 +93,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func isLoggedInToFitbit() {
         oauth2.authConfig.authorizeEmbedded = true
-        oauth2.authConfig.authorizeContext = self
+         let vcInstance : UIViewController  = ViewController()
+        oauth2.authConfig.authorizeContext = vcInstance
+        oauth2.logger = OAuth2DebugLogger(.trace)
+        print("is logged in to fitbit?")
         oauth2.authorize() { authParameters, error in
             if let params = authParameters {
+                print("success in oauth2 appdelegate")
                 print("authorized in app delegate")
                 print("Authorized! Access token is in `oauth2.accessToken`")
                 print("Authorized! Additional parameters: \(params)")
@@ -101,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
             }
             else {
-                print("Authorization was cancelled or went wrong: \(error)")   // error will not be nil
+                print("Authorization was cancelled or went wrong in appdelegate: \(error)")   // error will not be nil
             }
         }
 
@@ -121,7 +127,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("FAILED TO REGISTER FOR NOTIFICATIONS")
         print(error)
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

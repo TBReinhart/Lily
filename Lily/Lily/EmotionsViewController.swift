@@ -11,6 +11,9 @@ import SafariServices
 import Charts
 import SwiftyJSON
 import Firebase
+import PKHUD
+
+
 class EmotionsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var weeklyBarView: WeeklyBarView!
@@ -249,7 +252,16 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     
     func logEmotions() {
+        
         Helpers.postDailyLogToFirebase(key: "emotions", value: self.dailyEmotionsDict)
+        HUD.flash(.success)
+        self.logButton.setImage(#imageLiteral(resourceName: "grey_log_button.png"), for: .normal)
+
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -296,9 +308,10 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     func buttonClicked(sender: UIButton) {
         if isAnyButtonSelected() {
             self.logButton.setImage(#imageLiteral(resourceName: "green_log_button.png"), for: .normal)
-        } else {
-            self.logButton.setImage(#imageLiteral(resourceName: "grey_log_button.png"), for: .normal)
         }
+//        else {
+//            self.logButton.setImage(#imageLiteral(resourceName: "grey_log_button.png"), for: .normal)
+//        }
     }
     
     func getEmotion(index: Int) -> String {

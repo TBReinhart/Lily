@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
     
     /// Instance of OAuth2 login credentials
-    var oauth2 = OAuth2CodeGrant(settings: [
+    var oauth2 = OAuth2ImplicitGrant(settings: [
         "client_id": "2285YX",
         "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
         "authorize_uri": "https://www.fitbit.com/oauth2/authorize",
@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         "redirect_uris": ["lily://oauth/callback"],            // app has registered this scheme
         "verbose": true,
         ] as OAuth2JSON)
+    
+    
     
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var signInEmbeddedButton: UIButton?
@@ -82,6 +84,7 @@ class ViewController: UIViewController {
     }
     
     
+    
     /**
      ## Embedded Sign In ##
      Use embedded login style using the OAuth2 loader to authorize a user for use in this client
@@ -90,19 +93,39 @@ class ViewController: UIViewController {
     @IBAction func signInEmbedded(_ sender: UIButton?) {
         HUD.show(.progress)
 
+        self.oauth2Login()
+
         
-        if oauth2.isAuthorizing {
-            oauth2.abortAuthorization()
-            return
-        }
+    }
+    
+    
+    func oauth2Login() {
         signInEmbeddedButton?.isEnabled = false
-        sender?.setTitle("Authorizing...", for: UIControlState.normal)
         oauth2.authConfig.authorizeEmbedded = true
         oauth2.authConfig.authorizeContext = self
-        let loader = OAuth2DataLoader(oauth2: oauth2)
+        oauth2.logger = OAuth2DebugLogger(.trace)
+        HUD.hide()
+
+        
+        oauth2.authorize() { authParameters, error in
+            if let params = authParameters {
+                print("Authorized in vc! Access token is in `oauth2.accessToken`")
+                print("Authorized! Additional parameters: \(params)")
+                self.saveFitbitUser()
+            }
+            else {
+                print("Authorization was cancelled in vc or went wrong: \(error)")   // error will not be nil
+                self.signInEmbeddedButton?.isEnabled = true
+                HUD.flash(.error, delay: 1.0)
+            }
+        }
+        
+    }
+    
+    func saveFitbitUser() {
+        let loader = OAuth2DataLoader(oauth2: self.oauth2)
         self.loader = loader
         // loads basic user profile now that logged in
-        HUD.hide()
         
         loader.perform(request: userDataRequest) { response in
             do {
@@ -118,7 +141,32 @@ class ViewController: UIViewController {
                 self.didCancelOrFail(error)
             }
         }
+
     }
+    
+    
+//    func isLoggedInToFitbit() {
+//        oauth2.authConfig.authorizeEmbedded = true
+//        oauth2.authConfig.authorizeContext = self
+//        oauth2.authorize() { authParameters, error in
+//            if let params = authParameters {
+//                print("authorized in app delegate")
+//                print("Authorized! Access token is in `oauth2.accessToken`")
+//                print("Authorized! Additional parameters: \(params)")
+//                self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController");
+//                
+//            }
+//            else {
+//                print("Authorization was cancelled or went wrong: \(error)")   // error will not be nil
+//                self.signInEmbeddedButton?.isEnabled = true
+//                HUD.flash(.error, delay: 1.0)
+//            }
+//        }
+//        
+//    }
+
+    
+    
 
     /**
      ## Extract Fitbit Data ##
@@ -149,6 +197,7 @@ class ViewController: UIViewController {
     func addAttributeToFirebaseUser(attributeName: String, value: Any) {
         self.ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
+        print("adding \(attributeName) to firebase")
         if let uid = user?.uid {
             ref.child("users/\(uid)/\(attributeName)").setValue(value)
         }
