@@ -90,6 +90,34 @@ class Helpers {
             ref.child("users/\(uid)/logs/\(dateInFormat)/\(key)").setValue(value)
         }
     }
+    
+    static func checkIfDailyLogExists() {
+        let user = FIRAuth.auth()?.currentUser
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let dateInFormat = dateFormatter.string(from: NSDate() as Date)
+        if let uid = user?.uid {
+            let ref = FIRDatabase.database().reference()
+
+            ref.child("users/\(uid)/logs").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                print(snapshot.value ?? "none")
+                print("Snap: \(snapshot)")
+                print("date \(dateInFormat)")
+                if snapshot.hasChild(dateInFormat){
+                    
+                    print("key exists")
+                    
+                } else{
+                    self.createEmptyDailyLog()
+                    print("key doesn't exist")
+                }
+                
+                
+            })
+        }
+    }
+    
     static func checkIfUserExists(key: String) {
         let user = FIRAuth.auth()?.currentUser
         let dateFormatter = DateFormatter()
@@ -114,6 +142,31 @@ class Helpers {
             })
         }
     }
+    
+    static func loadDailyLogFromFirebase(key: String, daysAgo: Int,  completionHandler: @escaping (JSON?, Error?) -> ()) {
+        let calendar = Calendar.current
+        let date = Date()
+        let pastDate = calendar.date(byAdding: .day, value: -1*daysAgo, to: date)
+        let df = DateFormatter()
+        df.dateFormat = "MM-dd-yyyy"
+        let specificDate = df.string(from: pastDate!)
+
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).child("logs/\(specificDate)/\(key)").observeSingleEvent(of: .value, with: { (snapshot) in
+            let json = JSON(snapshot.value!)
+            completionHandler(json, nil)
+            
+            // ...
+        }) { (error) in
+            completionHandler(nil, error)
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    // TODO daily log update
     static func createEmptyDailyLog() {
         Helpers.postDailyLogToFirebase(key: "activityMinutes", value : 0)
         Helpers.postDailyLogToFirebase(key: "activityMinutesGoal", value : 30)

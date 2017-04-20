@@ -18,6 +18,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var fbreqs = FitbitRequests()
     var refreshControl:UIRefreshControl!
 
+    var waterConsumed: Double?
+    var activityMinutes: Int?
+    var heartRate: String?
+    var sleep: String?
+    var dayOfWeek: String?
+    var numberDate: String?
     
     
     @IBOutlet weak var TileCollectionView: UICollectionView!
@@ -54,8 +60,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func refresh() {
+        print("refreshing")
+        self.TileCollectionView.reloadData()
+        self.refreshControl.endRefreshing()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // TODO in case you come back to this screen and reload a lot
         
     }
+
+    
+    
 
     func loadNavBar() {
         ///
@@ -129,6 +145,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
         }
     }
+    
+    // Load and save to Firebase
     func loadWaterNDaysAgo(daysAgo: Int, completionHandler: @escaping (Water?, Error?) -> ()) {
         let past = Helpers.getDateNDaysAgo(daysAgo: daysAgo)
         let dateString = past.dateString
@@ -139,16 +157,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    
+
     func getTile(tile: String) -> UIView {
         // TODO fill in
         if tile == "water" {
             let waterTile = WaterTileView()
-            self.loadWaterNDaysAgo(daysAgo: 0) { water, err in
-                let waterConsumed = water?.cupsConsumed ?? 0
-                waterTile.setCupsLabel(cups: "\(Int(waterConsumed))")
+            if self.waterConsumed == nil {
+                self.loadWaterNDaysAgo(daysAgo: 0) { water, err in
+                    let waterConsumed = water?.cupsConsumed ?? 0
+                    self.waterConsumed = waterConsumed
+                    waterTile.setCupsLabel(cups: "\(Int(self.waterConsumed!))")
+                    
+                }
+            } else {
+                waterTile.setCupsLabel(cups: "\(Int(self.waterConsumed!))")
 
             }
+
             waterTile.setGoalsCupLabel(text: "of 10 cups")
             waterTile.setImage(name: "water")
             return waterTile
@@ -161,8 +186,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         } else if tile == "Moon" {
             let sleepTile = SleepTileView()
             sleepTile.setImage(name: "Moon")
-            self.loadSleepNDaysAgo(daysAgo: 0) { sleep, err in
-                sleepTile.setTimeLabel(time: (sleep?.sleepLabel)!)
+            if self.sleep == nil {
+                self.loadSleepNDaysAgo(daysAgo: 0) { sleep, err in
+                    self.sleep = sleep?.sleepLabel
+                    sleepTile.setTimeLabel(time: self.sleep!)
+                }
+            } else {
+                sleepTile.setTimeLabel(time: (self.sleep)!)
 
             }
             return sleepTile
@@ -170,9 +200,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let activityTile = ActivityTileView()
             activityTile.setTotalLabel(total: "30")
             let d = Helpers.getDateNDaysAgo(daysAgo: 0).dateString
-            self.fbreqs.getDailyActivity(date: d) { activity, err in
-                activityTile.setProgressRing(value: Double(activity.veryActiveMinutes + activity.fairlyActiveMinutes), maxValue: 30.0)
+            if self.activityMinutes == nil {
+                self.fbreqs.getDailyActivity(date: d) { activity, err in
+                    self.activityMinutes = activity.veryActiveMinutes + activity.fairlyActiveMinutes
+                    // TODO log to firebase
+                    activityTile.setProgressRing(value: Double(self.activityMinutes!), maxValue: 30.0)
+                }
+            } else {
+                print("is using cached value instead")
+                activityTile.setProgressRing(value: Double(self.activityMinutes!), maxValue: 30.0)
             }
+
             activityTile.setMainLabel(title: "Activity")
             return activityTile
         } else {
@@ -180,12 +218,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             tileView.image.image = UIImage(named: tile)
             tileView.mainLabel.text = titles[tile]
             tileView.bottomLabel.text = ""
+            // TODO
             if title == "Baby" {
                 tileView.bottomLabel.text = "10 times today!"
 
             }
             tileView.middleLabel.isHidden = true
             if tile == "Heart" {
+                // TODO
                 tileView.middleLabel.isHidden = false
                 tileView.middleLabel.text = "54"
             }

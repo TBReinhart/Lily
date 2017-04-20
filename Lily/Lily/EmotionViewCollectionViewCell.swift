@@ -17,8 +17,16 @@ class EmotionViewCollectionViewCell: UICollectionViewCell {
         
     }
     
+    func setEmotion(selected: Bool) {
+        emotionView.setImage(emotion: emotionView.emotion, selected: selected)
+    }
+    
     func isEmotionSelected() -> Bool {
         return emotionView.isSelected
+    }
+    
+    func getEmotion() -> String {
+        return emotionView.emotion
     }
     
     func setView(v: UIView) {

@@ -10,11 +10,13 @@ import CoreData
 import Firebase
 import IQKeyboardManagerSwift
 import TouchVisualizer
+import p2_OAuth2
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
+    var storyboard: UIStoryboard?
 
     var globalTimer: Timer?
     var globalSeconds = 0
@@ -44,7 +46,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         application.registerForRemoteNotifications()
         
         
+        checkIfUserInFirebase()
+        
+        
+
+        
         return true
+    }
+    
+    func checkIfUserInFirebase() {
+        self.storyboard = UIStoryboard(name: "Main", bundle: Bundle.main);
+        let currentUser = FIRAuth.auth()?.currentUser
+        if currentUser != nil
+        {
+            // if a firebase user, then need to make sure logged in
+            if let loginMethod = UserDefaults.standard.value(forKey: "loginMethod") as? String {
+                if loginMethod == "Fitbit" {
+                    isLoggedInToFitbit()
+                } else if loginMethod == "HealthKit" {
+                    // check something
+                    self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController");
+
+                } else {
+                    return
+                }
+            }
+    
+
+            
+        }
+    }
+    
+    var oauth2 = OAuth2CodeGrant(settings: [
+        "client_id": "2285YX",
+        "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
+        "authorize_uri": "https://www.fitbit.com/oauth2/authorize",
+        "token_uri": "https://api.fitbit.com/oauth2/token",
+        "response_type": "code",
+        "expires_in": "31536000", // 1 year expiration
+        "scope": "activity heartrate location nutrition profile settings sleep social weight",
+        "redirect_uris": ["lily://oauth/callback"],            // app has registered this scheme
+        "verbose": true,
+        ] as OAuth2JSON)
+    
+    func isLoggedInToFitbit() {
+        oauth2.authConfig.authorizeEmbedded = true
+        oauth2.authConfig.authorizeContext = self
+        oauth2.authorize() { authParameters, error in
+            if let params = authParameters {
+                print("authorized in app delegate")
+                print("Authorized! Access token is in `oauth2.accessToken`")
+                print("Authorized! Additional parameters: \(params)")
+                self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController");
+
+            }
+            else {
+                print("Authorization was cancelled or went wrong: \(error)")   // error will not be nil
+            }
+        }
+
     }
     
     class func getDelegate() -> AppDelegate {
@@ -77,9 +137,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         if "lily" == url.scheme! {
             if let vc = window?.rootViewController as? ViewController {
                 vc.oauth2.handleRedirectURL(url)
+                print("return true from setting url scheme for fitbit")
                 return true
             }
         }
+        print("false from set delegate url")
         return false
     }
     func applicationWillTerminate(_ application: UIApplication) {

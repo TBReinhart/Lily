@@ -84,4 +84,43 @@ class EmotionCellView: UIView {
         }
     }
     
+    func setImage(emotion: String, selected: Bool) {
+        
+        if selected == false {
+            self.isSelected = false
+            self.button.setImage(#imageLiteral(resourceName: "default_circle.png"), for: .normal)
+            return
+        } else {
+            self.isSelected = true
+        }
+        switch emotion {
+        case "frustrated":
+            self.button.setImage(#imageLiteral(resourceName: "frustrated_circle.png"), for: .normal)
+        case "overwhelmed":
+            self.button.setImage(#imageLiteral(resourceName: "overwhelmed_circle.png"), for: .normal)
+        case "sad":
+            self.button.setImage(#imageLiteral(resourceName: "sad_circle.png"), for: .normal)
+        case "happy":
+            self.button.setImage(#imageLiteral(resourceName: "happy_circle.png"), for: .normal)
+        case "angry":
+            self.button.setImage(#imageLiteral(resourceName: "angry_circle.png"), for: .normal)
+        case "nervous":
+            self.button.setImage(#imageLiteral(resourceName: "nervous_circle.png"), for: .normal)
+        case "like crying":
+            self.button.setImage(#imageLiteral(resourceName: "like_crying_circle.png"), for: .normal)
+        case "excited":
+            self.button.setImage(#imageLiteral(resourceName: "excited_circle.png"), for: .normal)
+        case "irate":
+            self.button.setImage(#imageLiteral(resourceName: "irate_circle.png"), for: .normal)
+        case "scared":
+            self.button.setImage(#imageLiteral(resourceName: "scared_circle.png"), for: .normal)
+        case "miserable":
+            self.button.setImage(#imageLiteral(resourceName: "miserable_circle.png"), for: .normal)
+        case "like laughing":
+            self.button.setImage(#imageLiteral(resourceName: "like_laughing_circle.png"), for: .normal)
+        default:
+            self.button.setImage(#imageLiteral(resourceName: "default_circle.png"), for: .normal)
+        }
+    }
+    
 }

@@ -233,8 +233,8 @@
         <!--Navigation Controller-->
         <scene sceneID="FCx-4b-5Z4">
             <objects>
-                <navigationController id="k97-H2-mPo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7rC-1i-Mcq">
+                <navigationController storyboardIdentifier="HomeNavigationController" id="k97-H2-mPo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7rC-1i-Mcq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -249,7 +249,7 @@
         <!--Lily-->
         <scene sceneID="kpw-5o-f9l">
             <objects>
-                <viewController storyboardIdentifier="Home Screen View Controller" id="A5Z-W7-bJ0" customClass="HomeViewController" customModule="Lily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="A5Z-W7-bJ0" customClass="HomeViewController" customModule="Lily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6At-Kq-CC0"/>
                         <viewControllerLayoutGuide type="bottom" id="Z9x-PV-ceW"/>
@@ -4344,7 +4344,7 @@
                                                         <rect key="frame" x="0.0" y="24" width="363" height="34"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mva-Mg-fWh" customClass="LineChartView" customModule="Charts">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mva-Mg-fWh" customClass="BubbleChartView" customModule="Charts">
                                                         <rect key="frame" x="0.0" y="91" width="363" height="379"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -4513,9 +4513,9 @@
                     <size key="freeformSize" width="375" height="1400"/>
                     <connections>
                         <outlet property="advicePanelView" destination="u3W-4u-5F3" id="Ilg-Np-Srl"/>
+                        <outlet property="bubbleChartView" destination="Mva-Mg-fWh" id="Ddg-lW-tFn"/>
                         <outlet property="chartWeeklyBarView" destination="YY5-8F-RCa" id="IBE-tF-79V"/>
                         <outlet property="emotionsCollectionView" destination="h2h-Ky-nIR" id="Q9E-gu-cd8"/>
-                        <outlet property="lineChartView" destination="Mva-Mg-fWh" id="fRe-jC-YPR"/>
                         <outlet property="logButton" destination="6iM-72-YIX" id="vhN-ZS-pnK"/>
                         <outlet property="weeklyBarView" destination="e7e-3z-Qdf" id="k94-78-qAg"/>
                     </connections>
@@ -4553,18 +4553,18 @@
                                         <rect key="frame" x="0.0" y="28" width="404" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bq5-v6-FhV" id="7EN-8p-Rvz">
-                                            <rect key="frame" x="0.0" y="0.0" width="404" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qHQ-Oi-15w">
-                                                    <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="5" width="33.333333333333336" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iCp-sl-Opz">
-                                                    <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                                    <rect key="frame" x="14.999999999999996" y="25.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -4803,20 +4803,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vwl-xD-PMx" userLabel="Background Container View">
-                                        <rect key="frame" x="0.0" y="0.0" width="63.666666666666664" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BSL-KP-JPG">
-                                                <rect key="frame" x="5" y="8" width="53.666666666666664" height="37"/>
+                                                <rect key="frame" x="5" y="8" width="365" height="250.33333333333331"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdd-lq-16J" customClass="HalfCircleView" customModule="Lily" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="53.666666666666664" height="3.3333333333333339"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="23"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="vdd-lq-16J" secondAttribute="height" multiplier="365:23" id="fW9-x7-HrF"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmf-V6-te0" customClass="WeeklyBarView" customModule="Lily" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="4.3333333333333339" width="53.666666666666664" height="4.9999999999999982"/>
+                                                        <rect key="frame" x="0.0" y="24" width="365" height="34.333333333333329"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
@@ -4834,23 +4834,24 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ax2-di-h6G" userLabel="Chart Container View">
-                                                <rect key="frame" x="1.3333333333333321" y="87" width="61" height="68.333333333333343"/>
+                                                <rect key="frame" x="6" y="300.33333333333326" width="363" height="404.66666666666674"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjy-8F-fdx" customClass="HalfCircleView" customModule="Lily" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="363" height="24.333333333333371"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="cjy-8F-fdx" secondAttribute="height" multiplier="359:24" id="ruZ-oI-FMj"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N33-Qp-yj3" customClass="WeeklyBarView" customModule="Lily" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="3.6666666666666714" width="61" height="5.6666666666666572"/>
+                                                        <rect key="frame" x="0.0" y="19.333333333333371" width="363" height="34.333333333333314"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="N33-Qp-yj3" secondAttribute="height" multiplier="359:34" id="orm-Kh-I0p"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zar-yC-AZW" customClass="LineChartView" customModule="Charts">
-                                                        <rect key="frame" x="0.0" y="9.3333333333333286" width="61" height="59.000000000000014"/>
+                                                        <rect key="frame" x="0.0" y="53.666666666666686" width="363" height="351"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="zar-yC-AZW" secondAttribute="height" multiplier="359:347" id="wBr-1c-K8H"/>
@@ -4874,7 +4875,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZ1-ek-jaR" userLabel="Advice" customClass="AdvicePanelView" customModule="Lily" customModuleProvider="target">
-                                                <rect key="frame" x="5" y="192.33333333333331" width="53.666666666666664" height="159.99999999999994"/>
+                                                <rect key="frame" x="5" y="742" width="365" height="160"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="160" id="YMu-Ie-3CL"/>
                                                 </constraints>
