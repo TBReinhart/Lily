@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().tintColor = UIColor.white
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true
+        FIRDatabase.database().persistenceEnabled = true
 
         
         let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -58,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func checkIfUserInFirebase() {
         self.storyboard = UIStoryboard(name: "Main", bundle: Bundle.main);
         let currentUser = FIRAuth.auth()?.currentUser
+        print("Current user: \(currentUser?.uid)")
         if currentUser != nil
         {
             // if a firebase user, then need to make sure logged in

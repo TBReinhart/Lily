@@ -78,18 +78,44 @@ class Helpers {
         )
     }
     
-    static func postDailyLogToFirebase(key: String, value: Any) {
+    static func postDailyLogToFirebase(key: String, value: Any, daysAgo: Int? = nil, specifiedDate: Date? = nil) {
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        let dateInFormat = dateFormatter.string(from: NSDate() as Date)
+        var date = Date()
+        if daysAgo != nil {
+            date = Helpers.getDateNDaysAgo(daysAgo: daysAgo!).date
+        } else if specifiedDate != nil {
+            date = specifiedDate!
+        }
+        let dateInFormat = dateFormatter.string(from: date)
         
         if let uid = user?.uid {
             ref.child("users/\(uid)/logs/\(dateInFormat)/\(key)").setValue(value)
         }
     }
+    
+    static func postJournalDate(key: String, value: Any, daysAgo: Int? = nil, specifiedDate: Date? = nil) {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        var date = Date()
+        if daysAgo != nil {
+            date = Helpers.getDateNDaysAgo(daysAgo: daysAgo!).date
+        } else if specifiedDate != nil {
+            date = specifiedDate!
+        }
+        let dateInFormat = dateFormatter.string(from: date)
+        
+        if let uid = user?.uid {
+            ref.child("users/\(uid)/logs/\(dateInFormat)/\(key)").setValue(value)
+        }
+    }
+    
     
     static func checkIfDailyLogExists() {
         let user = FIRAuth.auth()?.currentUser
@@ -143,13 +169,24 @@ class Helpers {
         }
     }
     
-    static func loadDailyLogFromFirebase(key: String, daysAgo: Int,  completionHandler: @escaping (JSON?, Error?) -> ()) {
+    
+    static func loadDailyLogFromFirebase(key: String, daysAgo: Int? = nil, providedDate: Date? = nil,  completionHandler: @escaping (JSON, Error?) -> ()) {
         let calendar = Calendar.current
-        let date = Date()
-        let pastDate = calendar.date(byAdding: .day, value: -1*daysAgo, to: date)
+        var date = Date()
+        var specificDate: String
         let df = DateFormatter()
         df.dateFormat = "MM-dd-yyyy"
-        let specificDate = df.string(from: pastDate!)
+        if providedDate != nil {
+            date = providedDate!
+            specificDate = df.string(from: date)
+
+        } else if daysAgo != nil {
+            let pastDate = calendar.date(byAdding: .day, value: -1*daysAgo!, to: date)
+            specificDate = df.string(from: pastDate!)
+        } else {
+            return // cannot load from nothing
+        }
+
 
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
@@ -207,6 +244,10 @@ class Helpers {
         }
 
     }
+    
+    
+
+    
 
     static func getWeekDayFromDate(date: Date) -> String {
         return (date.dayOfWeek() ?? nil)!
@@ -247,6 +288,12 @@ class Helpers {
         return days
     }
 
+    static func get7DayRangeInts(weeksAgo: Int) -> (Int, Int) {
+        let daysAgo = weeksAgo*7
+        return (daysAgo, daysAgo+6)
+
+    }
+    
     static func getDateNWeeksAgo(weeksAgo: Int) -> (date: Date, dateString: String) {
         let calendar = Calendar.current
         let date = Date()
@@ -271,6 +318,14 @@ class Helpers {
         let date = dateFormatter.date(from: dateString)
         return date ?? Date()
     }
+    
+    static func getDateFromMMddyyyy(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "MM-dd-yyyy"
+        let date = dateFormatter.date(from: dateString)
+        return date ?? Date()
+    }
+    
     static func timeString(time:Int) -> String {
         let hours = time / 3600
         let minutes = time / 60 % 60
@@ -292,13 +347,47 @@ class Helpers {
         
         let df = DateFormatter()
         df.dateStyle = .short
-        df.string(from: endDate) // "3/10/76"
+        df.string(from: endDate) // "3/10/16"
         let strDate = df.string(from: endDate) // by using short date we will give user a local readible time 02/01 if in america, 01/02 elsewhere
         let splt = strDate.components(separatedBy: "/")
         let short = "\(splt[0])/\(splt[1])"
         return short
 
     }
+    
+    
+    static func formatMediumDate(dateString: String? = nil, date: Date? = nil) -> String {
+        let df = DateFormatter()
+        var d = Date()
+        df.dateFormat = "MM-dd-yyyy" // firebase date store
+        if dateString != nil {
+            d = df.date(from: dateString!)!
+        } else if date != nil {
+            d = date!
+        } else {
+            // just using today's date
+        }
+        let new_format = DateFormatter()
+        new_format.dateStyle = .medium
+        return new_format.string(from: d)
+    }
+    
+    static func formatDateForUser(dateString: String? = nil, date: Date? = nil) -> String {
+        let df = DateFormatter()
+        var d = Date()
+        df.dateFormat = "MM-dd-yyyy" // firebase date store
+        if dateString != nil && (dateString?.characters.count)! > 0 {
+            d = df.date(from: dateString!)!
+        } else if date != nil {
+            d = date!
+        } else {
+            // just using today's date
+        }
+        let new_format = DateFormatter()
+        new_format.dateStyle = .short
+        return new_format.string(from: d)
+    }
+    
     static func getDayOfWeek(date: Date) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"

@@ -16,6 +16,7 @@ import PKHUD
 
 class EmotionsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var todayIFeltLabel: UILabel!
     @IBOutlet weak var weeklyBarView: WeeklyBarView!
     @IBOutlet weak var chartWeeklyBarView: WeeklyBarView!
     @IBOutlet weak var logButton: UIButton!
@@ -30,12 +31,9 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     let adviceTitle = "HOW SHOULD I BE FEELING?"
     let source = "Mayo Clinic"
     var daysAgo = 0
+    var weeksAgo = 0
     
-    
-    let reds : [Double]    = [0,0,1,2,1,3,0,0]
-    let yellows : [Double] = [0,3,2,1,0,0,1,1]
-    let blues : [Double]   = [0,1,2,3,3,2,1,0]
-    let greens : [Double]  = [0, 3,3,3,2,2,1,1]
+
     
     var dailyEmotionsDict = [String: Bool]()
 
@@ -59,21 +57,146 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.setAdviceURL(source: self.sourceLink)
         self.weeklyBarView.backButton.addTarget(self, action: #selector(self.goBackDay), for: .touchUpInside)
         self.weeklyBarView.forwardButton.addTarget(self, action: #selector(self.goForwardDay), for: .touchUpInside)
-        self.getEmotions(daysAgo: 0)
+        self.chartWeeklyBarView.backButton.addTarget(self, action: #selector(self.goBackWeek), for: .touchUpInside)
+        self.chartWeeklyBarView.forwardButton.addTarget(self, action: #selector(self.goForwardWeek), for: .touchUpInside)
+
         
-        
+        let endDate = Helpers.getDateNWeeksAgo(weeksAgo: weeksAgo).dateString
+        let past = Helpers.getDateNWeeksAgo(weeksAgo: weeksAgo)
+        let date = past.date
+        let labelRange = Helpers.getShortDateRangeString(date: date)
+        self.weeklyBarView.setDateRangeLabel(title: "Today")
+        self.todayIFeltLabel.text = "Today I Felt..."
+        self.chartWeeklyBarView.setDateRangeLabel(title: labelRange)
+        self.chartWeeklyBarView.forwardButton.isEnabled = false
+        self.weeklyBarView.forwardButton.isEnabled = false
         loadEmotionsFromFirebase(daysAgo: 0)
 
-        fetchEmotions()
-        
+        fetchEmotions(weeksAgo: 0)
+
         
     }
     
-    func fetchEmotions() {
-        // set once loaded
+    var myGroup = DispatchGroup()
+    func fetchEmotions(weeksAgo: Int) {
+        var weeklyEmotions: JSON = [:]
+        
+        let dateRange = Helpers.get7DayRangeInts(weeksAgo: weeksAgo)
+        for i in  dateRange.0..<dateRange.1 + 1 {
+            myGroup.enter()
+
+            Helpers.loadDailyLogFromFirebase(key: "emotions", daysAgo: i) { json, error in
+                self.myGroup.leave()
+                if json != nil {
+                    weeklyEmotions[String(i)] = json
+                } else {
+                    let j:JSON = [:]
+                    weeklyEmotions[String(i)] = j
+                }
+
+            }
+        }
+        
+        myGroup.notify(queue: DispatchQueue.main, execute: {
+            print("Finished all requests.")
+            print(weeklyEmotions)
+            self.setEmotionLevels(weeklyEmotions: weeklyEmotions)
+        })
+        
         setChartProperties()
         setChart()
         
+
+    }
+    
+    func setEmotionLevels(weeklyEmotions: JSON) {
+        var r : [Double]  = [0,0,0,0,0,0,0]
+        var y : [Double]  = [0,0,0,0,0,0,0]
+        var b : [Double]  = [0,0,0,0,0,0,0]
+        var g : [Double]  = [0,0,0,0,0,0,0]
+        
+        // TODO fix this
+        let dateRange = Helpers.get7DayRangeInts(weeksAgo: weeksAgo)
+
+        for i in dateRange.0..<dateRange.1 + 1 {
+            
+            var json = weeklyEmotions[String(i)]
+            
+            var redCount = 0
+            var yellowCount = 0
+            var blueCount = 0
+            var greenCount = 0
+
+            if json["frustrated"].boolValue {
+                redCount += 1
+            }
+            
+            if json["angry"].boolValue {
+                redCount += 1
+            }
+            
+            if json["irate"].boolValue {
+                redCount += 1
+            }
+            
+            if json["overwhelmed"].boolValue {
+                yellowCount += 1
+            }
+            
+            if json["nervous"].boolValue {
+                yellowCount += 1
+            }
+            
+            if json["scared"].boolValue {
+                yellowCount += 1
+            }
+            
+            if json["sad"].boolValue {
+                blueCount += 1
+            }
+            
+            
+            if json["like crying"].boolValue {
+                blueCount += 1
+            }
+            
+            if json["miserable"].boolValue {
+                blueCount += 1
+            }
+            
+            if json["happy"].boolValue {
+                greenCount += 1
+            }
+            
+            if json["excited"].boolValue {
+                greenCount += 1
+            }
+            
+            if json["like laughing"].boolValue {
+                greenCount += 1
+            }
+            
+            r[i%7] = Double(redCount)
+            y[i%7] = Double(yellowCount)
+            b[i%7] = Double(blueCount)
+            g[i%7] = Double(greenCount)
+        }
+        r = r.reversed()
+        r.insert(0, at: 0)
+        
+        y = y.reversed()
+        y.insert(0, at: 0)
+
+        b = b.reversed()
+        b.insert(0, at: 0)
+
+        g = g.reversed()
+        g.insert(0, at: 0)
+        print(r)
+        print(y)
+        print(b)
+        print(g)
+        setChartBubble(reds: r, yellows: y, blues: b, greens: g)
 
     }
     
@@ -95,27 +218,71 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
         dailyEmotionsDict["like laughing"] = false
     }
     
+    func goBackWeek() {
+        print("go back week")
+        self.weeksAgo += 1
+        self.fetchEmotions(weeksAgo: self.weeksAgo)
+        
+        if self.weeksAgo == 0 {
+            self.chartWeeklyBarView.forwardButton.isEnabled = false
+            
+        }  else {
+            self.chartWeeklyBarView.forwardButton.isEnabled = true
+            
+        }
+        setChartDateRange()
+    }
+    
+    func setChartDateRange() {
+        let past = Helpers.getDateNWeeksAgo(weeksAgo: weeksAgo)
+        let labelRange = Helpers.getShortDateRangeString(date: past.date)
+        self.chartWeeklyBarView.setDateRangeLabel(title: labelRange)
+        self.fetchEmotions(weeksAgo: self.weeksAgo)
+    }
+    
+    func goForwardWeek() {
+        if self.weeksAgo == 0 {
+            return
+        }
+        self.weeksAgo -= 1
+        
+        if self.weeksAgo == 0 {
+            self.chartWeeklyBarView.forwardButton.isEnabled = false
+
+            
+        }  else {
+            self.chartWeeklyBarView.forwardButton.isEnabled = true
+            
+        }
+        setChartDateRange()
+
+    }
+    
     func setEmotionsDict(emotion: String) {
         dailyEmotionsDict[emotion] = true
     }
-    func setChartBubble() {
-        
 
-        
-        let redsEntries = reds.enumerated().map { x, y in return BubbleChartDataEntry(x: Double(x), y: 0, size: CGFloat(y)) }
-        let yellowsEntries = yellows.enumerated().map { x, y in return BubbleChartDataEntry(x: Double(x), y: 1, size: CGFloat(y)) }
-        let greensEntries = greens.enumerated().map { x, y in return BubbleChartDataEntry(x: Double(x), y: 3, size: CGFloat(y)) }
-        let bluesEntries = blues.enumerated().map { x, y in return BubbleChartDataEntry(x: Double(x), y: 2, size: CGFloat(y)) }
+
+
+    func setChartBubble(reds: [Double], yellows: [Double], blues: [Double], greens: [Double]) {
+        let redsEntries = reds.enumerated().map { x, y in return BubbleChartDataEntry(x: Double(x), y: 0, size: CGFloat(y/2.5)) }
+        let yellowsEntries = yellows.enumerated().map { x, y in return BubbleChartDataEntry(x: Double(x), y: 1, size: CGFloat(y/2.5)) }
+        let greensEntries = greens.enumerated().map { x, y in return BubbleChartDataEntry(x: Double(x), y: 3, size: CGFloat(y/2.5)) }
+        let bluesEntries = blues.enumerated().map { x, y in return BubbleChartDataEntry(x: Double(x), y: 2, size: CGFloat(y/2.5)) }
 
         
         
         let chartData1 = BubbleChartDataSet(values: redsEntries,label: "Anger" )
-        
+        chartData1.normalizeSizeEnabled = false
         let chartData2 = BubbleChartDataSet(values: yellowsEntries,label: "Nervous")
-        
+        chartData2.normalizeSizeEnabled = false
+
         let chartData3 = BubbleChartDataSet(values: greensEntries,label: "Happy")
+        chartData3.normalizeSizeEnabled = false
+
         let chartData4 = BubbleChartDataSet(values: bluesEntries,label: "Sad")
-        
+        chartData4.normalizeSizeEnabled = false
+
         
         chartData1.colors =  [Helpers.UIColorFromRGB(rgbValue: 0xF24338)]
         chartData2.colors =  [Helpers.UIColorFromRGB(rgbValue: 0xF8DF0C)]
@@ -136,11 +303,12 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     func getLastWeekShortenedStrings() -> [String] {
         var days = [String]()
-        days.append("")
         for i in 0..<7 {
             let d = Helpers.getDateNDaysAgo(daysAgo: i).date
             days.append(self.getDayAbbreviation(date: d))
         }
+        days = days.reversed()
+        days.insert("", at: 0)
         return days
     }
 
@@ -167,10 +335,12 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         // this replaces startAtZero = YES
         bubbleChartView.rightAxis.enabled = false
-        setChartBubble()
 
 
     }
+    
+    
+    
     func getDayAbbreviation(date: Date) -> String {
         let dayTimePeriodFormatter = DateFormatter()
         dayTimePeriodFormatter.dateFormat = "EEEEE"
@@ -184,8 +354,23 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func goBackDay() {
+        print("go back day")
         self.daysAgo += 1
-        self.getEmotions(daysAgo: self.daysAgo)
+        self.loadEmotionsFromFirebase(daysAgo: self.daysAgo)
+        
+        if self.daysAgo == 0 {
+            self.weeklyBarView.forwardButton.isEnabled = false
+            self.weeklyBarView.setDateRangeLabel(title: "Today")
+            self.todayIFeltLabel.text = "Today I Felt..."
+
+        }  else {
+            self.weeklyBarView.forwardButton.isEnabled = true
+            let date = Helpers.getDateNDaysAgo(daysAgo: self.daysAgo)
+            self.weeklyBarView.setDateRangeLabel(title: Helpers.getWeekDayFromDate(date: date.0))
+            self.todayIFeltLabel.text = "\(Helpers.getWeekDayFromDate(date: date.0)) I Felt..."
+
+        }
+        
         
     }
     func goForwardDay() {
@@ -193,7 +378,23 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
             return
         }
         self.daysAgo -= 1
-        self.getEmotions(daysAgo: self.daysAgo)
+        
+        if self.daysAgo == 0 {
+            self.weeklyBarView.forwardButton.isEnabled = false
+
+            self.weeklyBarView.setDateRangeLabel(title: "Today")
+            self.todayIFeltLabel.text = "Today I Felt..."
+
+        }  else {
+            self.weeklyBarView.forwardButton.isEnabled = true
+
+            let date = Helpers.getDateNDaysAgo(daysAgo: self.daysAgo)
+            self.weeklyBarView.setDateRangeLabel(title: Helpers.getWeekDayFromDate(date: date.0))
+            self.todayIFeltLabel.text = "\(Helpers.getWeekDayFromDate(date: date.0)) I Felt..."
+
+        }
+
+        self.loadEmotionsFromFirebase(daysAgo: self.daysAgo)
     }
     func getEmotions(daysAgo: Int) {
         if self.daysAgo == 0 {
@@ -214,13 +415,29 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
         initializeEmotionsDict()
         trackSelectedEmotions()
         logEmotions()
+        HUD.flash(.success)
+
     }
     
     // TODO save locally
     func loadEmotionsFromFirebase(daysAgo: Int) {
         Helpers.loadDailyLogFromFirebase(key: "emotions", daysAgo: daysAgo) { json, error in
-            for (key, value) in json! {
-                self.setEmotionCell(emotion: key, selected: value.boolValue)
+            print("load daily log: \(json)")
+            print(error)
+            if json != nil {
+                for (key, value) in json {
+                    
+                    self.setEmotionCell(emotion: key, selected: value.boolValue)
+                }
+            } else {
+                print("nil this day so will try to log a blank")
+
+                self.initializeEmotionsDict()
+                for (key, value) in self.dailyEmotionsDict {
+                    self.setEmotionCell(emotion: key, selected: value)
+                }
+                self.trackSelectedEmotions()
+                self.logEmotions()
             }
         }
     }
@@ -253,8 +470,7 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func logEmotions() {
         
-        Helpers.postDailyLogToFirebase(key: "emotions", value: self.dailyEmotionsDict)
-        HUD.flash(.success)
+        Helpers.postDailyLogToFirebase(key: "emotions", value: self.dailyEmotionsDict, daysAgo: self.daysAgo)
         self.logButton.setImage(#imageLiteral(resourceName: "grey_log_button.png"), for: .normal)
 
         

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M3c-OP-UZq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M3c-OP-UZq">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -4517,6 +4517,7 @@
                         <outlet property="chartWeeklyBarView" destination="YY5-8F-RCa" id="IBE-tF-79V"/>
                         <outlet property="emotionsCollectionView" destination="h2h-Ky-nIR" id="Q9E-gu-cd8"/>
                         <outlet property="logButton" destination="6iM-72-YIX" id="vhN-ZS-pnK"/>
+                        <outlet property="todayIFeltLabel" destination="vEx-yb-qYY" id="jHp-iM-HvB"/>
                         <outlet property="weeklyBarView" destination="e7e-3z-Qdf" id="k94-78-qAg"/>
                     </connections>
                 </viewController>
@@ -4584,19 +4585,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Il8-ve-8Vg">
                                 <rect key="frame" x="5" y="677" width="404" height="40.666666666666629"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_entry.png" translatesAutoresizingMaskIntoConstraints="NO" id="6Cd-7G-rjv">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5d-IM-Bew">
                                         <rect key="frame" x="372" y="7.6666666666666288" width="24" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="6Cd-7G-rjv" secondAttribute="height" multiplier="1:1" id="HIf-mf-oSG"/>
+                                            <constraint firstAttribute="width" secondItem="e5d-IM-Bew" secondAttribute="height" multiplier="1:1" id="h6G-Iy-ah9"/>
                                         </constraints>
-                                    </imageView>
+                                        <state key="normal" image="new_entry.png"/>
+                                        <connections>
+                                            <action selector="newEntryButtonPressed:" destination="pql-CW-LxA" eventType="touchUpInside" id="SPZ-kX-w5X"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="6Cd-7G-rjv" firstAttribute="width" secondItem="Il8-ve-8Vg" secondAttribute="width" multiplier="0.06" id="QOf-f7-KYr"/>
+                                    <constraint firstAttribute="trailing" secondItem="e5d-IM-Bew" secondAttribute="trailing" constant="8" id="Fry-zy-OPf"/>
                                     <constraint firstAttribute="width" secondItem="Il8-ve-8Vg" secondAttribute="height" multiplier="199:20" id="XVT-oC-GRe"/>
-                                    <constraint firstItem="6Cd-7G-rjv" firstAttribute="centerY" secondItem="Il8-ve-8Vg" secondAttribute="centerY" id="rSg-Aa-CmC"/>
-                                    <constraint firstAttribute="trailing" secondItem="6Cd-7G-rjv" secondAttribute="trailing" constant="8" id="xYE-5y-5oK"/>
+                                    <constraint firstItem="e5d-IM-Bew" firstAttribute="width" secondItem="Il8-ve-8Vg" secondAttribute="width" multiplier="0.06" id="cHk-h8-9fA"/>
+                                    <constraint firstItem="e5d-IM-Bew" firstAttribute="centerY" secondItem="Il8-ve-8Vg" secondAttribute="centerY" id="e2N-Ak-jF2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -4620,6 +4625,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="Il8-ve-8Vg" id="np0-Hk-YfV"/>
+                        <outlet property="newEntryButton" destination="e5d-IM-Bew" id="CUJ-4f-ZqZ"/>
                         <outlet property="tableView" destination="4TM-Eq-vXg" id="klk-gV-Zkr"/>
                         <segue destination="Aeq-YT-aVL" kind="show" identifier="journalEntrySegue" id="dJZ-2c-p0k"/>
                     </connections>
@@ -5020,6 +5026,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="lZN-6p-bxF" id="9nd-iJ-YOr"/>
+                        <outlet property="journalEntryLabel" destination="hmi-G0-P3u" id="Bj9-wk-fm2"/>
                         <outlet property="textView" destination="7pN-Ju-6eR" id="7O0-jP-jYZ"/>
                         <outlet property="topView" destination="ysu-UM-LRD" id="mdZ-oo-sWN"/>
                     </connections>

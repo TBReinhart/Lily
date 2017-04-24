@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import Firebase
+import SwiftyJSON
 
 class JournalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var bottomView: UIView!
 
+    @IBOutlet weak var newEntryButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     let cellReuseIdentifier = "cell"
-    let entryDates = ["2/27/17", "1/16/17", "1/5/17"]
-    let entryTitles = ["My stomach hurts","I can't remember to take...","Questions for doctor:"]
+    var entryDates = [String]()
     var journalEntryDate: String!
-    
+    var journalKey: String!
+    var journalEntry: String!
+    var keys = [String]()
+    var journalEntries = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -27,8 +33,9 @@ class JournalViewController: UIViewController, UITableViewDelegate, UITableViewD
         let customView : UIView = UIView(frame: customFrame)
         customView.backgroundColor = Helpers.UIColorFromRGB(rgbValue: 0x6F6E6F)
         self.bottomView.addSubview(customView)
-        tableView.reloadData()
-
+        
+        self.loadJournalDates()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,6 +44,11 @@ class JournalViewController: UIViewController, UITableViewDelegate, UITableViewD
         if selection != nil {
             self.tableView.deselectRow(at: selection!, animated: true)
         }
+    }
+    @IBAction func newEntryButtonPressed(_ sender: Any) {
+        print("new entry pressed")
+        self.addJournalEntryToFirebase()
+
     }
     
     // number of rows in table view
@@ -50,7 +62,6 @@ class JournalViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.textAlignment = .center
-            print("entry background color set")
             headerView.backgroundColor = UIColor.white
             headerView.textLabel?.font = UIFont(name: "AvenirNext-Regular", size:14);
             headerView.textLabel?.textColor = Helpers.UIColorFromRGB(rgbValue: 0x6F6E6F)
@@ -65,17 +76,98 @@ class JournalViewController: UIViewController, UITableViewDelegate, UITableViewD
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let c = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        c.textLabel?.text = "\(entryTitles[indexPath.row])"
+        let shortenedTitle = self.getTitleForEntry(text: journalEntries[indexPath.row])
+        print("Shortened title")
+        print(shortenedTitle)
+        c.textLabel?.text = shortenedTitle
         c.textLabel?.font = UIFont(name: "AvenirNext-Regular", size:12);
         c.textLabel?.textColor = Helpers.UIColorFromRGB(rgbValue: 0x6F6E6F)
 
-        c.detailTextLabel?.text = "\(entryDates[indexPath.row])"
+        
+        let dateLabelText = Helpers.formatDateForUser(dateString: entryDates[indexPath.row])
+        c.detailTextLabel?.text = dateLabelText
         c.detailTextLabel?.font = UIFont(name: "AvenirNext-Regular", size:8);
         c.detailTextLabel?.textColor = Helpers.UIColorFromRGB(rgbValue: 0x6F6E6F)
-
-
         return c
     }
+    
+    func loadJournalDates() {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        if let uid = user?.uid {
+            ref.child("users/\(uid)/journals").observeSingleEvent(of: .value, with: { (snapshot) in
+            // don't attach journals to date... unnecessary because they may not make them daily
+                var i = 0
+                for child in snapshot.children {
+                    let snap = child as! FIRDataSnapshot //each child is a snapshot
+                    
+                    let json = JSON(snap.value)
+                    print("json: \(json)")
+                    let journalDate = json["date"].stringValue
+                    if journalDate.characters.count == 0 {
+                        continue
+                    }
+                    var entry = ""
+                    if let text = json["text"].string {
+                        entry = text
+                    }
+                    let key = json["key"].stringValue
+                    self.entryDates.append(journalDate)
+                    self.journalEntries.append(entry)
+                    self.keys.append(key)
+
+                    i = i + 1
+                }
+                print(self.entryDates)
+                print(self.journalEntries)
+                self.tableView.reloadData()
+            })
+        }
+       
+
+    }
+
+    
+    func getTitleForEntry(text: String) -> String {
+        let len = text.characters.count
+        var title : String!
+        var minTitleLength = 0
+        if len == 0 {
+            return "No Title"
+        } else {
+            while minTitleLength < 20 && len > minTitleLength {
+                minTitleLength = minTitleLength + 1
+            }
+        }
+        let endIndex = text.index(text.startIndex, offsetBy: minTitleLength)
+        title = text.substring(to: endIndex)
+        return title
+    }
+
+    func addJournalEntryToFirebase() {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        self.journalEntryDate = dateFormatter.string(from: Date())
+
+        if let uid = user?.uid {
+            let r = ref.child("users/\(uid)/journals").childByAutoId()
+            let key = r.key
+            let post = ["date":self.journalEntryDate, "text":nil, "key":key]
+            r.setValue(post)
+            self.journalKey = key
+            print("key autoid: \(key)")
+            performSegue(withIdentifier: "journalEntrySegue", sender: self)
+
+        }
+    }
+    
+    
+    
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
@@ -104,6 +196,8 @@ class JournalViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("You tapped cell number \(indexPath.row).")
         
         self.journalEntryDate = entryDates[indexPath.row]
+        self.journalKey = keys[indexPath.row]
+        self.journalEntry = journalEntries[indexPath.row]
         performSegue(withIdentifier: "journalEntrySegue", sender: self)
     }
     
@@ -113,6 +207,8 @@ class JournalViewController: UIViewController, UITableViewDelegate, UITableViewD
             let viewController = segue.destination as! JournalEntryViewController
             // your new view controller should have property that will store passed value
             viewController.entryDate = self.journalEntryDate
+            viewController.journalKey = self.journalKey
+            viewController.journalEntry = self.journalEntry
         }
     }
 

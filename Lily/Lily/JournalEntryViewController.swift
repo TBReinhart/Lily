@@ -7,22 +7,52 @@
 //
 
 import UIKit
+import Firebase
 
 class JournalEntryViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var textView: UITextView!
-
     var entryDate: String!
+    var date: Date!
+    var journalKey: String!
+    var journalEntry: String!
     
+    @IBOutlet weak var journalEntryLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Entry Date: \(self.entryDate!)")
+        print("Entry Date: \(self.entryDate)")
+        print("autoid \(self.journalKey ?? "no key?" )")
         self.textView.delegate = self
         self.createBordersInViews()
-        self.setTextViewText()
+        
+        self.setTextViewText(text: "")
+        let headerDate = Helpers.getDateFromMMddyyyy(dateString: self.entryDate!)
+        self.journalEntryLabel.text = Helpers.formatMediumDate(date: headerDate)
+        self.setTextViewText(text: self.journalEntry)
+
+
     }
 
+    
+    func updateJournal() {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        
+        if let uid = user?.uid {
+            if let key = self.journalKey {
+                ref.child("users/\(uid)/journals/\(key)/text)").setValue(self.textView.text)
+
+            }
+        }
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("view will disappear")
+        updateJournal()
+    }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // If the replacement text is "\n" and the
@@ -74,8 +104,8 @@ class JournalEntryViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
-    func setTextViewText() {
-        self.textView.text = "\u{2022} My stomach hurts \n\u{2022} I have been vomiting twice per day every day\n\u{2022} I have felt sad and overwhelmed for the past few days"
+    func setTextViewText(text: String) {
+        self.textView.text = "\u{2022} \(text)"
     }
     
     func createBordersInViews() {
