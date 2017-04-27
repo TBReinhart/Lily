@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
     
     /// Instance of OAuth2 login credentials
-    var oauth2 = OAuth2ImplicitGrant(settings: [
+    var oauth2 = OAuth2CodeGrant(settings: [
         "client_id": "2285YX",
         "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
         "authorize_uri": "https://www.fitbit.com/oauth2/authorize",
@@ -43,7 +43,6 @@ class ViewController: UIViewController {
     @IBOutlet var forgetButton: UIButton?
     
     override func viewDidLoad() {
-    
     }
 
     
@@ -72,9 +71,12 @@ class ViewController: UIViewController {
                 print("anon: \(isAnonymous) and uid: \(uid)")
                 Helpers.checkIfDailyLogExists()
                 self.createOrUpdateFirebaseUserProfile()
-                
-                HUD.flash(.success, delay: 0.5)
-                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+                print("creating anon login")
+                DispatchQueue.main.async {
+                    HUD.flash(.success, delay: 0.5)
+                    self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+                }
+
                 
             } else {
                 print("error: \(String(describing: error))")
@@ -144,29 +146,7 @@ class ViewController: UIViewController {
 
     }
     
-    
-//    func isLoggedInToFitbit() {
-//        oauth2.authConfig.authorizeEmbedded = true
-//        oauth2.authConfig.authorizeContext = self
-//        oauth2.authorize() { authParameters, error in
-//            if let params = authParameters {
-//                print("authorized in app delegate")
-//                print("Authorized! Access token is in `oauth2.accessToken`")
-//                print("Authorized! Additional parameters: \(params)")
-//                self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController");
-//                
-//            }
-//            else {
-//                print("Authorization was cancelled or went wrong: \(error)")   // error will not be nil
-//                self.signInEmbeddedButton?.isEnabled = true
-//                HUD.flash(.error, delay: 1.0)
-//            }
-//        }
-//        
-//    }
 
-    
-    
 
     /**
      ## Extract Fitbit Data ##
@@ -175,9 +155,11 @@ class ViewController: UIViewController {
      */
     func extractUserData(json: [String: Any]) {
         let attributes = FitbitRequests.profileAttributes
+        
         for attribute in attributes {
             if let value = (json["user"] as? [String : Any])?[attribute] {
                 var val = value
+                print("Adding \(attribute):\(val) to firebase")
                 self.addAttributeToFirebaseUser(attributeName: attribute, value: val)
                 if attribute == "height" {
                     val = value as! NSNumber
@@ -204,36 +186,6 @@ class ViewController: UIViewController {
     }
     
     
-//
-//    func createUser(user: String, email: String, password: String) {
-//        FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
-//            if error != nil {
-//                if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
-//                    switch errCode {
-//                    case .errorCodeInvalidEmail:
-//                        print("invalid email") // really shouldn't happen at this point since we are creating email
-//                    case .errorCodeEmailAlreadyInUse:
-//                        print("email in use")
-//                        self.signIn(user: password, email: email, password: password)
-//                    default:
-//                        print("Create User Error: \(String(describing: error))")
-//                    }
-//                }
-//                Helpers.createEmptyDailyLog()
-//                self.createOrUpdateFirebaseUserProfile()
-//            } else {
-//                // already registered fitbit but on new device
-//                print("No error")
-//                Helpers.createEmptyDailyLog()
-//
-//                HUD.flash(.success, delay: 0.5)
-//                self.performSegue(withIdentifier: "loggedInSegue", sender: self)
-//            }
-//        }
-//    }
-
-
-    
     
     func createOrUpdateFirebaseUserProfile() {
         self.ref = FIRDatabase.database().reference()
@@ -241,26 +193,11 @@ class ViewController: UIViewController {
 
         let uuid = self.myId
         if let uid = user?.uid {
-            print("MY UID \(uid)")
             ref.child("users/\(uid)/uuid").setValue(uuid)
             ref.child("users/\(uid)/loginMethod").setValue(UserDefaults.standard.string(forKey: "loginMethod") ?? "None")
-
         }
-        //let photoURL = user?.photoURL
-
     }
     
-//    
-//    func signIn(user: String, email: String, password: String) {
-//
-//        FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
-//            if error != nil {
-//                debugPrint("ERROR: \(String(describing: error))")
-//            }
-//            HUD.flash(.success, delay: 0.5)
-//            self.performSegue(withIdentifier: "loggedInSegue", sender: self)
-//        }
-//    }
 
     /// Another instance of forget tokens, this time done locally
     @IBAction func forgetTokens(_ sender: UIButton?) {

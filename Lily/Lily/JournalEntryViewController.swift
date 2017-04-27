@@ -17,6 +17,7 @@ class JournalEntryViewController: UIViewController, UITextViewDelegate {
     var date: Date!
     var journalKey: String!
     var journalEntry: String!
+    var isDeleted = false
     
     @IBOutlet weak var journalEntryLabel: UILabel!
     override func viewDidLoad() {
@@ -25,25 +26,51 @@ class JournalEntryViewController: UIViewController, UITextViewDelegate {
         print("autoid \(self.journalKey ?? "no key?" )")
         self.textView.delegate = self
         self.createBordersInViews()
-        
-        self.setTextViewText(text: "")
+        self.isDeleted = false
         let headerDate = Helpers.getDateFromMMddyyyy(dateString: self.entryDate!)
         self.journalEntryLabel.text = Helpers.formatMediumDate(date: headerDate)
+        if self.journalEntry == "" {
+            self.journalEntry = "\u{2022} "
+        }
         self.setTextViewText(text: self.journalEntry)
 
 
     }
 
-    
-    func updateJournal() {
+    @IBAction func deleteEntryButtonPressed(_ sender: Any) {
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
         
         if let uid = user?.uid {
             if let key = self.journalKey {
-                ref.child("users/\(uid)/journals/\(key)/text)").setValue(self.textView.text)
+                print("users/\(uid)/journals/\(key)")
+                ref.child("users/\(uid)/journals/\(key)").removeValue()
+                ref.child("users/\(uid)/journals/\(key)").removeValue { (error, ref) in
+                    
+                    if error != nil {
+                        print("error \(String(describing: error))")
+                    } else {
+                        print("ref: \(ref)")
+                        self.isDeleted = true
+                        self.navigationController?.popViewController(animated: true)
 
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    
+    func updateJournal() {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        self.isDeleted = false
+        if let uid = user?.uid {
+            if let key = self.journalKey {
+                ref.child("users/\(uid)/journals/\(key)/text").setValue(self.textView.text)
             }
         }
     }
@@ -51,13 +78,14 @@ class JournalEntryViewController: UIViewController, UITextViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         print("view will disappear")
-        updateJournal()
+        if self.isDeleted == false {
+            updateJournal()
+        }
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // If the replacement text is "\n" and the
         // text view is the one you want bullet points
-        // for
         let  char = text.cString(using: String.Encoding.utf8)!
         let isBackSpace = strcmp(char, "\\b")
         
@@ -70,14 +98,10 @@ class JournalEntryViewController: UIViewController, UITextViewDelegate {
         }
         
         if (text == "\n") {
-            // If the replacement text is being added to the end of the
-            // text view, i.e. the new index is the length of the old
-            // text view's text...
-            
-            
+
             if range.location == textView.text.characters.count {
                 // Simply add the newline and bullet point to the end
-                let updatedText: String = textView.text! + "\n \u{2022} "
+                let updatedText: String = textView.text! + "\n\u{2022} "
                 textView.text = updatedText
             }
             else {
@@ -90,9 +114,9 @@ class JournalEntryViewController: UIViewController, UITextViewDelegate {
                 // Insert that newline character *and* a bullet point
                 // at the point at which the user inputted just the
                 // newline character
-                textView.replace(textRange, withText: "\n \u{2022} ")
+                textView.replace(textRange, withText: "\n\u{2022} ")
                 // Update the cursor position accordingly
-                let cursor: NSRange = NSMakeRange(range.location + "\n \u{2022} ".characters.count, 0)
+                let cursor: NSRange = NSMakeRange(range.location + "\n\u{2022} ".characters.count, 0)
                 textView.selectedRange = cursor
             }
             
@@ -105,7 +129,7 @@ class JournalEntryViewController: UIViewController, UITextViewDelegate {
     }
     
     func setTextViewText(text: String) {
-        self.textView.text = "\u{2022} \(text)"
+        self.textView.text = text
     }
     
     func createBordersInViews() {

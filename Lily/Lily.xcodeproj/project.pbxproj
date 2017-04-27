@@ -133,6 +133,7 @@
 		2FA9ECA11E685DA2004ECF1E /* KickCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9ECA01E685DA2004ECF1E /* KickCellView.xib */; };
 		2FA9ECA31E6864E9004ECF1E /* WeeklyTimesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */; };
 		2FA9ECA51E686549004ECF1E /* WeeklyBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */; };
+		2FACEAFD1EB17CF6005C9F72 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FACEAFC1EB17CF6005C9F72 /* LocalAuthentication.framework */; };
 		2FB3CEFE1E8D585600281E8C /* VoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB3CEFD1E8D585600281E8C /* VoiceView.xib */; };
 		2FB3CF001E8D593700281E8C /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB3CEFF1E8D593700281E8C /* VoiceView.swift */; };
 		2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB4C3C11E1D808400C39109 /* RestClient.swift */; };
@@ -317,6 +318,8 @@
 		2FA9ECA01E685DA2004ECF1E /* KickCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KickCellView.xib; sourceTree = "<group>"; };
 		2FA9ECA21E6864E9004ECF1E /* WeeklyTimesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeeklyTimesView.xib; path = Lily/WeeklyTimesView.xib; sourceTree = "<group>"; };
 		2FA9ECA41E686549004ECF1E /* WeeklyBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeeklyBarView.xib; path = Lily/WeeklyBarView.xib; sourceTree = "<group>"; };
+		2FACEAFB1EB15CF9005C9F72 /* Lily-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lily-Bridging-Header.h"; sourceTree = "<group>"; };
+		2FACEAFC1EB17CF6005C9F72 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		2FB3CEFD1E8D585600281E8C /* VoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VoiceView.xib; path = Lily/VoiceView.xib; sourceTree = "<group>"; };
 		2FB3CEFF1E8D593700281E8C /* VoiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceView.swift; path = Lily/VoiceView.swift; sourceTree = "<group>"; };
 		2FB4C3C11E1D808400C39109 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = Lily/RestClient.swift; sourceTree = "<group>"; };
@@ -368,6 +371,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FACEAFD1EB17CF6005C9F72 /* LocalAuthentication.framework in Frameworks */,
 				672BB027D2BACD0ACB5F68C2 /* Pods_Lily.framework in Frameworks */,
 				2F3975BC1E394E39005C7926 /* HealthKit.framework in Frameworks */,
 			);
@@ -387,6 +391,7 @@
 		0DB7693B6EAC8585F56C3BD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FACEAFC1EB17CF6005C9F72 /* LocalAuthentication.framework */,
 				2F3975BB1E394E39005C7926 /* HealthKit.framework */,
 				75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */,
 				EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */,
@@ -635,6 +640,7 @@
 		2FB4C3BF1E1D7A4000C39109 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				2FACEAFB1EB15CF9005C9F72 /* Lily-Bridging-Header.h */,
 				2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */,
 				2F6591AB1E03B29C0040AA4A /* Services.plist */,
 				2FA1CD681E0347AF00778DF3 /* Info.plist */,
@@ -1206,6 +1212,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.lilyhealth.lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4072ba7e-d2d5-4faa-9cf0-33b71441be45";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lily/Lily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1226,6 +1233,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.lilyhealth.lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4072ba7e-d2d5-4faa-9cf0-33b71441be45";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lily/Lily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = NO;
 			};

@@ -4957,19 +4957,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZN-6p-bxF">
                                 <rect key="frame" x="5" y="676" width="404" height="40.666666666666629"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash_entry.png" translatesAutoresizingMaskIntoConstraints="NO" id="2VP-Pi-cdz">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57K-bR-Elp">
                                         <rect key="frame" x="372" y="7.6666666666666288" width="24" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="2VP-Pi-cdz" secondAttribute="height" multiplier="1:1" id="Xk5-Ln-16Q"/>
+                                            <constraint firstAttribute="width" secondItem="57K-bR-Elp" secondAttribute="height" multiplier="1:1" id="G9n-ty-woJ"/>
                                         </constraints>
-                                    </imageView>
+                                        <state key="normal" title="Button" image="trash_entry.png"/>
+                                        <connections>
+                                            <action selector="deleteEntryButtonPressed:" destination="Aeq-YT-aVL" eventType="touchUpInside" id="5zf-aS-nEa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="2VP-Pi-cdz" firstAttribute="width" secondItem="lZN-6p-bxF" secondAttribute="width" multiplier="0.06" id="1ev-5e-UOa"/>
-                                    <constraint firstItem="2VP-Pi-cdz" firstAttribute="centerY" secondItem="lZN-6p-bxF" secondAttribute="centerY" id="hIV-yf-3v6"/>
+                                    <constraint firstItem="57K-bR-Elp" firstAttribute="centerY" secondItem="lZN-6p-bxF" secondAttribute="centerY" id="0jd-sK-0OM"/>
+                                    <constraint firstItem="57K-bR-Elp" firstAttribute="width" secondItem="lZN-6p-bxF" secondAttribute="width" multiplier="0.06" id="tao-OU-yfF"/>
                                     <constraint firstAttribute="width" secondItem="lZN-6p-bxF" secondAttribute="height" multiplier="199:20" id="uSI-Qt-eui"/>
-                                    <constraint firstAttribute="trailing" secondItem="2VP-Pi-cdz" secondAttribute="trailing" constant="8" id="w2g-ha-4GD"/>
+                                    <constraint firstAttribute="trailing" secondItem="57K-bR-Elp" secondAttribute="trailing" constant="8" id="yCv-RX-Ez0"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7pN-Ju-6eR">

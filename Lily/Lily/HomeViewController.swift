@@ -20,10 +20,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     var waterConsumed: Double?
     var activityMinutes: Int?
-    var heartRate: String?
+    var heartRate: Int?
     var sleep: String?
-    var dayOfWeek: String?
-    var numberDate: String?
     
     
     @IBOutlet weak var TileCollectionView: UICollectionView!
@@ -61,13 +59,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func refresh() {
         print("refreshing")
+        waterConsumed = nil
+        activityMinutes = nil
+        heartRate = nil
+        sleep = nil
         self.TileCollectionView.reloadData()
         self.refreshControl.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         // TODO in case you come back to this screen and reload a lot
-        
+        refresh()
     }
 
     
@@ -140,9 +142,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let past = Helpers.getDateNDaysAgo(daysAgo: daysAgo)
         let dateString = past.dateString
         self.fbreqs.getSleepLogs(date: dateString) { sleep, error in
+            Helpers.postDailyLogToFirebase(key: "sleep", value: sleep?.sleepLabel)
             completionHandler(sleep ?? Sleep(), nil)
             
             
+        }
+    }
+    
+    
+    func loadHeartRateNDaysAgo(daysAgo: Int,  completionHandler: @escaping (HeartRate?, Error?) -> ()) {
+        let date = Helpers.getDateNDaysAgo(daysAgo: 0).dateString
+        self.fbreqs.getHeartRateTimeSeriesFrom1DayPeriod(date: date, period: "1d") { heartRate, err in
+            completionHandler(heartRate ?? HeartRate(), nil)
+
+
         }
     }
     
@@ -152,6 +165,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let dateString = past.dateString
         self.fbreqs.getWaterLogs(date: dateString) { water, error in
             if let water = water {
+                // post to firebase
+                Helpers.postDailyLogToFirebase(key: "water", value: water.cupsConsumed)
                 completionHandler(water , nil)
             }
         }
@@ -226,8 +241,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             tileView.middleLabel.isHidden = true
             if tile == "Heart" {
                 // TODO
-                tileView.middleLabel.isHidden = false
-                tileView.middleLabel.text = "54"
+                if self.heartRate == nil {
+                    self.loadHeartRateNDaysAgo(daysAgo: 0) { heartRate, err in
+                        self.heartRate = heartRate?.averageBPM
+                        tileView.middleLabel.isHidden = false
+                        tileView.middleLabel.text = "\(String(describing: self.heartRate))"
+                    }
+                } else {
+                    tileView.middleLabel.text = "\(String(describing: self.heartRate))"
+                }
+
             }
             return tileView
         }

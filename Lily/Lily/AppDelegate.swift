@@ -12,6 +12,9 @@ import IQKeyboardManagerSwift
 import TouchVisualizer
 import p2_OAuth2
 
+// only for sys.exit() remove later
+import Darwin
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
@@ -48,6 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         UserDefaults.standard.setValue(false, forKey:"_UIConstraintBasedLayoutLogUnsatisfiable") // disables warnings for views in console
 
+//        
+//        forgetTokens(nil)
+//        exit(0)
         checkIfUserInFirebase()
         
         
@@ -81,7 +87,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         }
     }
     
-    var oauth2 = OAuth2ImplicitGrant(settings: [
+    func forgetTokens(_ sender: UIButton?) {
+        let restClient = RestClient()
+        restClient.forgetTokens(nil)
+    }
+
+    
+    var oauth2 = OAuth2CodeGrant(settings: [
         "client_id": "2285YX",
         "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
         "authorize_uri": "https://www.fitbit.com/oauth2/authorize",

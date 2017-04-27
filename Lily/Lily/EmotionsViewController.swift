@@ -423,7 +423,6 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
     func loadEmotionsFromFirebase(daysAgo: Int) {
         Helpers.loadDailyLogFromFirebase(key: "emotions", daysAgo: daysAgo) { json, error in
             print("load daily log: \(json)")
-            print(error)
             if json != nil {
                 for (key, value) in json {
                     
@@ -472,6 +471,9 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         Helpers.postDailyLogToFirebase(key: "emotions", value: self.dailyEmotionsDict, daysAgo: self.daysAgo)
         self.logButton.setImage(#imageLiteral(resourceName: "grey_log_button.png"), for: .normal)
+        if self.weeksAgo == 0 {
+            fetchEmotions(weeksAgo: 0)
+        }
 
         
     }
