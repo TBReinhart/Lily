@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="content-type">
+			<style>
+				.summary{
+					max-width:800px;
+					margin:auto;
+					padding:30px;
+					border:1px solid #eee;
+					box-shadow:0 0 10px rgba(0, 0, 0, .15);
+					font-size:14px;
+					line-height:24px;
+					font-family:'Avenir Next', 'Avenir', Avenir, Arial, sans-serif;
+					color:#555;
+				}
+				.summary .summary-header{
+					width:100%;
+					font-size:32px;
+					line-height:inherit;
+					text-align:center;
+					padding:10px;
+				}
+				.summary .section-info-right{
+					width:50%;
+					float:right;
+					text-align:left;
+				}
+				.summary .section-info-left{
+					width:50%;
+					text-align:left;
+					float:left;
+				}
+                .summary img {
+                    max-width: 50%;
+                    max-height: 40%;
+                }
+				.summary .detail-header{
+					padding-top:1.5cm;
+					padding-bottom: 1cm;
+                    height:20px;
+				}
+				.summary .detail-section-header-left{
+					width:10%;
+					text-align:left;
+					float:left;
+				}
+				.summary .detail-section-header-right{
+					width:90%;
+					text-align:left;
+					font-size:20px;
+					float:right;
+					font-weight:normal;
+				}
+				.summary .sub-section-header{
+					font-size:18px;
+					font-weight:normal;
+				}
+				.summary .sub-section-list-left{
+					list-style-type:none;
+					font-size:14px;
+					float:left;
+				}
+				.summary .sub-section-list-right{
+					list-style-type:none;
+					font-size:14px;
+					float:right;
+				}
+                .summary .section{
+                    display: table;
+                    width:100%;
+                    font-size:18px;
+                }
+			</style>
+	</head>
+	<div class="summary">
+		<header>
+			<div class="summary-header">
+				My Lily Summary Report
+			</div>
+		</header>
+		<hr/>
+		<section>
+			<div class="section-info-left">
+				Patient Name: <b>#PATIENT_NAME#</b><br>
+				Date of Birth: #PATIENT_DOB#
+			</div>
+		</section>
+		<section>
+		<div class="section-info-right">
+				Report Date: #REPORT_DATE#<br>
+				Report Range: #REPORT_RANGE#
+		</div>
+		</section>
+		<body>
+			#SUMMARY_SECTIONS#
+		</body>
+</div>
+</html>

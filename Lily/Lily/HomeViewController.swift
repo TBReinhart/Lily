@@ -37,6 +37,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.TileCollectionView.delegate = self
         self.TileCollectionView.dataSource = self
         self.navigationController?.navigationBar.stop()
@@ -95,6 +96,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
+    func logout() {
+        // Delete User credential from NSUserDefaults and other data related to user
+        let restClient = RestClient()
+        restClient.forgetTokens(nil)
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaults.standard.synchronize()
+        
+        let appDelegateTemp: AppDelegate? = (UIApplication.shared.delegate as! AppDelegate)
+        let rootController: UIViewController? = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginViewController") as! ViewController
+        let navigation = UINavigationController(rootViewController: rootController!)
+        appDelegateTemp?.window?.rootViewController = navigation
+        
+
+    }
+    
+    
     
     func exportPressed() {
         // Add a text field
@@ -103,11 +120,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         alert.addButton("Send") {
             print("Text value: \(String(describing: txt.text))")
             print("Email from box")
-            self.sendEmail(email: txt.text!)
+            if let email = txt.text {
+                self.sendEmail(email: txt.text!)
+
+            } else {
+                return
+            }
         }
         let alertViewIcon = UIImage(named: "sendIcon") //Replace the IconImage text with the image name
         alert.showEdit("Export Health Data", subTitle: "Please provide an email", circleIconImage: alertViewIcon)
         
+
+    }
+    
+    
+    
+    func sendEmail(email: String) {
         // generate the pdf
         let symptomsSubsections: [String] = []
         //            ["vomiting","cramping", "swelling","head_pain","vaginal_and_urinary"]
@@ -121,11 +149,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         pdfGenerator = PDFGenerator()
         HTMLContent = pdfGenerator.renderExportableSummary(symptoms: symptomsSubsections, meds: medicationsSubsections, diet: dietSubsections, body: bodySubsections, mind: mindSubsections)
         pdfGenerator.exportHTMLContentToPDF(HTMLContent: HTMLContent)
-    }
-    
-    
-    
-    func sendEmail(email: String) {
+        
+        
         let personalization = Personalization(recipients: email)
         let plainText = Content(contentType: ContentType.plainText, value: "Here is your Lily Health Data")
         let htmlText = Content(contentType: ContentType.htmlText, value: "<h1>Thanks for using Lily!</h1>")

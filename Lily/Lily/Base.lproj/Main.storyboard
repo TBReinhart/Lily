@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M3c-OP-UZq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="k97-H2-mPo">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,7 +16,7 @@
         <!--View Controller-->
         <scene sceneID="JdJ-Bn-rfY">
             <objects>
-                <viewController id="M3c-OP-UZq" customClass="ViewController" customModule="Lily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="M3c-OP-UZq" customClass="ViewController" customModule="Lily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Ll-eF-Vlp"/>
                         <viewControllerLayoutGuide type="bottom" id="Zhz-I0-cfy"/>
@@ -100,7 +100,6 @@
                     </view>
                     <connections>
                         <outlet property="signInEmbeddedButton" destination="3O9-bt-exf" id="DJz-Fl-SEq"/>
-                        <segue destination="k97-H2-mPo" kind="show" identifier="loggedInSegue" id="RZD-xh-dQ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8N8-QQ-mOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -234,7 +233,7 @@
         <scene sceneID="FCx-4b-5Z4">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" id="k97-H2-mPo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7rC-1i-Mcq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7rC-1i-Mcq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

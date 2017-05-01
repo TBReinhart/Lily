@@ -21,9 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     var window: UIWindow?
     var storyboard: UIStoryboard?
 
-    var globalTimer: Timer?
-    var globalSeconds = 0
-    var globalTimerHasStarted = false
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Set Navigation bar background image
@@ -31,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().setBackgroundImage(navBgImage, for: .default)
         
         Visualizer.start()
-//        Visualizer.stop()
-
         
         UINavigationBar.appearance().titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.white
@@ -50,10 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         application.registerForRemoteNotifications()
         
         UserDefaults.standard.setValue(false, forKey:"_UIConstraintBasedLayoutLogUnsatisfiable") // disables warnings for views in console
-
-//        
-//        forgetTokens(nil)
+//
+//        self.logout()
 //        exit(0)
+        
+        
         checkIfUserInFirebase()
         
         
@@ -62,14 +58,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         return true
     }
     
+    func logout() {
+        // Delete User credential from NSUserDefaults and other data related to user
+        let restClient = RestClient()
+        restClient.forgetTokens(nil)
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaults.standard.synchronize()
+        
+        let appDelegateTemp: AppDelegate? = (UIApplication.shared.delegate as! AppDelegate)
+        let rootController: UIViewController? = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginViewController")
+        let navigation = UINavigationController(rootViewController: rootController!)
+        appDelegateTemp?.window?.rootViewController = navigation
+    }
+    
+    
+    
     func checkIfUserInFirebase() {
         self.storyboard = UIStoryboard(name: "Main", bundle: Bundle.main);
         let currentUser = FIRAuth.auth()?.currentUser
         print("Current user: \(currentUser?.uid)")
-        if currentUser != nil
-        {
+        if currentUser != nil {
             // if a firebase user, then need to make sure logged in
             if let loginMethod = UserDefaults.standard.value(forKey: "loginMethod") as? String {
+                print("login method")
                 if loginMethod == "Fitbit" {
                     print("will try and get fitbit tokens")
                     isLoggedInToFitbit()
@@ -78,13 +89,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                     self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController");
 
                 } else {
-                    return
+                    print("other loginMethod")
                 }
+            } else {
+                print("No login method saved")
+                self.goToLogin()
             }
-    
-
+            
+        } else { // they aren't authenticated
+            self.goToLogin()
             
         }
+    }
+    
+    func goToLogin() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! ViewController
+        let nav = UINavigationController(rootViewController: loginVC)
+        window?.rootViewController = nav
     }
     
     func forgetTokens(_ sender: UIButton?) {
@@ -107,18 +129,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func isLoggedInToFitbit() {
         oauth2.authConfig.authorizeEmbedded = true
-         let vcInstance : UIViewController  = ViewController()
-        oauth2.authConfig.authorizeContext = vcInstance
+        let vc = self.window?.rootViewController
+        oauth2.authConfig.authorizeContext = vc
+
         oauth2.logger = OAuth2DebugLogger(.trace)
         print("is logged in to fitbit?")
+
         oauth2.authorize() { authParameters, error in
+            
+            print("Error: \(String(describing: error))")
+            
             if let params = authParameters {
                 print("success in oauth2 appdelegate")
                 print("authorized in app delegate")
                 print("Authorized! Access token is in `oauth2.accessToken`")
                 print("Authorized! Additional parameters: \(params)")
-                self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController");
-
+                self.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+                
             }
             else {
                 print("Authorization was cancelled or went wrong in appdelegate: \(error)")   // error will not be nil
@@ -153,14 +180,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
      Sets URL scheme such that the app can be reopened after performing authentication through fitbit
     */
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        print("URL SCHEME: \(url.scheme!)")
+        
         if "lily" == url.scheme! {
-            if let vc = window?.rootViewController as? ViewController {
-                vc.oauth2.handleRedirectURL(url)
-                print("return true from setting url scheme for fitbit")
-                return true
-            }
+            oauth2.handleRedirectURL(url)
+
         }
-        print("false from set delegate url")
+        
         return false
     }
     func applicationWillTerminate(_ application: UIApplication) {

@@ -22,27 +22,17 @@ class ViewController: UIViewController {
     let myId = UIDevice.current.identifierForVendor!.uuidString
     var ref: FIRDatabaseReference!
 
-    
-    /// Instance of OAuth2 login credentials
-    var oauth2 = OAuth2CodeGrant(settings: [
-        "client_id": "2285YX",
-        "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
-        "authorize_uri": "https://www.fitbit.com/oauth2/authorize",
-        "token_uri": "https://api.fitbit.com/oauth2/token",
-        "response_type": "code",
-        "expires_in": "31536000", // 1 year expiration
-        "scope": "activity heartrate location nutrition profile settings sleep social weight",
-        "redirect_uris": ["lily://oauth/callback"],            // app has registered this scheme
-        "verbose": true,
-        ] as OAuth2JSON)
-    
-    
+
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+    var oauth2: OAuth2CodeGrant?
     
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var signInEmbeddedButton: UIButton?
     @IBOutlet var forgetButton: UIButton?
     
     override func viewDidLoad() {
+        self.oauth2 = appDelegate.oauth2
     }
 
     
@@ -54,6 +44,10 @@ class ViewController: UIViewController {
 
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("login screen will appear")
     }
     
     func createUserHelper(method: String) {
@@ -74,7 +68,11 @@ class ViewController: UIViewController {
                 print("creating anon login")
                 DispatchQueue.main.async {
                     HUD.flash(.success, delay: 0.5)
-                    self.performSegue(withIdentifier: "loggedInSegue", sender: self)
+                    print("success logging in so now going to main storyboard")
+                    // presenting main storyboard now
+                    let appDelegateTemp: AppDelegate? = (UIApplication.shared.delegate as! AppDelegate)
+                    appDelegateTemp?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+
                 }
 
                 
@@ -94,22 +92,22 @@ class ViewController: UIViewController {
     */
     @IBAction func signInEmbedded(_ sender: UIButton?) {
         HUD.show(.progress)
-
+        print("sign in embedded")
         self.oauth2Login()
-
+        
         
     }
     
     
     func oauth2Login() {
         signInEmbeddedButton?.isEnabled = false
-        oauth2.authConfig.authorizeEmbedded = true
-        oauth2.authConfig.authorizeContext = self
-        oauth2.logger = OAuth2DebugLogger(.trace)
+        self.oauth2?.authConfig.authorizeEmbedded = true
+        self.oauth2?.authConfig.authorizeContext = self
+        self.oauth2?.logger = OAuth2DebugLogger(.trace)
         HUD.hide()
 
         
-        oauth2.authorize() { authParameters, error in
+        self.oauth2?.authorize() { authParameters, error in
             if let params = authParameters {
                 print("Authorized in vc! Access token is in `oauth2.accessToken`")
                 print("Authorized! Additional parameters: \(params)")
@@ -125,7 +123,7 @@ class ViewController: UIViewController {
     }
     
     func saveFitbitUser() {
-        let loader = OAuth2DataLoader(oauth2: self.oauth2)
+        let loader = OAuth2DataLoader(oauth2: self.oauth2!)
         self.loader = loader
         // loads basic user profile now that logged in
         
