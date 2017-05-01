@@ -194,6 +194,7 @@ class ViewController: UIViewController {
         let uuid = self.myId
         if let uid = user?.uid {
             ref.child("users/\(uid)/uuid").setValue(uuid)
+            ref.child("users/\(uid)/timer").setValue(nil)
             ref.child("users/\(uid)/loginMethod").setValue(UserDefaults.standard.string(forKey: "loginMethod") ?? "None")
         }
     }
