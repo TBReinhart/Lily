@@ -10,10 +10,10 @@ import UIKit
 
 class PDFGenerator: NSObject {
     
-    let pathToSummaryTemplate = Bundle.main.path(forResource:"summary", ofType: "html", inDirectory: "root")
+    let pathToSummaryTemplate = Bundle.main.path(forResource:"summary", ofType: "html")
 
     
-    let pathToSummarySectionTemplate = Bundle.main.path(forResource:"summary_section", ofType: "html", inDirectory: "root")
+    let pathToSummarySectionTemplate = Bundle.main.path(forResource:"summary_section", ofType: "html")
     
     var pdfFilename: String!
     
