@@ -195,7 +195,14 @@ class Helpers {
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("logs/\(specificDate)/\(key)").observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        var childString = "logs/\(specificDate)/\(key)"
+        
+        if key == "" {
+            childString = "logs/\(specificDate)"
+        }
+        
+        ref.child("users").child(userID!).child(childString).observeSingleEvent(of: .value, with: { (snapshot) in
             let json = JSON(snapshot.value!)
             completionHandler(json, nil)
             

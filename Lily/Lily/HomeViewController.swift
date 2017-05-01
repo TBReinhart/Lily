@@ -10,6 +10,7 @@ import UIKit
 import SCLAlertView
 import SendGrid
 import UserNotifications
+import SwiftyJSON
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var voiceView: VoiceView!
@@ -121,7 +122,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             print("Text value: \(String(describing: txt.text))")
             print("Email from box")
             if let email = txt.text {
-                self.sendEmail(email: txt.text!)
+                self.collectDataAndSendEmail(email: txt.text!)
 
             } else {
                 return
@@ -133,9 +134,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     }
     
-    
-    
-    func sendEmail(email: String) {
+    var myGroup = DispatchGroup()
+    func collectDataAndSendEmail(email: String) {
+        
         // generate the pdf
         let symptomsSubsections: [String] = []
         //            ["vomiting","cramping", "swelling","head_pain","vaginal_and_urinary"]
@@ -145,12 +146,40 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //            ["diet_composition", "water"]
         let bodySubsections: [String] = ["heart_rate", "physical_activity", "sleep"]
         let mindSubsections: [String] = ["mind_summary", "edinburgh_postpartum_depression"]
+        let weeksAgo: Int = 0
         
-        pdfGenerator = PDFGenerator()
-        HTMLContent = pdfGenerator.renderExportableSummary(symptoms: symptomsSubsections, meds: medicationsSubsections, diet: dietSubsections, body: bodySubsections, mind: mindSubsections)
-        pdfGenerator.exportHTMLContentToPDF(HTMLContent: HTMLContent)
+        self.pdfGenerator = PDFGenerator()
         
+        // Get data to pass in
+        var weeklyLog: JSON = [:]
+        let dateRange = Helpers.get7DayRangeInts(weeksAgo: weeksAgo)
         
+        for i in  dateRange.0..<dateRange.1 + 1 {
+            self.myGroup.enter()
+            
+            Helpers.loadDailyLogFromFirebase(key: "", daysAgo: i) { json, error in
+                self.myGroup.leave()
+                if json != JSON.null {
+                    weeklyLog[String(i)] = json
+                } else {
+                    let j:JSON = [:]
+                    weeklyLog[String(i)] = j
+                }
+                
+            }
+        }
+        self.myGroup.notify(queue: DispatchQueue.main, execute: {
+            print("Finished all requests.")
+            print(weeklyLog)
+            self.pdfGenerator.weeklyLog = weeklyLog;
+            self.HTMLContent = self.pdfGenerator.renderExportableSummary(symptoms: symptomsSubsections, meds: medicationsSubsections, diet: dietSubsections, body: bodySubsections, mind: mindSubsections)
+            self.pdfGenerator.exportHTMLContentToPDF(HTMLContent: self.HTMLContent)
+            self.sendEmail(email: email)
+        })
+    
+    }
+    
+    func sendEmail(email: String) {
         let personalization = Personalization(recipients: email)
         let plainText = Content(contentType: ContentType.plainText, value: "Here is your Lily Health Data")
         let htmlText = Content(contentType: ContentType.htmlText, value: "<h1>Thanks for using Lily!</h1>")
@@ -160,7 +189,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             content: [plainText, htmlText],
             subject: "Lily Health Data"
         )
-        let temp = NSData(contentsOfFile: pdfGenerator.pdfFilename)!
+        let temp = NSData(contentsOfFile: self.pdfGenerator.pdfFilename)!
         let attachment = Attachment(
             filename: "LilyHealthSummary.pdf",
             content: temp as Data,
@@ -168,8 +197,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             type: .pdf,
             contentID: nil
         )
-        
-        //NSData(contentsOfFile: pdfGenerator.pdfFilename)!
         
         email.attachments = [attachment]
         

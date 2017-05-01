@@ -7,17 +7,20 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class PDFGenerator: NSObject {
     
-    let pathToSummaryTemplate = Bundle.main.path(forResource:"HTML Templates/summary", ofType: "html")
+    let pathToSummaryTemplate = Bundle.main.path(forResource:"summary", ofType: "html")
     
-    let pathToSummarySectionTemplate = Bundle.main.path(forResource:"HTML Templates/summary_section", ofType: "html")
+    let pathToSummarySectionTemplate = Bundle.main.path(forResource:"summary_section", ofType: "html")
     
     var pdfFilename: String!
+    var finalHTMLContent: String!
+    var weeklyLog: JSON!
     
     let name = "Patient Name"
     let exportDate = Helpers.getLongDate(date: Date())
+    let numWeeks = 3
     
     override init() {
         super.init()
@@ -55,39 +58,40 @@ class PDFGenerator: NSObject {
         
         return data
     }
-    
+
     // pass in the five subsections array
     func renderExportableSummary(symptoms: [String], meds: [String], diet: [String],
                                  body: [String], mind:[String]) -> String {
         
         var subsections: [String] = []
-        print("Path: \(self.pathToSummaryTemplate)")
-        print("Section Template path: \(self.pathToSummarySectionTemplate)")
+
+        print("Path: \(String(describing: self.pathToSummaryTemplate))")
+        print("Section Template path: \(String(describing: self.pathToSummarySectionTemplate))")
         let HTMLContent = renderHeaderAndFooter()
         
         // create symptoms subsection + all symptoms sub-subsections
         if (symptoms.count > 0){
-            subsections.append(renderSubsection(name: "Symptoms", icon: "HTML Templates/symptoms.png", subsectionArr: symptoms))
+            subsections.append(renderSubsection(name: "Symptoms", icon: "symptoms.png", subsectionArr: symptoms))
         }
         
         // create meds subsection + all meds sub-subsections
         if (meds.count > 0) {
-            subsections.append(renderSubsection(name: "Medications", icon: "HTML Templates/medications.png", subsectionArr: meds))
+            subsections.append(renderSubsection(name: "Medications", icon: "medications.png", subsectionArr: meds))
         }
         
         // create diet subsection + all diet sub-subsections
         if (diet.count > 0) {
-            subsections.append(renderSubsection(name: "Diet", icon: "HTML Templates/diet.png", subsectionArr: diet))
+            subsections.append(renderSubsection(name: "Diet", icon: "diet.png", subsectionArr: diet))
         }
         
         // create body subsection + all body sub-subsections
         if (body.count > 0) {
-            subsections.append(renderSubsection(name: "Body", icon: "HTML Templates/body.png", subsectionArr: body))
+            subsections.append(renderSubsection(name: "Body", icon: "body.png", subsectionArr: body))
         }
         
         // create mind subsection + all mind sub-subsections
         if (mind.count > 0) {
-            subsections.append(renderSubsection(name: "Mind", icon: "HTML Templates/mind.png", subsectionArr: mind))
+            subsections.append(renderSubsection(name: "Mind", icon: "mind.png", subsectionArr: mind))
         }
         
         return concatenateSubsections(HTMLContent: HTMLContent, subsections: subsections, id: "#SUMMARY_SECTIONS#")
@@ -119,7 +123,7 @@ class PDFGenerator: NSObject {
         if (html != "") {
             for subsection in subsectionArr {
                 
-                let pathToTemplate = Bundle.main.path(forResource: ("HTML Templates/" + subsection), ofType: "html")
+                let pathToTemplate = Bundle.main.path(forResource: (subsection), ofType: "html")
                 
                 switch subsection {
                 case "personal_medications":
@@ -282,21 +286,18 @@ class PDFGenerator: NSObject {
     func renderMindSummary(pathToTemplate: String) -> String {
         do {
             var html = try String(contentsOfFile: pathToTemplate)
-            let numLogged = "12" // calc w/ logging
-            let pctAnger = "25%" // calc w/ logging
-            let pctSadness = "40%" // calc w/ logging
-            let pctHappiness = "20%" // calc w/ logging
-            let pctAnxiety = "15%" // calc w/ logging
+            let emotionsResults = handleEmotions()
             
-            html = html.replacingOccurrences(of: "#NUM_LOGGED#", with: numLogged)
-            html = html.replacingOccurrences(of: "#PCT_ANGER#", with: pctAnger)
-            html = html.replacingOccurrences(of: "#PCT_SADNESS#", with: pctSadness)
-            html = html.replacingOccurrences(of: "#PCT_HAPPINESS#", with: pctHappiness)
-            html = html.replacingOccurrences(of: "#PCT_ANXIETY#", with: pctAnxiety)
+            html = html.replacingOccurrences(of: "#NUM_LOGGED#", with: emotionsResults["numLogged"]!)
+            html = html.replacingOccurrences(of: "#PCT_ANGER#", with: emotionsResults["pctAnger"]!)
+            html = html.replacingOccurrences(of: "#PCT_SADNESS#", with: emotionsResults["pctSadness"]!)
+            html = html.replacingOccurrences(of: "#PCT_HAPPINESS#", with: emotionsResults["pctHappiness"]!)
+            html = html.replacingOccurrences(of: "#PCT_ANXIETY#", with: emotionsResults["pctAnxiety"]!)
             
             return html
             
         } catch {
+            
             print("Unable to open and use HTML files. Quit at water sub-subsection")
         }
         return ""
@@ -305,23 +306,17 @@ class PDFGenerator: NSObject {
     func renderPostpartumDepressionSurvey(pathToTemplate: String) -> String {
         do {
             var html = try String(contentsOfFile: pathToTemplate)
-            let hasLaughed = "Yes" // calc w/ logging
-            let hasBeenExcited = "Yes" // calc w/ logging
-            let hasBeenAnxious = "Yes" // calc w/ logging
-            let hasBeenScared = "No" // calc w/ logging
-            let hasFeltOverwhelmed = "Yes" // calc w/ logging
-            let hasProblemsSleeping = "Yes" // calc w/ logging
-            let hasFeltMiserable = "No" // calc w/ logging
-            let hasReportedCrying = "Yes" //calc w/ logging
+            let emotionsResults = handleEmotions()
+            let hasProblemsSleeping = "No" // Fix
             
-            html = html.replacingOccurrences(of: "#EDIN_1#", with: hasLaughed)
-            html = html.replacingOccurrences(of: "#EDIN_2#", with: hasBeenExcited)
-            html = html.replacingOccurrences(of: "#EDIN_3#", with: hasBeenAnxious)
-            html = html.replacingOccurrences(of: "#EDIN_4#", with: hasBeenScared)
-            html = html.replacingOccurrences(of: "#EDIN_5#", with: hasFeltOverwhelmed)
+            html = html.replacingOccurrences(of: "#EDIN_1#", with: emotionsResults["hasLaughed"]!)
+            html = html.replacingOccurrences(of: "#EDIN_2#", with: emotionsResults["hasBeenExcited"]!)
+            html = html.replacingOccurrences(of: "#EDIN_3#", with: emotionsResults["hasBeenAnxious"]!)
+            html = html.replacingOccurrences(of: "#EDIN_4#", with: emotionsResults["hasBeenScared"]!)
+            html = html.replacingOccurrences(of: "#EDIN_5#", with: emotionsResults["hasFeltOverwhelmed"]!)
             html = html.replacingOccurrences(of: "#EDIN_6#", with: hasProblemsSleeping)
-            html = html.replacingOccurrences(of: "#EDIN_7#", with: hasFeltMiserable)
-            html = html.replacingOccurrences(of: "#EDIN_8#", with: hasReportedCrying)
+            html = html.replacingOccurrences(of: "#EDIN_7#", with: emotionsResults["hasFeltMiserable"]!)
+            html = html.replacingOccurrences(of: "#EDIN_8#", with: emotionsResults["hasReportedCrying"]!)
             
             return html
             
@@ -357,6 +352,120 @@ class PDFGenerator: NSObject {
         }
         // 2. replace occurrence
         return mutableHTML.replacingOccurrences(of: id, with: summarySubsections)
+        
+    }
+    
+    func handleHeartRate() -> [String: String] {
+        var heartResults = [String: String]()
+        
+        return heartResults
+        
+    }
+    
+    func handleWater() -> [String: String] {
+        var waterResults = [String: String]()
+        
+        return waterResults
+    }
+    
+    func handlePhysicalActivity() -> [String: String] {
+        var activityResults = [String: String]()
+        
+        return activityResults
+    }
+    
+    func handleSleep() -> [String: String] {
+        var sleepResults = [String: String]()
+        
+        return sleepResults
+    }
+    
+    func handleEmotions() -> [String: String] {
+        
+        var emotionsResults = [String: String]()
+        
+        var timesSeenEmotions = 0
+        var totalNumHappy = 0
+        var totalNumSad = 0
+        var totalNumAnxious = 0
+        var totalNumAnger = 0
+        
+        emotionsResults["hasLaughed"] = "No"
+        emotionsResults["hasBeenExcited"] = "No"
+        emotionsResults["hasBeenAnxious"] = "No"
+        emotionsResults["hasBeenScared"] = "No"
+        emotionsResults["hasFeltOverwhelmed"] = "No"
+        emotionsResults["hasFeltMiserable"] = "No"
+        emotionsResults["hasReportedCrying"] = "No"
+        
+        for (_, subJson):(String, JSON) in self.weeklyLog {
+            
+            for (loggedItem, logValue):(String, JSON) in subJson {
+                if loggedItem == "emotions" {
+                    timesSeenEmotions += 1
+                    if logValue["miserable"].boolValue {
+                        totalNumSad += 1
+                        emotionsResults["hasFeltMiserable"] = "Yes"
+                    }
+                    if logValue["like laughing"].boolValue {
+                        totalNumHappy += 1
+                        emotionsResults["hasLaughed"] = "Yes"
+                    }
+                    if logValue["angry"].boolValue {
+                        totalNumAnger += 1
+                    }
+                    if logValue["frustrated"].boolValue {
+                        totalNumAnger += 1
+                    }
+                    if logValue["like crying"].boolValue {
+                        totalNumSad += 1
+                        emotionsResults["hasReportedCrying"] = "Yes"
+                    }
+                    if logValue["irate"].boolValue {
+                        totalNumAnger += 1
+                    }
+                    if logValue["sad"].boolValue {
+                        totalNumSad += 1
+                    }
+                    if logValue["scared"].boolValue {
+                        totalNumAnxious += 1
+                        emotionsResults["hasBeenScared"] = "Yes"
+                    }
+                    if logValue["overwhelmed"].boolValue {
+                        totalNumAnxious += 1
+                        emotionsResults["hasFeltOverwhelmed"]  = "Yes"
+                    }
+                    if logValue["excited"].boolValue {
+                        totalNumHappy += 1
+                        emotionsResults["hasBeenExcited"] = "Yes"
+                    }
+                    if logValue["happy"].boolValue {
+                        totalNumHappy += 1
+                    }
+                    if logValue["nervous"].boolValue {
+                        totalNumAnxious += 1
+                        emotionsResults["hasBeenAnxious"] = "Yes"
+                    }
+                }
+            }
+        }
+        
+        emotionsResults["numLogged"] = String(timesSeenEmotions)
+        let emotionsSum = totalNumAnxious + totalNumSad + totalNumAnger + totalNumHappy
+        
+        if timesSeenEmotions != 0 {
+            emotionsResults["pctAnger"] = String(format: "%.2f", Double(totalNumAnger) / Double(emotionsSum)) + "%"
+            emotionsResults["pctSadness"] = String(format: "%.2f", Double(totalNumSad) / Double(emotionsSum)) + "%"
+            emotionsResults["pctHappiness"] = String(format: "%.2f", Double(totalNumHappy) / Double(emotionsSum)) + "%"
+            emotionsResults["pctAnxiety"] = String(format: "%.2f", Double(totalNumAnxious) / Double(emotionsSum)) + "%"
+        } else {
+            emotionsResults["pctAnger"] = "0%"
+            emotionsResults["pctSadness"] = "0%"
+            emotionsResults["pctHappiness"] = "0%"
+            emotionsResults["pctAnxiety"] = "0%"
+        }
+        
+        return emotionsResults
         
     }
     
