@@ -10,9 +10,9 @@ import UIKit
 
 class PDFGenerator: NSObject {
     
-    let pathToSummaryTemplate = Bundle.main.path(forResource:"summary", ofType: "html")
+    let pathToSummaryTemplate = Bundle.main.path(forResource:"HTML Templates/summary", ofType: "html")
     
-    let pathToSummarySectionTemplate = Bundle.main.path(forResource:"summary_section", ofType: "html")
+    let pathToSummarySectionTemplate = Bundle.main.path(forResource:"HTML Templates/summary_section", ofType: "html")
     
     var pdfFilename: String!
     
@@ -67,27 +67,27 @@ class PDFGenerator: NSObject {
         
         // create symptoms subsection + all symptoms sub-subsections
         if (symptoms.count > 0){
-            subsections.append(renderSubsection(name: "Symptoms", icon: "symptoms.png", subsectionArr: symptoms))
+            subsections.append(renderSubsection(name: "Symptoms", icon: "HTML Templates/symptoms.png", subsectionArr: symptoms))
         }
         
         // create meds subsection + all meds sub-subsections
         if (meds.count > 0) {
-            subsections.append(renderSubsection(name: "Medications", icon: "medications.png", subsectionArr: meds))
+            subsections.append(renderSubsection(name: "Medications", icon: "HTML Templates/medications.png", subsectionArr: meds))
         }
         
         // create diet subsection + all diet sub-subsections
         if (diet.count > 0) {
-            subsections.append(renderSubsection(name: "Diet", icon: "diet.png", subsectionArr: diet))
+            subsections.append(renderSubsection(name: "Diet", icon: "HTML Templates/diet.png", subsectionArr: diet))
         }
         
         // create body subsection + all body sub-subsections
         if (body.count > 0) {
-            subsections.append(renderSubsection(name: "Body", icon: "body.png", subsectionArr: body))
+            subsections.append(renderSubsection(name: "Body", icon: "HTML Templates/body.png", subsectionArr: body))
         }
         
         // create mind subsection + all mind sub-subsections
         if (mind.count > 0) {
-            subsections.append(renderSubsection(name: "Mind", icon: "mind.png", subsectionArr: mind))
+            subsections.append(renderSubsection(name: "Mind", icon: "HTML Templates/mind.png", subsectionArr: mind))
         }
         
         return concatenateSubsections(HTMLContent: HTMLContent, subsections: subsections, id: "#SUMMARY_SECTIONS#")
@@ -118,7 +118,8 @@ class PDFGenerator: NSObject {
         var subsToConcat : [String] = []
         if (html != "") {
             for subsection in subsectionArr {
-                let pathToTemplate = Bundle.main.path(forResource: subsection, ofType: "html")
+                
+                let pathToTemplate = Bundle.main.path(forResource: ("HTML Templates/" + subsection), ofType: "html")
                 
                 switch subsection {
                 case "personal_medications":
