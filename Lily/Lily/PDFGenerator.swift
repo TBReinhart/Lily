@@ -11,12 +11,13 @@ import UIKit
 class PDFGenerator: NSObject {
     
     let pathToSummaryTemplate = Bundle.main.path(forResource:"summary", ofType: "html")
+    
     let pathToSummarySectionTemplate = Bundle.main.path(forResource:"summary_section", ofType: "html")
     
     var pdfFilename: String!
     
     let name = "Patient Name"
-    let exportDate = "04/30/2017"
+    let exportDate = Helpers.getLongDate(date: Date())
     
     override init() {
         super.init()
@@ -60,6 +61,8 @@ class PDFGenerator: NSObject {
                                  body: [String], mind:[String]) -> String {
         
         var subsections: [String] = []
+        print("Path: \(self.pathToSummaryTemplate)")
+        print("Section Template path: \(self.pathToSummarySectionTemplate)")
         let HTMLContent = renderHeaderAndFooter()
         
         // create symptoms subsection + all symptoms sub-subsections
