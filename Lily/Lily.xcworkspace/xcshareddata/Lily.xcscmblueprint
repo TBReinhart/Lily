@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "37F19F16C0016B04701ABCA94BB1FC069DF7C2D5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "37F19F16C0016B04701ABCA94BB1FC069DF7C2D5" : 9223372036854775807,
+    "3C6367DF1B05A9712D5E65EFCA96AAA53E1F0CC3" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F1BA7EFD-2249-4F9A-8AC4-D229CA68B9A1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "37F19F16C0016B04701ABCA94BB1FC069DF7C2D5" : "Lily\/",
+    "3C6367DF1B05A9712D5E65EFCA96AAA53E1F0CC3" : "Print2PDF%203\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Lily",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Lily\/Lily.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TBReinhart\/Lily.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "37F19F16C0016B04701ABCA94BB1FC069DF7C2D5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mjudge2\/pdfSummary.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3C6367DF1B05A9712D5E65EFCA96AAA53E1F0CC3"
+    }
+  ]
+}

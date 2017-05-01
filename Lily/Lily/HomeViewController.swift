@@ -23,6 +23,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var heartRate: Int?
     var sleep: String?
     
+    var pdfGenerator: PDFGenerator!
+    var HTMLContent: String!
     
     @IBOutlet weak var TileCollectionView: UICollectionView!
 
@@ -105,7 +107,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         let alertViewIcon = UIImage(named: "sendIcon") //Replace the IconImage text with the image name
         alert.showEdit("Export Health Data", subTitle: "Please provide an email", circleIconImage: alertViewIcon)
+        
+        // generate the pdf
+        let symptomsSubsections: [String] = []
+        //            ["vomiting","cramping", "swelling","head_pain","vaginal_and_urinary"]
+        let medicationsSubsections: [String] = []
+        //            ["personal_medications", "vitamins"]
+        let dietSubsections: [String] = ["water"]
+        //            ["diet_composition", "water"]
+        let bodySubsections: [String] = ["heart_rate", "physical_activity", "sleep"]
+        let mindSubsections: [String] = ["mind_summary", "edinburgh_postpartum_depression"]
+        
+        pdfGenerator = PDFGenerator()
+        HTMLContent = pdfGenerator.renderExportableSummary(symptoms: symptomsSubsections, meds: medicationsSubsections, diet: dietSubsections, body: bodySubsections, mind: mindSubsections)
+        pdfGenerator.exportHTMLContentToPDF(HTMLContent: HTMLContent)
     }
+    
+    
     
     func sendEmail(email: String) {
         let personalization = Personalization(recipients: email)
@@ -117,6 +135,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             content: [plainText, htmlText],
             subject: "Lily Health Data"
         )
+        let temp = NSData(contentsOfFile: pdfGenerator.pdfFilename)!
+        let attachment = Attachment(
+            filename: "LilyHealthSummary.pdf",
+            content: temp as Data,
+            disposition: .attachment,
+            type: .pdf,
+            contentID: nil
+        )
+        
+        //NSData(contentsOfFile: pdfGenerator.pdfFilename)!
+        
+        email.attachments = [attachment]
+        
         do {
             try Session.shared.send(request: email)
         } catch {

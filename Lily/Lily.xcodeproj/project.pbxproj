@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DC83DF11EB6AC2900395DEB /* cramping.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DE11EB6AC2900395DEB /* cramping.html */; };
+		0DC83DF21EB6AC2900395DEB /* diet_composition.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DE21EB6AC2900395DEB /* diet_composition.html */; };
+		0DC83DF31EB6AC2900395DEB /* edinburgh_postpartum_depression.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DE31EB6AC2900395DEB /* edinburgh_postpartum_depression.html */; };
+		0DC83DF41EB6AC2900395DEB /* head_pain.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DE41EB6AC2900395DEB /* head_pain.html */; };
+		0DC83DF51EB6AC2900395DEB /* heart_rate.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DE51EB6AC2900395DEB /* heart_rate.html */; };
+		0DC83DF61EB6AC2900395DEB /* mind_summary.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DE61EB6AC2900395DEB /* mind_summary.html */; };
+		0DC83DF71EB6AC2900395DEB /* personal_medications.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DE71EB6AC2900395DEB /* personal_medications.html */; };
+		0DC83DF81EB6AC2900395DEB /* physical_activity.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DE81EB6AC2900395DEB /* physical_activity.html */; };
+		0DC83DF91EB6AC2900395DEB /* sleep.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DE91EB6AC2900395DEB /* sleep.html */; };
+		0DC83DFA1EB6AC2900395DEB /* summary_section.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DEA1EB6AC2900395DEB /* summary_section.html */; };
+		0DC83DFB1EB6AC2900395DEB /* summary.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DEB1EB6AC2900395DEB /* summary.html */; };
+		0DC83DFC1EB6AC2900395DEB /* swelling.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DEC1EB6AC2900395DEB /* swelling.html */; };
+		0DC83DFD1EB6AC2900395DEB /* vaginal_and_urinary.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DED1EB6AC2900395DEB /* vaginal_and_urinary.html */; };
+		0DC83DFE1EB6AC2900395DEB /* vitamins.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DEE1EB6AC2900395DEB /* vitamins.html */; };
+		0DC83DFF1EB6AC2900395DEB /* vomiting.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DEF1EB6AC2900395DEB /* vomiting.html */; };
+		0DC83E001EB6AC2900395DEB /* water.html in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83DF01EB6AC2900395DEB /* water.html */; };
+		0DC83E071EB6AC3A00395DEB /* body.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83E011EB6AC3A00395DEB /* body.png */; };
+		0DC83E081EB6AC3A00395DEB /* diet.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83E021EB6AC3A00395DEB /* diet.png */; };
+		0DC83E091EB6AC3A00395DEB /* lily.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83E031EB6AC3A00395DEB /* lily.png */; };
+		0DC83E0A1EB6AC3A00395DEB /* medications.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83E041EB6AC3A00395DEB /* medications.png */; };
+		0DC83E0B1EB6AC3A00395DEB /* mind.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83E051EB6AC3A00395DEB /* mind.png */; };
+		0DC83E0C1EB6AC3A00395DEB /* symptoms.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC83E061EB6AC3A00395DEB /* symptoms.png */; };
+		0DC83E0E1EB6AC7C00395DEB /* PDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC83E0D1EB6AC7C00395DEB /* PDFGenerator.swift */; };
+		0DC83E201EB6C62A00395DEB /* CustomPrintPageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC83E1F1EB6C62A00395DEB /* CustomPrintPageRenderer.swift */; };
 		2F0044791E5F6E5B000E8BF6 /* TileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0044781E5F6E5B000E8BF6 /* TileCollectionViewCell.swift */; };
 		2F00447E1E5FB7F1000E8BF6 /* journal.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F00447A1E5FB7F1000E8BF6 /* journal.png */; };
 		2F00447F1E5FB7F1000E8BF6 /* CallDoctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F00447B1E5FB7F1000E8BF6 /* CallDoctor.png */; };
@@ -188,6 +212,30 @@
 
 /* Begin PBXFileReference section */
 		087B0A496F522C14AA1FEBCB /* Pods-Lily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lily/Pods-Lily.debug.xcconfig"; sourceTree = "<group>"; };
+		0DC83DE11EB6AC2900395DEB /* cramping.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = cramping.html; path = "../../../HTML Templates/cramping.html"; sourceTree = "<group>"; };
+		0DC83DE21EB6AC2900395DEB /* diet_composition.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = diet_composition.html; path = "../../../HTML Templates/diet_composition.html"; sourceTree = "<group>"; };
+		0DC83DE31EB6AC2900395DEB /* edinburgh_postpartum_depression.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = edinburgh_postpartum_depression.html; path = "../../../HTML Templates/edinburgh_postpartum_depression.html"; sourceTree = "<group>"; };
+		0DC83DE41EB6AC2900395DEB /* head_pain.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = head_pain.html; path = "../../../HTML Templates/head_pain.html"; sourceTree = "<group>"; };
+		0DC83DE51EB6AC2900395DEB /* heart_rate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = heart_rate.html; path = "../../../HTML Templates/heart_rate.html"; sourceTree = "<group>"; };
+		0DC83DE61EB6AC2900395DEB /* mind_summary.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = mind_summary.html; path = "../../../HTML Templates/mind_summary.html"; sourceTree = "<group>"; };
+		0DC83DE71EB6AC2900395DEB /* personal_medications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = personal_medications.html; path = "../../../HTML Templates/personal_medications.html"; sourceTree = "<group>"; };
+		0DC83DE81EB6AC2900395DEB /* physical_activity.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = physical_activity.html; path = "../../../HTML Templates/physical_activity.html"; sourceTree = "<group>"; };
+		0DC83DE91EB6AC2900395DEB /* sleep.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = sleep.html; path = "../../../HTML Templates/sleep.html"; sourceTree = "<group>"; };
+		0DC83DEA1EB6AC2900395DEB /* summary_section.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = summary_section.html; path = "../../../HTML Templates/summary_section.html"; sourceTree = "<group>"; };
+		0DC83DEB1EB6AC2900395DEB /* summary.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = summary.html; path = "../../../HTML Templates/summary.html"; sourceTree = "<group>"; };
+		0DC83DEC1EB6AC2900395DEB /* swelling.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = swelling.html; path = "../../../HTML Templates/swelling.html"; sourceTree = "<group>"; };
+		0DC83DED1EB6AC2900395DEB /* vaginal_and_urinary.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = vaginal_and_urinary.html; path = "../../../HTML Templates/vaginal_and_urinary.html"; sourceTree = "<group>"; };
+		0DC83DEE1EB6AC2900395DEB /* vitamins.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = vitamins.html; path = "../../../HTML Templates/vitamins.html"; sourceTree = "<group>"; };
+		0DC83DEF1EB6AC2900395DEB /* vomiting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = vomiting.html; path = "../../../HTML Templates/vomiting.html"; sourceTree = "<group>"; };
+		0DC83DF01EB6AC2900395DEB /* water.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = water.html; path = "../../../HTML Templates/water.html"; sourceTree = "<group>"; };
+		0DC83E011EB6AC3A00395DEB /* body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = body.png; path = "../../../HTML Templates/body.png"; sourceTree = "<group>"; };
+		0DC83E021EB6AC3A00395DEB /* diet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diet.png; path = "../../../HTML Templates/diet.png"; sourceTree = "<group>"; };
+		0DC83E031EB6AC3A00395DEB /* lily.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lily.png; path = "../../../HTML Templates/lily.png"; sourceTree = "<group>"; };
+		0DC83E041EB6AC3A00395DEB /* medications.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medications.png; path = "../../../HTML Templates/medications.png"; sourceTree = "<group>"; };
+		0DC83E051EB6AC3A00395DEB /* mind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mind.png; path = "../../../HTML Templates/mind.png"; sourceTree = "<group>"; };
+		0DC83E061EB6AC3A00395DEB /* symptoms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = symptoms.png; path = "../../../HTML Templates/symptoms.png"; sourceTree = "<group>"; };
+		0DC83E0D1EB6AC7C00395DEB /* PDFGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
+		0DC83E1F1EB6C62A00395DEB /* CustomPrintPageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPrintPageRenderer.swift; sourceTree = "<group>"; };
 		2A3F7A2A05BA366D8C23C744 /* Pods-Lily-LilyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily-LilyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9CDFF0524D10FD589A9B0E /* Pods-Lily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lily/Pods-Lily.release.xcconfig"; sourceTree = "<group>"; };
 		2F0044781E5F6E5B000E8BF6 /* TileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileCollectionViewCell.swift; path = Lily/TileCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -399,6 +447,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0DC83DE01EB6AC0500395DEB /* HTML Templates */ = {
+			isa = PBXGroup;
+			children = (
+				0DC83E011EB6AC3A00395DEB /* body.png */,
+				0DC83E021EB6AC3A00395DEB /* diet.png */,
+				0DC83E031EB6AC3A00395DEB /* lily.png */,
+				0DC83E041EB6AC3A00395DEB /* medications.png */,
+				0DC83E051EB6AC3A00395DEB /* mind.png */,
+				0DC83E061EB6AC3A00395DEB /* symptoms.png */,
+				0DC83DE11EB6AC2900395DEB /* cramping.html */,
+				0DC83DE21EB6AC2900395DEB /* diet_composition.html */,
+				0DC83DE31EB6AC2900395DEB /* edinburgh_postpartum_depression.html */,
+				0DC83DE41EB6AC2900395DEB /* head_pain.html */,
+				0DC83DE51EB6AC2900395DEB /* heart_rate.html */,
+				0DC83DE61EB6AC2900395DEB /* mind_summary.html */,
+				0DC83DE71EB6AC2900395DEB /* personal_medications.html */,
+				0DC83DE81EB6AC2900395DEB /* physical_activity.html */,
+				0DC83DE91EB6AC2900395DEB /* sleep.html */,
+				0DC83DEA1EB6AC2900395DEB /* summary_section.html */,
+				0DC83DEB1EB6AC2900395DEB /* summary.html */,
+				0DC83DEC1EB6AC2900395DEB /* swelling.html */,
+				0DC83DED1EB6AC2900395DEB /* vaginal_and_urinary.html */,
+				0DC83DEE1EB6AC2900395DEB /* vitamins.html */,
+				0DC83DEF1EB6AC2900395DEB /* vomiting.html */,
+				0DC83DF01EB6AC2900395DEB /* water.html */,
+			);
+			name = "HTML Templates";
+			sourceTree = "<group>";
+		};
 		2F00448A1E5FC05C000E8BF6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +658,7 @@
 		2FA1CD5B1E0347AF00778DF3 /* Lily */ = {
 			isa = PBXGroup;
 			children = (
+				0DC83DE01EB6AC0500395DEB /* HTML Templates */,
 				2FA1CD601E0347AF00778DF3 /* Main.storyboard */,
 				2FA1CD5C1E0347AF00778DF3 /* AppDelegate.swift */,
 				2F398EFE1E16006600A1AEB3 /* Helpers.swift */,
@@ -653,6 +731,8 @@
 				2F3EAFB41E4C229800214FC4 /* HeartRate.swift */,
 				2FC0BA641E419D97007B291C /* Water.swift */,
 				2F980E861E50D1CB0024C5EC /* Activity.swift */,
+				0DC83E0D1EB6AC7C00395DEB /* PDFGenerator.swift */,
+				0DC83E1F1EB6C62A00395DEB /* CustomPrintPageRenderer.swift */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -814,13 +894,17 @@
 				2F3983B91E803ECA001F0B78 /* medication_log.png in Resources */,
 				2F938F571E522F1A006D64A9 /* alarm_clock_enabled.png in Resources */,
 				2F446D9E1E36E5D3003A6CF4 /* micWithOrangeBorder.png in Resources */,
+				0DC83E0B1EB6AC3A00395DEB /* mind.png in Resources */,
 				2F3983BF1E804983001F0B78 /* HalfCircleView.xib in Resources */,
 				2FE264261E3C38EC004DB460 /* white_background.png in Resources */,
 				2F8A4E841E67C0BB00F4C017 /* kick_label.png in Resources */,
 				2FA09AED1E31321F0094270F /* blackjack.otf in Resources */,
 				2F8A4E741E6791F000F4C017 /* DayWithTimeView.xib in Resources */,
 				2FA09B051E31BEF80094270F /* microphone.png in Resources */,
+				0DC83E081EB6AC3A00395DEB /* diet.png in Resources */,
+				0DC83E071EB6AC3A00395DEB /* body.png in Resources */,
 				2FA9ECA51E686549004ECF1E /* WeeklyBarView.xib in Resources */,
+				0DC83DFD1EB6AC2900395DEB /* vaginal_and_urinary.html in Resources */,
 				2F889DB81E4F8A0200F22584 /* very.png in Resources */,
 				2F00448E1E61C2B2000E8BF6 /* Calendar.png in Resources */,
 				2FE2643A1E3C4C03004DB460 /* exportButtonIcon.png in Resources */,
@@ -829,6 +913,7 @@
 				2FA9ECA31E6864E9004ECF1E /* WeeklyTimesView.xib in Resources */,
 				2FE264321E3C3A9B004DB460 /* OrLoginImage.png in Resources */,
 				2FC0BA771E44E913007B291C /* ForwardButton.png in Resources */,
+				0DC83DF91EB6AC2900395DEB /* sleep.html in Resources */,
 				2FC0BA791E44EA32007B291C /* BackButton.png in Resources */,
 				2FA09AF91E3138F10094270F /* Checklist.png in Resources */,
 				2F3983B71E803ECA001F0B78 /* nutrition.png in Resources */,
@@ -841,18 +926,22 @@
 				2FA09AFF1E313BFE0094270F /* ProgressWheel.png in Resources */,
 				2FE264301E3C3A82004DB460 /* ConnectWithHealthKit.png in Resources */,
 				2FB3CEFE1E8D585600281E8C /* VoiceView.xib in Resources */,
+				0DC83E091EB6AC3A00395DEB /* lily.png in Resources */,
 				2F8A4E7C1E67BA4300F4C017 /* kick_button.png in Resources */,
 				2F3983BD1E8040D2001F0B78 /* contraction_timer.png in Resources */,
 				2F76586B1E86D3D700B8F624 /* like_crying_circle.png in Resources */,
 				2F938F561E522F1A006D64A9 /* small_water.png in Resources */,
 				2FC0BA721E43D5C9007B291C /* Back-50.png in Resources */,
 				2F8A4E7E1E67BE5800F4C017 /* DailyKickView.xib in Resources */,
+				0DC83DF31EB6AC2900395DEB /* edinburgh_postpartum_depression.html in Resources */,
 				2FE2642E1E3C3A6A004DB460 /* ConnectWithFitbit.png in Resources */,
 				2F683F271E68730B00CC2641 /* half_circle.png in Resources */,
 				2F938F541E522F1A006D64A9 /* small_moon.png in Resources */,
 				2F3983B81E803ECA001F0B78 /* morning_sickness.png in Resources */,
+				0DC83DF51EB6AC2900395DEB /* heart_rate.html in Resources */,
 				2F0044831E5FB85D000E8BF6 /* Baby.png in Resources */,
 				2F8A4E821E67BEF900F4C017 /* Line.png in Resources */,
+				0DC83DFB1EB6AC2900395DEB /* summary.html in Resources */,
 				2F7658721E86D3D700B8F624 /* frustrated_circle.png in Resources */,
 				2F76586A1E86D3D700B8F624 /* miserable_circle.png in Resources */,
 				2F76586D1E86D3D700B8F624 /* scared_circle.png in Resources */,
@@ -861,17 +950,22 @@
 				2F91BE351E462BA20030821A /* DropdownArrow.png in Resources */,
 				2F7658711E86D3D700B8F624 /* angry_circle.png in Resources */,
 				2F3FDC911E35921B00B18F25 /* x.png in Resources */,
+				0DC83DFA1EB6AC2900395DEB /* summary_section.html in Resources */,
 				2F00448C1E61C22E000E8BF6 /* WhatHappenedThatDay.xib in Resources */,
+				0DC83DF41EB6AC2900395DEB /* head_pain.html in Resources */,
 				2F6702EB1E89DA9700E27733 /* green_log_button.png in Resources */,
 				2F889DBB1E4F8A0200F22584 /* sedentary.png in Resources */,
 				2FC0BA731E43D5C9007B291C /* Forward-50.png in Resources */,
 				2FCEE3E81E31C8F5009CFEE7 /* GoogleService-Info.plist in Resources */,
 				2F938F521E522F1A006D64A9 /* small_scale.png in Resources */,
 				2FA09AEF1E3138070094270F /* CardBackground.png in Resources */,
+				0DC83DFC1EB6AC2900395DEB /* swelling.html in Resources */,
 				2F7658691E86D3D700B8F624 /* happy_circle.png in Resources */,
 				2F938F5A1E523141006D64A9 /* NavigationBar.png in Resources */,
+				0DC83DFF1EB6AC2900395DEB /* vomiting.html in Resources */,
 				2F938F531E522F1A006D64A9 /* small_heart.png in Resources */,
 				2F683F231E68701400CC2641 /* WeeklyView.xib in Resources */,
+				0DC83DFE1EB6AC2900395DEB /* vitamins.html in Resources */,
 				2F3EAFB91E4D0E4D00214FC4 /* HowShouldIBeExercisingCard.png in Resources */,
 				2FA09B011E3147F40094270F /* backgroundShade.png in Resources */,
 				2FB99A491E663E330098865E /* ActivityTile.xib in Resources */,
@@ -880,20 +974,26 @@
 				2F938F4F1E522F1A006D64A9 /* small_call_doctor.png in Resources */,
 				2FA09AF71E3138F10094270F /* Heart.png in Resources */,
 				2F8127021E5EA46B00B625E1 /* TileView.xib in Resources */,
+				0DC83DF81EB6AC2900395DEB /* physical_activity.html in Resources */,
 				2F00447F1E5FB7F1000E8BF6 /* CallDoctor.png in Resources */,
+				0DC83DF61EB6AC2900395DEB /* mind_summary.html in Resources */,
 				2FA09B071E31C3A80094270F /* microphone@2x.png in Resources */,
 				2F889DBA1E4F8A0200F22584 /* lightly.png in Resources */,
 				2F76586E1E86D3D700B8F624 /* nervous_circle.png in Resources */,
 				2F3FDC951E35A69100B18F25 /* backgroundMicHelp.png in Resources */,
+				0DC83E001EB6AC2900395DEB /* water.html in Resources */,
 				2F3EAFA91E4A55B200214FC4 /* upArrow.png in Resources */,
 				2F8587271E59458C00D7594A /* Login.png in Resources */,
 				2F3EAFAF1E4BF8D400214FC4 /* HowShouldISleepCard.png in Resources */,
 				2F0044891E5FBF74000E8BF6 /* WaterTile.xib in Resources */,
+				0DC83E0C1EB6AC3A00395DEB /* symptoms.png in Resources */,
 				2F3FDC931E3592E200B18F25 /* Help Subview.png in Resources */,
 				2FA1CD621E0347AF00778DF3 /* Main.storyboard in Resources */,
 				2F683F291E68763000CC2641 /* weeklyMiddleView.xib in Resources */,
 				2F8A4E7A1E67BA4300F4C017 /* cancel_button.png in Resources */,
 				2FA09AF11E3138E30094270F /* water.png in Resources */,
+				0DC83DF11EB6AC2900395DEB /* cramping.html in Resources */,
+				0DC83E0A1EB6AC3A00395DEB /* medications.png in Resources */,
 				2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */,
 				2F7658701E86D3D700B8F624 /* irate_circle.png in Resources */,
 				2FFCB4171E68FD1B008622BB /* AdvicePanelView.xib in Resources */,
@@ -903,7 +1003,9 @@
 				2FA9ECA11E685DA2004ECF1E /* KickCellView.xib in Resources */,
 				2FC0BA6E1E43D556007B291C /* ChevronLeft.png in Resources */,
 				2F00447E1E5FB7F1000E8BF6 /* journal.png in Resources */,
+				0DC83DF21EB6AC2900395DEB /* diet_composition.html in Resources */,
 				2FC0BA6F1E43D556007B291C /* ChevronRight.png in Resources */,
+				0DC83DF71EB6AC2900395DEB /* personal_medications.html in Resources */,
 				2FE264361E3C419A004DB460 /* Lily_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1016,8 +1118,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA1CD5F1E0347AF00778DF3 /* ViewController.swift in Sources */,
+				0DC83E0E1EB6AC7C00395DEB /* PDFGenerator.swift in Sources */,
 				2F7AD0431E66814900D29079 /* DragDropCollectionView.swift in Sources */,
 				2FBD8D7B1E8716AC001529FF /* EmotionCellView.swift in Sources */,
+				0DC83E201EB6C62A00395DEB /* CustomPrintPageRenderer.swift in Sources */,
 				2F8127041E5F326200B625E1 /* TileView.swift in Sources */,
 				2F0044871E5FBF48000E8BF6 /* WaterTileView.swift in Sources */,
 				2F7658981E86F65000B8F624 /* EmotionsViewController.swift in Sources */,
