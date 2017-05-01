@@ -99,11 +99,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func exportPressed() {
         // Add a text field
         let alert = SCLAlertView()
-        let txt = alert.addTextField("your-email@gmail.com")
+        let txt = alert.addTextField("your-email@email.com")
         alert.addButton("Send") {
             print("Text value: \(String(describing: txt.text))")
             print("Email from box")
-            self.sendEmail(email: "mjudge252@gmail.com")
+            self.sendEmail(email: txt.text!)
         }
         let alertViewIcon = UIImage(named: "sendIcon") //Replace the IconImage text with the image name
         alert.showEdit("Export Health Data", subTitle: "Please provide an email", circleIconImage: alertViewIcon)
@@ -126,7 +126,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     func sendEmail(email: String) {
-        let personalization = Personalization(recipients: "mjudge252@gmail.com")
+        let personalization = Personalization(recipients: email)
         let plainText = Content(contentType: ContentType.plainText, value: "Here is your Lily Health Data")
         let htmlText = Content(contentType: ContentType.htmlText, value: "<h1>Thanks for using Lily!</h1>")
         let email = Email(
@@ -173,7 +173,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let past = Helpers.getDateNDaysAgo(daysAgo: daysAgo)
         let dateString = past.dateString
         self.fbreqs.getSleepLogs(date: dateString) { sleep, error in
-            Helpers.postDailyLogToFirebase(key: "sleep", value: sleep?.sleepLabel)
+//            Helpers.postDailyLogToFirebase(key: "sleep", value: sleep?.sleepLabel)
             completionHandler(sleep ?? Sleep(), nil)
             
             
@@ -276,10 +276,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     self.loadHeartRateNDaysAgo(daysAgo: 0) { heartRate, err in
                         self.heartRate = heartRate?.averageBPM
                         tileView.middleLabel.isHidden = false
-                        tileView.middleLabel.text = "\(String(describing: self.heartRate))"
+                        if let hr = self.heartRate {
+                            tileView.middleLabel.text = "\(String(describing: hr))"
+                        }
                     }
                 } else {
-                    tileView.middleLabel.text = "\(String(describing: self.heartRate))"
+                    tileView.middleLabel.isHidden = false
+                    if let hr = self.heartRate {
+                        tileView.middleLabel.text = "\(String(describing: hr))"
+                    }
                 }
 
             }

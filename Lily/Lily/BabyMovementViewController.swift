@@ -124,6 +124,7 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
     }
     
     func doneWithKicks() {
+        
         Helpers.postDailyLogToFirebaseUpdateValue(key: "kicksTotal", value: kicks)
         Helpers.postDailyLogToFirebaseUpdateValue(key: "kicksTotalTime", value: self.dailyKickView.getFinalSeconds())
     }
@@ -206,12 +207,12 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
             ref.child("users").child(uid).child("logs/\(dayStr)").observeSingleEvent(of: .value, with: { (snapshot) in
                 let json = JSON(snapshot.value!)
                 let kickAvgSeconds = json["kicks10Average"].intValue
-                print("Kicks avg seconds \(kickAvgSeconds)")
+                //print("Kicks avg seconds \(kickAvgSeconds)")
                 self.weeklyKicks += json["kicksTotal"].intValue
                 self.weeklyKicksTime += json["kicksTotalTime"].intValue
                 self.daysRecorded += 1
                 let avgStr = Helpers.timeString(time: kickAvgSeconds)
-                print(avgStr)
+              //  print(avgStr)
                 self.weeklyTimesView.views[index].setTimeLabel(time: self.dayTimes[index])
                 // TODO uncomment
                // self.weeklyTimesView.views[index].setTimeLabel(time: avgStr)
