@@ -74,44 +74,61 @@ class DailyKickView: UIView {
     
     
     func loadTimer() {
-        Helpers.loadTimerFromFirebase() { startTime, elapsedTime, error in
-            if error == nil {
-                // wtf return separately?
-                if let start = startTime {
-                    
-                    print("Start time: \(start)")
-                    let timerStartDate = NSDate(timeIntervalSince1970: TimeInterval(start))
-                    print(timerStartDate)
+        
+        print("Load timer!")
+        
+        let timerVars = Helpers.loadTimer()
+        let lastRecordedTime = timerVars.lastRecordedTime
+        let elapsedTime = timerVars.elapsedTime
+        let isRunning = timerVars.isRunning
+        
+        print(lastRecordedTime)
+        print(elapsedTime)
+        print(isRunning)
+        
+        if lastRecordedTime != nil { // not a fresh timer
+            print("Last recorded time: \(String(describing: lastRecordedTime))")
+            let lastRecordedDate = NSDate(timeIntervalSince1970: TimeInterval(lastRecordedTime!))
 
-                    let elapsed = Date().timeIntervalSince(timerStartDate as Date)
-                    print("elapsed in loadTimer: \(elapsed)")
-                    self.globalSeconds = Int(elapsed)
-                    self.timeLabel.text = self.timeString(time: TimeInterval(self.globalSeconds!))
-                    self.kickButton.isEnabled = true
-                    self.enableButtons()
-                    self.runTimer()
-                    print("Elapsed time in seconds \(elapsed)")
-                } else if let elapsed = elapsedTime {
-                    print("Elapsed time, so was paused and is currently paused")
-                    // it was paused before, so these are global seconds now
-                    self.globalSeconds = elapsed
-                    self.timeLabel.text = self.timeString(time: TimeInterval(self.globalSeconds!))
-                    self.enableButtons()
-                    self.pauseButton.setImage(UIImage(named:"resume_button"), for: .normal)
-                    
-                    
-                } else {
-                    // aka no timer running
-                    print("server time is nil")
-                    self.globalSeconds = 0
-                    self.timeLabel.text = self.timeString(time: TimeInterval(self.globalSeconds!)) // no time yet
-                    self.pauseButton.isEnabled = false
-                    self.cancelButton.isEnabled = false
-                    self.kickButton.isEnabled = true
-                }
+            var totalElapsed = Int(elapsedTime ?? 0)
+
+            
+            if isRunning { // still running so need to make up for the lost time
+                print("Currently running")
+                let elapsedWhileGone = Date().timeIntervalSince(lastRecordedDate as Date)
+                totalElapsed += Int(elapsedWhileGone)
+                self.enableButtons()
+                self.pauseButton.setImage(UIImage(named:"pause_button"), for: .normal)
+                self.runTimer()
+
+            } else {
+                print("Not currently running")
+                self.cancelButton.isEnabled = true
+                self.pauseButton.isEnabled = false
+                self.kickButton.isEnabled = true
+                self.pauseButton.setImage(UIImage(named:"resume_button"), for: .normal)
             }
+            
+            self.globalSeconds = totalElapsed
+            
+            UserDefaults.standard.set(self.globalSeconds, forKey: "elapsedTime")
+            print("Total Elapsed Time : \(String(describing: self.globalSeconds))")
+            self.timeLabel.text = self.timeString(time: TimeInterval(self.globalSeconds!))
+            
+
+        } else {
+            // no timer ready
+            self.globalSeconds = 0
+            self.pauseButton.setImage(UIImage(named:"pause_button"), for: .normal)
+            self.enableButtons()
+            self.timeLabel.text = timeString(time: TimeInterval(self.globalSeconds!))
+            self.isTimerRunning = false
+            self.pauseButton.isEnabled = false
+            self.resumeTapped = false
+
 
         }
+    
     }
     
     
@@ -121,7 +138,7 @@ class DailyKickView: UIView {
         if isTimerRunning == false {
             let time = Int(Date().timeIntervalSince1970)
             print("Time of first timer: \(time)")
-            Helpers.setFirebaseTimer(time: time, elapsedTime: nil)
+
             runTimer()
             self.cancelButton.isEnabled = true
             self.pauseButton.isEnabled = true
@@ -130,8 +147,7 @@ class DailyKickView: UIView {
 
         } else if self.resumeTapped == true {
             // if it was paused and we started it
-            print("paused and started again")
-            
+            print("paused and started again by clicking Kick")
             runTimer()
             self.resumeTapped = false
             self.pauseButton.setImage(UIImage(named:"pause_button"), for: .normal)
@@ -143,8 +159,11 @@ class DailyKickView: UIView {
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         timerTimestamp = nil
-//        finalSeconds = globalSeconds
-        Helpers.setFirebaseTimer(time: nil, elapsedTime: nil)
+        UserDefaults.standard.set(nil, forKey: "lastRecordedTime")
+        UserDefaults.standard.set(nil, forKey: "elapsedTime")
+        UserDefaults.standard.set(false, forKey: "isRunning")
+        
+        
         timer.invalidate()
         self.globalSeconds = 0
         timeLabel.text = timeString(time: TimeInterval(self.globalSeconds!))
@@ -157,6 +176,14 @@ class DailyKickView: UIView {
     
     func updateTimer(){
         self.globalSeconds = self.globalSeconds! + 1
+        
+        let time = Int(Date().timeIntervalSince1970)
+        UserDefaults.standard.set(time, forKey: "lastRecordedTime")
+        UserDefaults.standard.set(self.globalSeconds, forKey: "elapsedTime")
+        UserDefaults.standard.set(true, forKey: "isRunning")
+
+        // so whenever i leave this screen i have the time of the last transmission and the amount of elapsed time so far, so if i come back and clock is running, then i need to add the lost time
+        // if i come back and the lastRecordedTime is nil, then there is no timer running...
         timeLabel.text = timeString(time: TimeInterval(self.globalSeconds!))
         
     }
@@ -176,6 +203,12 @@ class DailyKickView: UIView {
         print("pause \(self.resumeTapped)")
         
         if self.resumeTapped == false { // clicked pause
+            print("Clicked pause")
+            let time = Int(Date().timeIntervalSince1970)
+            UserDefaults.standard.set(false, forKey: "isRunning")
+            UserDefaults.standard.set(time, forKey: "lastRecordedTime")
+            UserDefaults.standard.set(self.globalSeconds, forKey: "elapsedTime")
+            
             timer.invalidate()
             self.resumeTapped = true
             self.pauseButton.setImage(UIImage(named:"resume_button"), for: .normal)

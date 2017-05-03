@@ -39,6 +39,11 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
         dayNames = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Week Average"]
         dayTimes = ["1:35:49", "1:42:04","1:25:14", "1:12:55", "1:02:02", "1:05:25", "1:42:20", "1:24:05"]
 
+        self.kickDic =  UserDefaults.standard.object(forKey: "kickDic") as? [Int: (String, String)] ?? [:]
+        self.kicks = UserDefaults.standard.object(forKey: "kicks") as? Int ?? 0
+//            UserDefaults.standard.set(time, forKey: "lastRecordedTime")
+
+        
         self.setAdvice(advice: self.advice)
         self.setAdviceLink(source: self.source)
         self.setAdviceTitle(title: self.adviceTitle)
@@ -83,10 +88,10 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
         kicksView = KicksSoFarView(frame: CGRect(x: 0, y: 0, width: screenSize.width , height: screenSize.height))
         kicksView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         self.view.addSubview(kicksView)
-        if kicks == 1 {
-            kicksView.setMainLabel(title: "\(kicks) kick so far!")
+        if self.kicks == 1 {
+            kicksView.setMainLabel(title: "\(self.kicks) kick so far!")
         } else {
-            kicksView.setMainLabel(title: "\(kicks) kicks so far!")
+            kicksView.setMainLabel(title: "\(self.kicks) kicks so far!")
         }
         kicksView.isHidden = false
                 
@@ -109,13 +114,33 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
     }
     
     func kickPressed() {
-        kicks += 1
+        self.kicks += 1
+        UserDefaults.standard.set(self.kicks, forKey: "kicks")
         let df = DateFormatter()
         df.dateFormat = "hh mm a"
         let stringDate = df.string(from: NSDate() as Date)
         
-        kickDic[kicks] = ("Kick \(kicks)", stringDate)
-        print(kickDic)
+        let newKick = Kick(index: self.kicks, stringDate: stringDate)
+        
+        var storedKicks = UserDefaults.standard.object(forKey: "kicks") as? [Kick] ?? [Kick]()
+        storedKicks.append(newKick)
+        
+        
+        // TODO
+        
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: storedKicks)
+        UserDefaults.standard.set(encodedData, forKey: "kicks")
+        
+        // retrieving a value for a key
+        if let data = UserDefaults.standard.data(forKey: "kicks"),
+            let storedKicks = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Kick] {
+            storedKicks.forEach({print( $0.index, $0.stringDate)})  // 2 01 49 AM
+        } else {
+            print("There is an issue")
+        }
+        
+        self.kickDic[self.kicks] = ("Kick \(self.kicks)", stringDate)
+        UserDefaults.standard.set(self.kickDic, forKey: "kickDic")
         DispatchQueue.main.async{
             self.tableview.reloadData()
         }
@@ -134,15 +159,15 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return kicks
+        return self.kicks
     }
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create a new cell if needed or reuse an old one
         let c = Bundle.main.loadNibNamed("KickCellView", owner: self, options: nil)?.first as! KickTableViewCell
-        c.timeLabel.text = kickDic[indexPath.row+1]?.1
-        c.kickLabel.text = kickDic[indexPath.row+1]?.0
+        c.timeLabel.text = self.kickDic[indexPath.row+1]?.1
+        c.kickLabel.text = self.kickDic[indexPath.row+1]?.0
         return c
     }
     
@@ -157,7 +182,7 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
             ref.child("users").child(uid).child("logs/\(dateInFormat)").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 let json = JSON(snapshot.value!)
-                print("JSON resp \(json)")
+                //print("JSON resp \(json)")
                 let kicksTotal = json["kicksTotal"].intValue
                 let kicksTotalTime = json["kicksTotalTime"].intValue
                 var avg = 0.0
@@ -165,7 +190,6 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
                     avg = Double(kicksTotal) / Double(kicksTotalTime)
                     avg *= 10
                 }
-                print("avg kicks \(avg)")
                 Helpers.postDailyLogToFirebase  (key: "kicks10Average", value: Int(avg))
 
             }) { (error) in
@@ -187,7 +211,6 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
         setDateRange(range: labelRange)
         let days = Helpers.get7DayRange(weeksAgo: weeksAgo)
         var i = 0
-        print("Days: \(days)")
         for v in self.weeklyTimesView.views {
             if i == 7 {
                 v.setDayLabel(title: "Week Average")
@@ -221,7 +244,7 @@ class BabyMovementViewController: UIViewController , UITableViewDelegate, UITabl
                     if self.weeklyKicks != 0 {
                         weeklyAvgTime = (self.weeklyKicksTime / self.weeklyKicks) * 10
                     }
-                    print(weeklyAvgTime)
+//                    print(weeklyAvgTime)
                     // TODO uncomment
                    // self.weeklyTimesView.weeklyView.weeklyMiddleView.setMainStatLabel(text: String(self.weeklyKicks / 7))
                     self.weeklyTimesView.weeklyView.weeklyMiddleView.setMainStatLabel(text: "10")

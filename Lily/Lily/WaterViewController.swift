@@ -109,11 +109,17 @@ class WaterViewController: UIViewController {
                          self.dayView05,
                          self.dayView06,
                          self.dayView07]
+        
+        specificDateWaterView.valueIndicator = ""
+        for v in dayViews {
+            v.valueIndicator = ""
+            
+        }
+        
         self.makeViewSwipeable()
         self.getWaterGoal()
 
         self.getWaterNWeeksAgo(weeksAgo: 0)
-        // Do any additional setup after loading the view.
         self.setSpecificDate(daysAgo: 0)
 
     }
@@ -192,7 +198,6 @@ class WaterViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.saveWaterLogsToFitbit()
-        // Show the navigation bar on other view controllers
     }
     
     func swipeRightSpecificDate() {
@@ -313,11 +318,11 @@ class WaterViewController: UIViewController {
     
     func setProgressRing(ring: UICircularProgressRingView, value: Double, animationDuration: Double = 3) {
         ring.viewStyle = 2
+        ring.valueIndicator = ""
         ring.maxValue = 10
         ring.setProgress(value: CGFloat(value), animationDuration: TimeInterval(animationDuration), completion: nil)
-        
-        
     }
+    
     func updateTotalGlassesConsumed() {
         self.setProgressRing(ring: self.specificDateWaterView, value: self.totalGlassesConsumed, animationDuration:  0)
     }
@@ -355,25 +360,5 @@ class WaterViewController: UIViewController {
             self.updateTotalGlassesConsumed()
         }
     }
-
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

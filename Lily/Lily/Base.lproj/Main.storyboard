@@ -427,6 +427,7 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
                                                                 <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January 1, 2017" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mx-iV-4Y6">
@@ -537,6 +538,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4D-7R-raP" userLabel="dayView02" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -563,6 +565,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3L-KM-scW" userLabel="dayView03" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -589,6 +592,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0N-3W-CMT" userLabel="dayView04" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -615,6 +619,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WhR-4L-pyB" userLabel="dayView06" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -641,6 +646,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bua-jF-PJe" userLabel="dayView07" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -667,6 +673,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRW-qU-ybD">
@@ -763,6 +770,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
@@ -1116,6 +1124,7 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
                                                                 <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XU4-RM-L70">
@@ -1307,6 +1316,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sca-U7-jnj" userLabel="dayView02" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -1332,6 +1342,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ar0-gJ-XLt" userLabel="dayView03" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -1357,6 +1368,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fv1-FR-cgE" userLabel="dayView04" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -1382,6 +1394,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhP-3c-5YB" userLabel="dayView05" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -1407,6 +1420,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m02-O3-a5g" userLabel="dayView06" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -1432,6 +1446,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5y-gE-QGR" userLabel="dayView07" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
@@ -1457,6 +1472,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value=" "/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0B-V3-ObM">

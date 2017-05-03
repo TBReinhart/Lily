@@ -36,6 +36,7 @@ class ActivityTileView: UIView {
     
     func setProgressRing(value: Double, maxValue: Double, animationDuration: Double = 3) {
         self.progressView.viewStyle = 2
+        self.progressView.valueIndicator = ""
         self.progressView.maxValue = CGFloat(maxValue)
         self.progressView.setProgress(value: CGFloat(value), animationDuration: TimeInterval(animationDuration), completion: nil)
         

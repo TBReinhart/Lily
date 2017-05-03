@@ -1,12 +1,14 @@
-![Banner](/GitHubAssets/banner.png)
+![Banner](/.github/banner.png)
 
 <h3 align="center">A circular progress bar for iOS written in Swift 3</h3>
 
 <p align="center">
-<img src="/GitHubAssets/demo.gif"/>  
+<img src="/.github/demo.gif"/>  
 </p>
 
-![Styles](/GitHubAssets/styles-banner.png)
+![Styles](/.github/styles-banner.png)
+
+### Looking for people to help maintain and contribute, email me [here](mailto:luis@luispadron.com)
 
 ## Features
 
@@ -76,7 +78,7 @@ Simply drag a `UIView` into your storyboard. Make sure to subclass `UICircularPr
 
 Design your heart out
 
-![ib-demo.gif](/GitHubAssets/ib-demo.gif)
+![ib-demo.gif](/.github/ib-demo.gif)
 
 ### Code
 
@@ -95,6 +97,7 @@ To set a value and animate the view
 
 ```swift
 // Somewhere not in viewDidLoad (since the views have not set yet, thus cannot be animated)
+// Remember to use unowned or weak self if refrencing self to avoid retain cycle
 progressRing.setProgress(value: 49, animationDuration: 2.0) {
   print("Done animating!")
   // Do anything your heart desires...
@@ -103,9 +106,9 @@ progressRing.setProgress(value: 49, animationDuration: 2.0) {
 
 ## Documentation
 
-Read all about everything there is to know here:
+Please read this before creating an issue about how to use the package:
 
-[DOCUMENTATION](http://htmlpreview.github.io/?https://github.com/luispadron/UICircularProgressRing/blob/master/docs/index.html)
+[DOCUMENTATION](https://htmlpreview.github.io/?https://raw.githubusercontent.com/luispadron/UICircularProgressRing/master/docs/Classes/UICircularProgressRingView.html)
 
 ## Example project
 
@@ -115,10 +118,6 @@ Take a look at the example project over [here](Example/)
 2. Open the `Example.xcworkspace` in Xcode
 3. Mess around and experiment!
 
-## Upcoming enhancements
-
-* ~~Add decreasing animation, currently nothing gets animated when decreasing value~~
-* ~~Better way of handling animation finishing, probably a completion block~~
 
 ## License
 

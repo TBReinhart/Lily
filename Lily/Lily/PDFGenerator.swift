@@ -62,8 +62,8 @@ class PDFGenerator: NSObject {
                                  body: [String], mind:[String]) -> String {
         
         var subsections: [String] = []
-        print("Path: \(self.pathToSummaryTemplate)")
-        print("Section Template path: \(self.pathToSummarySectionTemplate)")
+        print("Path: \(String(describing: self.pathToSummaryTemplate))")
+        print("Section Template path: \(String(describing: self.pathToSummarySectionTemplate))")
         let HTMLContent = renderHeaderAndFooter()
         
         // create symptoms subsection + all symptoms sub-subsections

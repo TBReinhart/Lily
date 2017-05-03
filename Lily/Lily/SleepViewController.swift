@@ -86,6 +86,7 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.navigationController?.navigationBar.stop()
         })
+        
         self.makeViewSwipeable()
         self.forwardButtonSpecificDate.isHidden = true
         self.forwardButtonWeek.isHidden = true
@@ -107,6 +108,11 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         for l in labels {
             l.sizeToFit()
         }
+        
+        for v in lastWeekViews {
+            v.valueIndicator = ""
+        }
+        
         self.specificDateLabel.sizeToFit()
         self.previousWeekDateRangeLabel.sizeToFit()
         self.recommendedSleepLabel.sizeToFit()
@@ -129,10 +135,6 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         alertController.addAction(twoAction)
         alertController.addAction(threeAction)
         alertController.addAction(cancelAction)
-
-        
-
-        
 
     }
     
@@ -260,10 +262,10 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func setProgressRing(ring: UICircularProgressRingView, value: Double) {
+    func setProgressRing(ring: UICircularProgressRingView, value: Double,  animationDuration: Double = 3) {
         ring.viewStyle = 2
-        ring.setProgress(value: CGFloat(value), animationDuration: 3, completion: nil)
-        
+        ring.valueIndicator = ""
+        ring.setProgress(value: CGFloat(value), animationDuration: TimeInterval(animationDuration), completion: nil)
     }
     
     func getSleepNumberOfWeeksAgo(weeksAgo: Int) {
@@ -279,7 +281,6 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
                 for sleep in self.weekSleepObjects {
                     let dow = sleep?.dayOfWeek ?? "NONE"
                     let sleepTimeRounded = sleep?.sleepTimeRounded ?? 0.0
-//                    let shortDateString = sleep?.shortDateString ?? "1/1"
                     self.labels[i].text = dow
                     self.setProgressRing(ring: self.lastWeekViews[i], value: sleepTimeRounded)
                     i += 1
@@ -296,29 +297,19 @@ class SleepViewController: UIViewController, UIGestureRecognizerDelegate {
                 mins = Double(minutes!)!
             }
             let sleepGoalRounded = round(10.0 * mins/60.0) / 10.0
-
             completionHandler(sleepGoalRounded, nil)
-
-            
         }
     }
 
     
     func loadSleepNDaysAgo(daysAgo: Int, completionHandler: @escaping (Sleep?, Error?) -> ()) {
         let past = Helpers.getDateNDaysAgo(daysAgo: daysAgo)
-//        let date = past.date
         let dateString = past.dateString
         self.fbreqs.getSleepLogs(date: dateString) { sleep, error in
             completionHandler(sleep ?? Sleep(), nil)
             
             
         }
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func sleepOptionDropdownPressed(_ sender: Any) {

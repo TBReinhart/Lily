@@ -219,54 +219,22 @@ class Helpers {
         Helpers.postDailyLogToFirebase(key: "kicksTotalTime", value : 0)
         
     }
-    static func setFirebaseTimer(time: Int?, elapsedTime: Int?) {
-        var ref: FIRDatabaseReference!
-        ref = FIRDatabase.database().reference()
-        let user = FIRAuth.auth()?.currentUser
-        if let uid = user?.uid {
-            if let startTime = time {
-                ref.child("users/\(uid)/timer/startTime").setValue(startTime)
-                
-            } else {
-                ref.child("users/\(uid)/timer/startTime").setValue(nil)
-                
-            }
-            if let elapsed = elapsedTime {
-                ref.child("users/\(uid)/timer/elapsedTime").setValue(elapsed)
-                
-            } else {
-                ref.child("users/\(uid)/timer/elapsedTime").setValue(nil)
-                
-            }
-        }
+    
+    
+    static func loadTimer() -> (lastRecordedTime: Int?, elapsedTime: Int?, isRunning: Bool) {
+        let defaults = UserDefaults.standard
+
+        let time = defaults.object(forKey:"lastRecordedTime") as? Int ?? nil
+        let elapsedTime = defaults.object(forKey: "elapsedTime") as? Int ?? nil
+        let isRunning = defaults.object(forKey: "isRunning") as? Bool ?? false
+        
+        print("Retrieved timer as \(String(describing: time)), elapsed: \(String(describing: elapsedTime)), isRunning: \(isRunning)")
+        return (time, elapsedTime, isRunning)
+        
     }
     
-    static func loadTimerFromFirebase(completionHandler: @escaping (Int?, Int?, Error?) -> ()) {
-        var ref: FIRDatabaseReference!
-        ref = FIRDatabase.database().reference()
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).child("timer").observeSingleEvent(of: .value, with: { (snapshot) in
-            let json = JSON(snapshot.value!)
-            var start : Int?
-            var elapsed  : Int?
-            if let startTime = json["startTime"].int {
-                start = startTime
-                completionHandler(start, nil, nil)
+    
 
-            }
-            if let elapsedTime = json["elapsedTime"].int {
-                elapsed = elapsedTime
-                completionHandler(nil, elapsed, nil)
-
-            }
-            print("both loaded... loaded: startTime: \(start) and elapsedTime: \(elapsed)")
-            completionHandler(start, elapsed, nil)
-            
-        }) { (error) in
-            completionHandler(nil, nil, error)
-            print(error.localizedDescription)
-        }
-    }
     
     
     static func postDailyLogToFirebaseUpdateValue(key: String, value: Int) {

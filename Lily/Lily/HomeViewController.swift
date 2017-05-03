@@ -148,7 +148,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         pdfGenerator = PDFGenerator()
         HTMLContent = pdfGenerator.renderExportableSummary(symptoms: symptomsSubsections, meds: medicationsSubsections, diet: dietSubsections, body: bodySubsections, mind: mindSubsections)
-        pdfGenerator.exportHTMLContentToPDF(HTMLContent: HTMLContent)
+        pdfGenerator.exportHTMLContentToPDF(HTMLContent: HTMLContent) // crashes here
         
         
         let personalization = Personalization(recipients: email)

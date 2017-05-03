@@ -44,6 +44,7 @@
 		2F02C2261EB7BC8C00FE6B78 /* vitamins.html in Resources */ = {isa = PBXBuildFile; fileRef = 2F02C2101EB7BC8C00FE6B78 /* vitamins.html */; };
 		2F02C2271EB7BC8C00FE6B78 /* vomiting.html in Resources */ = {isa = PBXBuildFile; fileRef = 2F02C2111EB7BC8C00FE6B78 /* vomiting.html */; };
 		2F02C2281EB7BC8C00FE6B78 /* water.html in Resources */ = {isa = PBXBuildFile; fileRef = 2F02C2121EB7BC8C00FE6B78 /* water.html */; };
+		2F02C22A1EB8566A00FE6B78 /* Kick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02C2291EB8566A00FE6B78 /* Kick.swift */; };
 		2F039EEC1E941395001021E6 /* WeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F039EEB1E941395001021E6 /* WeightViewController.swift */; };
 		2F0A47751E8085DF00C13800 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A47741E8085DF00C13800 /* JournalViewController.swift */; };
 		2F0F75EA1E368B71004BCE2D /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F75E91E368B71004BCE2D /* SweetAlert.swift */; };
@@ -120,7 +121,6 @@
 		2F8A4E801E67BE6700F4C017 /* DailyKickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A4E7F1E67BE6700F4C017 /* DailyKickView.swift */; };
 		2F8A4E821E67BEF900F4C017 /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E811E67BEF900F4C017 /* Line.png */; };
 		2F8A4E841E67C0BB00F4C017 /* kick_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A4E831E67C0BB00F4C017 /* kick_label.png */; };
-		2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */; };
 		2F91177B1E3C50BB00D1D6F6 /* sendIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */; };
 		2F91BE351E462BA20030821A /* DropdownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F91BE341E462BA20030821A /* DropdownArrow.png */; };
 		2F938F441E5211FE006D64A9 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F938F431E5211FE006D64A9 /* GoalsViewController.swift */; };
@@ -177,6 +177,7 @@
 		2FC0BA771E44E913007B291C /* ForwardButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA751E44E913007B291C /* ForwardButton.png */; };
 		2FC0BA791E44EA32007B291C /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC0BA781E44EA32007B291C /* BackButton.png */; };
 		2FC356421E8820C90055724F /* EmotionViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC356411E8820C90055724F /* EmotionViewCollectionViewCell.swift */; };
+		2FC6945C1EB93007006EDAC9 /* OAuth2RetryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6945B1EB93007006EDAC9 /* OAuth2RetryHandler.swift */; };
 		2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */; };
 		2FC7FC071E35C9A300A7DA50 /* ErrorMicHelpMessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */; };
 		2FC7FC081E35C9A300A7DA50 /* simpleMicHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7FC061E35C9A300A7DA50 /* simpleMicHelp.png */; };
@@ -251,6 +252,7 @@
 		2F02C2101EB7BC8C00FE6B78 /* vitamins.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = vitamins.html; path = "HTML Templates/vitamins.html"; sourceTree = "<group>"; };
 		2F02C2111EB7BC8C00FE6B78 /* vomiting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = vomiting.html; path = "HTML Templates/vomiting.html"; sourceTree = "<group>"; };
 		2F02C2121EB7BC8C00FE6B78 /* water.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = water.html; path = "HTML Templates/water.html"; sourceTree = "<group>"; };
+		2F02C2291EB8566A00FE6B78 /* Kick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kick.swift; sourceTree = "<group>"; };
 		2F039EEB1E941395001021E6 /* WeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeightViewController.swift; path = Lily/WeightViewController.swift; sourceTree = "<group>"; };
 		2F0A47741E8085DF00C13800 /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JournalViewController.swift; path = Lily/JournalViewController.swift; sourceTree = "<group>"; };
 		2F0F75E91E368B71004BCE2D /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
@@ -327,7 +329,6 @@
 		2F8A4E7F1E67BE6700F4C017 /* DailyKickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DailyKickView.swift; path = Lily/DailyKickView.swift; sourceTree = "<group>"; };
 		2F8A4E811E67BEF900F4C017 /* Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Line.png; sourceTree = "<group>"; };
 		2F8A4E831E67C0BB00F4C017 /* kick_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kick_label.png; sourceTree = "<group>"; };
-		2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2RetryHandler.swift; sourceTree = "<group>"; };
 		2F91177A1E3C50BB00D1D6F6 /* sendIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendIcon.png; sourceTree = "<group>"; };
 		2F91BE341E462BA20030821A /* DropdownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DropdownArrow.png; sourceTree = "<group>"; };
 		2F938F431E5211FE006D64A9 /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoalsViewController.swift; path = Lily/GoalsViewController.swift; sourceTree = "<group>"; };
@@ -387,6 +388,7 @@
 		2FC0BA751E44E913007B291C /* ForwardButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForwardButton.png; sourceTree = "<group>"; };
 		2FC0BA781E44EA32007B291C /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButton.png; sourceTree = "<group>"; };
 		2FC356411E8820C90055724F /* EmotionViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionViewCollectionViewCell.swift; path = Lily/EmotionViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		2FC6945B1EB93007006EDAC9 /* OAuth2RetryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2RetryHandler.swift; sourceTree = "<group>"; };
 		2FC69CDA1E0D9E51001A1349 /* FitbitRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FitbitRequests.swift; path = Lily/FitbitRequests.swift; sourceTree = "<group>"; };
 		2FC69CDC1E101995001A1349 /* Lily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lily.entitlements; sourceTree = "<group>"; };
 		2FC7FC051E35C9A300A7DA50 /* ErrorMicHelpMessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErrorMicHelpMessage.png; sourceTree = "<group>"; };
@@ -720,15 +722,16 @@
 			children = (
 				2FACEAFB1EB15CF9005C9F72 /* Lily-Bridging-Header.h */,
 				2FCEE3E71E31C8F5009CFEE7 /* GoogleService-Info.plist */,
+				2FC6945B1EB93007006EDAC9 /* OAuth2RetryHandler.swift */,
 				2F6591AB1E03B29C0040AA4A /* Services.plist */,
 				2FA1CD681E0347AF00778DF3 /* Info.plist */,
 				2FC69CDC1E101995001A1349 /* Lily.entitlements */,
 				2F398E8F1E12288A00A1AEB3 /* Lily.xcdatamodeld */,
-				2F8DBAAC1E0484A30043C34C /* OAuth2RetryHandler.swift */,
 				2F0F75E91E368B71004BCE2D /* SweetAlert.swift */,
 				2FCAA5D01E3FBD3E0014452E /* Sleep.swift */,
 				2F7AD0421E66814900D29079 /* DragDropCollectionView.swift */,
 				2F3EAFB41E4C229800214FC4 /* HeartRate.swift */,
+				2F02C2291EB8566A00FE6B78 /* Kick.swift */,
 				2FC0BA641E419D97007B291C /* Water.swift */,
 				2F980E861E50D1CB0024C5EC /* Activity.swift */,
 				0DC83E0D1EB6AC7C00395DEB /* PDFGenerator.swift */,
@@ -822,6 +825,7 @@
 				TargetAttributes = {
 					2FA1CD581E0347AF00778DF3 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = YN2Z527BYE;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
@@ -1129,7 +1133,6 @@
 				2FC69CDB1E0D9E51001A1349 /* FitbitRequests.swift in Sources */,
 				2F398EFF1E16006600A1AEB3 /* Helpers.swift in Sources */,
 				2FB4C3C21E1D808400C39109 /* RestClient.swift in Sources */,
-				2F8DBAAD1E0484A30043C34C /* OAuth2RetryHandler.swift in Sources */,
 				2F8127061E5F330000B625E1 /* HomeViewController.swift in Sources */,
 				2F398EFD1E14CAB100A1AEB3 /* LilyCoreData.swift in Sources */,
 				2F3EAFB31E4BF9DE00214FC4 /* HeartRateViewController.swift in Sources */,
@@ -1138,6 +1141,7 @@
 				2FA9EC9F1E685D1D004ECF1E /* KickTableViewCell.swift in Sources */,
 				2F938F441E5211FE006D64A9 /* GoalsViewController.swift in Sources */,
 				2F980E871E50D1CB0024C5EC /* Activity.swift in Sources */,
+				2F02C22A1EB8566A00FE6B78 /* Kick.swift in Sources */,
 				2F0A47751E8085DF00C13800 /* JournalViewController.swift in Sources */,
 				2F683F251E68702800CC2641 /* WeeklyView.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,
@@ -1148,6 +1152,7 @@
 				2F8A4E761E67B83400F4C017 /* DayWithTimeView.swift in Sources */,
 				2FFCB4151E68FD0F008622BB /* AdvicePanelView.swift in Sources */,
 				2F0044981E61DAFA000E8BF6 /* SleepTileView.swift in Sources */,
+				2FC6945C1EB93007006EDAC9 /* OAuth2RetryHandler.swift in Sources */,
 				2FE264151E395ECF004DB460 /* HealthKitRequests.swift in Sources */,
 				2F3983B11E803C96001F0B78 /* TileStoreViewController.swift in Sources */,
 				2F3EAFB71E4D0C0500214FC4 /* ActivityViewController.swift in Sources */,
@@ -1306,16 +1311,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_ENTITLEMENTS = Lily/Lily.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Reinhart (443VK3ZRXF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tom Reinhart (443VK3ZRXF)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YN2Z527BYE;
 				INFOPLIST_FILE = Lily/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks $(CONFIGURATION_BUILD_DIR)";
 				PRODUCT_BUNDLE_IDENTIFIER = me.lilyhealth.lily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4072ba7e-d2d5-4faa-9cf0-33b71441be45";
+				PROVISIONING_PROFILE_SPECIFIER = Lily;
 				SWIFT_OBJC_BRIDGING_HEADER = "Lily/Lily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1327,6 +1334,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_ENTITLEMENTS = Lily/Lily.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
