@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+
 class PDFGenerator: NSObject {
     
     let pathToSummaryTemplate = Bundle.main.path(forResource:"summary", ofType: "html")
@@ -18,9 +19,12 @@ class PDFGenerator: NSObject {
     var finalHTMLContent: String!
     var weeklyLog: JSON!
     
+    var fbreqs = FitbitRequests()
+
+    
     let name = "Patient Name"
     let exportDate = Helpers.getLongDate(date: Date())
-    let numWeeks = 3
+    let numWeeks = 0
     
     override init() {
         super.init()
@@ -149,7 +153,14 @@ class PDFGenerator: NSObject {
                 case "physical_activity":
                     subsToConcat.append(renderPhysicalActivity(pathToTemplate: pathToTemplate!))
                 case "sleep":
-                    subsToConcat.append(renderSleep(pathToTemplate: pathToTemplate!))
+                    let dateString = Helpers.getDateNWeeksAgo(weeksAgo: self.numWeeks).dateString
+                    self.fbreqs.getSleepLastWeek(date: dateString) { sleeps, error in
+                        if sleeps != nil {
+                            print("in here -- sleeps")
+                            subsToConcat.append(self.renderSleep(pathToTemplate: pathToTemplate!, sleeps: sleeps!))
+                            print("will concat")
+                        }
+                    }
                 case "mind_summary":
                     subsToConcat.append(renderMindSummary(pathToTemplate: pathToTemplate!))
                 case "edinburgh_postpartum_depression":
@@ -161,6 +172,69 @@ class PDFGenerator: NSObject {
         }
         
         return concatenateSubsections(HTMLContent: html, subsections: subsToConcat, id: "#SUB_SECTIONS#")
+    }
+    
+    
+    func renderSleep(pathToTemplate: String, sleeps: [Sleep?]) -> String {
+        print("in render sleep")
+        var sleepResults = parseSleepData(sleeps: sleeps)
+        print(sleepResults)
+        do {
+            var html = try String(contentsOfFile: pathToTemplate)
+            
+            html = html.replacingOccurrences(of: "#AVG_SLEEP#", with: (sleepResults["averageSleep"]!))
+            html = html.replacingOccurrences(of: "#AVG_RESTLESS#", with: (sleepResults["totalRestless"]!))
+            html = html.replacingOccurrences(of: "#AVG_EFFICIENCY#", with: (sleepResults["averageEfficiency"]!))
+            print(html)
+            
+            
+            return html
+            
+        } catch {
+            print("Unable to open and use HTML files. Quit at sleep sub-subsection")
+        }
+        return ""
+    }
+
+    func parseSleepData(sleeps: [Sleep?]) -> [String:String] {
+        var sleepResults = [String: String]()
+        
+        var weekSleepObjects = [Sleep?](repeating: nil, count:7*(self.numWeeks+1))
+        weekSleepObjects = sleeps
+        
+        var totalTime = 0.0
+        var totalEfficiency = 0
+        var totalRestless = 0
+        var sleptThatNight = 0
+        
+        for sleep in weekSleepObjects {
+            let sleepTimeRounded = sleep?.sleepTimeRounded ?? 0.0
+            let restlessDuration = sleep?.restlessDuration ?? 0
+            let efficiency = sleep?.efficiency ?? 0
+            
+            if sleepTimeRounded != 0.0 {
+                sleptThatNight += 1
+                totalTime += sleepTimeRounded
+                totalEfficiency += efficiency
+                totalRestless += restlessDuration
+                print(sleepTimeRounded)
+            }
+            print(sleepTimeRounded)
+            print(restlessDuration)
+            print(efficiency)
+        }
+        
+        print("sleep results:")
+        print(totalTime)
+        print(totalEfficiency)
+        print(totalRestless)
+        
+        let denom = Double(7*(self.numWeeks+1))
+        sleepResults["averageSleep"] = String(format: "%.2f", Double(totalTime) / Double(denom)) + " hrs"
+        sleepResults["averageEfficiency"] = String(format: "%.2f", Double(totalEfficiency) / Double(denom)) + "%"
+        sleepResults["totalRestless"] = String(format: "%.2f", Double(totalRestless) / Double(denom)) + " hrs"
+        
+        return sleepResults
     }
     
     // functionality not available to support
@@ -239,26 +313,6 @@ class PDFGenerator: NSObject {
             
         } catch {
             print("Unable to open and use HTML files. Quit at physical activity sub-subsection")
-        }
-        return ""
-    }
-    
-    func renderSleep(pathToTemplate: String) -> String {
-        do {
-            var html = try String(contentsOfFile: pathToTemplate)
-            
-            let avgSleep = "6:40:00" //calc w/ fitbit
-            let avgRestless = "2:04:00" //calc w/ fitbit
-            let avgEfficiency = "80%" // calc w/ fitbit
-            
-            html = html.replacingOccurrences(of: "#AVG_SLEEP#", with: avgSleep)
-            html = html.replacingOccurrences(of: "#AVG_RESTLESS#", with: avgRestless)
-            html = html.replacingOccurrences(of: "#AVG_EFFICIENCY#", with: avgEfficiency)
-            
-            return html
-            
-        } catch {
-            print("Unable to open and use HTML files. Quit at sleep sub-subsection")
         }
         return ""
     }
@@ -374,11 +428,6 @@ class PDFGenerator: NSObject {
         return activityResults
     }
     
-    func handleSleep() -> [String: String] {
-        var sleepResults = [String: String]()
-        
-        return sleepResults
-    }
     
     func handleEmotions() -> [String: String] {
         
@@ -454,10 +503,10 @@ class PDFGenerator: NSObject {
         let emotionsSum = totalNumAnxious + totalNumSad + totalNumAnger + totalNumHappy
         
         if timesSeenEmotions != 0 {
-            emotionsResults["pctAnger"] = String(format: "%.2f", Double(totalNumAnger) / Double(emotionsSum)) + "%"
-            emotionsResults["pctSadness"] = String(format: "%.2f", Double(totalNumSad) / Double(emotionsSum)) + "%"
-            emotionsResults["pctHappiness"] = String(format: "%.2f", Double(totalNumHappy) / Double(emotionsSum)) + "%"
-            emotionsResults["pctAnxiety"] = String(format: "%.2f", Double(totalNumAnxious) / Double(emotionsSum)) + "%"
+            emotionsResults["pctAnger"] = String(format: "%.2f", (Double(totalNumAnger) / Double(emotionsSum))*100) + "%"
+            emotionsResults["pctSadness"] = String(format: "%.2f", (Double(totalNumSad) / Double(emotionsSum))*100) + "%"
+            emotionsResults["pctHappiness"] = String(format: "%.2f", (Double(totalNumHappy) / Double(emotionsSum))*100) + "%"
+            emotionsResults["pctAnxiety"] = String(format: "%.2f", (Double(totalNumAnxious) / Double(emotionsSum))*100) + "%"
         } else {
             emotionsResults["pctAnger"] = "0%"
             emotionsResults["pctSadness"] = "0%"
