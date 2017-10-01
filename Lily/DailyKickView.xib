@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DailyKickView" customModule="Lily" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="9t2-pF-wPQ" id="16s-ZV-hPH"/>
+                <outlet property="dayLabel" destination="gkG-D5-pnU" id="E1N-yR-Df8"/>
+                <outlet property="kickButton" destination="4IX-fT-wnF" id="a16-t6-v9R"/>
+                <outlet property="pauseButton" destination="kdS-5J-xeO" id="n6c-Sg-a8u"/>
+                <outlet property="timeLabel" destination="MBj-44-g6k" id="sOY-Zv-FXA"/>
+                <outlet property="view" destination="iN0-l3-epB" id="vGT-GA-Y9z"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="232"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line.png" translatesAutoresizingMaskIntoConstraints="NO" id="b6l-nx-Z6j">
+                    <rect key="frame" x="25" y="231" width="315" height="1"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9t2-pF-wPQ">
+                    <rect key="frame" x="16" y="162" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="9t2-pF-wPQ" secondAttribute="height" multiplier="1:1" id="tg3-wx-glJ"/>
+                    </constraints>
+                    <state key="normal" image="cancel_button.png"/>
+                    <connections>
+                        <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="43J-y4-G8n"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IX-fT-wnF">
+                    <rect key="frame" x="157" y="162" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4IX-fT-wnF" secondAttribute="height" multiplier="1:1" id="kkw-vc-DCF"/>
+                    </constraints>
+                    <state key="normal" image="kick_button.png"/>
+                    <connections>
+                        <action selector="kickButtonPressed:" destination="-1" eventType="touchUpInside" id="90Z-Rj-B6w"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdS-5J-xeO">
+                    <rect key="frame" x="299" y="162" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kdS-5J-xeO" secondAttribute="height" multiplier="1:1" id="4GX-Wc-wdA"/>
+                    </constraints>
+                    <state key="normal" image="pause_button.png"/>
+                    <connections>
+                        <action selector="pauseButtonPressed:" destination="-1" eventType="touchUpInside" id="fO6-pj-70t"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBj-44-g6k">
+                    <rect key="frame" x="82" y="111" width="200" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="MBj-44-g6k" secondAttribute="height" multiplier="200:43" id="kWg-c0-Jy4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="30"/>
+                    <color key="textColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January 26, 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gkG-D5-pnU">
+                    <rect key="frame" x="114" y="64" width="136" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="gkG-D5-pnU" secondAttribute="height" multiplier="68:11" id="AQ2-gO-Cw5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
+                    <color key="textColor" red="0.47843137254901957" green="0.47450980392156861" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kick_label.png" translatesAutoresizingMaskIntoConstraints="NO" id="HsR-gz-hLV">
+                    <rect key="frame" x="25" y="20.5" width="315" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="HsR-gz-hLV" secondAttribute="height" multiplier="315:16" id="YaV-sH-Ov1"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9t2-pF-wPQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.62" id="3Nm-cR-Idr"/>
+                <constraint firstItem="kdS-5J-xeO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.77" id="4Xz-Ql-lk0"/>
+                <constraint firstItem="MBj-44-g6k" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.15" id="6DZ-wq-yOh"/>
+                <constraint firstItem="kdS-5J-xeO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.62" id="A1B-Et-bf7"/>
+                <constraint firstItem="MBj-44-g6k" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BiO-dl-Cbn"/>
+                <constraint firstItem="4IX-fT-wnF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.137" id="Fqj-nl-pYn"/>
+                <constraint firstItem="gkG-D5-pnU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JUv-rJ-AmD"/>
+                <constraint firstItem="9t2-pF-wPQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.22" id="KZe-vb-WZY"/>
+                <constraint firstItem="4IX-fT-wnF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OJI-ba-sUK"/>
+                <constraint firstItem="HsR-gz-hLV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ahU-UL-ks6"/>
+                <constraint firstItem="HsR-gz-hLV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.25" id="bt0-pT-t2A"/>
+                <constraint firstItem="gkG-D5-pnU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.65" id="k2w-1x-Rbb"/>
+                <constraint firstItem="MBj-44-g6k" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.548" id="mJb-Jo-v6x"/>
+                <constraint firstItem="b6l-nx-Z6j" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.865" id="meF-vb-po7"/>
+                <constraint firstItem="kdS-5J-xeO" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.137" id="mkk-GV-Zba"/>
+                <constraint firstItem="HsR-gz-hLV" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.863" id="o3c-e7-LGt"/>
+                <constraint firstItem="4IX-fT-wnF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.62" id="pxc-bQ-9MI"/>
+                <constraint firstItem="gkG-D5-pnU" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.372" id="vaZ-oD-kC5"/>
+                <constraint firstItem="9t2-pF-wPQ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.137" id="xDB-oJ-4we"/>
+                <constraint firstAttribute="bottom" secondItem="b6l-nx-Z6j" secondAttribute="bottom" id="xG8-hH-aCL"/>
+                <constraint firstItem="b6l-nx-Z6j" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zsq-ch-rVt"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="31" y="21"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Line.png" width="632" height="1"/>
+        <image name="cancel_button.png" width="95" height="95"/>
+        <image name="kick_button.png" width="95" height="95"/>
+        <image name="kick_label.png" width="637" height="19"/>
+        <image name="pause_button.png" width="95" height="95"/>
+    </resources>
+</document>

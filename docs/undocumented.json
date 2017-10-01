@@ -1,0 +1,327 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/AppDelegate.swift",
+      "line": 13,
+      "symbol": "AppDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/AppDelegate.swift",
+      "line": 15,
+      "symbol": "AppDelegate.window",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/AppDelegate.swift",
+      "line": 17,
+      "symbol": "AppDelegate.application(_:didFinishLaunchingWithOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/AppDelegate.swift",
+      "line": 33,
+      "symbol": "AppDelegate.applicationWillTerminate(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/AppDelegate.swift",
+      "line": 46,
+      "symbol": "AppDelegate.persistentContainer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/FitbitRequests.swift",
+      "line": 12,
+      "symbol": "FitbitRequests",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/FitbitRequests.swift",
+      "line": 15,
+      "symbol": "FitbitRequests.restClient",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/FitbitRequests.swift",
+      "line": 344,
+      "symbol": "FitbitRequests.logActivity(activityId:activityName:manualCalories:durationMillis:date:distance:distanceUnit:startTime:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/Helpers.swift",
+      "line": 11,
+      "symbol": "Helpers",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/LilyCoreData.swift",
+      "line": 12,
+      "symbol": "LilyCoreData",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/LilyCoreData.swift",
+      "line": 14,
+      "symbol": "LilyCoreData.load()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/LilyCoreData.swift",
+      "line": 45,
+      "symbol": "LilyCoreData.update(key:value:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/LilyCoreData.swift",
+      "line": 78,
+      "symbol": "LilyCoreData.save(keyPath:value:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/LilyCoreData.swift",
+      "line": 104,
+      "symbol": "LilyCoreData.createRecordForEntity()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/LilyCoreData.swift",
+      "line": 126,
+      "symbol": "LilyCoreData.fetchRecordsForEntity()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/OAuth2RetryHandler.swift",
+      "line": 14,
+      "symbol": "OAuth2RetryHandler",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/OAuth2RetryHandler.swift",
+      "line": 16,
+      "symbol": "OAuth2RetryHandler.loader",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/OAuth2RetryHandler.swift",
+      "line": 18,
+      "symbol": "OAuth2RetryHandler.init(oauth2:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/RestClient.swift",
+      "line": 14,
+      "symbol": "RestClient",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/ViewController.swift",
+      "line": 12,
+      "symbol": "ViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/ViewController.swift",
+      "line": 14,
+      "symbol": "ViewController.loader",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/ViewController.swift",
+      "line": 30,
+      "symbol": "ViewController.imageView",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/ViewController.swift",
+      "line": 31,
+      "symbol": "ViewController.signInEmbeddedButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/ViewController.swift",
+      "line": 32,
+      "symbol": "ViewController.forgetButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/ViewController.swift",
+      "line": 116,
+      "symbol": "ViewController.resetButtons()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/ViewController2.swift",
+      "line": 11,
+      "symbol": "ViewController2",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/ViewController2.swift",
+      "line": 13,
+      "symbol": "ViewController2.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/Lily/ViewController2.swift",
+      "line": 19,
+      "symbol": "ViewController2.didReceiveMemoryWarning()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataClass.swift",
+      "line": null,
+      "symbol": "LilyUser",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataClass.swift",
+      "line": 14,
+      "symbol": "LilyUser",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 16,
+      "symbol": "LilyUser.fetchRequest()",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 20,
+      "symbol": "LilyUser.age",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 21,
+      "symbol": "LilyUser.avatar",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 22,
+      "symbol": "LilyUser.averageDailySteps",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 23,
+      "symbol": "LilyUser.country",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 24,
+      "symbol": "LilyUser.dateOfBirth",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 25,
+      "symbol": "LilyUser.displayName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 26,
+      "symbol": "LilyUser.fullName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 27,
+      "symbol": "LilyUser.gender",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 28,
+      "symbol": "LilyUser.height",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 29,
+      "symbol": "LilyUser.heightUnit",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 30,
+      "symbol": "LilyUser.locale",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 31,
+      "symbol": "LilyUser.startDayOfWeek",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 32,
+      "symbol": "LilyUser.timezone",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 33,
+      "symbol": "LilyUser.weight",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/TomReinhart/Desktop/LilyApp/Lily/build/Lily.build/Release-iphoneos/Lily.build/DerivedSources/CoreDataGenerated/Lily/LilyUser+CoreDataProperties.swift",
+      "line": 34,
+      "symbol": "LilyUser.weightUnit",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/TomReinhart/Desktop/LilyApp/Lily"
+}

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeeklyTimesView" customModule="Lily" customModuleProvider="target">
+            <connections>
+                <outlet property="day01View" destination="RfL-rX-j3s" id="ywU-mm-bVo"/>
+                <outlet property="day02View" destination="udT-n6-5PH" id="Qgm-Nh-4WE"/>
+                <outlet property="day03View" destination="kOH-rv-Vdo" id="Tn2-s9-Pjr"/>
+                <outlet property="day04View" destination="bgJ-og-EMu" id="wp9-Ht-Jhz"/>
+                <outlet property="day05View" destination="hxC-hQ-JV7" id="07E-pI-QcX"/>
+                <outlet property="day06View" destination="yt2-qg-bXS" id="cTv-V1-e7V"/>
+                <outlet property="day07View" destination="XTg-gU-cXt" id="Sjj-5d-oXc"/>
+                <outlet property="day08View" destination="t8j-Pg-I1D" id="uK1-Eb-mPE"/>
+                <outlet property="view" destination="iN0-l3-epB" id="6Y2-7l-pOc"/>
+                <outlet property="weeklyView" destination="adk-ie-HJV" id="lbx-Kc-AG9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adk-ie-HJV" customClass="WeeklyView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfL-rX-j3s" customClass="DayWithTimeView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="16" y="112" width="110" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="RfL-rX-j3s" secondAttribute="height" multiplier="22:5" id="lrL-YG-z1A"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udT-n6-5PH" customClass="DayWithTimeView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="16" y="145" width="110" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="udT-n6-5PH" secondAttribute="height" multiplier="22:5" id="bdk-9c-rFl"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOH-rv-Vdo" customClass="DayWithTimeView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="16" y="178" width="110" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kOH-rv-Vdo" secondAttribute="height" multiplier="22:5" id="rqL-fm-d5H"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgJ-og-EMu" customClass="DayWithTimeView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="16" y="211" width="110" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="bgJ-og-EMu" secondAttribute="height" multiplier="22:5" id="SZc-99-M4T"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxC-hQ-JV7" customClass="DayWithTimeView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="257" y="112" width="110" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hxC-hQ-JV7" secondAttribute="height" multiplier="22:5" id="2Yw-3B-tYm"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-qg-bXS" customClass="DayWithTimeView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="257" y="145" width="110" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="yt2-qg-bXS" secondAttribute="height" multiplier="22:5" id="7VS-VI-ARs"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTg-gU-cXt" customClass="DayWithTimeView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="257" y="178" width="110" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="XTg-gU-cXt" secondAttribute="height" multiplier="22:5" id="zP9-5G-42T"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8j-Pg-I1D" customClass="DayWithTimeView" customModule="Lily" customModuleProvider="target">
+                    <rect key="frame" x="257" y="211" width="110" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="t8j-Pg-I1D" secondAttribute="height" multiplier="22:5" id="8Hz-CL-0Fd"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="adk-ie-HJV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Xg-FU-IpY"/>
+                <constraint firstItem="yt2-qg-bXS" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.295" id="3Mr-iJ-i0L"/>
+                <constraint firstItem="t8j-Pg-I1D" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.785" id="3PH-dm-wOP"/>
+                <constraint firstItem="RfL-rX-j3s" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.295" id="AxC-HA-jER"/>
+                <constraint firstItem="udT-n6-5PH" firstAttribute="width" secondItem="adk-ie-HJV" secondAttribute="width" multiplier="0.295" id="CMX-6h-RyN"/>
+                <constraint firstItem="XTg-gU-cXt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.52" id="CeP-jQ-YDr"/>
+                <constraint firstItem="kOH-rv-Vdo" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.295" id="FWT-jo-Tol"/>
+                <constraint firstItem="udT-n6-5PH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.38" id="KYj-iO-Kte"/>
+                <constraint firstItem="t8j-Pg-I1D" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.295" id="M8G-0F-gVv"/>
+                <constraint firstItem="kOH-rv-Vdo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.38" id="MAw-4h-fIM"/>
+                <constraint firstItem="hxC-hQ-JV7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NGC-Of-e0x"/>
+                <constraint firstItem="RfL-rX-j3s" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.38" id="PUE-OI-jbQ"/>
+                <constraint firstItem="hxC-hQ-JV7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.66" id="U7m-Ck-epg"/>
+                <constraint firstItem="adk-ie-HJV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YL0-X6-e42"/>
+                <constraint firstItem="udT-n6-5PH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.26" id="ab6-1F-YcD"/>
+                <constraint firstItem="t8j-Pg-I1D" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.66" id="b4R-Wb-4gN"/>
+                <constraint firstItem="yt2-qg-bXS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.26" id="bKm-Cd-iSd"/>
+                <constraint firstItem="hxC-hQ-JV7" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.295" id="bdf-fx-Sj5"/>
+                <constraint firstItem="bgJ-og-EMu" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.295" id="dx6-1W-Uy7"/>
+                <constraint firstItem="XTg-gU-cXt" firstAttribute="width" secondItem="adk-ie-HJV" secondAttribute="width" multiplier="0.295" id="g5f-z8-4hG"/>
+                <constraint firstItem="bgJ-og-EMu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.785" id="gkC-Tb-IyL"/>
+                <constraint firstItem="adk-ie-HJV" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="o4U-3A-JS5"/>
+                <constraint firstItem="kOH-rv-Vdo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.52" id="qYe-5B-ReA"/>
+                <constraint firstItem="yt2-qg-bXS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.66" id="rHK-W6-f6S"/>
+                <constraint firstItem="adk-ie-HJV" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="rJg-b3-Rnu"/>
+                <constraint firstItem="bgJ-og-EMu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.38" id="ubh-9Y-rXO"/>
+                <constraint firstAttribute="trailing" secondItem="adk-ie-HJV" secondAttribute="trailing" id="vKT-dy-9iI"/>
+                <constraint firstAttribute="bottom" secondItem="adk-ie-HJV" secondAttribute="bottom" id="w6B-KS-l1N"/>
+                <constraint firstItem="RfL-rX-j3s" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xYq-hR-hRS"/>
+                <constraint firstItem="XTg-gU-cXt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.66" id="ygH-gY-NEp"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-59.5" y="-226"/>
+        </view>
+    </objects>
+</document>

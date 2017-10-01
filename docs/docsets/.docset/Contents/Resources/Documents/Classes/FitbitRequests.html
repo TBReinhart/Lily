@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FitbitRequests Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/FitbitRequests" class="dashAnchor"></a>
+    <a title="FitbitRequests Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (57% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        FitbitRequests Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FitbitRequests.html">FitbitRequests</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Helpers.html">Helpers</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LilyCoreData.html">LilyCoreData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LilyUser.html">LilyUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OAuth2RetryHandler.html">OAuth2RetryHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RestClient.html">RestClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewController.html">ViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewController2.html">ViewController2</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>FitbitRequests</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4Lily14FitbitRequests10restClientCS_10RestClient"></a>
+                    <a name="//apple_ref/swift/Property/restClient" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4Lily14FitbitRequests10restClientCS_10RestClient">restClient</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Lily14FitbitRequests17profileAttributesGSaSS_"></a>
+                    <a name="//apple_ref/swift/Variable/profileAttributes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Lily14FitbitRequests17profileAttributesGSaSS_">profileAttributes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>List of profile attributes that we would like to pull directly from the login response.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">profileAttributes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"age"</span><span class="p">,</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests15getWeightOnDateERR"></a>
+                    <a name="//apple_ref/swift/Method/getWeightOnDate(date:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests15getWeightOnDateERR">getWeightOnDate(date:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-weight-logs' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-weight-logs'>Get Weight Logs</h2></p>
+
+<p>The Get Weight Logs API retrieves a list of all user&rsquo;s body weight log entries for a given day using units in the unit systems which corresponds to the Accept-Language header provided. Body weight log entries are available only to authorized user. Body weight log entries in response are sorted exactly the same as they are presented on the Fitbit website.</p>
+
+<p>Resource URL</p>
+
+<p>There are three acceptable formats for retrieving weight log data:</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bdate%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[date].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bbase-date%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[period].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[end-date].json</a></p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+date    The date in the format yyyy-MM-dd.
+base-date   The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
+period  The date range period. One of 1d, 7d, 30d, 1w, 1m.
+end-date    Range end date when date range is provided. Note: The period must not be longer than 31 days.</p>
+
+<p>Example Response:
+{
+<q>weight</q>:[
+{
+<q>bmi</q>:23.57,
+<q>date</q>:<q>2015-03-05</q>,
+<q>logId</q>:1330991999000,
+<q>time</q>:<q>23:59:59</q>,
+<q>weight</q>:73,
+<q>source</q>: <q>API</q>
+},
+{
+<q>bmi</q>:22.57,
+<q>date</q>:<q>2015-03-05</q>,
+<q>logId</q>:1330991999000,
+<q>time</q>:<q>21:10:59</q>,
+<q>weight</q>:72.5,
+<q>source</q>: <q>Aria</q>
+}
+]
+}
+// default date if no parameter is today
+// GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bdate%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[date].json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getWeightOnDate</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests18getWeightForPeriodERR"></a>
+                    <a name="//apple_ref/swift/Method/getWeightForPeriod(baseDate:period:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests18getWeightForPeriodERR">getWeightForPeriod(baseDate:period:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-weight-logs' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-weight-logs'>Get Weight Logs</h2></p>
+
+<p>The Get Weight Logs API retrieves a list of all user&rsquo;s body weight log entries for a given day using units in the unit systems which corresponds to the Accept-Language header provided. Body weight log entries are available only to authorized user. Body weight log entries in response are sorted exactly the same as they are presented on the Fitbit website.</p>
+
+<p>Resource URL</p>
+
+<p>There are three acceptable formats for retrieving weight log data:</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bdate%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[date].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bbase-date%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[period].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[end-date].json</a></p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+date    The date in the format yyyy-MM-dd.
+base-date   The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
+period  The date range period. One of 1d, 7d, 30d, 1w, 1m.
+end-date    Range end date when date range is provided. Note: The period must not be longer than 31 days.</p>
+
+<p>Example Response:
+{
+<q>weight</q>:[
+{
+<q>bmi</q>:23.57,
+<q>date</q>:<q>2015-03-05</q>,
+<q>logId</q>:1330991999000,
+<q>time</q>:<q>23:59:59</q>,
+<q>weight</q>:73,
+<q>source</q>: <q>API</q>
+},
+{
+<q>bmi</q>:22.57,
+<q>date</q>:<q>2015-03-05</q>,
+<q>logId</q>:1330991999000,
+<q>time</q>:<q>21:10:59</q>,
+<q>weight</q>:72.5,
+<q>source</q>: <q>Aria</q>
+}
+]
+}
+//GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bbase-date%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[period].json</a>
+//     base-date    The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
+//     period       The date range period. One of 1d, 7d, 30d, 1w, 1m.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getWeightForPeriod</span><span class="p">(</span><span class="nv">baseDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">period</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests26getWeightFromStartEndDatesERR"></a>
+                    <a name="//apple_ref/swift/Method/getWeightFromStartEndDates(startDate:endDate:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests26getWeightFromStartEndDatesERR">getWeightFromStartEndDates(startDate:endDate:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-weight-logs' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-weight-logs'>Get Weight Logs</h2></p>
+
+<p>The Get Weight Logs API retrieves a list of all user&rsquo;s body weight log entries for a given day using units in the unit systems which corresponds to the Accept-Language header provided. Body weight log entries are available only to authorized user. Body weight log entries in response are sorted exactly the same as they are presented on the Fitbit website.</p>
+
+<p>Resource URL</p>
+
+<p>There are three acceptable formats for retrieving weight log data:</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bdate%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[date].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bbase-date%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[period].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[end-date].json</a></p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+date    The date in the format yyyy-MM-dd.
+base-date   The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
+period  The date range period. One of 1d, 7d, 30d, 1w, 1m.
+end-date    Range end date when date range is provided. Note: The period must not be longer than 31 days.</p>
+
+<p>Example Response:
+{
+<q>weight</q>:[
+{
+<q>bmi</q>:23.57,
+<q>date</q>:<q>2015-03-05</q>,
+<q>logId</q>:1330991999000,
+<q>time</q>:<q>23:59:59</q>,
+<q>weight</q>:73,
+<q>source</q>: <q>API</q>
+},
+{
+<q>bmi</q>:22.57,
+<q>date</q>:<q>2015-03-05</q>,
+<q>logId</q>:1330991999000,
+<q>time</q>:<q>21:10:59</q>,
+<q>weight</q>:72.5,
+<q>source</q>: <q>Aria</q>
+}
+]</p>
+
+<p>}</p>
+
+<p>//     GET <a href="https://api.fitbit.com/1/user/-/body/log/weight/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/-/body/log/weight/date/[base-date]/[end-date].json</a>
+ //     start-date  The end date when period is provided, in the format yyyy-MM-dd; range start date when a date range is provided.
+ //      end-date   Range end date when date range is provided. Note: The period must not be longer than 31 days.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getWeightFromStartEndDates</span><span class="p">(</span><span class="nv">startDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests9logWeightERR"></a>
+                    <a name="//apple_ref/swift/Method/logWeight(weight:date:time:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests9logWeightERR">logWeight(weight:date:time:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#log-weight' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='log-weight'>Log Weight</h2></p>
+
+<p>The Log Weight API creates log entry for a body weight using units in the unit systems that corresponds to the Accept-Language header provided and get a response in the format requested.</p>
+
+<p>Note: The returned Weight Log IDs are unique to the user, but not globally unique.</p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/body/log/weight.json">https://api.fitbit.com/1/user/[user-id]/body/log/weight.json</a></p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> for current logged-in user.
+POST Parameters</p>
+
+<p>weight  required    Weight - in the format X.XX.
+date    required    Log entry date - in the format yyyy-MM-dd.
+time    optional    Time of the measurement - hours and minutes in the format HH:mm:ss, which is set to the last second of the day if time is not provided.
+Request Headers</p>
+
+<p>Accept-Language optional    The measurement unit system to use for response values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">logWeight</span><span class="p">(</span><span class="nv">weight</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">time</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests12deleteWeightERR"></a>
+                    <a name="//apple_ref/swift/Method/deleteWeight(logId:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests12deleteWeightERR">deleteWeight(logId:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#delete-weight-log' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='delete-weight-log'>Delete Weight Log</h2></p>
+
+<p>The Delete Weight Log API deletes a user&rsquo;s body weight log entry with the given ID.</p>
+
+<p>Note: A successful request returns a 204 status code with an empty response body.</p>
+
+<p>Resource URL</p>
+
+<p>DELETE <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/body/log/weight/%5Bbody-weight-log-id%5D.json">https://api.fitbit.com/1/user/[user-id]/body/log/weight/[body-weight-log-id].json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">deleteWeight</span><span class="p">(</span><span class="nv">logId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests10getDevicesERR"></a>
+                    <a name="//apple_ref/swift/Method/getDevices(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests10getDevicesERR">getDevices(completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-devices' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-devices'>Get Devices</h2></p>
+
+<p>The Get Device endpoint returns a list of the Fitbit devices connected to a user&rsquo;s account.</p>
+
+<p>Knowing when a Fitbit device last synced with the Fitbit server is useful when diagnosing reports that the Fitbit app is showing different values from what the Fitbit Web API returns. Fitbit&rsquo;s own apps use the same Web API available to third-party developers. However, when an active Bluetooth connection is available, Fitbit&rsquo;s apps will show the summary values displayed on the device. Often, this data has not yet synced with Fitbit&rsquo;s servers. Third-party applications can check when a Fitbit device last synced with Fitbit&rsquo;s servers using this endpoint. Fitbit users can check when their device last synced with Fitbit&rsquo;s servers by following these instructions.</p>
+
+<p>Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/devices.json">https://api.fitbit.com/1/user/-/devices.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getDevices</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests11logActivityERR"></a>
+                    <a name="//apple_ref/swift/Method/logActivity(activityId:activityName:manualCalories:durationMillis:date:distance:distanceUnit:startTime:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests11logActivityERR">logActivity(activityId:activityName:manualCalories:durationMillis:date:distance:distanceUnit:startTime:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests38getActivityTimeSeriesFromStartEndDatesERR"></a>
+                    <a name="//apple_ref/swift/Method/getActivityTimeSeriesFromStartEndDates(resourcePath:baseDate:endDate:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests38getActivityTimeSeriesFromStartEndDatesERR">getActivityTimeSeriesFromStartEndDates(resourcePath:baseDate:endDate:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-activity-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-activity-time-series'>Get Activity Time Series</h2></p>
+
+<p><a href="https://dev.fitbit.com/docs/activity/#activity-time-series">https://dev.fitbit.com/docs/activity/#activity-time-series</a>
+GET /1/user/[user-id]/[resource-path]/date/[date]/[period].json</p>
+
+<p>GET /1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json</p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+base-date   The range start date, in the format yyyy-MM-dd or today.
+end-date    The end date of the range.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y
+Example Request
+GET <a href="https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json">https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getActivityTimeSeriesFromStartEndDates</span><span class="p">(</span><span class="nv">resourcePath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">baseDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests31getActivityTimeSeriesFromPeriodERR"></a>
+                    <a name="//apple_ref/swift/Method/getActivityTimeSeriesFromPeriod(resourcePath:date:period:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests31getActivityTimeSeriesFromPeriodERR">getActivityTimeSeriesFromPeriod(resourcePath:date:period:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-activity-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-activity-time-series'>Get Activity Time Series</h2></p>
+
+<p><a href="https://dev.fitbit.com/docs/activity/#activity-time-series">https://dev.fitbit.com/docs/activity/#activity-time-series</a>
+GET /1/user/[user-id]/[resource-path]/date/[date]/[period].json</p>
+
+<p>GET /1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json</p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+base-date   The range start date, in the format yyyy-MM-dd or today.
+end-date    The end date of the range.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y
+Example Request
+GET <a href="https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json">https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getActivityTimeSeriesFromPeriod</span><span class="p">(</span><span class="nv">resourcePath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">period</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests9getAlarmsERR"></a>
+                    <a name="//apple_ref/swift/Method/getAlarms(trackerId:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests9getAlarmsERR">getAlarms(trackerId:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-alarms' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-alarms'>Get Alarms</h2></p>
+
+<p>The Get Alarms endpoint returns a list of the set alarms connected to a user&rsquo;s account.</p>
+
+<p>Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/devices/tracker/%5Btracker-id%5D/alarms.json">https://api.fitbit.com/1/user/[user-id]/devices/tracker/[tracker-id]/alarms.json</a></p>
+
+<p>user-id    The ID of the user. Use <q>-</q> (dash) for current logged-in user.
+ tracker-id The ID of the tracker for which data is returned. The tracker-id value is found via the Get Devices endpoint.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getAlarms</span><span class="p">(</span><span class="nv">trackerId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests8addAlarmERR"></a>
+                    <a name="//apple_ref/swift/Method/addAlarm(trackerId:time:recurring:weekDays:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests8addAlarmERR">addAlarm(trackerId:time:recurring:weekDays:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#add-alarm' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='add-alarm'>Add Alarm</h2></p>
+
+<p>The Add Alarm endpoint adds the alarm settings to a given ID for a given device.</p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/devices/tracker/%5Btracker-id%5D/alarms.json">https://api.fitbit.com/1/user/[user-id]/devices/tracker/[tracker-id]/alarms.json</a></p>
+
+<p>user-id The ID of the user. Use <q>-</q> (dash) for current logged-in user.
+tracker-id  The ID of the tracker for which data is returned. The tracker-id value is found via the Get Devices endpoint.
+POST Parameters</p>
+
+<p>time       required Time of day that the alarm vibrates with a UTC timezone offset, e.g. 07:15-08:00
+enabled required    true or false. If false, alarm does not vibrate until enabled is set to true.
+recurring   required    true or false. If false, the alarm is a single event.
+weekDays    required    Comma separated list of days of the week on which the alarm vibrates, e.g. MONDAY,TUESDAY</p>
+
+<p>usage:<br>
+fbreqs.addAlarm(trackerId: trackerId, time: <q>13:30</q>, recurring: true, weekDays: [<q>MONDAY</q>, <q>TUESDAY</q>, <q>WEDNESDAY</q>, <q>THURSDAY</q>]) {json,error in {{stuff}} }</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">addAlarm</span><span class="p">(</span><span class="nv">trackerId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">time</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">recurring</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">weekDays</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests11updateAlarmERR"></a>
+                    <a name="//apple_ref/swift/Method/updateAlarm(trackerId:alarmId:time:enabled:recurring:weekDays:snoozeLength:snoozeCount:label:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests11updateAlarmERR">updateAlarm(trackerId:alarmId:time:enabled:recurring:weekDays:snoozeLength:snoozeCount:label:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#update-alarm' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='update-alarm'>Update Alarm</h2></p>
+
+<p>The Update Alarm endpoint updates the alarm entry with a given ID for a given device. It also gets a response in the format requested.</p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/devices/tracker/%5Btracker-id%5D/alarms/%5Balarm-id%5D.json">https://api.fitbit.com/1/user/[user-id]/devices/tracker/[tracker-id]/alarms/[alarm-id].json</a></p>
+
+<p>user-id The ID of the user. Use <q>-</q> (dash) for current logged-in user.
+tracker-id  The ID of the tracker whose alarms is managed. The tracker-id value is found via the Get Devices endpoint.
+alarm-id    The ID of the alarm to be updated. The alarm-id value is found in the response of the Get Alarms endpoint.</p>
+
+<p>POST Parameters</p>
+
+<p>time    required    Time of day that the alarm vibrates with a UTC timezone offset, e.g. 07:15-08:00
+enabled required    true or false. If false, alarm does not vibrate until enabled is set to true.
+recurring   required    true or false. If false, the alarm is a single event.
+weekDays    required    Comma separated list of days of the week on which the alarm vibrates, e.g. MONDAY,TUESDAY
+snoozeLength    required    Minutes between alarms; integer value.
+snoozeCount required    Maximum snooze count; integer value.
+label   optional    Label for the alarm; string value.
+vibe    optional    Vibe pattern; only one value for now - DEFAULT.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">updateAlarm</span><span class="p">(</span><span class="nv">trackerId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">alarmId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">time</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">enabled</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">recurring</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">weekDays</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">snoozeLength</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span>
+                     <span class="nv">snoozeCount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">label</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span><span class="o">=</span><span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests11deleteAlarmERR"></a>
+                    <a name="//apple_ref/swift/Method/deleteAlarm(trackerId:alarmId:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests11deleteAlarmERR">deleteAlarm(trackerId:alarmId:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#delete-alarm' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='delete-alarm'>Delete Alarm</h2></p>
+
+<p>The Delete Alarm API deletes the user&rsquo;s device alarm entry with the given ID for a given device.</p>
+
+<p>Resource URL</p>
+
+<p>DELETE <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/devices/tracker/%5Btracker-id%5D/alarms/%5Balarm-id%5D.json">https://api.fitbit.com/1/user/[user-id]/devices/tracker/[tracker-id]/alarms/[alarm-id].json</a></p>
+
+<p>user-id The ID of the user. Use <q>-</q> (dash) for current logged-in user.
+tracker-id  The ID of the tracker whose alarms is managed. The tracker-id value is found via the Get Devices endpoint.
+alarm-id    The ID of the alarm that is updated. The alarm-id value is found via the Get Alarms endpoint.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">deleteAlarm</span><span class="p">(</span><span class="nv">trackerId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">alarmId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests12getWaterLogsERR"></a>
+                    <a name="//apple_ref/swift/Method/getWaterLogs(date:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests12getWaterLogsERR">getWaterLogs(date:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-water-logs' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-water-logs'>Get Water Logs</h2></p>
+
+<p>The Get Water Logs endpoint retrieves a summary and list of a user&rsquo;s water log entries for a given day in the format requested using units in the unit system that corresponds to the Accept-Language header provided. Water log entries are available only to an authorized user. If you need to fetch only total amount of water consumed, you can use the Get Food endpoint. Water log entries in response are sorted exactly the same as they are presented on the Fitbit website.</p>
+
+<p>Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/foods/log/water/date/%5Bdate%5D.json">https://api.fitbit.com/1/user/[user-id]/foods/log/water/date/[date].json</a></p>
+
+<p>user-id The ID of the user. Use <q>-</q> (dash) for current logged-in user.
+date    The date of records to be returned. In the format yyyy-MM-dd.
+Example Request</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/foods/log/water/date/2015-09-01.json">https://api.fitbit.com/1/user/-/foods/log/water/date/2015-09-01.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getWaterLogs</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests12getWaterGoalERR"></a>
+                    <a name="//apple_ref/swift/Method/getWaterGoal(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests12getWaterGoalERR">getWaterGoal(completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-water-goal' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-water-goal'>Get Water Goal</h2></p>
+
+<p>Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/foods/log/water/goal.json">https://api.fitbit.com/1/user/[user-id]/foods/log/water/goal.json</a></p>
+
+<p>user-id The ID of the user. Use <q>-</q> (dash) for current logged-in user.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getWaterGoal</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests30getWaterLogSeriesStartEndDatesERR"></a>
+                    <a name="//apple_ref/swift/Method/getWaterLogSeriesStartEndDates(baseDate:endDate:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests30getWaterLogSeriesStartEndDatesERR">getWaterLogSeriesStartEndDates(baseDate:endDate:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-food-or-water-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-food-or-water-time-series'>Get Food or Water Time Series</h2></p>
+
+<p>The Get Food or Water Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.</p>
+
+<p>Note: If you provide earlier dates in the request, the response will retrieve only data since the user&rsquo;s join date or the first log entry date for the requested collection.</p>
+
+<p>Resource URL</p>
+
+<p>There are two accepted formats for retrieving intraday data:</p>
+
+<p>1) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bdate%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y</p>
+
+<p>2) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+base-date   The range start date, in the formatyyyy-MM-dd or today.
+end-date    The end date of the range.
+Resource Path Options</p>
+
+<p>foods/log/caloriesIn
+foods/log/water
+Example Request</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json">https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getWaterLogSeriesStartEndDates</span><span class="p">(</span><span class="nv">baseDate</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests23getWaterLogSeriesPeriodERR"></a>
+                    <a name="//apple_ref/swift/Method/getWaterLogSeriesPeriod(date:period:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests23getWaterLogSeriesPeriodERR">getWaterLogSeriesPeriod(date:period:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-food-or-water-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-food-or-water-time-series'>Get Food or Water Time Series</h2></p>
+
+<p>The Get Food or Water Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.</p>
+
+<p>Note: If you provide earlier dates in the request, the response will retrieve only data since the user&rsquo;s join date or the first log entry date for the requested collection.</p>
+
+<p>Resource URL</p>
+
+<p>There are two accepted formats for retrieving intraday data:</p>
+
+<p>1) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bdate%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y</p>
+
+<p>2) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+base-date   The range start date, in the formatyyyy-MM-dd or today.
+end-date    The end date of the range.
+Resource Path Options</p>
+
+<p>foods/log/caloriesIn
+foods/log/water
+Example Request</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json">https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getWaterLogSeriesPeriod</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">period</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"1d"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests29getFoodLogSeriesStartEndDatesERR"></a>
+                    <a name="//apple_ref/swift/Method/getFoodLogSeriesStartEndDates(baseDate:endDate:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests29getFoodLogSeriesStartEndDatesERR">getFoodLogSeriesStartEndDates(baseDate:endDate:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-food-or-water-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-food-or-water-time-series'>Get Food or Water Time Series</h2></p>
+
+<p>The Get Food or Water Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.</p>
+
+<p>Note: If you provide earlier dates in the request, the response will retrieve only data since the user&rsquo;s join date or the first log entry date for the requested collection.</p>
+
+<p>Resource URL</p>
+
+<p>There are two accepted formats for retrieving intraday data:</p>
+
+<p>1) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bdate%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y</p>
+
+<p>2) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+base-date   The range start date, in the formatyyyy-MM-dd or today.
+end-date    The end date of the range.
+Resource Path Options</p>
+
+<p>foods/log/caloriesIn
+foods/log/water
+Example Request</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json">https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getFoodLogSeriesStartEndDates</span><span class="p">(</span><span class="nv">baseDate</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests22getFoodLogSeriesPeriodERR"></a>
+                    <a name="//apple_ref/swift/Method/getFoodLogSeriesPeriod(date:period:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests22getFoodLogSeriesPeriodERR">getFoodLogSeriesPeriod(date:period:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-food-or-water-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-food-or-water-time-series'>Get Food or Water Time Series</h2></p>
+
+<p>The Get Food or Water Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.</p>
+
+<p>Note: If you provide earlier dates in the request, the response will retrieve only data since the user&rsquo;s join date or the first log entry date for the requested collection.</p>
+
+<p>Resource URL</p>
+
+<p>There are two accepted formats for retrieving intraday data:</p>
+
+<p>1) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bdate%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y</p>
+
+<p>2) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see options in the <q>Resource Path Options</q> section below.
+base-date   The range start date, in the formatyyyy-MM-dd or today.
+end-date    The end date of the range.
+Resource Path Options</p>
+
+<p>foods/log/caloriesIn
+foods/log/water
+Example Request</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json">https://api.fitbit.com/1/user/-/foods/log/caloriesIn/date/2015-09-01/2015-09-05.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getFoodLogSeriesPeriod</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">period</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"1d"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests8logWaterERR"></a>
+                    <a name="//apple_ref/swift/Method/logWater(date:amount:unit:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests8logWaterERR">logWater(date:amount:unit:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#log-water' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='log-water'>Log Water</h2></p>
+
+<p>This endpoint creates a log entry for water using units in the unit systems that corresponds to the Accept-Language header provided.</p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/foods/log/water.json">https://api.fitbit.com/1/user/[user-id]/foods/log/water.json</a></p>
+
+<p>user-id The ID of the user. Use <q>-</q> (dash) for current logged-in user.
+Request Headers</p>
+
+<p>Accept-Language optional    The measurement unit system to use for POST parameters and response values.
+POST Parameters</p>
+
+<p>amount  required    Amount consumed; in the format X.X and in the specified waterUnit or in the unit system that corresponds to the Accept-Language header provided.
+date    required    Log entry date; in the format yyyy-MM-dd.
+unit    optional    Water measurement unit. <q>ml</q>, <q>fl oz</q>, or <q>cup</q>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">logWater</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">unit</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests14logWaterUpdateERR"></a>
+                    <a name="//apple_ref/swift/Method/logWaterUpdate(logId:amount:unit:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests14logWaterUpdateERR">logWaterUpdate(logId:amount:unit:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#update-water-log' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='update-water-log'>Update Water Log</h2></p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/foods/log/water/%5Bwater-log-id%5D.json">https://api.fitbit.com/1/user/[user-id]/foods/log/water/[water-log-id].json</a></p>
+
+<p>Request Headers</p>
+
+<p>Accept-Language optional    The measurement unit system to use for POST parameters and response values.
+POST Parameters</p>
+
+<p>amount  required    Amount consumed; in the format X.X and in the specified waterUnit or in the unit system that corresponds to the Accept-Language header provided.
+unit    optional    Water measurement unit. <q>ml</q>, <q>fl oz</q>, or <q>cup</q>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">logWaterUpdate</span><span class="p">(</span><span class="nv">logId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">unit</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests14deleteWaterLogERR"></a>
+                    <a name="//apple_ref/swift/Method/deleteWaterLog(logId:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests14deleteWaterLogERR">deleteWaterLog(logId:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#delete-water-log' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='delete-water-log'>Delete Water Log</h2></p>
+
+<p>The Delete Water Log endpoint deletes a user&rsquo;s water log entry with the given ID.</p>
+
+<p>Resource URL</p>
+
+<p>DELETE <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/foods/log/water/%5Bwater-log-id%5D.json">https://api.fitbit.com/1/user/[user-id]/foods/log/water/[water-log-id].json</a></p>
+
+<p>user-id The ID of the user. Use <q>-</q> (dash) for current logged-in user.
+water-log-id    The id of the water log entry to be deleted.
+A successful request returns a 204 status code with an empty response body.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">deleteWaterLog</span><span class="p">(</span><span class="nv">logId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests10getFriendsERR"></a>
+                    <a name="//apple_ref/swift/Method/getFriends(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests10getFriendsERR">getFriends(completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-friends' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-friends'>Get Friends</h2></p>
+
+<p>The Get Friends endpoint returns data of a user&rsquo;s friends in the format requested using units in the unit system which corresponds to the Accept-Language header provided.</p>
+
+<p>Privacy Settings</p>
+
+<p>The Fitbit privacy setting is a two-tiered mechanism, where the first level setting, Friends (Friends or Anyone), determines the access to a user&rsquo;s list of friends.</p>
+
+<p>The second level setting determines from the list of friends, access to the following profile (Personal Information) fields:</p>
+
+<p>About Me (Friends or Anyone)
+Age and Height (Friends or Anyone)
+Location (Friends or Anyone)
+My Body (Friends or Anyone)
+Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/friends.json">https://api.fitbit.com/1/user/[user-id]/friends.json</a></p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+Examples of Requests</p>
+
+<p>Here are two accepted formats for retrieving user&rsquo;s friends data:</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/28H22H/friends.json">https://api.fitbit.com/1/user/28H22H/friends.json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/friends.json">https://api.fitbit.com/1/user/-/friends.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getFriends</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests21getFriendsLeaderboardERR"></a>
+                    <a name="//apple_ref/swift/Method/getFriendsLeaderboard(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests21getFriendsLeaderboardERR">getFriendsLeaderboard(completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-friends-leaderboard' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-friends-leaderboard'>Get Friends Leaderboard</h2></p>
+
+<p>The Get Friends Leaderboard endpoint gets the user&rsquo;s friends leaderboard in the format requested using units in the unit system which corresponds to the Accept-Language header provided.</p>
+
+<p>Authorized user (self) is also included in the response. Leaderboard has last seven (7) days worth of data (including data from the previous six days plus today&rsquo;s data in real time).</p>
+
+<p>Privacy Settings</p>
+
+<p>There are two privacy settings to consider for the response data:</p>
+
+<p>The Hide me from rankings privacy setting allows a user to be included to Friends leaderboard whether he hides himself on his profile settings or not.</p>
+
+<p>The following privacy permissions grant granular access to any listed user&rsquo;s respective profile fields:</p>
+
+<p>About Me (Friends or Anyone)
+ Age and height (Friends or Anyone)
+ Location (Friends or Anyone)
+ My Body (Friends or Anyone)
+ The response includes the correct values for accessible fields and empty values: empty string, <q>NA</q> (empty gender), 0 (empty height), default avatar etc., while some values are revealed to authorized user only, such as:</p>
+
+<p>About Me - controls aboutMe, gender, avatar
+ Age and height - controls dateOfBirth, height
+ Location - controls country, city, state, timezone, offsetFromUTCMillis
+ My Body - controls weight
+ Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/friends/leaderboard.json">https://api.fitbit.com/1/user/[user-id]/friends/leaderboard.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getFriendsLeaderboard</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests13inviteFriendsERR"></a>
+                    <a name="//apple_ref/swift/Method/inviteFriends(invitedUserEmail:invitedUserId:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests13inviteFriendsERR">inviteFriends(invitedUserEmail:invitedUserId:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#invitations' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='invitations'>Invitations</h2></p>
+
+<p>Invite Friend
+The Invite Friend endpoint creates an invitation to become friends with the authorized user. A successful request returns a 201 status code and an empty response body.</p>
+
+<p>If the invitedUserEmail value is provided, the standard friendship invitation email is sent to the specified recipient to be accepted or rejected later. If the invitedUserId is provided, the invitation is created silently and can only be fetched through the Get Invitations endpoint. Both invitation types can be accepted or rejected via the Accept Invitation endpoint.</p>
+
+<p>WARNING</p>
+
+<p>Warning: Be careful when using the Invite Friend endpoint and, as always, adhere to the Terms of Service. Though Fitbit has organic limits on allowed number of invitations, your application&rsquo;s workflow must not allow users to send bulk invitations to users. Doing so could be considered SPAM.</p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/-/friends/invitations.json">https://api.fitbit.com/1/user/-/friends/invitations.json</a></p>
+
+<p>POST Parameters</p>
+
+<p>invitedUserEmail    required/optional   Email of the user to invite. Does not need to be a Fitbit member. Either invitedUserEmail or invitedUserId is required.
+invitedUserId   required/optional   Encoded ID of the invited user. Either invitedUserEmail or invitedUserId is required.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">inviteFriends</span><span class="p">(</span><span class="nv">invitedUserEmail</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">invitedUserId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests20getFriendInvitationsERR"></a>
+                    <a name="//apple_ref/swift/Method/getFriendInvitations(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests20getFriendInvitationsERR">getFriendInvitations(completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-friend-invitations' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-friend-invitations'>Get Friend Invitations</h2></p>
+
+<p>The Get Friend Invitations endpoint returns a list of invitations to become friends with a user in the format requested.</p>
+
+<p>Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/">https://api.fitbit.com/1/user/</a><user-id>/friends/invitations.json</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getFriendInvitations</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests21respondToFriendInviteERR"></a>
+                    <a name="//apple_ref/swift/Method/respondToFriendInvite(accept:fromUserId:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests21respondToFriendInviteERR">respondToFriendInvite(accept:fromUserId:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#respond-to-friend-invitation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='respond-to-friend-invitation'>Respond to Friend Invitation</h2></p>
+
+<p>The Respond to Friend Invitation endpoint accepts or rejects an invitation to become friends with inviting user.</p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/-/friends/invitations/%5Bfrom-user-id%5D.json">https://api.fitbit.com/1/user/-/friends/invitations/[from-user-id].json</a></p>
+
+<p>from-user-id    Encoded ID of user from which to accept or reject invitation.
+POST Parameters</p>
+
+<p>accept  required    Accept or reject invitation. &lsquo;true&rsquo; or &lsquo;false&rsquo;.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">respondToFriendInvite</span><span class="p">(</span><span class="nv">accept</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">fromUserId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests9getBadgesERR"></a>
+                    <a name="//apple_ref/swift/Method/getBadges(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests9getBadgesERR">getBadges(completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Badges
+ ## Get Badges ##
+The Get Badges endpoint retrieves user&rsquo;s badges in the format requested. Response includes all badges for the user as seen on the Fitbit website badge locker (both activity and weight related). Fitbit returns weight and distance badges based on the user&rsquo;s unit profile preference as on the website.</p>
+
+<p>Privacy Setting</p>
+
+<p>There are two privacy settings to consider for the response data:</p>
+
+<p>The My Achievements (Friends or Anyone) privacy permission grants access to other user&rsquo;s resource.
+The My Body (Friends or Anyone) privacy permission reveals weight badge data in response.
+Resource URL</p>
+
+<p>GET /1/user/[user-id]/badges.json</p>
+
+<p>from-user-id    Encoded ID of user from which to accept or reject invitation.
+Request Headers</p>
+
+<p>Accept-Language optional    The measurement unit system to use for response values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getBadges</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests39getHeartRateTimeSeriesFromStartEndDatesERR"></a>
+                    <a name="//apple_ref/swift/Method/getHeartRateTimeSeriesFromStartEndDates(baseDate:endDate:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests39getHeartRateTimeSeriesFromStartEndDatesERR">getHeartRateTimeSeriesFromStartEndDates(baseDate:endDate:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>## Heart Rate Time Series ##
+Get Heart Rate Time Series
+The Get Heart Rate Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.</p>
+
+<p>If you specify earlier dates in the request, the response will retrieve only data since the user&rsquo;s join date or the first log entry date for the requested collection.</p>
+
+<p>Resource URL</p>
+
+<p>There are two acceptable formats for retrieving time series data:</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[period].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[base-date]/[end-date].json</a></p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+base-date   The range start date, in the format yyyy-MM-dd or today.
+end-date    The end date of the range.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m.
+Example Request</p>
+
+<p><a href="https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json">https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getHeartRateTimeSeriesFromStartEndDates</span><span class="p">(</span><span class="nv">baseDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests32getHeartRateTimeSeriesFromPeriodERR"></a>
+                    <a name="//apple_ref/swift/Method/getHeartRateTimeSeriesFromPeriod(date:period:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests32getHeartRateTimeSeriesFromPeriodERR">getHeartRateTimeSeriesFromPeriod(date:period:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#heart-rate-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='heart-rate-time-series'>Heart Rate Time Series</h2></p>
+
+<p>Get Heart Rate Time Series
+The Get Heart Rate Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit systems that corresponds to the Accept-Language header provided.</p>
+
+<p>If you specify earlier dates in the request, the response will retrieve only data since the user&rsquo;s join date or the first log entry date for the requested collection.</p>
+
+<p>Resource URL</p>
+
+<p>There are two acceptable formats for retrieving time series data:</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[period].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[base-date]/[end-date].json</a></p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+base-date   The range start date, in the format yyyy-MM-dd or today.
+end-date    The end date of the range.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m.
+Example Request</p>
+
+<p><a href="https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json">https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getHeartRateTimeSeriesFromPeriod</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">period</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"1d"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests44getHeartRateIntraTimeSeriesFromStartEndDatesERR"></a>
+                    <a name="//apple_ref/swift/Method/getHeartRateIntraTimeSeriesFromStartEndDates(baseDate:endDate:detailLevel:startTime:endTime:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests44getHeartRateIntraTimeSeriesFromStartEndDatesERR">getHeartRateIntraTimeSeriesFromStartEndDates(baseDate:endDate:detailLevel:startTime:endTime:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-heart-rate-intraday-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-heart-rate-intraday-time-series'>Get Heart Rate Intraday Time Series</h2></p>
+
+<p>Access to the Intraday Time Series for personal use (accessing your own data) is available through the <q>Personal</q> App Type.</p>
+
+<p>Access to the Intraday Time Series for all other uses is currently granted on a case-by-case basis. Applications must demonstrate necessity to create a great user experience. Fitbit is very supportive of non-profit research and personal projects. Commercial applications require thorough review and are subject to additional requirements. Only select applications are granted access and Fitbit reserves the right to limit this access. To request access, contact private support.</p>
+
+<p>The Get Heart Rate Intraday Time Series endpoint returns the intraday time series for a given resource in the format requested. If your application has the appropriate access, your calls to a time series endpoint for a specific day (by using start and end dates on the same day or a period of 1d), the response will include extended intraday values with a one-minute detail level for that day. Unlike other time series calls that allow fetching data of other users, intraday data is available only for and to the authorized user.</p>
+
+<p>Resource URLs</p>
+
+<p>There are four acceptable formats for retrieving time series data:</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/%5Bend-date%5D/%5Bdetail-level%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[end-date]/[detail-level].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/%5Bend-date%5D/%5Bdetail-level%5D/time/%5Bstart-time%5D/%5Bend-time%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[end-date]/[detail-level]/time/[start-time]/[end-time].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/1d/%5Bdetail-level%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/1d/[detail-level].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/1d/%5Bdetail-level%5D/time/%5Bstart-time%5D/%5Bend-time%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/1d/[detail-level]/time/[start-time]/[end-time].json</a></p>
+
+<p>date    The date, in the format yyyy-MM-dd or today.
+detail-level    Number of data points to include. Either 1sec or 1min. Optional.
+start-time  The start of the period, in the format HH:mm. Optional.
+end-time    The end of the period, in the format HH:mm. Optional.
+Example Request</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec/time/00:00/00:01.json">https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec/time/00:00/00:01.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getHeartRateIntraTimeSeriesFromStartEndDates</span><span class="p">(</span><span class="nv">baseDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">detailLevel</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"1min"</span><span class="p">,</span>
+        <span class="nv">startTime</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">endTime</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests37getHeartRateIntraTimeSeriesFromPeriodERR"></a>
+                    <a name="//apple_ref/swift/Method/getHeartRateIntraTimeSeriesFromPeriod(date:detailLevel:startTime:endTime:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests37getHeartRateIntraTimeSeriesFromPeriodERR">getHeartRateIntraTimeSeriesFromPeriod(date:detailLevel:startTime:endTime:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-heart-rate-intraday-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-heart-rate-intraday-time-series'>Get Heart Rate Intraday Time Series</h2></p>
+
+<p>Access to the Intraday Time Series for personal use (accessing your own data) is available through the <q>Personal</q> App Type.</p>
+
+<p>Access to the Intraday Time Series for all other uses is currently granted on a case-by-case basis. Applications must demonstrate necessity to create a great user experience. Fitbit is very supportive of non-profit research and personal projects. Commercial applications require thorough review and are subject to additional requirements. Only select applications are granted access and Fitbit reserves the right to limit this access. To request access, contact private support.</p>
+
+<p>The Get Heart Rate Intraday Time Series endpoint returns the intraday time series for a given resource in the format requested. If your application has the appropriate access, your calls to a time series endpoint for a specific day (by using start and end dates on the same day or a period of 1d), the response will include extended intraday values with a one-minute detail level for that day. Unlike other time series calls that allow fetching data of other users, intraday data is available only for and to the authorized user.</p>
+
+<p>Resource URLs</p>
+
+<p>There are four acceptable formats for retrieving time series data:</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/%5Bend-date%5D/%5Bdetail-level%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[end-date]/[detail-level].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/%5Bend-date%5D/%5Bdetail-level%5D/time/%5Bstart-time%5D/%5Bend-time%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/[end-date]/[detail-level]/time/[start-time]/[end-time].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/1d/%5Bdetail-level%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/1d/[detail-level].json</a></p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/%5Bdate%5D/1d/%5Bdetail-level%5D/time/%5Bstart-time%5D/%5Bend-time%5D.json">https://api.fitbit.com/1/user/-/activities/heart/date/[date]/1d/[detail-level]/time/[start-time]/[end-time].json</a></p>
+
+<p>date    The date, in the format yyyy-MM-dd or today.
+detail-level    Number of data points to include. Either 1sec or 1min. Optional.
+start-time  The start of the period, in the format HH:mm. Optional.
+end-time    The end of the period, in the format HH:mm. Optional.
+Example Request</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec/time/00:00/00:01.json">https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec/time/00:00/00:01.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getHeartRateIntraTimeSeriesFromPeriod</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">detailLevel</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"1sec"</span><span class="p">,</span>
+        <span class="nv">startTime</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">endTime</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests12getSleepLogsERR"></a>
+                    <a name="//apple_ref/swift/Method/getSleepLogs(date:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests12getSleepLogsERR">getSleepLogs(date:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-sleep-logs' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-sleep-logs'>Get Sleep Logs</h2></p>
+
+<p>The Get Sleep Logs endpoint returns a summary and list of a user&rsquo;s sleep log entries as well as minute by minute sleep entry data for a given day in the format requested. The endpoint response includes summary for all sleep log entries for the given day (including naps.) If you need to fetch data only for the user&rsquo;s main sleep event, you can send the request with isMainSleep=true or use a Time Series call.</p>
+
+<p>The relationship between sleep log entry properties is expressed with the following equation:</p>
+
+<p>timeInBed = minutesToFallAsleep + minutesAsleep + minutesAwake + minutesAfterWakeup</p>
+
+<p>Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/sleep/date/%5Bdate%5D.json">https://api.fitbit.com/1/user/[user-id]/sleep/date/[date].json</a></p>
+
+<p>user-id The ID of the user. Use <q>-</q> (dash) for current logged-in user.
+date    The date of records to be returned. In the format yyyy-MM-dd.
+Example Request</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/28H22H/sleep/date/2014-09-01.json">https://api.fitbit.com/1/user/28H22H/sleep/date/2014-09-01.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getSleepLogs</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"today"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests12getSleepGoalERR"></a>
+                    <a name="//apple_ref/swift/Method/getSleepGoal(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests12getSleepGoalERR">getSleepGoal(completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-sleep-goal' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-sleep-goal'>Get Sleep Goal</h2></p>
+
+<p>The Get Sleep Goal endpoint returns a user&rsquo;s current sleep goal using unit in the unit system that corresponds to the Accept-Language header provided in the format requested.</p>
+
+<p>Access Type: Read</p>
+
+<p>Rate Limited: Yes</p>
+
+<p>Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/">https://api.fitbit.com/</a><api-version>/user/-/sleep/goal.json</p>
+
+<p>api-version The API version, which is currently 1.
+Example</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/-/sleep/goal.json">https://api.fitbit.com/1/user/-/sleep/goal.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getSleepGoal</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests15updateSleepGoalERR"></a>
+                    <a name="//apple_ref/swift/Method/updateSleepGoal(minDuration:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests15updateSleepGoalERR">updateSleepGoal(minDuration:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#update-sleep-goal' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='update-sleep-goal'>Update Sleep Goal</h2></p>
+
+<p>The Update Sleep Goal endpoint creates or updates a user&rsquo;s sleep goal and get a response in the in the format requested.</p>
+
+<p>Access Type: Read &amp; Write</p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/">https://api.fitbit.com/</a><api-version>/user/-/sleep/goal.json</p>
+
+<p>api-version The API version, which is currently 1.
+Example</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/-/sleep/goal.json">https://api.fitbit.com/1/user/-/sleep/goal.json</a></p>
+
+<p>POST Parameters</p>
+
+<p>minDuration required    The target sleep duration is in minutes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">updateSleepGoal</span><span class="p">(</span><span class="nv">minDuration</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"480"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Lily14FitbitRequests18sleepResourcePathsGSaSS_"></a>
+                    <a name="//apple_ref/swift/Variable/sleepResourcePaths" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Lily14FitbitRequests18sleepResourcePathsGSaSS_">sleepResourcePaths</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>sleep resource paths</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">sleepResourcePaths</span> <span class="o">=</span> <span class="p">[</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests28getSleepTimeSeriesFromPeriodERR"></a>
+                    <a name="//apple_ref/swift/Method/getSleepTimeSeriesFromPeriod(resourcePath:date:period:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests28getSleepTimeSeriesFromPeriodERR">getSleepTimeSeriesFromPeriod(resourcePath:date:period:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#sleep-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='sleep-time-series'>Sleep Time Series</h2></p>
+
+<p>Get Sleep Time Series
+The Get Sleep Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit system that corresponds to the Accept-Language header provided.</p>
+
+<p>Note: Even if you provide earlier dates in the request, the response retrieves only data since the user&rsquo;s join date or the first log entry date for the requested collection.</p>
+
+<p>Resource URL</p>
+
+<p>There are two acceptable formats for retrieving intraday data:</p>
+
+<p>1) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bdate%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see the Resource Path Options below for a list of options.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, or max.</p>
+
+<p>2) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see the Resource Path Options below for a list of options.
+base-date   The range start date, in the format yyyy-MM-dd or today.
+end-date    The end date of the range.
+Resource Path Options</p>
+
+<p>sleep/startTime
+sleep/timeInBed
+sleep/minutesAsleep
+sleep/awakeningsCount
+sleep/minutesAwake
+sleep/minutesToFallAsleep
+sleep/minutesAfterWakeup
+sleep/efficiency
+Example Requests</p>
+
+<p>1) GET <a href="https://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/today/2014-09-01.json">https://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/today/2014-09-01.json</a></p>
+
+<p>2) GET <a href="https://api.fitbit.com/1/user/28H22H/sleep/minutesAsleep/date/2014-09-01/today.json">https://api.fitbit.com/1/user/28H22H/sleep/minutesAsleep/date/2014-09-01/today.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getSleepTimeSeriesFromPeriod</span><span class="p">(</span><span class="nv">resourcePath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">period</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                                      <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests35getSleepTimeSeriesFromStartEndDatesERR"></a>
+                    <a name="//apple_ref/swift/Method/getSleepTimeSeriesFromStartEndDates(resourcePath:startDate:endDate:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests35getSleepTimeSeriesFromStartEndDatesERR">getSleepTimeSeriesFromStartEndDates(resourcePath:startDate:endDate:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#sleep-time-series' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='sleep-time-series'>Sleep Time Series</h2></p>
+
+<p>Get Sleep Time Series
+The Get Sleep Time Series endpoint returns time series data in the specified range for a given resource in the format requested using units in the unit system that corresponds to the Accept-Language header provided.</p>
+
+<p>Note: Even if you provide earlier dates in the request, the response retrieves only data since the user&rsquo;s join date or the first log entry date for the requested collection.</p>
+
+<p>Resource URL</p>
+
+<p>There are two acceptable formats for retrieving intraday data:</p>
+
+<p>1) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bdate%5D/%5Bperiod%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[date]/[period].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see the Resource Path Options below for a list of options.
+date    The end date of the period specified in the format yyyy-MM-dd or today.
+period  The range for which data will be returned. Options are 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, or max.</p>
+
+<p>2) GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/%5Bresource-path%5D/date/%5Bbase-date%5D/%5Bend-date%5D.json">https://api.fitbit.com/1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json</a></p>
+
+<p>api-version The API version. Currently version 1.
+user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+resource-path   The resource path; see the Resource Path Options below for a list of options.
+base-date   The range start date, in the format yyyy-MM-dd or today.
+end-date    The end date of the range.
+Resource Path Options</p>
+
+<p>sleep/startTime
+sleep/timeInBed
+sleep/minutesAsleep
+sleep/awakeningsCount
+sleep/minutesAwake
+sleep/minutesToFallAsleep
+sleep/minutesAfterWakeup
+sleep/efficiency
+Example Requests</p>
+
+<p>1) GET <a href="https://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/today/2014-09-01.json">https://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/today/2014-09-01.json</a></p>
+
+<p>2) GET <a href="https://api.fitbit.com/1/user/28H22H/sleep/minutesAsleep/date/2014-09-01/today.json">https://api.fitbit.com/1/user/28H22H/sleep/minutesAsleep/date/2014-09-01/today.json</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getSleepTimeSeriesFromStartEndDates</span><span class="p">(</span><span class="nv">resourcePath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">startDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                                             <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests8logSleepERR"></a>
+                    <a name="//apple_ref/swift/Method/logSleep(startTime:duration:date:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests8logSleepERR">logSleep(startTime:duration:date:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#log-sleep' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='log-sleep'>Log Sleep</h2></p>
+
+<p>The Log Sleep endpoint creates a log entry for a sleep event and returns a response in the format requested. Keep in mind that it is NOT possible to create overlapping log entries or entries for time periods that DO NOT originate from a tracker. Sleep log entries appear on website&rsquo;s sleep tracker interface according to the date on which the sleep event ends.</p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/sleep.json">https://api.fitbit.com/1/user/[user-id]/sleep.json</a></p>
+
+<p>user-id The ID of the user. Use <q>-</q> (dash) for current logged-in user.
+POST Parameters</p>
+
+<p>startTime   required    Start time; hours and minutes in the format HH:mm.
+duration    required    Duration in milliseconds.
+date    required    Log entry date in the format yyyy-MM-dd.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">logSleep</span><span class="p">(</span><span class="nv">startTime</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests14deleteSleepLogERR"></a>
+                    <a name="//apple_ref/swift/Method/deleteSleepLog(logId:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests14deleteSleepLogERR">deleteSleepLog(logId:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#delete-sleep-log' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='delete-sleep-log'>Delete Sleep Log</h2></p>
+
+<p>The Delete Sleep Log endpoint deletes a user&rsquo;s sleep log entry with the given ID.</p>
+
+<p>Resource URL</p>
+
+<p>DELETE <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/sleep/%5Blog-id%5D.json">https://api.fitbit.com/1/user/[user-id]/sleep/[log-id].json</a></p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+log-id  ID of the sleep log to be deleted.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">deleteSleepLog</span><span class="p">(</span><span class="nv">logId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests14getUserProfileERR"></a>
+                    <a name="//apple_ref/swift/Method/getUserProfile(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests14getUserProfileERR">getUserProfile(completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#get-profile' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='get-profile'>Get Profile</h2></p>
+
+<p>The Get Profile endpoint returns a user&rsquo;s profile. The authenticated owner receives all values. However, the authenticated user&rsquo;s access to other users&rsquo; data is subject to those users&rsquo; privacy settings. Numerical values are returned in the unit system specified in the Accept-Language header.</p>
+
+<p>Resource URL</p>
+
+<p>GET <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/profile.json">https://api.fitbit.com/1/user/[user-id]/profile.json</a></p>
+
+<p>user-id    The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+ Request Headers</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getUserProfile</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Lily14FitbitRequests17updateUserProfileERR"></a>
+                    <a name="//apple_ref/swift/Method/updateUserProfile(gender:birthday:height:aboutMe:fullname:country:state:city:strideLengthWalking:strideLengthRunning:weightUnit:heightUnit:waterUnit:glucoseUnit:timezone:foodsLocale:localeLang:localeCountry:startDayOfWeek:clockTimeDisplayFormat:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Lily14FitbitRequests17updateUserProfileERR">updateUserProfile(gender:birthday:height:aboutMe:fullname:country:state:city:strideLengthWalking:strideLengthRunning:weightUnit:heightUnit:waterUnit:glucoseUnit:timezone:foodsLocale:localeLang:localeCountry:startDayOfWeek:clockTimeDisplayFormat:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#update-profile' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='update-profile'>Update Profile</h2></p>
+
+<p>The Update Profile endpoint updates a user&rsquo;s profile. Numerical values are accepted in the unit system specified in the Accept-Language header.</p>
+
+<p>Notice: Beginning September 6, 2016, the nickname field in the Update Profile endpoint will no longer be editable. The field will continue to be returned in the Get Profile endpoint, but no longer modifiable.</p>
+
+<p>Resource URL</p>
+
+<p>POST <a href="https://api.fitbit.com/1/user/%5Buser-id%5D/profile.json">https://api.fitbit.com/1/user/[user-id]/profile.json</a></p>
+
+<p>user-id The encoded ID of the user. Use <q>-</q> (dash) for current logged-in user.
+POST Parameters</p>
+
+<p>gender                 optional More accurately, sex; (MALE/FEMALE/NA)
+birthday               optional Date of birth; in the format yyyy-MM-dd
+height                 optional Height; in the format X.XX,
+aboutMe                optional About Me string
+fullname               optional Full name
+country                optional Country; two-character code
+state                  optional US State; two-character code; valid only if country was or being set to US
+city                   optional City
+strideLengthWalking optional    Walking stride length; in the format X.XX, in the unit system that 
+strideLengthRunning optional    Running stride length; in the format X.XX, in the unit system that
+weightUnit             optional Default weight unit on website (doesn&rsquo;t affect API); one of (en_US, en_GB, <q>any</q> for METRIC)
+heightUnit             optional Default height/distance unit on website (doesn&rsquo;t affect API); one of (en_US, <q>any</q> for METRIC)
+waterUnit              optional Default water unit on website (doesn&rsquo;t affect API); one of (en_US, <q>any</q> for METRIC)
+glucoseUnit            optional Default glucose unit on website (doesn&rsquo;t affect API); one of (en_US, <q>any</q> for METRIC)
+timezone               optional Timezone; in the format <q>America/Los_Angeles</q>
+foodsLocale            optional Food Database Locale; in the format <q>xx_XX</q>
+locale                 optional Locale of website (country/language); one of the locales, currently – (en_US, en_GB, en_AU, etc)
+localeLang             optional Language; in the format <q>xx</q>. You should specify either locale or both - localeLang and<br>
+                                   localeCountry (locale is higher priority).
+localeCountry          optional Country; in the format <q>XX</q>. You should specify either locale or both - localeLang and 
+                                   localeCountry (locale is higher priority).
+startDayOfWeek         optional Start day of the week; what day the week should start on. Either Sunday or Monday.
+clockTimeDisplayFormat  optional    How trackers with a clock should display the time. Either 12hour or 24hour.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">updateUserProfile</span><span class="p">(</span><span class="nv">gender</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"FEMALE"</span><span class="p">,</span> <span class="nv">birthday</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">aboutMe</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">fullname</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">country</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">city</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">strideLengthWalking</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">strideLengthRunning</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">weightUnit</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">heightUnit</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">waterUnit</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">glucoseUnit</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">timezone</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">foodsLocale</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">localeLang</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">localeCountry</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">startDayOfWeek</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">clockTimeDisplayFormat</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">JSON</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-01-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

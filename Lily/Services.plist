@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Fitbit2</key>
+	<dict>
+		<key>consumerKey</key>
+		<string>2285YX</string>
+		<key>consumerSecret</key>
+		<string>60640a94d1b4dcd91602d3efbee6ba87</string>
+	</dict>
+</dict>
+</plist>
