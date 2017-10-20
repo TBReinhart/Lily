@@ -198,16 +198,19 @@
 		2FFCB4151E68FD0F008622BB /* AdvicePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCB4141E68FD0F008622BB /* AdvicePanelView.swift */; };
 		2FFCB4171E68FD1B008622BB /* AdvicePanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FFCB4161E68FD1B008622BB /* AdvicePanelView.xib */; };
 		672BB027D2BACD0ACB5F68C2 /* Pods_Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */; };
-		8810E2ED1F7DDA36001B6F0A /* log_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 8810E2EC1F7DDA36001B6F0A /* log_blue.png */; };
 		8810E2EF1F7DDBE1001B6F0A /* blue_log.png in Resources */ = {isa = PBXBuildFile; fileRef = 8810E2EE1F7DDBE1001B6F0A /* blue_log.png */; };
 		881237341F71B5E1006B7D15 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881237331F71B5E1006B7D15 /* Weight.swift */; };
 		883DD15B1F72EACA0072B43F /* weightChart.png in Resources */ = {isa = PBXBuildFile; fileRef = 883DD15A1F72EACA0072B43F /* weightChart.png */; };
+		885601641F9A4BC8006D0F92 /* table5.png in Resources */ = {isa = PBXBuildFile; fileRef = 885601631F9A4BC8006D0F92 /* table5.png */; };
 		885EBA351F7EAB3D006005D5 /* plusWeight.png in Resources */ = {isa = PBXBuildFile; fileRef = 885EBA341F7EAB3D006005D5 /* plusWeight.png */; };
 		885EBA371F7EAB48006005D5 /* minusWeight.png in Resources */ = {isa = PBXBuildFile; fileRef = 885EBA361F7EAB48006005D5 /* minusWeight.png */; };
 		885EBA391F7EE7B1006005D5 /* DailyBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885EBA381F7EE7B1006005D5 /* DailyBarView.xib */; };
 		885EBA3B1F7EE7D2006005D5 /* DailyBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885EBA3A1F7EE7D2006005D5 /* DailyBarView.swift */; };
 		88933BE11F787EF400805E52 /* WeightChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88933BE01F787EF400805E52 /* WeightChart.xib */; };
 		88933BE51F787F6E00805E52 /* WeightChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88933BE41F787F6E00805E52 /* WeightChartView.swift */; };
+		889FFD591F98F81400341D1A /* tableImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 889FFD581F98F81400341D1A /* tableImage.png */; };
+		889FFD611F98FAD700341D1A /* table4.png in Resources */ = {isa = PBXBuildFile; fileRef = 889FFD601F98FAD700341D1A /* table4.png */; };
+		88C99CB81F883C7800FFF09B /* DailySummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C99CB71F883C7800FFF09B /* DailySummaryViewController.swift */; };
 		88EF4DE21F74861D00222597 /* WeightUpdate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88EF4DE11F74861D00222597 /* WeightUpdate.xib */; };
 		88EF4DE41F7487DF00222597 /* WeightUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EF4DE31F7487DF00222597 /* WeightUpdateView.swift */; };
 		A6B15886DD2C5CF0E96A3F0D /* Pods_Lily_LilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0B5AD57CBC8ED866FD1391 /* Pods_Lily_LilyTests.framework */; };
@@ -424,16 +427,19 @@
 		2FFCB4141E68FD0F008622BB /* AdvicePanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvicePanelView.swift; path = Lily/AdvicePanelView.swift; sourceTree = "<group>"; };
 		2FFCB4161E68FD1B008622BB /* AdvicePanelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AdvicePanelView.xib; path = Lily/AdvicePanelView.xib; sourceTree = "<group>"; };
 		75EFC085C8AA0B2EA08C1B1D /* Pods_Lily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8810E2EC1F7DDA36001B6F0A /* log_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_blue.png; sourceTree = "<group>"; };
 		8810E2EE1F7DDBE1001B6F0A /* blue_log.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_log.png; sourceTree = "<group>"; };
 		881237331F71B5E1006B7D15 /* Weight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Weight.swift; path = ../Weight.swift; sourceTree = "<group>"; };
 		883DD15A1F72EACA0072B43F /* weightChart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weightChart.png; sourceTree = "<group>"; };
+		885601631F9A4BC8006D0F92 /* table5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table5.png; sourceTree = "<group>"; };
 		885EBA341F7EAB3D006005D5 /* plusWeight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusWeight.png; sourceTree = "<group>"; };
 		885EBA361F7EAB48006005D5 /* minusWeight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minusWeight.png; sourceTree = "<group>"; };
 		885EBA381F7EE7B1006005D5 /* DailyBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyBarView.xib; sourceTree = "<group>"; };
 		885EBA3A1F7EE7D2006005D5 /* DailyBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyBarView.swift; sourceTree = "<group>"; };
 		88933BE01F787EF400805E52 /* WeightChart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeightChart.xib; sourceTree = "<group>"; };
 		88933BE41F787F6E00805E52 /* WeightChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightChartView.swift; sourceTree = "<group>"; };
+		889FFD581F98F81400341D1A /* tableImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableImage.png; sourceTree = "<group>"; };
+		889FFD601F98FAD700341D1A /* table4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table4.png; sourceTree = "<group>"; };
+		88C99CB71F883C7800FFF09B /* DailySummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DailySummaryViewController.swift; path = Lily/DailySummaryViewController.swift; sourceTree = "<group>"; };
 		88EF4DE11F74861D00222597 /* WeightUpdate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeightUpdate.xib; sourceTree = "<group>"; };
 		88EF4DE31F7487DF00222597 /* WeightUpdateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeightUpdateView.swift; path = Lily/WeightUpdateView.swift; sourceTree = "<group>"; };
 		E7BCA35F4FE7800240D9C439 /* Pods-Lily-LilyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lily-LilyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lily-LilyTests/Pods-Lily-LilyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -514,10 +520,12 @@
 		2F2F76111E3131A8000AE4F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				885601631F9A4BC8006D0F92 /* table5.png */,
+				889FFD601F98FAD700341D1A /* table4.png */,
+				889FFD581F98F81400341D1A /* tableImage.png */,
 				885EBA361F7EAB48006005D5 /* minusWeight.png */,
 				885EBA341F7EAB3D006005D5 /* plusWeight.png */,
 				8810E2EE1F7DDBE1001B6F0A /* blue_log.png */,
-				8810E2EC1F7DDA36001B6F0A /* log_blue.png */,
 				883DD15A1F72EACA0072B43F /* weightChart.png */,
 				2F6702E81E89DA9700E27733 /* grey_log_button.png */,
 				2F6702E91E89DA9700E27733 /* green_log_button.png */,
@@ -746,6 +754,7 @@
 				2F7658971E86F65000B8F624 /* EmotionsViewController.swift */,
 				2FC0BA5E1E417D92007B291C /* WaterViewController.swift */,
 				2F039EEB1E941395001021E6 /* WeightViewController.swift */,
+				88C99CB71F883C7800FFF09B /* DailySummaryViewController.swift */,
 				2F00448A1E5FC05C000E8BF6 /* Views */,
 			);
 			name = ViewControllers;
@@ -987,6 +996,8 @@
 				2FE2642E1E3C3A6A004DB460 /* ConnectWithFitbit.png in Resources */,
 				2F683F271E68730B00CC2641 /* half_circle.png in Resources */,
 				2F938F541E522F1A006D64A9 /* small_moon.png in Resources */,
+				885601641F9A4BC8006D0F92 /* table5.png in Resources */,
+				889FFD591F98F81400341D1A /* tableImage.png in Resources */,
 				2F3983B81E803ECA001F0B78 /* morning_sickness.png in Resources */,
 				2F0044831E5FB85D000E8BF6 /* Baby.png in Resources */,
 				2F8A4E821E67BEF900F4C017 /* Line.png in Resources */,
@@ -1020,6 +1031,7 @@
 				2F76586C1E86D3D700B8F624 /* sad_circle.png in Resources */,
 				2F938F4F1E522F1A006D64A9 /* small_call_doctor.png in Resources */,
 				2F02C21B1EB7BC8C00FE6B78 /* medications.png in Resources */,
+				889FFD611F98FAD700341D1A /* table4.png in Resources */,
 				2FA09AF71E3138F10094270F /* Heart.png in Resources */,
 				2F8127021E5EA46B00B625E1 /* TileView.xib in Resources */,
 				2F00447F1E5FB7F1000E8BF6 /* CallDoctor.png in Resources */,
@@ -1039,7 +1051,6 @@
 				885EBA351F7EAB3D006005D5 /* plusWeight.png in Resources */,
 				2F02C2251EB7BC8C00FE6B78 /* vaginal_and_urinary.html in Resources */,
 				88EF4DE21F74861D00222597 /* WeightUpdate.xib in Resources */,
-				8810E2ED1F7DDA36001B6F0A /* log_blue.png in Resources */,
 				2F8A4E7A1E67BA4300F4C017 /* cancel_button.png in Resources */,
 				2FA09AF11E3138E30094270F /* water.png in Resources */,
 				2F3FDC8C1E35905D00B18F25 /* MicWhite.png in Resources */,
@@ -1191,6 +1202,7 @@
 				2F683F251E68702800CC2641 /* WeeklyView.swift in Sources */,
 				2FA1CD5D1E0347AF00778DF3 /* AppDelegate.swift in Sources */,
 				2F398E911E12288A00A1AEB3 /* Lily.xcdatamodeld in Sources */,
+				88C99CB81F883C7800FFF09B /* DailySummaryViewController.swift in Sources */,
 				2F039EEC1E941395001021E6 /* WeightViewController.swift in Sources */,
 				88EF4DE41F7487DF00222597 /* WeightUpdateView.swift in Sources */,
 				2F683F2B1E68796300CC2641 /* WeeklyMiddleView.swift in Sources */,
