@@ -146,6 +146,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let bodySubsections: [String] = ["heart_rate", "physical_activity", "sleep"]
         let mindSubsections: [String] = ["mind_summary", "edinburgh_postpartum_depression"]
         
+        
+        
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        var today = Date()
+        var todayDateString = df.string(from: today)
+                
+        
+        
+        
         pdfGenerator = PDFGenerator()
         HTMLContent = pdfGenerator.renderExportableSummary(symptoms: symptomsSubsections, meds: medicationsSubsections, diet: dietSubsections, body: bodySubsections, mind: mindSubsections)
         pdfGenerator.exportHTMLContentToPDF(HTMLContent: HTMLContent) // crashes here

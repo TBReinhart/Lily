@@ -474,7 +474,13 @@ class EmotionsViewController: UIViewController, UICollectionViewDelegate, UIColl
         if self.weeksAgo == 0 {
             fetchEmotions(weeksAgo: 0)
         }
+let defaults = UserDefaults.standard
 
+
+ let num1 = defaults.integer(forKey: "logNum")
+    print(num1)
+
+defaults.set(num1+1, forKey: "logNum")
         
     }
     

@@ -11,6 +11,9 @@ import Firebase
 import IQKeyboardManagerSwift
 import TouchVisualizer
 import p2_OAuth2
+import SwiftyJSON
+
+
 
 // only for sys.exit() remove later
 import Darwin
@@ -23,9 +26,326 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     var verifyWeight = false
     var dayBar = false
     var weekBar = false
+        var currentActivityType = "minutesVeryActive"
+
+    var sedentary = "0"
+    var lightly = "0"
+    var fairly = "0"
+    var very = "0"
+    var water1 = ""
+    var totalCups = 0.0
+    
+     var heart1 = ""
+     var heart2 = ""
+    var heartNum = 0.0
+    var heartOver = 0.0
+    
+    var miserable = 0
+    var likeLaughing = 0
+    var angry = 0
+    var frustrated = 0
+    var likeCrying = 0
+    var irate = 0
+    var sad = 0
+    var scared = 0
+    var overwhelmed = 0
+    var excited = 0
+    var happy = 0
+    var nervous = 0
+    var logged = 0.0
+    var redCount = 0.0
+            var yellowCount = 0.0
+            var blueCount = 0.0
+            var greenCount = 0.0
+    var sedTime = 0
+    var lightTime = 0
+    var fairTime = 0
+    var veryTime = 0
+
+    var fbreqs = FitbitRequests()
+        var today = Date()
+var emotionsArray = [Int]()
+var anger = ""
+var sadness = ""
+var happiness = ""
+var anxiety = ""
+
+var laughE = false
+var forwardE = false
+var anxiousE = false
+var scaredE = false
+var overwhelmedE = false
+var sleepE = false
+var miserableE = false
+var cryE = false
+
+
+
+var pdf = PDFGenerator()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+FIRApp.configure()
+        IQKeyboardManager.sharedManager().enable = true
+        FIRDatabase.database().persistenceEnabled = true
+        checkIfUserInFirebase()
+
+    
+      
+
+    
+        var weeklyEmotions: JSON = [:]
+        
+        let dateRange = Helpers.get7DayRangeInts(weeksAgo: 0)
+        for i in  dateRange.0..<dateRange.1 + 1 {
+
+            Helpers.loadDailyLogFromFirebase(key: "emotions", daysAgo: i) { json, error in
+                if json != nil {
+                print("asds")
+                print(json)
+                    weeklyEmotions[String(i)] = json
+                    self.logged += 1
+            if weeklyEmotions[String(i)]["frustrated"].boolValue {
+                //self.redCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["angry"].boolValue {
+                self.redCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["irate"].boolValue {
+               // self.redCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["overwhelmed"].boolValue {
+            self.overwhelmedE = true
+                self.yellowCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["nervous"].boolValue {
+            self.anxiousE = true
+                //self.yellowCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["scared"].boolValue {
+            self.scaredE = true
+               // self.yellowCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["sad"].boolValue {
+            self.miserableE = true
+                self.blueCount += 1
+            }
+            
+            
+            if weeklyEmotions[String(i)]["like crying"].boolValue {
+            self.cryE = true
+               // self.blueCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["miserable"].boolValue {
+            self.miserableE = true
+               // self.blueCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["happy"].boolValue {
+                self.greenCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["excited"].boolValue {
+            self.forwardE = true
+               // self.greenCount += 1
+            }
+            
+            if weeklyEmotions[String(i)]["like laughing"].boolValue {
+            self.laughE = true
+               // self.greenCount += 1
+            }
+
+                } 
+
+            }
+        
+        
+    
+                }
+
+    
+    
+     
+ 
+    
+
+//
+//let num11 = self.redCount
+//let num12 = self.greenCount
+//let num13 = self.blueCount
+//let num14 = self.yellowCount
+//print(self.blueCount)
+//    print("eve")
+//    print(num11)
+//    print(num12)
+//    print(num13)
+//    print(num14)
+//self.anger = "\(num11)%"
+//self.sadness = "\(num12)%"
+//self.happiness = "\(num13)%"
+//self.anxiety = "\(num14)%"
+    
+    
+      let endDate = Helpers.getDateNWeeksAgo(weeksAgo: 0).dateString
+        let past1 = Helpers.getDateNWeeksAgo(weeksAgo: 0)
+        let date1 = past1.date
+
+        
+        self.fbreqs.getHeartRateTimeSeriesFromPeriod(date: endDate, period: "7d") { heartRates, err in
+            if let hrs = heartRates {
+                var i = 0
+                for hr in hrs {
+                    let rest = Double(hr.restingHeartRate)
+                    self.heartNum += rest
+                    if (hr.maximumBPM > 204) {
+                    self.heartOver += Double(hr.maximumBPM)
+                    }
+                  
+
+                    i += 1
+                }
+                self.heartNum = self.heartNum/7
+                self.heart1 = "\(self.heartNum)"
+                self.heart2 = "\(self.heartOver)"
+            }
+        }
+        
+
+    
+        
+        let past = Helpers.getDateNWeeksAgo(weeksAgo: 0)
+        let date = past.date
+        let labelRange = Helpers.getShortDateRangeString(date: date)
+        let dateString = past.dateString
+        
+        self.fbreqs.getWaterLastWeek(date: dateString) { waters, error in
+            if waters != nil {
+                var i = 0
+                for water in waters! {
+                    let cupsConsumed = water.cupsConsumed
+                    self.totalCups += cupsConsumed
+                    i += 1
+                    print("check")
+                    print(self.totalCups)
+                    print(cupsConsumed)
+                    print(water)
+                }
+                 print("this")
+        print(self.totalCups)
+        self.totalCups = self.totalCups/7
+        self.totalCups = (self.totalCups * 100).rounded() / 100
+        self.water1 = "\(self.totalCups)"
+
+            }
+        }
+        
+        
+        
+
+    let acitivityType = "minutesSedentary"
+    let acitivityType1 = "minutesLightlyActive"
+    let acitivityType2 = "minutesFairlyActive"
+    let acitivityType3 = "minutesVeryActive"
+
+        self.fbreqs.getActivityTimeSeriesFromPeriod(resourcePath: "\(acitivityType)", date: endDate, period: "7d") { activities, err in
+            var i = 0
+            for activity in activities {
+            let num1 = activity.sedentaryMinutes
+            self.sedTime += num1
+
+                i += 1
+
+            }
+            self.sedTime = self.sedTime/7
+            let formattedTime = Helpers.minutesToHoursMinutes(minutes: self.sedTime)
+
+              self.sedentary = "\(formattedTime.0)h \(formattedTime.1)m"
+
+        }
+        self.fbreqs.getActivityTimeSeriesFromPeriod(resourcePath: "\(acitivityType1)", date: endDate, period: "7d") { activities, err in
+            var i = 0
+            for activity in activities {
+            let num1 = activity.lightlyActiveMinutes
+            self.lightTime += num1
+
+                i += 1
+
+            }
+            self.lightTime = self.lightTime/7
+            let formattedTime = Helpers.minutesToHoursMinutes(minutes: self.lightTime)
+
+              self.lightly = "\(formattedTime.0)h \(formattedTime.1)m"
+
+        }
+        self.fbreqs.getActivityTimeSeriesFromPeriod(resourcePath: "\(acitivityType3)", date: endDate, period: "7d") { activities, err in
+            var i = 0
+            for activity in activities {
+            let num1 = activity.veryActiveMinutes
+            self.veryTime += num1
+
+                i += 1
+
+            }
+            self.veryTime = self.veryTime/7
+            let formattedTime = Helpers.minutesToHoursMinutes(minutes: self.veryTime)
+
+              self.very = "\(formattedTime.0)h \(formattedTime.1)m"
+
+        }
+        self.fbreqs.getActivityTimeSeriesFromPeriod(resourcePath: "\(acitivityType2)", date: endDate, period: "7d") { activities, err in
+            var i = 0
+            for activity in activities {
+            let num1 = activity.fairlyActiveMinutes
+            self.fairTime += num1
+
+                i += 1
+
+            }
+            self.fairTime = self.fairTime/7
+            let formattedTime = Helpers.minutesToHoursMinutes(minutes: self.fairTime)
+
+              self.fairly = "\(formattedTime.0)h \(formattedTime.1)m"
+
+        }
+
+        
+//        self.fbreqs.getUserProfile() { json, err in
+//         
+//            if json != nil {
+//                for (key, value) in json! {
+//                    print(key)
+//                   // print(value)
+//                   let str1 = value.description
+//                   print("lkl")
+//                   print(str1)
+//                    
+//                  // self.setEmotionCell(emotion: key, selected: value.boolValue)
+//                  // create array to hold bool values then connect each one to emotion separately through ifs (array[num]) to access...
+//                }
+//
+//            }
+//
+//            
+//            let dob = json?["dateOfBirth"]
+//            print("uhuh")
+//            print(dob)
+//                
+//}
+        
+        
+        
+        
+        
+        
+        
         
         // Set Navigation bar background image
         let navBgImage:UIImage = UIImage(named: "NavigationBar.png")!
@@ -39,9 +359,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
         //Set navigation bar Back button tint colour
         UINavigationBar.appearance().tintColor = UIColor.white
-        FIRApp.configure()
-        IQKeyboardManager.sharedManager().enable = true
-        FIRDatabase.database().persistenceEnabled = true
+
 
         
         let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -54,7 +372,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 //        exit(0)
         
         
-        checkIfUserInFirebase()
         
         
 

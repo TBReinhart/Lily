@@ -9,13 +9,16 @@
 import UIKit
 
 class PDFGenerator: NSObject {
+
+    var fbreqs = FitbitRequests()
     
     let pathToSummaryTemplate = Bundle.main.path(forResource:"summary", ofType: "html")
     
     let pathToSummarySectionTemplate = Bundle.main.path(forResource:"summary_section", ofType: "html")
     
     var pdfFilename: String!
-    
+        let numWeeks = 0
+
     let name = "Patient Name"
     let exportDate = Helpers.getLongDate(date: Date())
     
@@ -94,7 +97,7 @@ class PDFGenerator: NSObject {
     }
     
     // renders the header and returns the summary template w/ the header filled in
-    func renderHeaderAndFooter() -> String {
+   func renderHeaderAndFooter() -> String {
         do {
             var HTMLContent = try String(contentsOfFile: pathToSummaryTemplate!)
             
@@ -111,7 +114,6 @@ class PDFGenerator: NSObject {
         
         return ""
     }
-    
     func renderSubsection(name: String, icon: String, subsectionArr: [String]) -> String {
         let html = renderSubsectionHTML(icon: icon, name: name)
         
@@ -144,8 +146,15 @@ class PDFGenerator: NSObject {
                     subsToConcat.append(renderHeartRate(pathToTemplate: pathToTemplate!))
                 case "physical_activity":
                     subsToConcat.append(renderPhysicalActivity(pathToTemplate: pathToTemplate!))
-                case "sleep":
-                    subsToConcat.append(renderSleep(pathToTemplate: pathToTemplate!))
+                 case "sleep":
+                    let dateString = Helpers.getDateNWeeksAgo(weeksAgo: self.numWeeks).dateString
+                    self.fbreqs.getSleepLastWeek(date: dateString) { sleeps, error in
+                      
+                            print("in here -- sleeps")
+                            subsToConcat.append(self.renderSleep(pathToTemplate: pathToTemplate!, sleeps: sleeps!))
+                            print("will concat")
+                        
+                    }
                 case "mind_summary":
                     subsToConcat.append(renderMindSummary(pathToTemplate: pathToTemplate!))
                 case "edinburgh_postpartum_depression":
@@ -198,20 +207,44 @@ class PDFGenerator: NSObject {
     func renderDietComposition(pathToTemplate: String) -> String {
         return ""
     }
-    
-    func renderWater(pathToTemplate: String) -> String {
+     func renderHeartRate(pathToTemplate: String) -> String {
         do {
             var html = try String(contentsOfFile: pathToTemplate)
+                         if let app = UIApplication.shared.delegate as? AppDelegate {
+
+            let avgResting = app.heart1 //calc w/ fitbit
+            let bpmThreshold = "2:04:00" // pull from goals
+            let numAbove = app.heart2 // calc w/ fitbit
             
-            let avgWater = "6" // pull data from fitbit
-            let avgCaffeine = "3" // calculate using information logged via voice.
-            
-            html = html.replacingOccurrences(of: "#AVG_WATER_PER_DAY#", with: avgWater)
-            html = html.replacingOccurrences(of: "#AVG_CAFFEINE_PER_DAY#", with: avgCaffeine)
+            html = html.replacingOccurrences(of: "#AVG_RESTING_HEART_RATE#", with: avgResting)
+            html = html.replacingOccurrences(of: "#BPM_THRESHOLD#", with: bpmThreshold)
+            html = html.replacingOccurrences(of: "#TOTAL_ABOVE_HEART_THRESH#", with: numAbove)
             
             return html
             
-        } catch {
+        } }catch {
+            print("Unable to open and use HTML files. Quit at water sub-subsection")
+        }
+        return ""
+    }
+    func renderWater(pathToTemplate: String) -> String {
+           do {
+            var html = try String(contentsOfFile: pathToTemplate)
+             if let app = UIApplication.shared.delegate as? AppDelegate {
+             
+            let avgWater = app.water1 + " Cups"//calc w/ fitbit
+            let avgCaffeine = "Placeholder" // calc w/ fitbit
+            html = html.replacingOccurrences(of: "#AVG_WATER_PER_DAY#", with: avgWater)
+            print("r")
+            print(avgWater)
+            html = html.replacingOccurrences(of: "#AVG_CAFFEINE_PER_DAY#", with: avgCaffeine)
+        
+
+            }
+            return html
+            
+            }
+         catch {
             print("Unable to open and use HTML files. Quit at water sub-subsection")
         }
         return ""
@@ -220,11 +253,11 @@ class PDFGenerator: NSObject {
     func renderPhysicalActivity(pathToTemplate: String) -> String {
         do {
             var html = try String(contentsOfFile: pathToTemplate)
-            
-            let avgTimeSedentary = "6:01:00" // calc w/ fitbit
-            let avgTimeLightlyActive = "2:40:00" //calc w/ fitbit
-            let avgTimeFairlyActive = "1:00:00" //calc w/ fitbit
-            let avgTimeVeryActive = "0:30:00" // calc w/ fitbit
+            if let app = UIApplication.shared.delegate as? AppDelegate {
+            let avgTimeSedentary = app.sedentary // calc w/ fitbit
+            let avgTimeLightlyActive = app.lightly //calc w/ fitbit
+            let avgTimeFairlyActive = app.fairly//calc w/ fitbit
+            let avgTimeVeryActive = app.very // calc w/ fitbit
             
             html = html.replacingOccurrences(of: "#SEDENTARY#", with: avgTimeSedentary)
             html = html.replacingOccurrences(of: "#LIGHTLY_ACTIVE#", with: avgTimeLightlyActive)
@@ -233,23 +266,24 @@ class PDFGenerator: NSObject {
             
             return html
             
-        } catch {
+        }} catch {
             print("Unable to open and use HTML files. Quit at physical activity sub-subsection")
         }
         return ""
     }
     
-    func renderSleep(pathToTemplate: String) -> String {
+    func renderSleep(pathToTemplate: String, sleeps: [Sleep?]) -> String {
+        print("in render sleep")
+        var sleepResults = parseSleepData(sleeps: sleeps)
+        print(sleepResults)
         do {
             var html = try String(contentsOfFile: pathToTemplate)
             
-            let avgSleep = "6:40:00" //calc w/ fitbit
-            let avgRestless = "2:04:00" //calc w/ fitbit
-            let avgEfficiency = "80%" // calc w/ fitbit
+            html = html.replacingOccurrences(of: "#AVG_SLEEP#", with: (sleepResults["averageSleep"]!))
+            html = html.replacingOccurrences(of: "#AVG_RESTLESS#", with: (sleepResults["totalRestless"]!))
+            html = html.replacingOccurrences(of: "#AVG_EFFICIENCY#", with: (sleepResults["averageEfficiency"]!))
+            print(html)
             
-            html = html.replacingOccurrences(of: "#AVG_SLEEP#", with: avgSleep)
-            html = html.replacingOccurrences(of: "#AVG_RESTLESS#", with: avgRestless)
-            html = html.replacingOccurrences(of: "#AVG_EFFICIENCY#", with: avgEfficiency)
             
             return html
             
@@ -258,36 +292,73 @@ class PDFGenerator: NSObject {
         }
         return ""
     }
-    
-    func renderHeartRate(pathToTemplate: String) -> String {
-        do {
-            var html = try String(contentsOfFile: pathToTemplate)
+
+    func parseSleepData(sleeps: [Sleep?]) -> [String:String] {
+        var sleepResults = [String: String]()
+        
+        var weekSleepObjects = [Sleep?](repeating: nil, count:7*(self.numWeeks+1))
+        weekSleepObjects = sleeps
+        
+        var totalTime = 0.0
+        var totalEfficiency = 0
+        var totalRestless = 0
+        var sleptThatNight = 0
+        
+        for sleep in weekSleepObjects {
+            let sleepTimeRounded = sleep?.sleepTimeRounded ?? 0.0
+            let restlessDuration = sleep?.restlessDuration ?? 0
+            let efficiency = sleep?.efficiency ?? 0
             
-            let avgResting = "6:40:00" //calc w/ fitbit
-            let bpmThreshold = "2:04:00" // pull from goals
-            let numAbove = "25:00:00" // calc w/ fitbit
-            
-            html = html.replacingOccurrences(of: "#AVG_RESTING_HEART_RATE#", with: avgResting)
-            html = html.replacingOccurrences(of: "#BPM_THRESHOLD#", with: bpmThreshold)
-            html = html.replacingOccurrences(of: "#TOTAL_ABOVE_HEART_THRESH#", with: numAbove)
-            
-            return html
-            
-        } catch {
-            print("Unable to open and use HTML files. Quit at water sub-subsection")
+            if sleepTimeRounded != 0.0 {
+                sleptThatNight += 1
+                totalTime += sleepTimeRounded
+                totalEfficiency += efficiency
+                totalRestless += restlessDuration
+                print(sleepTimeRounded)
+            }
+            print(sleepTimeRounded)
+            print(restlessDuration)
+            print(efficiency)
         }
-        return ""
+        
+        print("sleep results:")
+        print(totalTime)
+        print(totalEfficiency)
+        print(totalRestless)
+        
+        let denom = Double(7*(self.numWeeks+1))
+        sleepResults["averageSleep"] = String(format: "%.2f", Double(totalTime) / Double(denom)) + " hrs"
+        sleepResults["averageEfficiency"] = String(format: "%.2f", Double(totalEfficiency) / Double(denom)) + "%"
+        sleepResults["totalRestless"] = String(format: "%.2f", Double(totalRestless) / Double(denom)) + " hrs"
+        
+        return sleepResults
     }
-    
     func renderMindSummary(pathToTemplate: String) -> String {
         do {
             var html = try String(contentsOfFile: pathToTemplate)
-            let numLogged = "12" // calc w/ logging
-            let pctAnger = "25%" // calc w/ logging
-            let pctSadness = "40%" // calc w/ logging
-            let pctHappiness = "20%" // calc w/ logging
-            let pctAnxiety = "15%" // calc w/ logging
+             if let app = UIApplication.shared.delegate as? AppDelegate {
+
+             var numAng = app.redCount/app.logged
+             numAng = (numAng * 100).rounded()
+             
+             var numSad = app.blueCount/app.logged
+             numSad = (numSad * 100).rounded()
+             
+             var numHap = app.greenCount/app.logged
+             numHap = (numHap * 100).rounded()
+             
+             var numAnx = app.yellowCount/app.logged
+             numAnx = (numAnx * 100).rounded()
+             
+             
+            let numLogged = "\(app.logged)" // calc w/ logging
+            let pctAnger = "\(numAng) %" // calc w/ logging
+            let pctSadness = "\(numSad) %"// calc w/ logging
+            let pctHappiness = "\(numHap) %" // calc w/ logging
+            let pctAnxiety = "\(numAnx) %" // calc w/ logging
             
+
+
             html = html.replacingOccurrences(of: "#NUM_LOGGED#", with: numLogged)
             html = html.replacingOccurrences(of: "#PCT_ANGER#", with: pctAnger)
             html = html.replacingOccurrences(of: "#PCT_SADNESS#", with: pctSadness)
@@ -296,7 +367,7 @@ class PDFGenerator: NSObject {
             
             return html
             
-        } catch {
+        }} catch {
             print("Unable to open and use HTML files. Quit at water sub-subsection")
         }
         return ""
@@ -305,14 +376,54 @@ class PDFGenerator: NSObject {
     func renderPostpartumDepressionSurvey(pathToTemplate: String) -> String {
         do {
             var html = try String(contentsOfFile: pathToTemplate)
-            let hasLaughed = "Yes" // calc w/ logging
-            let hasBeenExcited = "Yes" // calc w/ logging
-            let hasBeenAnxious = "Yes" // calc w/ logging
-            let hasBeenScared = "No" // calc w/ logging
-            let hasFeltOverwhelmed = "Yes" // calc w/ logging
-            let hasProblemsSleeping = "Yes" // calc w/ logging
-            let hasFeltMiserable = "No" // calc w/ logging
-            let hasReportedCrying = "Yes" //calc w/ logging
+                         if let app = UIApplication.shared.delegate as? AppDelegate {
+                         
+            var hasProblemsSleeping = "No"
+            var hasFeltMiserable = "No"
+            var hasReportedCrying = "No"
+            var hasLaughed = "No"
+            var hasBeenExcited = "No"
+            var hasBeenScared = "No"
+            var hasFeltOverwhelmed = "No"
+            var hasBeenAnxious = "No"
+                         
+                         if app.laughE {
+                             hasLaughed = "Yes"
+                        }
+                        
+                         if app.forwardE {
+                             hasBeenExcited = "Yes"
+                        }
+                        
+                        
+                         if app.anxiousE {
+                             hasBeenAnxious = "Yes"
+                        }
+                        
+                        
+                         if app.scaredE {
+                             hasBeenScared = "Yes"
+                        }
+                        
+                        
+                         if app.overwhelmedE {
+                             hasFeltOverwhelmed = "Yes"
+                        }
+                        
+                        
+                         if app.sleepE {
+                             hasProblemsSleeping = "Yes"
+                        }
+                        
+                         if app.miserableE {
+                             hasFeltMiserable = "Yes"
+                        }
+                        
+                        
+                         if app.cryE {
+                             hasReportedCrying = "Yes"
+                        }
+                       
             
             html = html.replacingOccurrences(of: "#EDIN_1#", with: hasLaughed)
             html = html.replacingOccurrences(of: "#EDIN_2#", with: hasBeenExcited)
@@ -325,7 +436,7 @@ class PDFGenerator: NSObject {
             
             return html
             
-        } catch {
+        }} catch {
             print("Unable to open and use HTML files. Quit at water sub-subsection")
         }
         return ""

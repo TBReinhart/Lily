@@ -206,6 +206,7 @@
 		885EBA371F7EAB48006005D5 /* minusWeight.png in Resources */ = {isa = PBXBuildFile; fileRef = 885EBA361F7EAB48006005D5 /* minusWeight.png */; };
 		885EBA391F7EE7B1006005D5 /* DailyBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885EBA381F7EE7B1006005D5 /* DailyBarView.xib */; };
 		885EBA3B1F7EE7D2006005D5 /* DailyBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885EBA3A1F7EE7D2006005D5 /* DailyBarView.swift */; };
+		888BFDB01FBD06AA00A664FD /* variableCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BFDAF1FBD06AA00A664FD /* variableCollector.swift */; };
 		88933BE11F787EF400805E52 /* WeightChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88933BE01F787EF400805E52 /* WeightChart.xib */; };
 		88933BE51F787F6E00805E52 /* WeightChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88933BE41F787F6E00805E52 /* WeightChartView.swift */; };
 		889FFD591F98F81400341D1A /* tableImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 889FFD581F98F81400341D1A /* tableImage.png */; };
@@ -435,6 +436,7 @@
 		885EBA361F7EAB48006005D5 /* minusWeight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minusWeight.png; sourceTree = "<group>"; };
 		885EBA381F7EE7B1006005D5 /* DailyBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyBarView.xib; sourceTree = "<group>"; };
 		885EBA3A1F7EE7D2006005D5 /* DailyBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyBarView.swift; sourceTree = "<group>"; };
+		888BFDAF1FBD06AA00A664FD /* variableCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = variableCollector.swift; sourceTree = "<group>"; };
 		88933BE01F787EF400805E52 /* WeightChart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeightChart.xib; sourceTree = "<group>"; };
 		88933BE41F787F6E00805E52 /* WeightChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightChartView.swift; sourceTree = "<group>"; };
 		889FFD581F98F81400341D1A /* tableImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableImage.png; sourceTree = "<group>"; };
@@ -780,6 +782,7 @@
 				881237331F71B5E1006B7D15 /* Weight.swift */,
 				2F980E861E50D1CB0024C5EC /* Activity.swift */,
 				0DC83E0D1EB6AC7C00395DEB /* PDFGenerator.swift */,
+				888BFDAF1FBD06AA00A664FD /* variableCollector.swift */,
 				0DC83E1F1EB6C62A00395DEB /* CustomPrintPageRenderer.swift */,
 			);
 			name = Others;
@@ -1195,6 +1198,7 @@
 				2F8A4E721E6715F900F4C017 /* BabyMovementViewController.swift in Sources */,
 				2FC0BA5D1E415FC1007B291C /* SleepViewController.swift in Sources */,
 				2FA9EC9F1E685D1D004ECF1E /* KickTableViewCell.swift in Sources */,
+				888BFDB01FBD06AA00A664FD /* variableCollector.swift in Sources */,
 				2F938F441E5211FE006D64A9 /* GoalsViewController.swift in Sources */,
 				2F980E871E50D1CB0024C5EC /* Activity.swift in Sources */,
 				2F02C22A1EB8566A00FE6B78 /* Kick.swift in Sources */,
