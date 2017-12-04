@@ -95,7 +95,159 @@ FIRApp.configure()
       
 
     
-        var weeklyEmotions: JSON = [:]
+
+
+        
+//        self.fbreqs.getUserProfile() { json, err in
+//         
+//            if json != nil {
+//                for (key, value) in json! {
+//                    print(key)
+//                   // print(value)
+//                   let str1 = value.description
+//                   print("lkl")
+//                   print(str1)
+//                    
+//                  // self.setEmotionCell(emotion: key, selected: value.boolValue)
+//                  // create array to hold bool values then connect each one to emotion separately through ifs (array[num]) to access...
+//                }
+//
+//            }
+//
+//            
+//            let dob = json?["dateOfBirth"]
+//            print("uhuh")
+//            print(dob)
+//                
+//}
+        
+        
+        
+        
+        
+        
+        
+        
+        // Set Navigation bar background image
+        let navBgImage:UIImage = UIImage(named: "NavigationBar.png")!
+        UINavigationBar.appearance().setBackgroundImage(navBgImage, for: .default)
+        
+        Visualizer.start()
+        
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.white
+        ]
+
+        //Set navigation bar Back button tint colour
+        UINavigationBar.appearance().tintColor = UIColor.white
+
+
+        
+        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
+        UserDefaults.standard.setValue(false, forKey:"_UIConstraintBasedLayoutLogUnsatisfiable") // disables warnings for views in console
+//
+//        self.logout()
+//        exit(0)
+        
+        
+        
+        
+
+        
+        return true
+    }
+    
+    func logout() {
+        // Delete User credential from NSUserDefaults and other data related to user
+        let restClient = RestClient()
+        restClient.forgetTokens(nil)
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaults.standard.synchronize()
+        
+        let appDelegateTemp: AppDelegate? = (UIApplication.shared.delegate as! AppDelegate)
+        let rootController: UIViewController? = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginViewController")
+        let navigation = UINavigationController(rootViewController: rootController!)
+        appDelegateTemp?.window?.rootViewController = navigation
+    }
+    
+    
+    
+    func checkIfUserInFirebase() {
+        self.storyboard = UIStoryboard(name: "Main", bundle: Bundle.main);
+        let currentUser = FIRAuth.auth()?.currentUser
+        print("Current user: \(currentUser?.uid)")
+        if currentUser != nil {
+            // if a firebase user, then need to make sure logged in
+            if let loginMethod = UserDefaults.standard.value(forKey: "loginMethod") as? String {
+                print("login method")
+                if loginMethod == "Fitbit" {
+                    print("will try and get fitbit tokens")
+                    isLoggedInToFitbit()
+                } else if loginMethod == "HealthKit" {
+                    // check something
+                    self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController");
+
+                } else {
+                    print("other loginMethod")
+                }
+            } else {
+                print("No login method saved")
+                self.goToLogin()
+            }
+            
+        } else { // they aren't authenticated
+            self.goToLogin()
+            
+        }
+    }
+    
+    func goToLogin() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! ViewController
+        let nav = UINavigationController(rootViewController: loginVC)
+        window?.rootViewController = nav
+    }
+    
+    func forgetTokens(_ sender: UIButton?) {
+        let restClient = RestClient()
+        restClient.forgetTokens(nil)
+    }
+
+    
+    var oauth2 = OAuth2CodeGrant(settings: [
+        "client_id": "2285YX",
+        "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
+        "authorize_uri": "https://www.fitbit.com/oauth2/authorize",
+        "token_uri": "https://api.fitbit.com/oauth2/token",
+        "response_type": "code",
+        "expires_in": "31536000", // 1 year expiration
+        "scope": "activity heartrate location nutrition profile settings sleep social weight",
+        "redirect_uris": ["lily://oauth/callback"],            // app has registered this scheme
+        "verbose": true,
+        ] as OAuth2JSON)
+    
+    func isLoggedInToFitbit() {
+        oauth2.authConfig.authorizeEmbedded = true
+        let vc = self.window?.rootViewController
+        oauth2.authConfig.authorizeContext = vc
+
+        oauth2.logger = OAuth2DebugLogger(.trace)
+        print("is logged in to fitbit?")
+
+        oauth2.authorize() { authParameters, error in
+            
+            print("Error: \(String(describing: error))")
+            
+            if let params = authParameters {
+                print("success in oauth2 appdelegate")
+                print("authorized in app delegate")
+                print("Authorized! Access token is in `oauth2.accessToken`")
+                print("Authorized! Additional parameters: \(params)")
+                self.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+                        var weeklyEmotions: JSON = [:]
         
         let dateRange = Helpers.get7DayRangeInts(weeksAgo: 0)
         for i in  dateRange.0..<dateRange.1 + 1 {
@@ -315,157 +467,6 @@ FIRApp.configure()
               self.fairly = "\(formattedTime.0)h \(formattedTime.1)m"
 
         }
-
-        
-//        self.fbreqs.getUserProfile() { json, err in
-//         
-//            if json != nil {
-//                for (key, value) in json! {
-//                    print(key)
-//                   // print(value)
-//                   let str1 = value.description
-//                   print("lkl")
-//                   print(str1)
-//                    
-//                  // self.setEmotionCell(emotion: key, selected: value.boolValue)
-//                  // create array to hold bool values then connect each one to emotion separately through ifs (array[num]) to access...
-//                }
-//
-//            }
-//
-//            
-//            let dob = json?["dateOfBirth"]
-//            print("uhuh")
-//            print(dob)
-//                
-//}
-        
-        
-        
-        
-        
-        
-        
-        
-        // Set Navigation bar background image
-        let navBgImage:UIImage = UIImage(named: "NavigationBar.png")!
-        UINavigationBar.appearance().setBackgroundImage(navBgImage, for: .default)
-        
-        Visualizer.start()
-        
-        UINavigationBar.appearance().titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.white
-        ]
-
-        //Set navigation bar Back button tint colour
-        UINavigationBar.appearance().tintColor = UIColor.white
-
-
-        
-        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-        application.registerUserNotificationSettings(settings)
-        application.registerForRemoteNotifications()
-        
-        UserDefaults.standard.setValue(false, forKey:"_UIConstraintBasedLayoutLogUnsatisfiable") // disables warnings for views in console
-//
-//        self.logout()
-//        exit(0)
-        
-        
-        
-        
-
-        
-        return true
-    }
-    
-    func logout() {
-        // Delete User credential from NSUserDefaults and other data related to user
-        let restClient = RestClient()
-        restClient.forgetTokens(nil)
-        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        UserDefaults.standard.synchronize()
-        
-        let appDelegateTemp: AppDelegate? = (UIApplication.shared.delegate as! AppDelegate)
-        let rootController: UIViewController? = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginViewController")
-        let navigation = UINavigationController(rootViewController: rootController!)
-        appDelegateTemp?.window?.rootViewController = navigation
-    }
-    
-    
-    
-    func checkIfUserInFirebase() {
-        self.storyboard = UIStoryboard(name: "Main", bundle: Bundle.main);
-        let currentUser = FIRAuth.auth()?.currentUser
-        print("Current user: \(currentUser?.uid)")
-        if currentUser != nil {
-            // if a firebase user, then need to make sure logged in
-            if let loginMethod = UserDefaults.standard.value(forKey: "loginMethod") as? String {
-                print("login method")
-                if loginMethod == "Fitbit" {
-                    print("will try and get fitbit tokens")
-                    isLoggedInToFitbit()
-                } else if loginMethod == "HealthKit" {
-                    // check something
-                    self.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController");
-
-                } else {
-                    print("other loginMethod")
-                }
-            } else {
-                print("No login method saved")
-                self.goToLogin()
-            }
-            
-        } else { // they aren't authenticated
-            self.goToLogin()
-            
-        }
-    }
-    
-    func goToLogin() {
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! ViewController
-        let nav = UINavigationController(rootViewController: loginVC)
-        window?.rootViewController = nav
-    }
-    
-    func forgetTokens(_ sender: UIButton?) {
-        let restClient = RestClient()
-        restClient.forgetTokens(nil)
-    }
-
-    
-    var oauth2 = OAuth2CodeGrant(settings: [
-        "client_id": "2285YX",
-        "client_secret": "60640a94d1b4dcd91602d3efbee6ba87",
-        "authorize_uri": "https://www.fitbit.com/oauth2/authorize",
-        "token_uri": "https://api.fitbit.com/oauth2/token",
-        "response_type": "code",
-        "expires_in": "31536000", // 1 year expiration
-        "scope": "activity heartrate location nutrition profile settings sleep social weight",
-        "redirect_uris": ["lily://oauth/callback"],            // app has registered this scheme
-        "verbose": true,
-        ] as OAuth2JSON)
-    
-    func isLoggedInToFitbit() {
-        oauth2.authConfig.authorizeEmbedded = true
-        let vc = self.window?.rootViewController
-        oauth2.authConfig.authorizeContext = vc
-
-        oauth2.logger = OAuth2DebugLogger(.trace)
-        print("is logged in to fitbit?")
-
-        oauth2.authorize() { authParameters, error in
-            
-            print("Error: \(String(describing: error))")
-            
-            if let params = authParameters {
-                print("success in oauth2 appdelegate")
-                print("authorized in app delegate")
-                print("Authorized! Access token is in `oauth2.accessToken`")
-                print("Authorized! Additional parameters: \(params)")
-                self.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
                 
             }
             else {
